@@ -1,4 +1,4 @@
 amsa-code.github.io
 ===================
 
-static site for amsa-code repositories
+amsa-code [website](http://amsa-code.github.io)
