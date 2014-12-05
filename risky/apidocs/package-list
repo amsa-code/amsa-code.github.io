@@ -2,5 +2,8 @@ au.gov.amsa.ais
 au.gov.amsa.ais.message
 au.gov.amsa.ais.rx
 au.gov.amsa.ais.rx.operators
+au.gov.amsa.navigation
+au.gov.amsa.navigation.ais
 au.gov.amsa.streams
 au.gov.amsa.util.nmea
+au.gov.amsa.util.nmea.saver

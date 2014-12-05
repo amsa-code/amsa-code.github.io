@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2014</copyright>
     <item>
-      <title>File: 80,
-             Errors: 9659,
+      <title>File: 86,
+             Errors: 9980,
              Warnings: 0,
              Infos: 0
       </title>
@@ -181,7 +181,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  193
+                  264
                 </td>
               </tr>
                           <tr>
@@ -242,6 +242,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.SystemClock.java">au/gov/amsa/util/nmea/saver/SystemClock.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisNmeaMessageTest.java">au/gov/amsa/ais/AisNmeaMessageTest.java</a>
                 </td>
                 <td>
@@ -270,20 +284,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaMessageExactEarthTimestamp.java">au/gov/amsa/ais/NmeaMessageExactEarthTimestamp.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  166
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaMessage.java">au/gov/amsa/util/nmea/NmeaMessage.java</a>
                 </td>
                 <td>
@@ -294,6 +294,20 @@ under the License.
                 </td>
                 <td>
                   279
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaMessageExactEarthTimestamp.java">au/gov/amsa/ais/NmeaMessageExactEarthTimestamp.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  166
                 </td>
               </tr>
                           <tr>
@@ -592,6 +606,34 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.FileFactory.java">au/gov/amsa/util/nmea/saver/FileFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.Clock.java">au/gov/amsa/util/nmea/saver/Clock.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.CommunicationsTest.java">au/gov/amsa/ais/CommunicationsTest.java</a>
                 </td>
                 <td>
@@ -602,6 +644,20 @@ under the License.
                 </td>
                 <td>
                   93
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.NmeaSaver.java">au/gov/amsa/util/nmea/saver/NmeaSaver.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  122
                 </td>
               </tr>
                           <tr>
@@ -1040,20 +1096,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisMessageParser.java">au/gov/amsa/ais/AisMessageParser.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  85
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaReader.java">au/gov/amsa/util/nmea/NmeaReader.java</a>
                 </td>
                 <td>
@@ -1064,6 +1106,20 @@ under the License.
                 </td>
                 <td>
                   11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisMessageParser.java">au/gov/amsa/ais/AisMessageParser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  85
                 </td>
               </tr>
                           <tr>
@@ -1119,7 +1175,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  200
+                  243
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.NmeaSaverTest.java">au/gov/amsa/util/nmea/saver/NmeaSaverTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  30
                 </td>
               </tr>
                           <tr>
@@ -1148,6 +1218,20 @@ under the License.
                 </td>
                 <td>
                   35
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.FileFactoryPerDay.java">au/gov/amsa/util/nmea/saver/FileFactoryPerDay.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  39
                 </td>
               </tr>
                           <tr>

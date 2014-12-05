@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2014</copyright>
     <item>
-      <title>File: 3,
-             Errors: 352,
+      <title>File: 6,
+             Errors: 725,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,12 +55,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  159
+                  164
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Lines.java">au/gov/amsa/streams/Lines.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.PortFinder.java">au/gov/amsa/util/PortFinder.java</a>
                 </td>
                 <td>
                   0
@@ -69,7 +69,49 @@ under the License.
                   0
                 </td>
                 <td>
-                  173
+                  58
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.HostPort.java">au/gov/amsa/streams/HostPort.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  57
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Strings.java">au/gov/amsa/streams/Strings.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  302
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.LinesTest.java">au/gov/amsa/streams/LinesTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  131
                 </td>
               </tr>
                           <tr>
@@ -83,7 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  20
+                  13
                 </td>
               </tr>
                       </tbody>
