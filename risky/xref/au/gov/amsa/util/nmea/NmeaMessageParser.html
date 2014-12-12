@@ -85,11 +85,11 @@
 <a class="jxr_linenumber" name="L77" href="#L77">77</a>  		s = s.substring(0, s.lastIndexOf(CHECKSUM_DELIMITER));
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>  		String[] items = s.split(PARAMETER_DELIMITER);
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>  		<strong class="jxr_keyword">for</strong> (String item : items) {
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>  			String[] parts = item.split(CODE_DELIMITER);
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>  			<strong class="jxr_keyword">if</strong> (parts.length != 2)
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  			<strong class="jxr_keyword">int</strong> i = item.indexOf(CODE_DELIMITER);
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>  			<strong class="jxr_keyword">if</strong> (i == -1)
 <a class="jxr_linenumber" name="L82" href="#L82">82</a>  				<strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../au/gov/amsa/util/nmea/NmeaMessageParseException.html">NmeaMessageParseException</a>(
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>  						<span class="jxr_string">"TAG BLOCK parameter is not is format 'a:b' :"</span> + s);
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>  			map.put(parts[0], parts[1]);
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>  			map.put(item.substring(0, i), item.substring(i + 1));
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>  		}
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  		<strong class="jxr_keyword">return</strong> map;
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>  	}
