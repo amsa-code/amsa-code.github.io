@@ -1,10 +1,15 @@
 au.gov.amsa.ais
 au.gov.amsa.ais.message
 au.gov.amsa.ais.rx
+au.gov.amsa.geo
 au.gov.amsa.geo.adhoc
+au.gov.amsa.geo.consensus
+au.gov.amsa.geo.distance
+au.gov.amsa.geo.model
 au.gov.amsa.navigation
 au.gov.amsa.navigation.ais
 au.gov.amsa.streams
 au.gov.amsa.util
+au.gov.amsa.util.navigation
 au.gov.amsa.util.nmea
 au.gov.amsa.util.nmea.saver
