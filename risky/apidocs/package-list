@@ -15,3 +15,4 @@ au.gov.amsa.util.navigation
 au.gov.amsa.util.nmea
 au.gov.amsa.util.nmea.saver
 au.gov.amsa.util.rx
+rx.internal.operators

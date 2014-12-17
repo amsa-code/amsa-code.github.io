@@ -282,24 +282,16 @@
 <a class="jxr_linenumber" name="L274" href="#L274">274</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Observable&lt;String&gt; from(<strong class="jxr_keyword">final</strong> Reader reader, <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> size) {
 <a class="jxr_linenumber" name="L275" href="#L275">275</a> 
 <a class="jxr_linenumber" name="L276" href="#L276">276</a> 		<strong class="jxr_keyword">if</strong> (useReaderProducer)
-<a class="jxr_linenumber" name="L277" href="#L277">277</a> 			<strong class="jxr_keyword">return</strong> Observable.create(<strong class="jxr_keyword">new</strong> OnSubscribe&lt;String&gt;() {
-<a class="jxr_linenumber" name="L278" href="#L278">278</a> 
-<a class="jxr_linenumber" name="L279" href="#L279">279</a> 				@Override
-<a class="jxr_linenumber" name="L280" href="#L280">280</a> 				<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> call(Subscriber&lt;? <strong class="jxr_keyword">super</strong> String&gt; subscriber) {
-<a class="jxr_linenumber" name="L281" href="#L281">281</a> 					subscriber.setProducer(<strong class="jxr_keyword">new</strong> <a href="../../../../au/gov/amsa/streams/ReaderProducer.html">ReaderProducer</a>(reader,
-<a class="jxr_linenumber" name="L282" href="#L282">282</a> 							subscriber, size));
-<a class="jxr_linenumber" name="L283" href="#L283">283</a> 				}
-<a class="jxr_linenumber" name="L284" href="#L284">284</a> 			});
+<a class="jxr_linenumber" name="L277" href="#L277">277</a> 			<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../au/gov/amsa/streams/ReaderOnSubscribe.html">ReaderOnSubscribe</a>(size, reader).toObservable();
+<a class="jxr_linenumber" name="L278" href="#L278">278</a> 		<strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L279" href="#L279">279</a> 			<strong class="jxr_keyword">return</strong> StringObservable.from(reader, size);
+<a class="jxr_linenumber" name="L280" href="#L280">280</a> 	}
+<a class="jxr_linenumber" name="L281" href="#L281">281</a> 
+<a class="jxr_linenumber" name="L282" href="#L282">282</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Observable&lt;String&gt; from(Reader reader) {
+<a class="jxr_linenumber" name="L283" href="#L283">283</a> 		<strong class="jxr_keyword">return</strong> from(reader, 8192);
+<a class="jxr_linenumber" name="L284" href="#L284">284</a> 	}
 <a class="jxr_linenumber" name="L285" href="#L285">285</a> 
-<a class="jxr_linenumber" name="L286" href="#L286">286</a> 		<strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="L287" href="#L287">287</a> 			<strong class="jxr_keyword">return</strong> StringObservable.from(reader, size);
-<a class="jxr_linenumber" name="L288" href="#L288">288</a> 	}
-<a class="jxr_linenumber" name="L289" href="#L289">289</a> 
-<a class="jxr_linenumber" name="L290" href="#L290">290</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Observable&lt;String&gt; from(Reader reader) {
-<a class="jxr_linenumber" name="L291" href="#L291">291</a> 		<strong class="jxr_keyword">return</strong> from(reader, 8192);
-<a class="jxr_linenumber" name="L292" href="#L292">292</a> 	}
-<a class="jxr_linenumber" name="L293" href="#L293">293</a> 
-<a class="jxr_linenumber" name="L294" href="#L294">294</a> }
+<a class="jxr_linenumber" name="L286" href="#L286">286</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2014. All rights reserved.</div>

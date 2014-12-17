@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2014</copyright>
     <item>
-      <title>File: 176,
-             Errors: 21971,
+      <title>File: 180,
+             Errors: 22333,
              Warnings: 0,
              Infos: 0
       </title>
@@ -578,6 +578,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.ReaderOnSubscribe.java">au/gov/amsa/streams/ReaderOnSubscribe.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  41
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ais.Collator.java">au/gov/amsa/navigation/ais/Collator.java</a>
                 </td>
                 <td>
@@ -839,7 +853,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  350
+                  342
                 </td>
               </tr>
                           <tr>
@@ -910,6 +924,20 @@ under the License.
                 </td>
                 <td>
                   166
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#rx.internal.operators.OperatorMerge.java">rx/internal/operators/OperatorMerge.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  220
                 </td>
               </tr>
                           <tr>
@@ -1278,6 +1306,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#BackpressureGcMain.java">BackpressureGcMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  69
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionBTest.java">au/gov/amsa/ais/message/AisPositionBTest.java</a>
                 </td>
                 <td>
@@ -1511,7 +1553,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  264
+                  272
                 </td>
               </tr>
                           <tr>
@@ -1978,6 +2020,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#rx.internal.operators.OperatorPauseOnHighHeapUsage.java">rx/internal/operators/OperatorPauseOnHighHeapUsage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.CraftProperties.java">au/gov/amsa/ais/rx/CraftProperties.java</a>
                 </td>
                 <td>
@@ -2127,7 +2183,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  81
+                  93
                 </td>
               </tr>
                           <tr>

@@ -194,7 +194,7 @@
 <a class="jxr_linenumber" name="L186" href="#L186">186</a> 	@Test
 <a class="jxr_linenumber" name="L187" href="#L187">187</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeAddsTagBlockIfDoesntHaveOne() {
 <a class="jxr_linenumber" name="L188" href="#L188">188</a> 		String line = <span class="jxr_string">"$PGHP,1,2012,1,31,5,55,12,0,316,3,316999999,1AIS_S,18*7A"</span>;
-<a class="jxr_linenumber" name="L189" href="#L189">189</a> 		assertEquals(<span class="jxr_string">"&#92;&#92;c:1234567*69&#92;&#92;"</span> + line,
+<a class="jxr_linenumber" name="L189" href="#L189">189</a> 		assertEquals(<span class="jxr_string">"&#92;&#92;c:1234567,a:1234567890*1F&#92;&#92;"</span> + line,
 <a class="jxr_linenumber" name="L190" href="#L190">190</a> 				NmeaUtil.supplementWithTime(line, 1234567890));
 <a class="jxr_linenumber" name="L191" href="#L191">191</a> 		assertEquals(<span class="jxr_string">"69"</span>, NmeaUtil.getChecksum(<span class="jxr_string">"c:1234567"</span>));
 <a class="jxr_linenumber" name="L192" href="#L192">192</a> 	}
@@ -203,7 +203,7 @@
 <a class="jxr_linenumber" name="L195" href="#L195">195</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeInsertsIntoExistingTagBlock() {
 <a class="jxr_linenumber" name="L196" href="#L196">196</a> 		String line = <span class="jxr_string">"&#92;&#92;s:rEV02,d:1334337321*5A&#92;&#92;!AIVDM,1,1,,B,33:JeT0OjtVls&lt;;fDlbl5CFH2000,0*71"</span>;
 <a class="jxr_linenumber" name="L197" href="#L197">197</a> 		assertEquals(
-<a class="jxr_linenumber" name="L198" href="#L198">198</a> 				<span class="jxr_string">"&#92;&#92;s:rEV02,d:1334337321,c:1234567*1F&#92;&#92;!AIVDM,1,1,,B,33:JeT0OjtVls&lt;;fDlbl5CFH2000,0*71"</span>,
+<a class="jxr_linenumber" name="L198" href="#L198">198</a> 				<span class="jxr_string">"&#92;&#92;s:rEV02,d:1334337321,c:1234567,a:1234567890*69&#92;&#92;!AIVDM,1,1,,B,33:JeT0OjtVls&lt;;fDlbl5CFH2000,0*71"</span>,
 <a class="jxr_linenumber" name="L199" href="#L199">199</a> 				NmeaUtil.supplementWithTime(line, 1234567890));
 <a class="jxr_linenumber" name="L200" href="#L200">200</a> 		assertEquals(<span class="jxr_string">"1F"</span>,
 <a class="jxr_linenumber" name="L201" href="#L201">201</a> 				NmeaUtil.getChecksum(<span class="jxr_string">"s:rEV02,d:1334337321,c:1234567"</span>));
