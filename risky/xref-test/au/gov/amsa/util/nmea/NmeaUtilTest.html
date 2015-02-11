@@ -129,89 +129,88 @@
 <a class="jxr_linenumber" name="L121" href="#L121">121</a> 
 <a class="jxr_linenumber" name="L122" href="#L122">122</a> 	@Test
 <a class="jxr_linenumber" name="L123" href="#L123">123</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCanCreateNmeaLine() {
-<a class="jxr_linenumber" name="L124" href="#L124">124</a> 		String tag = <span class="jxr_string">"&#92;&#92;g:1-2-1536,c:1334258609*2F&#92;&#92;"</span>;
-<a class="jxr_linenumber" name="L125" href="#L125">125</a> 		String line = <span class="jxr_string">"!BSVDM,2,1,0,A,577V7s02?k61I8Lg&lt;00Dq@E918U&lt;F1=@58000016Op`BL5D8tIm5@PDPCp0T,0*5B"</span>;
-<a class="jxr_linenumber" name="L126" href="#L126">126</a> 		List&lt;String&gt; list = createSampleList();
-<a class="jxr_linenumber" name="L127" href="#L127">127</a> 
-<a class="jxr_linenumber" name="L128" href="#L128">128</a> 		String result = NmeaUtil.createNmeaLine(<strong class="jxr_keyword">null</strong>, list);
-<a class="jxr_linenumber" name="L129" href="#L129">129</a> 		assertEquals(line, result);
-<a class="jxr_linenumber" name="L130" href="#L130">130</a> 	}
-<a class="jxr_linenumber" name="L131" href="#L131">131</a> 
-<a class="jxr_linenumber" name="L132" href="#L132">132</a> 	<strong class="jxr_keyword">private</strong> List&lt;String&gt; createSampleList() {
-<a class="jxr_linenumber" name="L133" href="#L133">133</a> 		List&lt;String&gt; list = Lists.newArrayList();
-<a class="jxr_linenumber" name="L134" href="#L134">134</a> 		list.add(<span class="jxr_string">"!BSVDM"</span>);
-<a class="jxr_linenumber" name="L135" href="#L135">135</a> 		list.add(<span class="jxr_string">"2"</span>);
-<a class="jxr_linenumber" name="L136" href="#L136">136</a> 		list.add(<span class="jxr_string">"1"</span>);
-<a class="jxr_linenumber" name="L137" href="#L137">137</a> 		list.add(<span class="jxr_string">"0"</span>);
-<a class="jxr_linenumber" name="L138" href="#L138">138</a> 		list.add(<span class="jxr_string">"A"</span>);
-<a class="jxr_linenumber" name="L139" href="#L139">139</a> 		list.add(<span class="jxr_string">"577V7s02?k61I8Lg&lt;00Dq@E918U&lt;F1=@58000016Op`BL5D8tIm5@PDPCp0T"</span>);
-<a class="jxr_linenumber" name="L140" href="#L140">140</a> 		list.add(<span class="jxr_string">"0"</span>);
-<a class="jxr_linenumber" name="L141" href="#L141">141</a> 		<strong class="jxr_keyword">return</strong> list;
-<a class="jxr_linenumber" name="L142" href="#L142">142</a> 	}
-<a class="jxr_linenumber" name="L143" href="#L143">143</a> 
-<a class="jxr_linenumber" name="L144" href="#L144">144</a> 	@Test
-<a class="jxr_linenumber" name="L145" href="#L145">145</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCreationOfTagBlock() {
-<a class="jxr_linenumber" name="L146" href="#L146">146</a> 		String tag = <span class="jxr_string">"&#92;&#92;g:1-2-1536,c:1334258609*2F&#92;&#92;"</span>;
-<a class="jxr_linenumber" name="L147" href="#L147">147</a> 		LinkedHashMap&lt;String, String&gt; tags = createSampleTags();
-<a class="jxr_linenumber" name="L148" href="#L148">148</a> 		assertEquals(tag, NmeaUtil.createTagBlock(tags));
-<a class="jxr_linenumber" name="L149" href="#L149">149</a> 	}
-<a class="jxr_linenumber" name="L150" href="#L150">150</a> 
-<a class="jxr_linenumber" name="L151" href="#L151">151</a> 	<strong class="jxr_keyword">private</strong> LinkedHashMap&lt;String, String&gt; createSampleTags() {
-<a class="jxr_linenumber" name="L152" href="#L152">152</a> 		LinkedHashMap&lt;String, String&gt; tags = Maps.newLinkedHashMap();
-<a class="jxr_linenumber" name="L153" href="#L153">153</a> 		tags.put(<span class="jxr_string">"g"</span>, <span class="jxr_string">"1-2-1536"</span>);
-<a class="jxr_linenumber" name="L154" href="#L154">154</a> 		tags.put(<span class="jxr_string">"c"</span>, <span class="jxr_string">"1334258609"</span>);
-<a class="jxr_linenumber" name="L155" href="#L155">155</a> 		<strong class="jxr_keyword">return</strong> tags;
-<a class="jxr_linenumber" name="L156" href="#L156">156</a> 	}
-<a class="jxr_linenumber" name="L157" href="#L157">157</a> 
-<a class="jxr_linenumber" name="L158" href="#L158">158</a> 	@Test
-<a class="jxr_linenumber" name="L159" href="#L159">159</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCreationOfNmeaLineFromTagsAndMessage() {
-<a class="jxr_linenumber" name="L160" href="#L160">160</a> 		String tag = <span class="jxr_string">"&#92;&#92;g:1-2-1536,c:1334258609*2F&#92;&#92;"</span>;
-<a class="jxr_linenumber" name="L161" href="#L161">161</a> 		String line = <span class="jxr_string">"!BSVDM,2,1,0,A,577V7s02?k61I8Lg&lt;00Dq@E918U&lt;F1=@58000016Op`BL5D8tIm5@PDPCp0T,0*5B"</span>;
-<a class="jxr_linenumber" name="L162" href="#L162">162</a> 		List&lt;String&gt; list = createSampleList();
-<a class="jxr_linenumber" name="L163" href="#L163">163</a> 		LinkedHashMap&lt;String, String&gt; tags = createSampleTags();
-<a class="jxr_linenumber" name="L164" href="#L164">164</a> 		assertEquals(tag + line, NmeaUtil.createNmeaLine(tags, list));
-<a class="jxr_linenumber" name="L165" href="#L165">165</a> 	}
-<a class="jxr_linenumber" name="L166" href="#L166">166</a> 
-<a class="jxr_linenumber" name="L167" href="#L167">167</a> 	@Test
-<a class="jxr_linenumber" name="L168" href="#L168">168</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRoundTripOnNmeaMessageOnLineWithTagBlock() {
-<a class="jxr_linenumber" name="L169" href="#L169">169</a> 		String line = <span class="jxr_string">"&#92;&#92;g:1-2-1234,s:r3669961,c:1120959341*0D&#92;&#92;!ABVDM,1,1,1,B,…..,0*39"</span>;
-<a class="jxr_linenumber" name="L170" href="#L170">170</a> 		NmeaMessage m = NmeaUtil.parseNmea(line);
-<a class="jxr_linenumber" name="L171" href="#L171">171</a> 		assertEquals(line, m.toLine());
-<a class="jxr_linenumber" name="L172" href="#L172">172</a> 	}
-<a class="jxr_linenumber" name="L173" href="#L173">173</a> 
-<a class="jxr_linenumber" name="L174" href="#L174">174</a> 	@Test
-<a class="jxr_linenumber" name="L175" href="#L175">175</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeDoesNothingToMultilineMessagesAfterFirst() {
-<a class="jxr_linenumber" name="L176" href="#L176">176</a> 		String line = <span class="jxr_string">"&#92;&#92;g:2-2-3987*58&#92;&#92;!BSVDM,2,2,0,A,lQ@@0000002,0*00"</span>;
-<a class="jxr_linenumber" name="L177" href="#L177">177</a> 		assertEquals(line, NmeaUtil.supplementWithTime(line, 0));
-<a class="jxr_linenumber" name="L178" href="#L178">178</a> 	}
-<a class="jxr_linenumber" name="L179" href="#L179">179</a> 
-<a class="jxr_linenumber" name="L180" href="#L180">180</a> 	@Test
-<a class="jxr_linenumber" name="L181" href="#L181">181</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeDoesNothingToMessageWithTime() {
-<a class="jxr_linenumber" name="L182" href="#L182">182</a> 		String line = <span class="jxr_string">"&#92;&#92;s:rEV02,c:1334337322*5E&#92;&#92;!AIVDM,1,1,,B,14`980002?6UgpR1w0c8cG0L0Gww,0*58"</span>;
-<a class="jxr_linenumber" name="L183" href="#L183">183</a> 		assertEquals(line, NmeaUtil.supplementWithTime(line, 0));
-<a class="jxr_linenumber" name="L184" href="#L184">184</a> 	}
-<a class="jxr_linenumber" name="L185" href="#L185">185</a> 
-<a class="jxr_linenumber" name="L186" href="#L186">186</a> 	@Test
-<a class="jxr_linenumber" name="L187" href="#L187">187</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeAddsTagBlockIfDoesntHaveOne() {
-<a class="jxr_linenumber" name="L188" href="#L188">188</a> 		String line = <span class="jxr_string">"$PGHP,1,2012,1,31,5,55,12,0,316,3,316999999,1AIS_S,18*7A"</span>;
-<a class="jxr_linenumber" name="L189" href="#L189">189</a> 		assertEquals(<span class="jxr_string">"&#92;&#92;c:1234567,a:1234567890*1F&#92;&#92;"</span> + line,
-<a class="jxr_linenumber" name="L190" href="#L190">190</a> 				NmeaUtil.supplementWithTime(line, 1234567890));
-<a class="jxr_linenumber" name="L191" href="#L191">191</a> 		assertEquals(<span class="jxr_string">"69"</span>, NmeaUtil.getChecksum(<span class="jxr_string">"c:1234567"</span>));
-<a class="jxr_linenumber" name="L192" href="#L192">192</a> 	}
-<a class="jxr_linenumber" name="L193" href="#L193">193</a> 
-<a class="jxr_linenumber" name="L194" href="#L194">194</a> 	@Test
-<a class="jxr_linenumber" name="L195" href="#L195">195</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeInsertsIntoExistingTagBlock() {
-<a class="jxr_linenumber" name="L196" href="#L196">196</a> 		String line = <span class="jxr_string">"&#92;&#92;s:rEV02,d:1334337321*5A&#92;&#92;!AIVDM,1,1,,B,33:JeT0OjtVls&lt;;fDlbl5CFH2000,0*71"</span>;
-<a class="jxr_linenumber" name="L197" href="#L197">197</a> 		assertEquals(
-<a class="jxr_linenumber" name="L198" href="#L198">198</a> 				<span class="jxr_string">"&#92;&#92;s:rEV02,d:1334337321,c:1234567,a:1234567890*69&#92;&#92;!AIVDM,1,1,,B,33:JeT0OjtVls&lt;;fDlbl5CFH2000,0*71"</span>,
-<a class="jxr_linenumber" name="L199" href="#L199">199</a> 				NmeaUtil.supplementWithTime(line, 1234567890));
-<a class="jxr_linenumber" name="L200" href="#L200">200</a> 		assertEquals(<span class="jxr_string">"1F"</span>,
-<a class="jxr_linenumber" name="L201" href="#L201">201</a> 				NmeaUtil.getChecksum(<span class="jxr_string">"s:rEV02,d:1334337321,c:1234567"</span>));
-<a class="jxr_linenumber" name="L202" href="#L202">202</a> 	}
-<a class="jxr_linenumber" name="L203" href="#L203">203</a> 
-<a class="jxr_linenumber" name="L204" href="#L204">204</a> }
+<a class="jxr_linenumber" name="L124" href="#L124">124</a> 		String line = <span class="jxr_string">"!BSVDM,2,1,0,A,577V7s02?k61I8Lg&lt;00Dq@E918U&lt;F1=@58000016Op`BL5D8tIm5@PDPCp0T,0*5B"</span>;
+<a class="jxr_linenumber" name="L125" href="#L125">125</a> 		List&lt;String&gt; list = createSampleList();
+<a class="jxr_linenumber" name="L126" href="#L126">126</a> 
+<a class="jxr_linenumber" name="L127" href="#L127">127</a> 		String result = NmeaUtil.createNmeaLine(<strong class="jxr_keyword">null</strong>, list);
+<a class="jxr_linenumber" name="L128" href="#L128">128</a> 		assertEquals(line, result);
+<a class="jxr_linenumber" name="L129" href="#L129">129</a> 	}
+<a class="jxr_linenumber" name="L130" href="#L130">130</a> 
+<a class="jxr_linenumber" name="L131" href="#L131">131</a> 	<strong class="jxr_keyword">private</strong> List&lt;String&gt; createSampleList() {
+<a class="jxr_linenumber" name="L132" href="#L132">132</a> 		List&lt;String&gt; list = Lists.newArrayList();
+<a class="jxr_linenumber" name="L133" href="#L133">133</a> 		list.add(<span class="jxr_string">"!BSVDM"</span>);
+<a class="jxr_linenumber" name="L134" href="#L134">134</a> 		list.add(<span class="jxr_string">"2"</span>);
+<a class="jxr_linenumber" name="L135" href="#L135">135</a> 		list.add(<span class="jxr_string">"1"</span>);
+<a class="jxr_linenumber" name="L136" href="#L136">136</a> 		list.add(<span class="jxr_string">"0"</span>);
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> 		list.add(<span class="jxr_string">"A"</span>);
+<a class="jxr_linenumber" name="L138" href="#L138">138</a> 		list.add(<span class="jxr_string">"577V7s02?k61I8Lg&lt;00Dq@E918U&lt;F1=@58000016Op`BL5D8tIm5@PDPCp0T"</span>);
+<a class="jxr_linenumber" name="L139" href="#L139">139</a> 		list.add(<span class="jxr_string">"0"</span>);
+<a class="jxr_linenumber" name="L140" href="#L140">140</a> 		<strong class="jxr_keyword">return</strong> list;
+<a class="jxr_linenumber" name="L141" href="#L141">141</a> 	}
+<a class="jxr_linenumber" name="L142" href="#L142">142</a> 
+<a class="jxr_linenumber" name="L143" href="#L143">143</a> 	@Test
+<a class="jxr_linenumber" name="L144" href="#L144">144</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCreationOfTagBlock() {
+<a class="jxr_linenumber" name="L145" href="#L145">145</a> 		String tag = <span class="jxr_string">"&#92;&#92;g:1-2-1536,c:1334258609*2F&#92;&#92;"</span>;
+<a class="jxr_linenumber" name="L146" href="#L146">146</a> 		LinkedHashMap&lt;String, String&gt; tags = createSampleTags();
+<a class="jxr_linenumber" name="L147" href="#L147">147</a> 		assertEquals(tag, NmeaUtil.createTagBlock(tags));
+<a class="jxr_linenumber" name="L148" href="#L148">148</a> 	}
+<a class="jxr_linenumber" name="L149" href="#L149">149</a> 
+<a class="jxr_linenumber" name="L150" href="#L150">150</a> 	<strong class="jxr_keyword">private</strong> LinkedHashMap&lt;String, String&gt; createSampleTags() {
+<a class="jxr_linenumber" name="L151" href="#L151">151</a> 		LinkedHashMap&lt;String, String&gt; tags = Maps.newLinkedHashMap();
+<a class="jxr_linenumber" name="L152" href="#L152">152</a> 		tags.put(<span class="jxr_string">"g"</span>, <span class="jxr_string">"1-2-1536"</span>);
+<a class="jxr_linenumber" name="L153" href="#L153">153</a> 		tags.put(<span class="jxr_string">"c"</span>, <span class="jxr_string">"1334258609"</span>);
+<a class="jxr_linenumber" name="L154" href="#L154">154</a> 		<strong class="jxr_keyword">return</strong> tags;
+<a class="jxr_linenumber" name="L155" href="#L155">155</a> 	}
+<a class="jxr_linenumber" name="L156" href="#L156">156</a> 
+<a class="jxr_linenumber" name="L157" href="#L157">157</a> 	@Test
+<a class="jxr_linenumber" name="L158" href="#L158">158</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCreationOfNmeaLineFromTagsAndMessage() {
+<a class="jxr_linenumber" name="L159" href="#L159">159</a> 		String tag = <span class="jxr_string">"&#92;&#92;g:1-2-1536,c:1334258609*2F&#92;&#92;"</span>;
+<a class="jxr_linenumber" name="L160" href="#L160">160</a> 		String line = <span class="jxr_string">"!BSVDM,2,1,0,A,577V7s02?k61I8Lg&lt;00Dq@E918U&lt;F1=@58000016Op`BL5D8tIm5@PDPCp0T,0*5B"</span>;
+<a class="jxr_linenumber" name="L161" href="#L161">161</a> 		List&lt;String&gt; list = createSampleList();
+<a class="jxr_linenumber" name="L162" href="#L162">162</a> 		LinkedHashMap&lt;String, String&gt; tags = createSampleTags();
+<a class="jxr_linenumber" name="L163" href="#L163">163</a> 		assertEquals(tag + line, NmeaUtil.createNmeaLine(tags, list));
+<a class="jxr_linenumber" name="L164" href="#L164">164</a> 	}
+<a class="jxr_linenumber" name="L165" href="#L165">165</a> 
+<a class="jxr_linenumber" name="L166" href="#L166">166</a> 	@Test
+<a class="jxr_linenumber" name="L167" href="#L167">167</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRoundTripOnNmeaMessageOnLineWithTagBlock() {
+<a class="jxr_linenumber" name="L168" href="#L168">168</a> 		String line = <span class="jxr_string">"&#92;&#92;g:1-2-1234,s:r3669961,c:1120959341*0D&#92;&#92;!ABVDM,1,1,1,B,…..,0*39"</span>;
+<a class="jxr_linenumber" name="L169" href="#L169">169</a> 		NmeaMessage m = NmeaUtil.parseNmea(line);
+<a class="jxr_linenumber" name="L170" href="#L170">170</a> 		assertEquals(line, m.toLine());
+<a class="jxr_linenumber" name="L171" href="#L171">171</a> 	}
+<a class="jxr_linenumber" name="L172" href="#L172">172</a> 
+<a class="jxr_linenumber" name="L173" href="#L173">173</a> 	@Test
+<a class="jxr_linenumber" name="L174" href="#L174">174</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeDoesNothingToMultilineMessagesAfterFirst() {
+<a class="jxr_linenumber" name="L175" href="#L175">175</a> 		String line = <span class="jxr_string">"&#92;&#92;g:2-2-3987*58&#92;&#92;!BSVDM,2,2,0,A,lQ@@0000002,0*00"</span>;
+<a class="jxr_linenumber" name="L176" href="#L176">176</a> 		assertEquals(line, NmeaUtil.supplementWithTime(line, 0));
+<a class="jxr_linenumber" name="L177" href="#L177">177</a> 	}
+<a class="jxr_linenumber" name="L178" href="#L178">178</a> 
+<a class="jxr_linenumber" name="L179" href="#L179">179</a> 	@Test
+<a class="jxr_linenumber" name="L180" href="#L180">180</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeDoesNothingToMessageWithTime() {
+<a class="jxr_linenumber" name="L181" href="#L181">181</a> 		String line = <span class="jxr_string">"&#92;&#92;s:rEV02,c:1334337322*5E&#92;&#92;!AIVDM,1,1,,B,14`980002?6UgpR1w0c8cG0L0Gww,0*58"</span>;
+<a class="jxr_linenumber" name="L182" href="#L182">182</a> 		assertEquals(line, NmeaUtil.supplementWithTime(line, 0));
+<a class="jxr_linenumber" name="L183" href="#L183">183</a> 	}
+<a class="jxr_linenumber" name="L184" href="#L184">184</a> 
+<a class="jxr_linenumber" name="L185" href="#L185">185</a> 	@Test
+<a class="jxr_linenumber" name="L186" href="#L186">186</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeAddsTagBlockIfDoesntHaveOne() {
+<a class="jxr_linenumber" name="L187" href="#L187">187</a> 		String line = <span class="jxr_string">"$PGHP,1,2012,1,31,5,55,12,0,316,3,316999999,1AIS_S,18*7A"</span>;
+<a class="jxr_linenumber" name="L188" href="#L188">188</a> 		assertEquals(<span class="jxr_string">"&#92;&#92;c:1234567,a:1234567890*1F&#92;&#92;"</span> + line,
+<a class="jxr_linenumber" name="L189" href="#L189">189</a> 				NmeaUtil.supplementWithTime(line, 1234567890));
+<a class="jxr_linenumber" name="L190" href="#L190">190</a> 		assertEquals(<span class="jxr_string">"69"</span>, NmeaUtil.getChecksum(<span class="jxr_string">"c:1234567"</span>));
+<a class="jxr_linenumber" name="L191" href="#L191">191</a> 	}
+<a class="jxr_linenumber" name="L192" href="#L192">192</a> 
+<a class="jxr_linenumber" name="L193" href="#L193">193</a> 	@Test
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeInsertsIntoExistingTagBlock() {
+<a class="jxr_linenumber" name="L195" href="#L195">195</a> 		String line = <span class="jxr_string">"&#92;&#92;s:rEV02,d:1334337321*5A&#92;&#92;!AIVDM,1,1,,B,33:JeT0OjtVls&lt;;fDlbl5CFH2000,0*71"</span>;
+<a class="jxr_linenumber" name="L196" href="#L196">196</a> 		assertEquals(
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> 				<span class="jxr_string">"&#92;&#92;s:rEV02,d:1334337321,c:1234567,a:1234567890*69&#92;&#92;!AIVDM,1,1,,B,33:JeT0OjtVls&lt;;fDlbl5CFH2000,0*71"</span>,
+<a class="jxr_linenumber" name="L198" href="#L198">198</a> 				NmeaUtil.supplementWithTime(line, 1234567890));
+<a class="jxr_linenumber" name="L199" href="#L199">199</a> 		assertEquals(<span class="jxr_string">"1F"</span>,
+<a class="jxr_linenumber" name="L200" href="#L200">200</a> 				NmeaUtil.getChecksum(<span class="jxr_string">"s:rEV02,d:1334337321,c:1234567"</span>));
+<a class="jxr_linenumber" name="L201" href="#L201">201</a> 	}
+<a class="jxr_linenumber" name="L202" href="#L202">202</a> 
+<a class="jxr_linenumber" name="L203" href="#L203">203</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2014. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
 </body>
 </html>

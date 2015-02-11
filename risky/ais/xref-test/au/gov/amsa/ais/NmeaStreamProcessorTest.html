@@ -243,26 +243,22 @@
 <a class="jxr_linenumber" name="L235" href="#L235">235</a> 			<strong class="jxr_keyword">return</strong> notFound;
 <a class="jxr_linenumber" name="L236" href="#L236">236</a> 		}
 <a class="jxr_linenumber" name="L237" href="#L237">237</a> 
-<a class="jxr_linenumber" name="L238" href="#L238">238</a> 		<strong class="jxr_keyword">public</strong> List&lt;Pair&lt;String, Long&gt;&gt; getInvalidNmea() {
-<a class="jxr_linenumber" name="L239" href="#L239">239</a> 			<strong class="jxr_keyword">return</strong> notFound;
-<a class="jxr_linenumber" name="L240" href="#L240">240</a> 		}
-<a class="jxr_linenumber" name="L241" href="#L241">241</a> 
-<a class="jxr_linenumber" name="L242" href="#L242">242</a> 		@Override
-<a class="jxr_linenumber" name="L243" href="#L243">243</a> 		<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> invalidNmea(String line, <strong class="jxr_keyword">long</strong> arrivalTime, String message) {
-<a class="jxr_linenumber" name="L244" href="#L244">244</a> 			invalidNmea.add(Pair.of(line, arrivalTime));
-<a class="jxr_linenumber" name="L245" href="#L245">245</a> 		}
-<a class="jxr_linenumber" name="L246" href="#L246">246</a> 
-<a class="jxr_linenumber" name="L247" href="#L247">247</a> 	}
-<a class="jxr_linenumber" name="L248" href="#L248">248</a> 
-<a class="jxr_linenumber" name="L249" href="#L249">249</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
-<a class="jxr_linenumber" name="L250" href="#L250">250</a> 		NmeaReader con = <strong class="jxr_keyword">new</strong> NmeaReaderFromSocket(<span class="jxr_string">"cbrais01.amsa.gov.au"</span>, 1235);
-<a class="jxr_linenumber" name="L251" href="#L251">251</a> 		TstUtil.process(con, TstUtil.createLoggingListener(System.out),
-<a class="jxr_linenumber" name="L252" href="#L252">252</a> 				System.out);
-<a class="jxr_linenumber" name="L253" href="#L253">253</a> 	}
-<a class="jxr_linenumber" name="L254" href="#L254">254</a> 
-<a class="jxr_linenumber" name="L255" href="#L255">255</a> }
+<a class="jxr_linenumber" name="L238" href="#L238">238</a> 		@Override
+<a class="jxr_linenumber" name="L239" href="#L239">239</a> 		<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> invalidNmea(String line, <strong class="jxr_keyword">long</strong> arrivalTime, String message) {
+<a class="jxr_linenumber" name="L240" href="#L240">240</a> 			invalidNmea.add(Pair.of(line, arrivalTime));
+<a class="jxr_linenumber" name="L241" href="#L241">241</a> 		}
+<a class="jxr_linenumber" name="L242" href="#L242">242</a> 
+<a class="jxr_linenumber" name="L243" href="#L243">243</a> 	}
+<a class="jxr_linenumber" name="L244" href="#L244">244</a> 
+<a class="jxr_linenumber" name="L245" href="#L245">245</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L246" href="#L246">246</a> 		NmeaReader con = <strong class="jxr_keyword">new</strong> NmeaReaderFromSocket(<span class="jxr_string">"cbrais01.amsa.gov.au"</span>, 1235);
+<a class="jxr_linenumber" name="L247" href="#L247">247</a> 		TstUtil.process(con, TstUtil.createLoggingListener(System.out),
+<a class="jxr_linenumber" name="L248" href="#L248">248</a> 				System.out);
+<a class="jxr_linenumber" name="L249" href="#L249">249</a> 	}
+<a class="jxr_linenumber" name="L250" href="#L250">250</a> 
+<a class="jxr_linenumber" name="L251" href="#L251">251</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2014. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
 </body>
 </html>

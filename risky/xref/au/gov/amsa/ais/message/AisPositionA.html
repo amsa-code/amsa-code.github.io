@@ -194,55 +194,59 @@
 <a class="jxr_linenumber" name="L186" href="#L186">186</a> 		<strong class="jxr_keyword">return</strong> getNavigationalStatus() == 1;
 <a class="jxr_linenumber" name="L187" href="#L187">187</a> 	}
 <a class="jxr_linenumber" name="L188" href="#L188">188</a> 
-<a class="jxr_linenumber" name="L189" href="#L189">189</a> 	@Override
-<a class="jxr_linenumber" name="L190" href="#L190">190</a> 	<strong class="jxr_keyword">public</strong> String getSource() {
-<a class="jxr_linenumber" name="L191" href="#L191">191</a> 		<strong class="jxr_keyword">return</strong> source;
-<a class="jxr_linenumber" name="L192" href="#L192">192</a> 	}
-<a class="jxr_linenumber" name="L193" href="#L193">193</a> 
-<a class="jxr_linenumber" name="L194" href="#L194">194</a> 	@Override
-<a class="jxr_linenumber" name="L195" href="#L195">195</a> 	<strong class="jxr_keyword">public</strong> String toString() {
-<a class="jxr_linenumber" name="L196" href="#L196">196</a> 		StringBuilder builder = <strong class="jxr_keyword">new</strong> StringBuilder();
-<a class="jxr_linenumber" name="L197" href="#L197">197</a> 		builder.append(<span class="jxr_string">"AisPositionA [source="</span>);
-<a class="jxr_linenumber" name="L198" href="#L198">198</a> 		builder.append(source);
-<a class="jxr_linenumber" name="L199" href="#L199">199</a> 		builder.append(<span class="jxr_string">", messageId="</span>);
-<a class="jxr_linenumber" name="L200" href="#L200">200</a> 		builder.append(messageId);
-<a class="jxr_linenumber" name="L201" href="#L201">201</a> 		builder.append(<span class="jxr_string">", repeatIndicator="</span>);
-<a class="jxr_linenumber" name="L202" href="#L202">202</a> 		builder.append(getRepeatIndicator());
-<a class="jxr_linenumber" name="L203" href="#L203">203</a> 		builder.append(<span class="jxr_string">", mmsi="</span>);
-<a class="jxr_linenumber" name="L204" href="#L204">204</a> 		builder.append(mmsi);
-<a class="jxr_linenumber" name="L205" href="#L205">205</a> 		builder.append(<span class="jxr_string">", navigationalStatus="</span>);
-<a class="jxr_linenumber" name="L206" href="#L206">206</a> 		builder.append(getNavigationalStatus());
-<a class="jxr_linenumber" name="L207" href="#L207">207</a> 		builder.append(<span class="jxr_string">", rateOfTurn="</span>);
-<a class="jxr_linenumber" name="L208" href="#L208">208</a> 		builder.append(getRateOfTurn());
-<a class="jxr_linenumber" name="L209" href="#L209">209</a> 		builder.append(<span class="jxr_string">", speedOverGroundKnots="</span>);
-<a class="jxr_linenumber" name="L210" href="#L210">210</a> 		builder.append(getSpeedOverGroundKnots());
-<a class="jxr_linenumber" name="L211" href="#L211">211</a> 		builder.append(<span class="jxr_string">", isHighAccuracyPosition="</span>);
-<a class="jxr_linenumber" name="L212" href="#L212">212</a> 		builder.append(isHighAccuracyPosition());
-<a class="jxr_linenumber" name="L213" href="#L213">213</a> 		builder.append(<span class="jxr_string">", longitude="</span>);
-<a class="jxr_linenumber" name="L214" href="#L214">214</a> 		builder.append(longitude);
-<a class="jxr_linenumber" name="L215" href="#L215">215</a> 		builder.append(<span class="jxr_string">", latitude="</span>);
-<a class="jxr_linenumber" name="L216" href="#L216">216</a> 		builder.append(latitude);
-<a class="jxr_linenumber" name="L217" href="#L217">217</a> 		builder.append(<span class="jxr_string">", courseOverGround="</span>);
-<a class="jxr_linenumber" name="L218" href="#L218">218</a> 		builder.append(getCourseOverGround());
-<a class="jxr_linenumber" name="L219" href="#L219">219</a> 		builder.append(<span class="jxr_string">", trueHeading="</span>);
-<a class="jxr_linenumber" name="L220" href="#L220">220</a> 		builder.append(getTrueHeading());
-<a class="jxr_linenumber" name="L221" href="#L221">221</a> 		builder.append(<span class="jxr_string">", timeSecondsOnly="</span>);
-<a class="jxr_linenumber" name="L222" href="#L222">222</a> 		builder.append(getTimeSecondsOnly());
-<a class="jxr_linenumber" name="L223" href="#L223">223</a> 		builder.append(<span class="jxr_string">", specialManoeuvreIndicator="</span>);
-<a class="jxr_linenumber" name="L224" href="#L224">224</a> 		builder.append(getSpecialManoeuvreIndicator());
-<a class="jxr_linenumber" name="L225" href="#L225">225</a> 		builder.append(<span class="jxr_string">", spare="</span>);
-<a class="jxr_linenumber" name="L226" href="#L226">226</a> 		builder.append(getSpare());
-<a class="jxr_linenumber" name="L227" href="#L227">227</a> 		builder.append(<span class="jxr_string">", isUsingRAIM="</span>);
-<a class="jxr_linenumber" name="L228" href="#L228">228</a> 		builder.append(isUsingRAIM());
-<a class="jxr_linenumber" name="L229" href="#L229">229</a> 		builder.append(<span class="jxr_string">", communications="</span>);
-<a class="jxr_linenumber" name="L230" href="#L230">230</a> 		builder.append(getCommunications());
-<a class="jxr_linenumber" name="L231" href="#L231">231</a> 		builder.append(<span class="jxr_string">"]"</span>);
-<a class="jxr_linenumber" name="L232" href="#L232">232</a> 		<strong class="jxr_keyword">return</strong> builder.toString();
-<a class="jxr_linenumber" name="L233" href="#L233">233</a> 	}
-<a class="jxr_linenumber" name="L234" href="#L234">234</a> 
-<a class="jxr_linenumber" name="L235" href="#L235">235</a> }
+<a class="jxr_linenumber" name="L189" href="#L189">189</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> isMoored() {
+<a class="jxr_linenumber" name="L190" href="#L190">190</a> 		<strong class="jxr_keyword">return</strong> getNavigationalStatus() == 5;
+<a class="jxr_linenumber" name="L191" href="#L191">191</a> 	}
+<a class="jxr_linenumber" name="L192" href="#L192">192</a> 
+<a class="jxr_linenumber" name="L193" href="#L193">193</a> 	@Override
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> 	<strong class="jxr_keyword">public</strong> String getSource() {
+<a class="jxr_linenumber" name="L195" href="#L195">195</a> 		<strong class="jxr_keyword">return</strong> source;
+<a class="jxr_linenumber" name="L196" href="#L196">196</a> 	}
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> 
+<a class="jxr_linenumber" name="L198" href="#L198">198</a> 	@Override
+<a class="jxr_linenumber" name="L199" href="#L199">199</a> 	<strong class="jxr_keyword">public</strong> String toString() {
+<a class="jxr_linenumber" name="L200" href="#L200">200</a> 		StringBuilder builder = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="L201" href="#L201">201</a> 		builder.append(<span class="jxr_string">"AisPositionA [source="</span>);
+<a class="jxr_linenumber" name="L202" href="#L202">202</a> 		builder.append(source);
+<a class="jxr_linenumber" name="L203" href="#L203">203</a> 		builder.append(<span class="jxr_string">", messageId="</span>);
+<a class="jxr_linenumber" name="L204" href="#L204">204</a> 		builder.append(messageId);
+<a class="jxr_linenumber" name="L205" href="#L205">205</a> 		builder.append(<span class="jxr_string">", repeatIndicator="</span>);
+<a class="jxr_linenumber" name="L206" href="#L206">206</a> 		builder.append(getRepeatIndicator());
+<a class="jxr_linenumber" name="L207" href="#L207">207</a> 		builder.append(<span class="jxr_string">", mmsi="</span>);
+<a class="jxr_linenumber" name="L208" href="#L208">208</a> 		builder.append(mmsi);
+<a class="jxr_linenumber" name="L209" href="#L209">209</a> 		builder.append(<span class="jxr_string">", navigationalStatus="</span>);
+<a class="jxr_linenumber" name="L210" href="#L210">210</a> 		builder.append(getNavigationalStatus());
+<a class="jxr_linenumber" name="L211" href="#L211">211</a> 		builder.append(<span class="jxr_string">", rateOfTurn="</span>);
+<a class="jxr_linenumber" name="L212" href="#L212">212</a> 		builder.append(getRateOfTurn());
+<a class="jxr_linenumber" name="L213" href="#L213">213</a> 		builder.append(<span class="jxr_string">", speedOverGroundKnots="</span>);
+<a class="jxr_linenumber" name="L214" href="#L214">214</a> 		builder.append(getSpeedOverGroundKnots());
+<a class="jxr_linenumber" name="L215" href="#L215">215</a> 		builder.append(<span class="jxr_string">", isHighAccuracyPosition="</span>);
+<a class="jxr_linenumber" name="L216" href="#L216">216</a> 		builder.append(isHighAccuracyPosition());
+<a class="jxr_linenumber" name="L217" href="#L217">217</a> 		builder.append(<span class="jxr_string">", longitude="</span>);
+<a class="jxr_linenumber" name="L218" href="#L218">218</a> 		builder.append(longitude);
+<a class="jxr_linenumber" name="L219" href="#L219">219</a> 		builder.append(<span class="jxr_string">", latitude="</span>);
+<a class="jxr_linenumber" name="L220" href="#L220">220</a> 		builder.append(latitude);
+<a class="jxr_linenumber" name="L221" href="#L221">221</a> 		builder.append(<span class="jxr_string">", courseOverGround="</span>);
+<a class="jxr_linenumber" name="L222" href="#L222">222</a> 		builder.append(getCourseOverGround());
+<a class="jxr_linenumber" name="L223" href="#L223">223</a> 		builder.append(<span class="jxr_string">", trueHeading="</span>);
+<a class="jxr_linenumber" name="L224" href="#L224">224</a> 		builder.append(getTrueHeading());
+<a class="jxr_linenumber" name="L225" href="#L225">225</a> 		builder.append(<span class="jxr_string">", timeSecondsOnly="</span>);
+<a class="jxr_linenumber" name="L226" href="#L226">226</a> 		builder.append(getTimeSecondsOnly());
+<a class="jxr_linenumber" name="L227" href="#L227">227</a> 		builder.append(<span class="jxr_string">", specialManoeuvreIndicator="</span>);
+<a class="jxr_linenumber" name="L228" href="#L228">228</a> 		builder.append(getSpecialManoeuvreIndicator());
+<a class="jxr_linenumber" name="L229" href="#L229">229</a> 		builder.append(<span class="jxr_string">", spare="</span>);
+<a class="jxr_linenumber" name="L230" href="#L230">230</a> 		builder.append(getSpare());
+<a class="jxr_linenumber" name="L231" href="#L231">231</a> 		builder.append(<span class="jxr_string">", isUsingRAIM="</span>);
+<a class="jxr_linenumber" name="L232" href="#L232">232</a> 		builder.append(isUsingRAIM());
+<a class="jxr_linenumber" name="L233" href="#L233">233</a> 		builder.append(<span class="jxr_string">", communications="</span>);
+<a class="jxr_linenumber" name="L234" href="#L234">234</a> 		builder.append(getCommunications());
+<a class="jxr_linenumber" name="L235" href="#L235">235</a> 		builder.append(<span class="jxr_string">"]"</span>);
+<a class="jxr_linenumber" name="L236" href="#L236">236</a> 		<strong class="jxr_keyword">return</strong> builder.toString();
+<a class="jxr_linenumber" name="L237" href="#L237">237</a> 	}
+<a class="jxr_linenumber" name="L238" href="#L238">238</a> 
+<a class="jxr_linenumber" name="L239" href="#L239">239</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2014. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
 </body>
 </html>

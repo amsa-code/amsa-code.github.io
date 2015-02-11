@@ -23,7 +23,7 @@ under the License.
     <link>${project.url}</link>
     <description>geo-analyzer - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2014</copyright>
+    <copyright>&#169;2015</copyright>
     <item>
       <title>File: 52,
              Errors: 7822,

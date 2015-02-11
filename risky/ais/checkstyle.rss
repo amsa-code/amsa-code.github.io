@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>ais - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2014</copyright>
+    <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 86,
-             Errors: 10032,
+      <title>File: 87,
+             Errors: 10861,
              Warnings: 0,
              Infos: 0
       </title>
@@ -97,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  140
+                  144
                 </td>
               </tr>
                           <tr>
@@ -181,7 +181,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  272
+                  264
                 </td>
               </tr>
                           <tr>
@@ -279,7 +279,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  470
+                  480
                 </td>
               </tr>
                           <tr>
@@ -419,7 +419,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  295
+                  301
                 </td>
               </tr>
                           <tr>
@@ -447,7 +447,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  439
+                  910
                 </td>
               </tr>
                           <tr>
@@ -489,7 +489,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  18
+                  28
                 </td>
               </tr>
                           <tr>
@@ -517,7 +517,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  15
+                  180
                 </td>
               </tr>
                           <tr>
@@ -531,7 +531,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  232
+                  230
                 </td>
               </tr>
                           <tr>
@@ -671,7 +671,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  131
+                  145
                 </td>
               </tr>
                           <tr>
@@ -769,7 +769,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  330
+                  326
                 </td>
               </tr>
                           <tr>
@@ -853,7 +853,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  31
+                  38
                 </td>
               </tr>
                           <tr>
@@ -979,7 +979,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  32
+                  49
                 </td>
               </tr>
                           <tr>
@@ -1008,6 +1008,20 @@ under the License.
                 </td>
                 <td>
                   146
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.NmeaGzToBinaryFixesMain.java">au/gov/amsa/ais/rx/NmeaGzToBinaryFixesMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  140
                 </td>
               </tr>
                           <tr>
@@ -1175,7 +1189,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  243
+                  242
                 </td>
               </tr>
                           <tr>

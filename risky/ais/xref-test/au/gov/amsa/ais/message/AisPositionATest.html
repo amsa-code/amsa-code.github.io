@@ -31,7 +31,7 @@
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  	@Test
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testAisPosition() {
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>  		String m = <span class="jxr_string">"15MgK45P3@G?fl0E`JbR0OwT0@MS"</span>;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  		
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  		AisPositionA p = <strong class="jxr_keyword">new</strong> AisPositionA(m);
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  		assertEquals(1, p.getMessageId());
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>  		assertEquals(0, p.getRepeatIndicator());
@@ -93,7 +93,7 @@
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>  	@Test(expected = AisParseException.<strong class="jxr_keyword">class</strong>)
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testConstructorFailsWhenLineHasWrongMessageId() {
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>  		String m = <span class="jxr_string">"B7P@fj00RJVpbIuUhlF93wm5WP06"</span>;
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>  		AisPositionA p = <strong class="jxr_keyword">new</strong> AisPositionA(m);
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  		<strong class="jxr_keyword">new</strong> AisPositionA(m);
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>  	}
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>  
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>  	@Test
@@ -220,6 +220,6 @@
 <a class="jxr_linenumber" name="L212" href="#L212">212</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2014. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
 </body>
 </html>

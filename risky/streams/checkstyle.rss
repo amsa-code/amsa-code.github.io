@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>streams - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2014</copyright>
+    <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 9,
-             Errors: 1037,
+      <title>File: 19,
+             Errors: 1495,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,7 +55,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  164
+                  162
                 </td>
               </tr>
                           <tr>
@@ -74,6 +74,174 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringsTest.java">au/gov/amsa/streams/StringsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringSplitOperatorTest.java">au/gov/amsa/streams/StringSplitOperatorTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  148
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringSocketsTest.java">au/gov/amsa/streams/StringSocketsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  70
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Strings.java">au/gov/amsa/streams/Strings.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  85
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.OnSubscribeUsing2.java">au/gov/amsa/streams/OnSubscribeUsing2.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  106
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringSockets.java">au/gov/amsa/streams/StringSockets.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  287
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Main.java">au/gov/amsa/streams/Main.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Ob.java">au/gov/amsa/streams/Ob.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Bytes.java">au/gov/amsa/streams/Bytes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  49
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.InputStreamOnSubscribe.java">au/gov/amsa/streams/InputStreamOnSubscribe.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  41
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.ReaderOnSubscribe.java">au/gov/amsa/streams/ReaderOnSubscribe.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  40
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringSplitOperatorMoreTest.java">au/gov/amsa/streams/StringSplitOperatorMoreTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  49
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.HostPort.java">au/gov/amsa/streams/HostPort.java</a>
                 </td>
                 <td>
@@ -88,7 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Strings.java">au/gov/amsa/streams/Strings.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.BytesTest.java">au/gov/amsa/streams/BytesTest.java</a>
                 </td>
                 <td>
                   0
@@ -97,12 +265,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  342
+                  48
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.LinesTest.java">au/gov/amsa/streams/LinesTest.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringSplitOperator.java">au/gov/amsa/streams/StringSplitOperator.java</a>
                 </td>
                 <td>
                   0
@@ -111,12 +279,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  131
+                  180
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Main.java">au/gov/amsa/streams/Main.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringsMoreTest.java">au/gov/amsa/streams/StringsMoreTest.java</a>
                 </td>
                 <td>
                   0
@@ -125,12 +293,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  13
+                  35
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.InputStreamProducer.java">au/gov/amsa/streams/InputStreamProducer.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.OnSubscribeJustOneWithBackpressure.java">au/gov/amsa/streams/OnSubscribeJustOneWithBackpressure.java</a>
                 </td>
                 <td>
                   0
@@ -139,35 +307,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  115
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.ReaderProducer.java">au/gov/amsa/streams/ReaderProducer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  116
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.ReaderOnSubscribe.java">au/gov/amsa/streams/ReaderOnSubscribe.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  41
+                  27
                 </td>
               </tr>
                       </tbody>
