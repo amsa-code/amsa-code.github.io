@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>H2gisTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../testapidocs/com/github/davidmoten/h2gis/H2gisTest.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> com.github.davidmoten.h2gis;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.sql.Connection;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> java.sql.DriverManager;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.sql.ResultSet;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.sql.Statement;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> org.h2gis.h2spatialext.CreateSpatialExtension;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment"> * Short demo of in memory spatial database.</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../com/github/davidmoten/h2gis/H2gisTest.html">H2gisTest</a> {
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  	@Test
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> test() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  		Class.forName(<span class="jxr_string">"org.h2.Driver"</span>);
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  		<em class="jxr_comment">// Open memory H2 table</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  		<strong class="jxr_keyword">try</strong> (Connection connection = DriverManager.getConnection(
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  				<span class="jxr_string">"jdbc:h2:mem:syntax"</span>, <span class="jxr_string">"sa"</span>, <span class="jxr_string">"sa"</span>);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  				Statement st = connection.createStatement()) {
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  			<em class="jxr_comment">// Import spatial functions, domains and drivers</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  			<em class="jxr_comment">// If you are using a file database, you have to do only that</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  			<em class="jxr_comment">// once.</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  			CreateSpatialExtension.initSpatialExtension(connection);
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  			<em class="jxr_comment">// Create a table</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  			st.execute(<span class="jxr_string">"CREATE TABLE ROADS (the_geom MULTILINESTRING, speed_limit INT)"</span>);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  			<em class="jxr_comment">// Add some roads</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  			st.execute(<span class="jxr_string">"INSERT INTO ROADS VALUES ('MULTILINESTRING((15 5, 20 6, 25 7))', 80)"</span>);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  			st.execute(<span class="jxr_string">"INSERT INTO ROADS VALUES ('MULTILINESTRING((20 6, 21 15, 21 25))', 50)"</span>);
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  			<em class="jxr_comment">// Compute the sum of roads length</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  			<strong class="jxr_keyword">try</strong> (ResultSet rs = st
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  					.executeQuery(<span class="jxr_string">"SELECT SUM(ST_LENGTH(the_geom)) total_length from ROADS"</span>)) {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  				<strong class="jxr_keyword">if</strong> (rs.next()) {
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  					System.out.println(<span class="jxr_string">"Total length of roads: "</span>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  							+ rs.getDouble(<span class="jxr_string">"total_length"</span>) + <span class="jxr_string">" m"</span>);
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  				}
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  			}
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  		}
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  	}
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+</body>
+</html>

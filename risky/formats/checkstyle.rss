@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 13,
-             Errors: 1341,
+      <title>File: 20,
+             Errors: 1585,
              Warnings: 0,
              Infos: 0
       </title>
@@ -44,6 +44,20 @@ under the License.
             </tr>
           </thead>
           <tbody>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.ZipMain.java">au/gov/amsa/risky/format/ZipMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  31
+                </td>
+              </tr>
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Fix.java">au/gov/amsa/risky/format/Fix.java</a>
@@ -69,7 +83,49 @@ under the License.
                   0
                 </td>
                 <td>
-                  30
+                  49
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.TestingUtil.java">au/gov/amsa/risky/format/TestingUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  39
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.BinaryFixesMain.java">au/gov/amsa/risky/format/BinaryFixesMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  73
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Formats.java">au/gov/amsa/risky/format/Formats.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  98
                 </td>
               </tr>
                           <tr>
@@ -102,6 +158,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.FormatsTest.java">au/gov/amsa/risky/format/FormatsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.BinaryFixesWriter.java">au/gov/amsa/risky/format/BinaryFixesWriter.java</a>
                 </td>
                 <td>
@@ -111,21 +181,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  133
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Downsample.java">au/gov/amsa/risky/format/Downsample.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  136
+                  148
                 </td>
               </tr>
                           <tr>
@@ -140,6 +196,20 @@ under the License.
                 </td>
                 <td>
                   4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Downsample.java">au/gov/amsa/risky/format/Downsample.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  64
                 </td>
               </tr>
                           <tr>
@@ -181,7 +251,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  224
+                  268
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Transformers.java">au/gov/amsa/risky/format/Transformers.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  12
                 </td>
               </tr>
                           <tr>
@@ -209,7 +293,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  181
+                  145
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.NetcdfFixesWriterMain.java">au/gov/amsa/risky/format/NetcdfFixesWriterMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
                 </td>
               </tr>
                           <tr>
@@ -223,7 +321,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  113
+                  101
                 </td>
               </tr>
                       </tbody>

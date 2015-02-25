@@ -87,7 +87,7 @@
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>  
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>  	@Test
 <a class="jxr_linenumber" name="L81" href="#L81">81</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testWriteTwoBinaryFixes() <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="L82" href="#L82">82</a>  		writeTwoBinaryFixes();
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  		TestingUtil.writeTwoBinaryFixes(<span class="jxr_string">"target/123456790.track"</span>);
 <a class="jxr_linenumber" name="L83" href="#L83">83</a>  	}
 <a class="jxr_linenumber" name="L84" href="#L84">84</a>  
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>  	@Test
@@ -132,22 +132,7 @@
 <a class="jxr_linenumber" name="L124" href="#L124">124</a> 		};
 <a class="jxr_linenumber" name="L125" href="#L125">125</a> 	}
 <a class="jxr_linenumber" name="L126" href="#L126">126</a> 
-<a class="jxr_linenumber" name="L127" href="#L127">127</a> 	<strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> writeTwoBinaryFixes() <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="L128" href="#L128">128</a> 		OutputStream os = <strong class="jxr_keyword">new</strong> BufferedOutputStream(<strong class="jxr_keyword">new</strong> FileOutputStream(
-<a class="jxr_linenumber" name="L129" href="#L129">129</a> 				<span class="jxr_string">"target/123456790.track"</span>));
-<a class="jxr_linenumber" name="L130" href="#L130">130</a> 		<strong class="jxr_keyword">long</strong> t = 1421708455237L;
-<a class="jxr_linenumber" name="L131" href="#L131">131</a> 		Fix fix1 = <strong class="jxr_keyword">new</strong> Fix(213456789, -10f, 135f, t, of(12), of((<strong class="jxr_keyword">short</strong>) 1),
-<a class="jxr_linenumber" name="L132" href="#L132">132</a> 				of(NavigationalStatus.ENGAGED_IN_FISHING), of(7.5f), of(45f),
-<a class="jxr_linenumber" name="L133" href="#L133">133</a> 				of(46f), AisClass.B);
-<a class="jxr_linenumber" name="L134" href="#L134">134</a> 		Fix fix2 = <strong class="jxr_keyword">new</strong> Fix(213456789, -10.1f, 135.2f, t + 1000 * 3600 * 2L,
-<a class="jxr_linenumber" name="L135" href="#L135">135</a> 				of(13), of((<strong class="jxr_keyword">short</strong>) 2), of(NavigationalStatus.AT_ANCHOR),
-<a class="jxr_linenumber" name="L136" href="#L136">136</a> 				of(4.5f), of(20f), of(30f), AisClass.B);
-<a class="jxr_linenumber" name="L137" href="#L137">137</a> 		BinaryFixes.write(fix1, os);
-<a class="jxr_linenumber" name="L138" href="#L138">138</a> 		BinaryFixes.write(fix2, os);
-<a class="jxr_linenumber" name="L139" href="#L139">139</a> 		os.close();
-<a class="jxr_linenumber" name="L140" href="#L140">140</a> 	}
-<a class="jxr_linenumber" name="L141" href="#L141">141</a> 
-<a class="jxr_linenumber" name="L142" href="#L142">142</a> }
+<a class="jxr_linenumber" name="L127" href="#L127">127</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>

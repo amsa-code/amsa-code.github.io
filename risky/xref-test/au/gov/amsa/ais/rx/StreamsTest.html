@@ -156,7 +156,7 @@
 <a class="jxr_linenumber" name="L148" href="#L148">148</a> 		File directory = <strong class="jxr_keyword">new</strong> File(base);
 <a class="jxr_linenumber" name="L149" href="#L149">149</a> 		FileUtils.deleteDirectory(directory);
 <a class="jxr_linenumber" name="L150" href="#L150">150</a> 		ByMonth fileMapper = <strong class="jxr_keyword">new</strong> BinaryFixesWriter.ByMonth(directory);
-<a class="jxr_linenumber" name="L151" href="#L151">151</a> 		BinaryFixesWriter.writeFixes(fileMapper, fixes, 100).subscribe();
+<a class="jxr_linenumber" name="L151" href="#L151">151</a> 		BinaryFixesWriter.writeFixes(fileMapper, fixes, 100, false).subscribe();
 <a class="jxr_linenumber" name="L152" href="#L152">152</a> 		is.close();
 <a class="jxr_linenumber" name="L153" href="#L153">153</a> 		File f = <strong class="jxr_keyword">new</strong> File(base + File.separator + <span class="jxr_string">"2014"</span> + File.separator
 <a class="jxr_linenumber" name="L154" href="#L154">154</a> 				+ <span class="jxr_string">"12"</span>);

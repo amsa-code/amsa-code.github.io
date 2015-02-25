@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>TestingUtil xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../testapidocs/au/gov/amsa/risky/format/TestingUtil.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.risky.format;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> com.google.common.base.Optional.of;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.io.BufferedOutputStream;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.io.FileOutputStream;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.io.OutputStream;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/risky/format/TestingUtil.html">TestingUtil</a> {
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  	<strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> writeTwoBinaryFixes(String filename) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  		OutputStream os = <strong class="jxr_keyword">new</strong> BufferedOutputStream(<strong class="jxr_keyword">new</strong> FileOutputStream(
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  				filename));
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  		<strong class="jxr_keyword">long</strong> t = 1421708455237L;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  		Fix fix1 = <strong class="jxr_keyword">new</strong> Fix(213456789, -10f, 135f, t, of(12), of((<strong class="jxr_keyword">short</strong>) 1),
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  				of(NavigationalStatus.ENGAGED_IN_FISHING), of(7.5f), of(45f),
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  				of(46f), AisClass.B);
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  		Fix fix2 = <strong class="jxr_keyword">new</strong> Fix(213456789, -10.1f, 135.2f, t + 1000 * 3600 * 2L,
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  				of(13), of((<strong class="jxr_keyword">short</strong>) 2), of(NavigationalStatus.AT_ANCHOR),
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  				of(4.5f), of(20f), of(30f), AisClass.B);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  		BinaryFixes.write(fix1, os);
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  		BinaryFixes.write(fix2, os);
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  		os.close();
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  	}
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+</body>
+</html>
