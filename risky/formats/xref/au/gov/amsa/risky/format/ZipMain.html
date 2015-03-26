@@ -21,9 +21,9 @@
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  		<strong class="jxr_keyword">final</strong> File input = <strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"input"</span>));
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  		<strong class="jxr_keyword">final</strong> File output = <strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"output"</span>));
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  		Pattern pattern = Pattern.compile(System.getProperty(<span class="jxr_string">"pattern"</span>));
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  		Action2&lt;List&lt;Fix&gt;, File&gt; fixesWriter = <strong class="jxr_keyword">new</strong> Action2&lt;List&lt;Fix&gt;, File&gt;() {
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  		Action2&lt;List&lt;HasFix&gt;, File&gt; fixesWriter = <strong class="jxr_keyword">new</strong> Action2&lt;List&lt;HasFix&gt;, File&gt;() {
 <a class="jxr_linenumber" name="L17" href="#L17">17</a>  			@Override
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> call(List&lt;Fix&gt; fixes, File file) {
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  			<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> call(List&lt;HasFix&gt; fixes, File file) {
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>  				BinaryFixesWriter.writeFixes(fixes, file, false, <strong class="jxr_keyword">true</strong>);
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  			}
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>  		};
@@ -33,12 +33,11 @@
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>  				<strong class="jxr_keyword">return</strong> name + <span class="jxr_string">".zip"</span>;
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  			}
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  		};
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  		Formats.transform(input, output, pattern,
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  				Transformers.&lt;Fix&gt; identity(), fixesWriter, renamer).count()
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  				.toBlocking().single();
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  	}
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  }
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  		Formats.transform(input, output, pattern, Transformers.&lt;HasFix&gt; identity(), fixesWriter,
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		        renamer).count().toBlocking().single();
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  	}
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>

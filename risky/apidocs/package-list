@@ -15,6 +15,7 @@ au.gov.amsa.navigation.ais
 au.gov.amsa.risky.format
 au.gov.amsa.streams
 au.gov.amsa.util
+au.gov.amsa.util.identity
 au.gov.amsa.util.navigation
 au.gov.amsa.util.nmea
 au.gov.amsa.util.nmea.saver

@@ -9,118 +9,144 @@
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.risky.format;
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> com.google.common.base.Optional;
-<a class="jxr_linenumber" name="L4" href="#L4">4</a>   
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a> {
-<a class="jxr_linenumber" name="L6" href="#L6">6</a>   
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> mmsi;
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">float</strong> lat;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">float</strong> lon;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> time;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;NavigationalStatus&gt; navigationalStatus;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Float&gt; speedOverGroundKnots;
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Float&gt; courseOverGroundDegrees;
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Float&gt; headingDegrees;
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> aisClass;
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Integer&gt; latencySeconds;
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Short&gt; source;
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a>(<strong class="jxr_keyword">long</strong> mmsi, <strong class="jxr_keyword">float</strong> lat, <strong class="jxr_keyword">float</strong> lon, <strong class="jxr_keyword">long</strong> time,
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  			Optional&lt;Integer&gt; latencySeconds, Optional&lt;Short&gt; source,
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  			Optional&lt;NavigationalStatus&gt; navigationalStatus,
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  			Optional&lt;Float&gt; speedOverGroundKnots,
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  			Optional&lt;Float&gt; courseOverGroundDegrees,
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  			Optional&lt;Float&gt; headingDegrees, <a href="../../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> aisClass) {
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  		<strong class="jxr_keyword">this</strong>.mmsi = mmsi;
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  		<strong class="jxr_keyword">this</strong>.lat = lat;
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		<strong class="jxr_keyword">this</strong>.lon = lon;
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  		<strong class="jxr_keyword">this</strong>.time = time;
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		<strong class="jxr_keyword">this</strong>.latencySeconds = latencySeconds;
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		<strong class="jxr_keyword">this</strong>.source = source;
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  		<strong class="jxr_keyword">this</strong>.navigationalStatus = navigationalStatus;
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  		<strong class="jxr_keyword">this</strong>.speedOverGroundKnots = speedOverGroundKnots;
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  		<strong class="jxr_keyword">this</strong>.courseOverGroundDegrees = courseOverGroundDegrees;
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  		<strong class="jxr_keyword">this</strong>.headingDegrees = headingDegrees;
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  		<strong class="jxr_keyword">this</strong>.aisClass = aisClass;
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  	}
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">long</strong> getMmsi() {
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  		<strong class="jxr_keyword">return</strong> mmsi;
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  	}
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">long</strong> getTime() {
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  		<strong class="jxr_keyword">return</strong> time;
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  	}
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">float</strong> getLat() {
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		<strong class="jxr_keyword">return</strong> lat;
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  	}
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">float</strong> getLon() {
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  		<strong class="jxr_keyword">return</strong> lon;
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>  	}
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;NavigationalStatus&gt; getNavigationalStatus() {
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  		<strong class="jxr_keyword">return</strong> navigationalStatus;
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  	}
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Float&gt; getSpeedOverGroundKnots() {
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>  		<strong class="jxr_keyword">return</strong> speedOverGroundKnots;
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  	}
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Float&gt; getCourseOverGroundDegrees() {
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  		<strong class="jxr_keyword">return</strong> courseOverGroundDegrees;
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  	}
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Float&gt; getHeadingDegrees() {
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>  		<strong class="jxr_keyword">return</strong> headingDegrees;
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>  	}
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> getAisClass() {
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>  		<strong class="jxr_keyword">return</strong> aisClass;
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>  	}
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>  
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Integer&gt; getLatencySeconds() {
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>  		<strong class="jxr_keyword">return</strong> latencySeconds;
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>  	}
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>  
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Short&gt; getSource() {
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>  		<strong class="jxr_keyword">return</strong> source;
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>  	}
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>  
-<a class="jxr_linenumber" name="L82" href="#L82">82</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Byte&gt; getRateOfTurn() {
-<a class="jxr_linenumber" name="L83" href="#L83">83</a>  		<strong class="jxr_keyword">return</strong> Optional.absent();
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>  	}
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>  
-<a class="jxr_linenumber" name="L86" href="#L86">86</a>  	@Override
-<a class="jxr_linenumber" name="L87" href="#L87">87</a>  	<strong class="jxr_keyword">public</strong> String toString() {
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>  		StringBuilder b = <strong class="jxr_keyword">new</strong> StringBuilder();
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>  		b.append(<span class="jxr_string">"Fix [mmsi="</span>);
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>  		b.append(mmsi);
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>  		b.append(<span class="jxr_string">", lat="</span>);
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>  		b.append(lat);
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>  		b.append(<span class="jxr_string">", lon="</span>);
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>  		b.append(lon);
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>  		b.append(<span class="jxr_string">", time="</span>);
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>  		b.append(time);
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>  		b.append(<span class="jxr_string">", navigationalStatus="</span>);
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>  		b.append(navigationalStatus);
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>  		b.append(<span class="jxr_string">", speedOverGroundKnots="</span>);
-<a class="jxr_linenumber" name="L100" href="#L100">100</a> 		b.append(speedOverGroundKnots);
-<a class="jxr_linenumber" name="L101" href="#L101">101</a> 		b.append(<span class="jxr_string">", courseOverGroundDegrees="</span>);
-<a class="jxr_linenumber" name="L102" href="#L102">102</a> 		b.append(courseOverGroundDegrees);
-<a class="jxr_linenumber" name="L103" href="#L103">103</a> 		b.append(<span class="jxr_string">", headingDegrees="</span>);
-<a class="jxr_linenumber" name="L104" href="#L104">104</a> 		b.append(headingDegrees);
-<a class="jxr_linenumber" name="L105" href="#L105">105</a> 		b.append(<span class="jxr_string">", aisClass="</span>);
-<a class="jxr_linenumber" name="L106" href="#L106">106</a> 		b.append(aisClass);
-<a class="jxr_linenumber" name="L107" href="#L107">107</a> 		b.append(<span class="jxr_string">", latencySeconds="</span>);
-<a class="jxr_linenumber" name="L108" href="#L108">108</a> 		b.append(latencySeconds);
-<a class="jxr_linenumber" name="L109" href="#L109">109</a> 		b.append(<span class="jxr_string">", source="</span>);
-<a class="jxr_linenumber" name="L110" href="#L110">110</a> 		b.append(source);
-<a class="jxr_linenumber" name="L111" href="#L111">111</a> 		b.append(<span class="jxr_string">"]"</span>);
-<a class="jxr_linenumber" name="L112" href="#L112">112</a> 		<strong class="jxr_keyword">return</strong> b.toString();
-<a class="jxr_linenumber" name="L113" href="#L113">113</a> 	}
-<a class="jxr_linenumber" name="L114" href="#L114">114</a> 
-<a class="jxr_linenumber" name="L115" href="#L115">115</a> }
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> com.google.common.base.Preconditions;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a> <strong class="jxr_keyword">implements</strong> <a href="../../../../../au/gov/amsa/risky/format/HasFix.html">HasFix</a> {
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> validate = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> mmsi;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">float</strong> lat;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">float</strong> lon;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> time;
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;NavigationalStatus&gt; navigationalStatus;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Float&gt; speedOverGroundKnots;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Float&gt; courseOverGroundDegrees;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Float&gt; headingDegrees;
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> aisClass;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Integer&gt; latencySeconds;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Short&gt; source;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a>(<strong class="jxr_keyword">long</strong> mmsi, <strong class="jxr_keyword">float</strong> lat, <strong class="jxr_keyword">float</strong> lon, <strong class="jxr_keyword">long</strong> time, Optional&lt;Integer&gt; latencySeconds,
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  	        Optional&lt;Short&gt; source, Optional&lt;NavigationalStatus&gt; navigationalStatus,
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  	        Optional&lt;Float&gt; speedOverGroundKnots, Optional&lt;Float&gt; courseOverGroundDegrees,
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  	        Optional&lt;Float&gt; headingDegrees, AisClass aisClass) {
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		<strong class="jxr_keyword">if</strong> (validate) {
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  			Preconditions.checkNotNull(navigationalStatus);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  			Preconditions.checkNotNull(courseOverGroundDegrees);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  			Preconditions.checkNotNull(headingDegrees);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  			Preconditions.checkNotNull(aisClass);
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  			Preconditions.checkNotNull(latencySeconds);
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  			Preconditions.checkNotNull(source);
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  			<strong class="jxr_keyword">if</strong> (courseOverGroundDegrees.isPresent()) {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  				Preconditions.checkArgument(courseOverGroundDegrees.get() &lt; 360
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  				        &amp;&amp; courseOverGroundDegrees.get() &gt;= 0,
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  				        <span class="jxr_string">"cog="</span> + courseOverGroundDegrees.get());
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  			}
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  			<strong class="jxr_keyword">if</strong> (headingDegrees.isPresent()) {
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  				Preconditions
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  				        .checkArgument(headingDegrees.get() &lt; 360 &amp;&amp; headingDegrees.get() &gt;= 0);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  			}
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  			Preconditions.checkArgument(lat &gt;= -90 &amp;&amp; lat &lt;= 90);
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  			Preconditions.checkArgument(lon &gt;= -180 &amp;&amp; lon &lt;= 180);
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  		}
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  		<strong class="jxr_keyword">this</strong>.mmsi = mmsi;
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		<strong class="jxr_keyword">this</strong>.lat = lat;
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  		<strong class="jxr_keyword">this</strong>.lon = lon;
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  		<strong class="jxr_keyword">this</strong>.time = time;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  		<strong class="jxr_keyword">this</strong>.latencySeconds = latencySeconds;
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  		<strong class="jxr_keyword">this</strong>.source = source;
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  		<strong class="jxr_keyword">this</strong>.navigationalStatus = navigationalStatus;
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  		<strong class="jxr_keyword">this</strong>.speedOverGroundKnots = speedOverGroundKnots;
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  		<strong class="jxr_keyword">this</strong>.courseOverGroundDegrees = courseOverGroundDegrees;
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  		<strong class="jxr_keyword">this</strong>.headingDegrees = headingDegrees;
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  		<strong class="jxr_keyword">this</strong>.aisClass = aisClass;
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  	}
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">long</strong> getMmsi() {
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  		<strong class="jxr_keyword">return</strong> mmsi;
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>  	}
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">long</strong> getTime() {
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  		<strong class="jxr_keyword">return</strong> time;
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  	}
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">float</strong> getLat() {
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  		<strong class="jxr_keyword">return</strong> lat;
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  	}
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>  
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">float</strong> getLon() {
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  		<strong class="jxr_keyword">return</strong> lon;
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>  	}
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;NavigationalStatus&gt; getNavigationalStatus() {
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>  		<strong class="jxr_keyword">return</strong> navigationalStatus;
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>  	}
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Float&gt; getSpeedOverGroundKnots() {
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  		<strong class="jxr_keyword">return</strong> speedOverGroundKnots;
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>  	}
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Float&gt; getCourseOverGroundDegrees() {
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>  		<strong class="jxr_keyword">return</strong> courseOverGroundDegrees;
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  	}
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>  
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Float&gt; getHeadingDegrees() {
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>  		<strong class="jxr_keyword">return</strong> headingDegrees;
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>  	}
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  	<strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> getAisClass() {
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  		<strong class="jxr_keyword">return</strong> aisClass;
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>  	}
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>  
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Integer&gt; getLatencySeconds() {
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>  		<strong class="jxr_keyword">return</strong> latencySeconds;
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>  	}
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>  
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>  	<strong class="jxr_keyword">public</strong> Optional&lt;Short&gt; getSource() {
+<a class="jxr_linenumber" name="L100" href="#L100">100</a> 		<strong class="jxr_keyword">return</strong> source;
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> 	}
+<a class="jxr_linenumber" name="L102" href="#L102">102</a> 
+<a class="jxr_linenumber" name="L103" href="#L103">103</a> 	<strong class="jxr_keyword">public</strong> Optional&lt;Byte&gt; getRateOfTurn() {
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> 		<strong class="jxr_keyword">return</strong> Optional.absent();
+<a class="jxr_linenumber" name="L105" href="#L105">105</a> 	}
+<a class="jxr_linenumber" name="L106" href="#L106">106</a> 
+<a class="jxr_linenumber" name="L107" href="#L107">107</a> 	@Override
+<a class="jxr_linenumber" name="L108" href="#L108">108</a> 	<strong class="jxr_keyword">public</strong> String toString() {
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> 		StringBuilder b = <strong class="jxr_keyword">new</strong> StringBuilder();
+<a class="jxr_linenumber" name="L110" href="#L110">110</a> 		b.append(<span class="jxr_string">"Fix [mmsi="</span>);
+<a class="jxr_linenumber" name="L111" href="#L111">111</a> 		b.append(mmsi);
+<a class="jxr_linenumber" name="L112" href="#L112">112</a> 		b.append(<span class="jxr_string">", lat="</span>);
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> 		b.append(lat);
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> 		b.append(<span class="jxr_string">", lon="</span>);
+<a class="jxr_linenumber" name="L115" href="#L115">115</a> 		b.append(lon);
+<a class="jxr_linenumber" name="L116" href="#L116">116</a> 		b.append(<span class="jxr_string">", time="</span>);
+<a class="jxr_linenumber" name="L117" href="#L117">117</a> 		b.append(time);
+<a class="jxr_linenumber" name="L118" href="#L118">118</a> 		b.append(<span class="jxr_string">", navigationalStatus="</span>);
+<a class="jxr_linenumber" name="L119" href="#L119">119</a> 		b.append(navigationalStatus);
+<a class="jxr_linenumber" name="L120" href="#L120">120</a> 		b.append(<span class="jxr_string">", speedOverGroundKnots="</span>);
+<a class="jxr_linenumber" name="L121" href="#L121">121</a> 		b.append(speedOverGroundKnots);
+<a class="jxr_linenumber" name="L122" href="#L122">122</a> 		b.append(<span class="jxr_string">", courseOverGroundDegrees="</span>);
+<a class="jxr_linenumber" name="L123" href="#L123">123</a> 		b.append(courseOverGroundDegrees);
+<a class="jxr_linenumber" name="L124" href="#L124">124</a> 		b.append(<span class="jxr_string">", headingDegrees="</span>);
+<a class="jxr_linenumber" name="L125" href="#L125">125</a> 		b.append(headingDegrees);
+<a class="jxr_linenumber" name="L126" href="#L126">126</a> 		b.append(<span class="jxr_string">", aisClass="</span>);
+<a class="jxr_linenumber" name="L127" href="#L127">127</a> 		b.append(aisClass);
+<a class="jxr_linenumber" name="L128" href="#L128">128</a> 		b.append(<span class="jxr_string">", latencySeconds="</span>);
+<a class="jxr_linenumber" name="L129" href="#L129">129</a> 		b.append(latencySeconds);
+<a class="jxr_linenumber" name="L130" href="#L130">130</a> 		b.append(<span class="jxr_string">", source="</span>);
+<a class="jxr_linenumber" name="L131" href="#L131">131</a> 		b.append(source);
+<a class="jxr_linenumber" name="L132" href="#L132">132</a> 		b.append(<span class="jxr_string">"]"</span>);
+<a class="jxr_linenumber" name="L133" href="#L133">133</a> 		<strong class="jxr_keyword">return</strong> b.toString();
+<a class="jxr_linenumber" name="L134" href="#L134">134</a> 	}
+<a class="jxr_linenumber" name="L135" href="#L135">135</a> 
+<a class="jxr_linenumber" name="L136" href="#L136">136</a> 	@Override
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> 	<strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a> fix() {
+<a class="jxr_linenumber" name="L138" href="#L138">138</a> 		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">this</strong>;
+<a class="jxr_linenumber" name="L139" href="#L139">139</a> 	}
+<a class="jxr_linenumber" name="L140" href="#L140">140</a> 
+<a class="jxr_linenumber" name="L141" href="#L141">141</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>
