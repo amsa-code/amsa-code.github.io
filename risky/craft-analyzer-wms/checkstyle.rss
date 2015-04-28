@@ -46,6 +46,20 @@ under the License.
           <tbody>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.craft.analyzer.wms.DriftingLayer.java">au/gov/amsa/craft/analyzer/wms/DriftingLayer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  143
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.craft.analyzer.wms.AnalyzeLayer.java">au/gov/amsa/craft/analyzer/wms/AnalyzeLayer.java</a>
                 </td>
                 <td>
@@ -56,6 +70,20 @@ under the License.
                 </td>
                 <td>
                   65
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.craft.analyzer.wms.OperatorBackpressureChecker.java">au/gov/amsa/craft/analyzer/wms/OperatorBackpressureChecker.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  21
                 </td>
               </tr>
                           <tr>
@@ -88,48 +116,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.craft.analyzer.wms.OperatorDriftDistanceCheck.java">au/gov/amsa/craft/analyzer/wms/OperatorDriftDistanceCheck.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  27
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.craft.analyzer.wms.OperatorBackpressureChecker.java">au/gov/amsa/craft/analyzer/wms/OperatorBackpressureChecker.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  21
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.craft.analyzer.wms.DriftingLayer.java">au/gov/amsa/craft/analyzer/wms/DriftingLayer.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  143
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.craft.analyzer.wms.WmsServlet.java">au/gov/amsa/craft/analyzer/wms/WmsServlet.java</a>
                 </td>
                 <td>
@@ -154,6 +140,20 @@ under the License.
                 </td>
                 <td>
                   20
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.craft.analyzer.wms.OperatorDriftDistanceCheck.java">au/gov/amsa/craft/analyzer/wms/OperatorDriftDistanceCheck.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  27
                 </td>
               </tr>
                       </tbody>
