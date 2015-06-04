@@ -30,7 +30,7 @@
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>  	@Test
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testWriting() {
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>  		Fix f1 = createFix(TimeUnit.DAYS.toMillis(1), -10.5f, 135f);
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  		Fix f2 = createFix(TimeUnit.DAYS.toMillis(2), -10.8f, 136f);
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  		FixImpl f2 = createFix(TimeUnit.DAYS.toMillis(2), -10.8f, 136f);
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  		List&lt;HasFix&gt; fixes = Arrays.asList((HasFix) f1, f2);
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>  		NetcdfFixesWriter.writeFixes(fixes, <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"target/test.nc"</span>));
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>  	}
@@ -52,8 +52,8 @@
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  		assertFalse(attributes.isEmpty());
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  	}
 <a class="jxr_linenumber" name="L46" href="#L46">46</a>  
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> Fix createFix(<strong class="jxr_keyword">long</strong> time, <strong class="jxr_keyword">float</strong> lat, <strong class="jxr_keyword">float</strong> lon) {
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> Fix(213456789, lat, lon, time, of(12), of((<strong class="jxr_keyword">short</strong>) 1),
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> FixImpl createFix(<strong class="jxr_keyword">long</strong> time, <strong class="jxr_keyword">float</strong> lat, <strong class="jxr_keyword">float</strong> lon) {
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> FixImpl(213456789, lat, lon, time, of(12), of((<strong class="jxr_keyword">short</strong>) 1),
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>  		        of(NavigationalStatus.ENGAGED_IN_FISHING), of(7.5f), of(45f), of(46f), AisClass.B);
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  	}
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>  

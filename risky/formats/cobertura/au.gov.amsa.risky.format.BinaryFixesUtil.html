@@ -41,96 +41,96 @@
 <tr>  <td class="numLine">&nbsp;12</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;13</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">static</span> Fix toFix(<span class="keyword">long</span> mmsi, ByteBuffer bb) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">float</span> lat = bb.getFloat();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;15</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">float</span> lon = bb.getFloat();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;16</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">long</span> time = bb.getLong();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;17</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> latency = bb.getInt();</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">static</span> FixImpl toFix(<span class="keyword">long</span> mmsi, ByteBuffer bb) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">float</span> lat = bb.getFloat();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;15</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">float</span> lon = bb.getFloat();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;16</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">long</span> time = bb.getLong();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;17</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> latency = bb.getInt();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> Optional&lt;Integer&gt; latencySeconds;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;19</td>  <td class="nbHitsUncovered"><a title="Line 19: Conditional coverage 50% (1/2).">&nbsp;2020006</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 19: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (latency == -1)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;19</td>  <td class="nbHitsUncovered"><a title="Line 19: Conditional coverage 50% (1/2).">&nbsp;2020011</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 19: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (latency == -1)</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;20</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        latencySeconds = absent();</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;21</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;22</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                        latencySeconds = of(latency);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;23</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">short</span> src = bb.getShort();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;22</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                        latencySeconds = of(latency);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;23</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">short</span> src = bb.getShort();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;24</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> Optional&lt;Short&gt; source;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;25</td>  <td class="nbHitsUncovered"><a title="Line 25: Conditional coverage 50% (1/2).">&nbsp;2020006</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 25: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (src == 0)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;25</td>  <td class="nbHitsUncovered"><a title="Line 25: Conditional coverage 50% (1/2).">&nbsp;2020011</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 25: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (src == 0)</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;26</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        source = absent();</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;27</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;28</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                        source = of(src);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;29</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">byte</span> nav = bb.get();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;28</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                        source = of(src);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;29</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">byte</span> nav = bb.get();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;30</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> Optional&lt;NavigationalStatus&gt; navigationalStatus;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;31</td>  <td class="nbHitsUncovered"><a title="Line 31: Conditional coverage 50% (1/2).">&nbsp;2020006</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 31: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (nav == Byte.MAX_VALUE)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;31</td>  <td class="nbHitsUncovered"><a title="Line 31: Conditional coverage 50% (1/2).">&nbsp;2020011</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 31: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (nav == Byte.MAX_VALUE)</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;32</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        navigationalStatus = absent();</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;33</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;34</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                        navigationalStatus = of(NavigationalStatus.values()[nav]);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;34</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                        navigationalStatus = of(NavigationalStatus.values()[nav]);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;35</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;36</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">// rate of turn</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;37</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                bb.get();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;37</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                bb.get();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;38</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;39</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">short</span> sog = bb.getShort();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;39</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">short</span> sog = bb.getShort();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;40</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> Optional&lt;Float&gt; speedOverGroundKnots;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;41</td>  <td class="nbHitsUncovered"><a title="Line 41: Conditional coverage 50% (1/2).">&nbsp;2020006</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 41: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (sog == BinaryFixes.SOG_ABSENT)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;41</td>  <td class="nbHitsUncovered"><a title="Line 41: Conditional coverage 50% (1/2).">&nbsp;2020011</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 41: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (sog == BinaryFixes.SOG_ABSENT)</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;42</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        speedOverGroundKnots = absent();</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;43</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;44</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                        speedOverGroundKnots = of(sog / 10f);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;44</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                        speedOverGroundKnots = of(sog / 10f);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;45</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;46</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">short</span> cog = bb.getShort();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;46</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">short</span> cog = bb.getShort();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;47</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> Optional&lt;Float&gt; courseOverGroundDegrees;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;48</td>  <td class="nbHitsUncovered"><a title="Line 48: Conditional coverage 50% (1/2).">&nbsp;2020006</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 48: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (cog == BinaryFixes.COG_ABSENT)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;48</td>  <td class="nbHitsUncovered"><a title="Line 48: Conditional coverage 50% (1/2).">&nbsp;2020011</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 48: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (cog == BinaryFixes.COG_ABSENT)</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;49</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        courseOverGroundDegrees = absent();</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;50</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;51</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                        courseOverGroundDegrees = of(cog / 10f);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;51</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                        courseOverGroundDegrees = of(cog / 10f);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;52</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;53</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">short</span> heading = bb.getShort();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;53</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">short</span> heading = bb.getShort();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;54</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> Optional&lt;Float&gt; headingDegrees;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;55</td>  <td class="nbHitsUncovered"><a title="Line 55: Conditional coverage 50% (1/2).">&nbsp;2020006</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 55: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (heading == BinaryFixes.HEADING_ABSENT)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;55</td>  <td class="nbHitsUncovered"><a title="Line 55: Conditional coverage 50% (1/2).">&nbsp;2020011</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 55: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (heading == BinaryFixes.HEADING_ABSENT)</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;56</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        headingDegrees = absent();</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;57</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;58</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                        headingDegrees = of((<span class="keyword">float</span>) heading / 10f);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;59</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">byte</span> cls = bb.get();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;58</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                        headingDegrees = of((<span class="keyword">float</span>) heading / 10f);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;59</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">byte</span> cls = bb.get();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;60</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> AisClass aisClass;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;61</td>  <td class="nbHitsUncovered"><a title="Line 61: Conditional coverage 50% (1/2).">&nbsp;2020006</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 61: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (cls == 0)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;61</td>  <td class="nbHitsUncovered"><a title="Line 61: Conditional coverage 50% (1/2).">&nbsp;2020011</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 61: Conditional coverage 50% (1/2).">                <span class="keyword">if</span> (cls == 0)</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;62</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                        aisClass = AisClass.A;</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;63</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;64</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                        aisClass = AisClass.B;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;65</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                Fix fix = <span class="keyword">new</span> Fix(mmsi, lat, lon, time, latencySeconds, source, navigationalStatus,</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;64</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                        aisClass = AisClass.B;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;65</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                FixImpl fix = <span class="keyword">new</span> FixImpl(mmsi, lat, lon, time, latencySeconds, source, navigationalStatus,</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;66</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                        speedOverGroundKnots, courseOverGroundDegrees, headingDegrees, aisClass);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;67</td>  <td class="nbHitsCovered">&nbsp;2020006</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> fix;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;67</td>  <td class="nbHitsCovered">&nbsp;2020011</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> fix;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;68</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;69</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;70</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">static</span> <span class="keyword">long</span> getMmsi(File file) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;71</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> finish = file.getName().indexOf(<span class="string">'.'</span>);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;72</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;                String id = file.getName().substring(0, finish);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;73</td>  <td class="nbHitsCovered">&nbsp;7</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> Long.parseLong(id);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;71</td>  <td class="nbHitsCovered">&nbsp;10</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> finish = file.getName().indexOf(<span class="string">'.'</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;72</td>  <td class="nbHitsCovered">&nbsp;10</td>  <td class="src"><pre class="src">&nbsp;                String id = file.getName().substring(0, finish);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;73</td>  <td class="nbHitsCovered">&nbsp;10</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> Long.parseLong(id);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;74</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;75</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 28/04/15 4:51 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 4/06/15 11:50 AM.</div>
 </body>
 </html>

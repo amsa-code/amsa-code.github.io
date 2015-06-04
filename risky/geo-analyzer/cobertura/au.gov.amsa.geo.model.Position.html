@@ -43,9 +43,9 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;13</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Position(<span class="keyword">double</span> lat, <span class="keyword">double</span> lon) {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.lat = lat;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;15</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.lon = lon;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;15</td>  <td class="nbHitsCovered">&nbsp;698</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.lon = lon;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;16</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.hashCode = calculateHashCode();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;17</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;17</td>  <td class="nbHitsCovered">&nbsp;698</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
@@ -57,7 +57,7 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;23</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">double</span> getLon() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;24</td>  <td class="nbHitsCovered">&nbsp;3429</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> lon;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;24</td>  <td class="nbHitsCovered">&nbsp;3430</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> lon;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;25</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;26</td>  <td class="nbHits">&nbsp;</td>
@@ -91,14 +91,14 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;42</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> <span class="keyword">int</span> calculateHashCode() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;43</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> <span class="keyword">int</span> prime = 31;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;43</td>  <td class="nbHitsCovered">&nbsp;698</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> <span class="keyword">int</span> prime = 31;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;44</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> result = 1;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;45</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="keyword">long</span> temp;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;46</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                temp = Double.doubleToLongBits(lat);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;47</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                result = prime * result + (<span class="keyword">int</span>) (temp ^ (temp &gt;&gt;&gt; 32));</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;48</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                temp = Double.doubleToLongBits(lon);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;49</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                result = prime * result + (<span class="keyword">int</span>) (temp ^ (temp &gt;&gt;&gt; 32));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;47</td>  <td class="nbHitsCovered">&nbsp;698</td>  <td class="src"><pre class="src">&nbsp;                result = prime * result + (<span class="keyword">int</span>) (temp ^ (temp &gt;&gt;&gt; 32));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;48</td>  <td class="nbHitsCovered">&nbsp;698</td>  <td class="src"><pre class="src">&nbsp;                temp = Double.doubleToLongBits(lon);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;49</td>  <td class="nbHitsCovered">&nbsp;698</td>  <td class="src"><pre class="src">&nbsp;                result = prime * result + (<span class="keyword">int</span>) (temp ^ (temp &gt;&gt;&gt; 32));</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;50</td>  <td class="nbHitsCovered">&nbsp;699</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> result;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;51</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
@@ -128,6 +128,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 28/04/15 4:51 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 4/06/15 11:51 AM.</div>
 </body>
 </html>

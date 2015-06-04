@@ -22,65 +22,75 @@
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/risky/format/DownsampleTest.html">DownsampleTest</a> {
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  	@Test
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfEmptyReturnsEmpty() {
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  		<strong class="jxr_keyword">int</strong> count = Observable.&lt;Fix&gt; empty().compose(minTimeStep(100, TimeUnit.MILLISECONDS))
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  		        .count().toBlocking().single();
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  		assertEquals(0, count);
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  	}
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>      @Test
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfEmptyReturnsEmpty() {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          <strong class="jxr_keyword">int</strong> count = Observable.&lt;Fix&gt; empty().compose(minTimeStep(100, TimeUnit.MILLISECONDS))
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>                  .count().toBlocking().single();
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          assertEquals(0, count);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>      }
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>  
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  	@Test
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfOneReturnsOne() {
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  		Fix f = createFix(0);
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		HasFix fix = Observable.just(f).compose(minTimeStep(100, TimeUnit.MILLISECONDS))
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  		        .toBlocking().single();
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		assertEquals(f, fix);
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  	}
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>      @Test
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfOneReturnsOne() {
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          FixImpl f = createFix(0);
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          HasFix fix = Observable.just(f).compose(minTimeStep(100, TimeUnit.MILLISECONDS))
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>                  .toBlocking().single();
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          assertEquals(f, fix);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      }
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  	@Test
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfTwoWithSmallGapReturnsFirst() {
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  		Fix f = createFix(0);
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  		Fix f2 = createFix(50);
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  		HasFix fix = Observable.just(f, f2).compose(minTimeStep(100, TimeUnit.MILLISECONDS))
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  		        .toBlocking().single();
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  		assertEquals(f, fix);
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  	}
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>      @Test
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfTwoWithSmallGapReturnsFirst() {
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          FixImpl f = createFix(0);
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          FixImpl f2 = createFix(50);
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          HasFix fix = Observable.just(f, f2).compose(minTimeStep(100, TimeUnit.MILLISECONDS))
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>                  .toBlocking().single();
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          assertEquals(f, fix);
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      }
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>  
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  	@Test
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfTwoWithBigGapReturnsTwo() {
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  		Fix f = createFix(0);
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  		Fix f2 = createFix(150);
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  		List&lt;HasFix&gt; fixes = Observable.just(f, f2)
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  		        .compose(minTimeStep(100, TimeUnit.MILLISECONDS)).toList().toBlocking().single();
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		assertEquals(Arrays.asList(f, f2), fixes);
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  	}
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      @Test
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfTwoWithBigGapReturnsTwo() {
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          FixImpl f = createFix(0);
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          FixImpl f2 = createFix(150);
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          List&lt;HasFix&gt; fixes = Observable.&lt;HasFix&gt; just(f, f2)
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>                  .compose(minTimeStep(100, TimeUnit.MILLISECONDS)).toList().toBlocking().single();
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          assertEquals(Arrays.asList(f, f2), fixes);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>      }
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>  
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  	@Test
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfThreeWithSmallGapThenBigGapReturnsOuterTwo() {
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>  		Fix f = createFix(0);
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  		Fix f2 = createFix(50);
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  		Fix f3 = createFix(150);
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  		List&lt;HasFix&gt; fixes = Observable.just(f, f2, f3)
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  		        .compose(minTimeStep(100, TimeUnit.MILLISECONDS)).toList().toBlocking().single();
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  		assertEquals(Arrays.asList(f, f3), fixes);
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  	}
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>      @Test
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfThreeWithSmallGapThenBigGapReturnsOuterTwo() {
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          FixImpl f = createFix(0);
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          FixImpl f2 = createFix(50);
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          FixImpl f3 = createFix(150);
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          List&lt;HasFix&gt; fixes = Observable.&lt;HasFix&gt; just(f, f2, f3)
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>                  .compose(minTimeStep(100, TimeUnit.MILLISECONDS)).toList().toBlocking().single();
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          assertEquals(Arrays.asList(f, f3), fixes);
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      }
 <a class="jxr_linenumber" name="L59" href="#L59">59</a>  
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  	@Test
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOf0ForItemsWithSameTimeReturnsAll() {
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  		Fix f = createFix(50);
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  		Fix f2 = createFix(50);
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  		Fix f3 = createFix(50);
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  		List&lt;HasFix&gt; fixes = Observable.just(f, f2, f3)
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>  		        .compose(minTimeStep(0, TimeUnit.MILLISECONDS)).toList().toBlocking().single();
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>  		assertEquals(Arrays.asList(f, f2, f3), fixes);
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>  	}
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>      @Test
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOfNonZeroGapWithItemsWithSameTimeReturnsFirst() {
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          FixImpl f = createFix(50);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          FixImpl f2 = createFix(50);
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          FixImpl f3 = createFix(50);
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          List&lt;HasFix&gt; fixes = Observable.&lt;HasFix&gt; just(f, f2, f3)
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>                  .compose(minTimeStep(100, TimeUnit.MILLISECONDS)).toList().toBlocking().single();
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          assertEquals(Arrays.asList(f), fixes);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>      }
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> Fix createFix(<strong class="jxr_keyword">long</strong> time) {
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>  		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> Fix(213456789, -10f, 135f, time, of(12), of((<strong class="jxr_keyword">short</strong>) 1),
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>  		        of(NavigationalStatus.ENGAGED_IN_FISHING), of(7.5f), of(45f), of(46f), AisClass.B);
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>  	}
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>  
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>  }
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      @Test
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDownSampleOf0ForItemsWithSameTimeReturnsAll() {
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>          FixImpl f = createFix(50);
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          FixImpl f2 = createFix(50);
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          FixImpl f3 = createFix(50);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          List&lt;HasFix&gt; fixes = Observable.&lt;HasFix&gt; just(f, f2, f3)
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>                  .compose(minTimeStep(0, TimeUnit.MILLISECONDS)).toList().toBlocking().single();
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          assertEquals(Arrays.asList(f, f2, f3), fixes);
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>      }
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> FixImpl createFix(<strong class="jxr_keyword">long</strong> time) {
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> FixImpl(213456789, -10f, 135f, time, of(12), of((<strong class="jxr_keyword">short</strong>) 1),
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>                  of(NavigationalStatus.ENGAGED_IN_FISHING), of(7.5f), of(45f), of(46f), AisClass.B);
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>      }
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>  
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>

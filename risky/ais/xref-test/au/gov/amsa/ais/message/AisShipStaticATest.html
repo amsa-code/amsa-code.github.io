@@ -16,63 +16,63 @@
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/ais/message/AisShipStaticATest.html">AisShipStaticATest</a> {
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> PRECISION = 0.00001;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> PRECISION = 0.00001;
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  	@Test
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> test() {
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      @Test
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> test() {
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  		String m = <span class="jxr_string">"577JNW02BLa=I8`cN20t=@98DE`F0U&lt;h4pB22216C@J&gt;@4M20FlRCp11H2PCQBDSp888880"</span>;
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  		AisShipStaticA s = <strong class="jxr_keyword">new</strong> AisShipStaticA(m, <span class="jxr_string">"source"</span>, 0);
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  		System.out.println(s.toString().replaceAll(<span class="jxr_string">","</span>, <span class="jxr_string">",\n"</span>));
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  		assertEquals(5, s.getMessageId());
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  		assertEquals(0, s.getRepeatIndicator());
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  		assertEquals(477535900, s.getMmsi());
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  		assertEquals(0, s.getAisVersionIndicator());
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  		assertEquals(9597587, (<strong class="jxr_keyword">int</strong>) s.getImo().get());
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  		assertEquals(<span class="jxr_string">"VRJJ7"</span>, s.getCallsign());
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  		assertEquals(<span class="jxr_string">"OCTBREEZE ISLAND"</span>, s.getName());
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  		assertEquals(70, s.getShipType());
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		assertEquals(154, (<strong class="jxr_keyword">int</strong>) s.getDimensionA().get());
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  		assertEquals(26, (<strong class="jxr_keyword">int</strong>) s.getDimensionB().get());
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		assertEquals(14, (<strong class="jxr_keyword">int</strong>) s.getDimensionC().get());
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		assertEquals(16, (<strong class="jxr_keyword">int</strong>) s.getDimensionD().get());
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  		assertEquals(180, (<strong class="jxr_keyword">int</strong>) s.getLengthMetres().get());
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  		assertEquals(30, (<strong class="jxr_keyword">int</strong>) s.getWidthMetres().get());
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  		assertEquals(1, s.getTypeOfElectronicPositionFixingDevice());
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  		assertEquals(118912, s.getExpectedTimeOfArrivalUnprocessed());
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  		assertEquals(91.0, s.getMaximumPresentStaticDraughtMetres(), PRECISION);
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  		assertEquals(<span class="jxr_string">"RIO DE JANEIRO"</span>, s.getDestination());
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  		assertTrue(s.getDataTerminalAvailable());
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  		assertEquals(0, s.getSpare());
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  		assertTrue(s.getDataTerminalAvailable());
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  		assertEquals(<span class="jxr_string">"source"</span>, s.getSource());
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  	}
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>          String m = <span class="jxr_string">"577JNW02BLa=I8`cN20t=@98DE`F0U&lt;h4pB22216C@J&gt;@4M20FlRCp11H2PCQBDSp888880"</span>;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>          AisShipStaticA s = <strong class="jxr_keyword">new</strong> AisShipStaticA(m, <span class="jxr_string">"source"</span>, 0);
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>          <em class="jxr_comment">// System.out.println(s.toString().replaceAll(",", ",\n"));</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          assertEquals(5, s.getMessageId());
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          assertEquals(0, s.getRepeatIndicator());
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          assertEquals(477535900, s.getMmsi());
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          assertEquals(0, s.getAisVersionIndicator());
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          assertEquals(9597587, (<strong class="jxr_keyword">int</strong>) s.getImo().get());
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          assertEquals(<span class="jxr_string">"VRJJ7"</span>, s.getCallsign());
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          assertEquals(<span class="jxr_string">"OCTBREEZE ISLAND"</span>, s.getName());
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          assertEquals(70, s.getShipType());
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          assertEquals(154, (<strong class="jxr_keyword">int</strong>) s.getDimensionA().get());
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          assertEquals(26, (<strong class="jxr_keyword">int</strong>) s.getDimensionB().get());
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          assertEquals(14, (<strong class="jxr_keyword">int</strong>) s.getDimensionC().get());
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          assertEquals(16, (<strong class="jxr_keyword">int</strong>) s.getDimensionD().get());
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          assertEquals(180, (<strong class="jxr_keyword">int</strong>) s.getLengthMetres().get());
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          assertEquals(30, (<strong class="jxr_keyword">int</strong>) s.getWidthMetres().get());
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          assertEquals(1, s.getTypeOfElectronicPositionFixingDevice());
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          assertEquals(118912, s.getExpectedTimeOfArrivalUnprocessed());
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          assertEquals(91.0, s.getMaximumPresentStaticDraughtMetres(), PRECISION);
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          assertEquals(<span class="jxr_string">"RIO DE JANEIRO"</span>, s.getDestination());
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          assertTrue(s.getDataTerminalAvailable());
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          assertEquals(0, s.getSpare());
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          assertTrue(s.getDataTerminalAvailable());
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          assertEquals(<span class="jxr_string">"source"</span>, s.getSource());
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      }
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>  
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  	@Test
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDimensionsOnlyNoReferencePoint() {
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  		String m = <span class="jxr_string">"57ldaq@1`57M0u9P000DM&gt;1=E9HETu800000001J00g086u60=@C@SkP000000000000000"</span>;
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  		AisShipStaticA s = <strong class="jxr_keyword">new</strong> AisShipStaticA(m, <span class="jxr_string">"source"</span>, 0);
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		System.out.println(s.toString().replaceAll(<span class="jxr_string">","</span>, <span class="jxr_string">",\n"</span>));
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>      @Test
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDimensionsOnlyNoReferencePoint() {
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          String m = <span class="jxr_string">"57ldaq@1`57M0u9P000DM&gt;1=E9HETu800000001J00g086u60=@C@SkP000000000000000"</span>;
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          AisShipStaticA s = <strong class="jxr_keyword">new</strong> AisShipStaticA(m, <span class="jxr_string">"source"</span>, 0);
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          <em class="jxr_comment">// System.out.println(s.toString().replaceAll(",", ",\n"));</em>
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>  
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  		assertFalse(s.getDimensionA().isPresent());
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  		assertEquals(47, (<strong class="jxr_keyword">int</strong>) s.getDimensionB().get());
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  		assertFalse(s.getDimensionC().isPresent());
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>  		assertEquals(8, (<strong class="jxr_keyword">int</strong>) s.getDimensionD().get());
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  		assertEquals(47, (<strong class="jxr_keyword">int</strong>) s.getLengthMetres().get());
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  		assertEquals(8, (<strong class="jxr_keyword">int</strong>) s.getWidthMetres().get());
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  	}
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          assertFalse(s.getDimensionA().isPresent());
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          assertEquals(47, (<strong class="jxr_keyword">int</strong>) s.getDimensionB().get());
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          assertFalse(s.getDimensionC().isPresent());
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          assertEquals(8, (<strong class="jxr_keyword">int</strong>) s.getDimensionD().get());
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          assertEquals(47, (<strong class="jxr_keyword">int</strong>) s.getLengthMetres().get());
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          assertEquals(8, (<strong class="jxr_keyword">int</strong>) s.getWidthMetres().get());
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      }
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>  
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  	@Test
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDestination() {
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>  		String m = <span class="jxr_string">"55DaI402;uLs&lt;H&lt;gV21=@Dhh5:0p5HTL5@u:2216LprDI6Gn0EA0CD2ADc0EDm4PC2@H880"</span>;
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  		AisShipStaticA s = <strong class="jxr_keyword">new</strong> AisShipStaticA(m, <span class="jxr_string">"source"</span>, 0);
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  		assertEquals(<span class="jxr_string">"DAMPIER,AUSTRALIA"</span>, s.getDestination());
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  	}
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      @Test
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDestination() {
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          String m = <span class="jxr_string">"55DaI402;uLs&lt;H&lt;gV21=@Dhh5:0p5HTL5@u:2216LprDI6Gn0EA0CD2ADc0EDm4PC2@H880"</span>;
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          AisShipStaticA s = <strong class="jxr_keyword">new</strong> AisShipStaticA(m, <span class="jxr_string">"source"</span>, 0);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          assertEquals(<span class="jxr_string">"DAMPIER,AUSTRALIA"</span>, s.getDestination());
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      }
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  	@Test
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testExpectedTimeOfArrival() {
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>  		assertEquals(1359165600000L, AisShipStaticA.getExpectedTimeOfArrival(2013, 1, 26, 2, 0));
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>  	}
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      @Test
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testExpectedTimeOfArrival() {
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          assertEquals(1359165600000L, AisShipStaticA.getExpectedTimeOfArrival(2013, 1, 26, 2, 0));
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>      }
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  }
 </pre>
 <hr/>

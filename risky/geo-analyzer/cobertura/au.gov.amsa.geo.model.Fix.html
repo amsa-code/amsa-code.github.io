@@ -38,11 +38,11 @@
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> hashCode;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;11</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;12</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Fix(String craftId, <span class="keyword">double</span> lat, <span class="keyword">double</span> lon, <span class="keyword">long</span> time, String source) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;12</td>  <td class="nbHitsCovered">&nbsp;696</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Fix(String craftId, <span class="keyword">double</span> lat, <span class="keyword">double</span> lon, <span class="keyword">long</span> time, String source) {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;13</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.craftId = craftId;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.position = <span class="keyword">new</span> Position(lat, lon);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;15</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.time = time;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;16</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.source = source;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;14</td>  <td class="nbHitsCovered">&nbsp;696</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.position = <span class="keyword">new</span> Position(lat, lon);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;15</td>  <td class="nbHitsCovered">&nbsp;696</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.time = time;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;16</td>  <td class="nbHitsCovered">&nbsp;696</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.source = source;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;17</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">this</span>.hashCode = calculateHashCode();</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;18</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
@@ -64,7 +64,7 @@
   <td class="src"><pre class="src">&nbsp;        @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;29</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Position getPosition() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;30</td>  <td class="nbHitsCovered">&nbsp;6835</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> position;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;30</td>  <td class="nbHitsCovered">&nbsp;6836</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> position;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;31</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;32</td>  <td class="nbHits">&nbsp;</td>
@@ -136,11 +136,11 @@
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;74</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">private</span> <span class="keyword">int</span> calculateHashCode() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;75</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> <span class="keyword">int</span> prime = 31;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;76</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> result = 1;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;75</td>  <td class="nbHitsCovered">&nbsp;696</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">final</span> <span class="keyword">int</span> prime = 31;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;76</td>  <td class="nbHitsCovered">&nbsp;696</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> result = 1;</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;77</td>  <td class="nbHitsUncovered"><a title="Line 77: Conditional coverage 50% (1/2).">&nbsp;697</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 77: Conditional coverage 50% (1/2).">                result = prime * result + ((craftId == <span class="keyword">null</span>) ? 0 : craftId.hashCode());</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsUncovered"><a title="Line 78: Conditional coverage 50% (1/2).">&nbsp;697</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 78: Conditional coverage 50% (1/2).">                result = prime * result</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;79</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                                + ((position == <span class="keyword">null</span>) ? 0 : position.hashCode());</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;78</td>  <td class="nbHitsUncovered"><a title="Line 78: Conditional coverage 50% (1/2).">&nbsp;696</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 78: Conditional coverage 50% (1/2).">                result = prime * result</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;79</td>  <td class="nbHitsCovered">&nbsp;696</td>  <td class="src"><pre class="src">&nbsp;                                + ((position == <span class="keyword">null</span>) ? 0 : position.hashCode());</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;80</td>  <td class="nbHitsUncovered"><a title="Line 80: Conditional coverage 50% (1/2).">&nbsp;697</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 80: Conditional coverage 50% (1/2).">                result = prime * result + ((source == <span class="keyword">null</span>) ? 0 : source.hashCode());</a></span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;81</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                result = prime * result + (<span class="keyword">int</span>) (time ^ (time &gt;&gt;&gt; 32));</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;82</td>  <td class="nbHitsCovered">&nbsp;697</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> result;</pre></td></tr>
@@ -185,6 +185,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.0.3 on 28/04/15 4:51 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 4/06/15 11:51 AM.</div>
 </body>
 </html>

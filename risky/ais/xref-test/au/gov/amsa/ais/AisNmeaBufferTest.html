@@ -26,105 +26,105 @@
 <a class="jxr_linenumber" name="L18" href="#L18">18</a>  
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../au/gov/amsa/ais/AisNmeaBufferTest.html">AisNmeaBufferTest</a> {
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  	@Test
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testTwoLinesAreBufferedAndAggregateIsReturned() {
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  		AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(5);
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  		checkTwoLinesAreBufferedAndAggregateIsReturned(buffer);
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  	}
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      @Test
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testTwoLinesAreBufferedAndAggregateIsReturned() {
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(5);
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          checkTwoLinesAreBufferedAndAggregateIsReturned(buffer);
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      }
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  	@Test
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testTwoLinesAreBufferedAndAggregateIsReturnedWhenOutOfOrder() {
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(5);
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		checkTwoLinesAreBufferedAndAggregateIsReturnedWhenOutOfOrder(buffer);
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  	}
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      @Test
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testTwoLinesAreBufferedAndAggregateIsReturnedWhenOutOfOrder() {
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(5);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          checkTwoLinesAreBufferedAndAggregateIsReturnedWhenOutOfOrder(buffer);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>      }
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> checkTwoLinesAreBufferedAndAggregateIsReturned(AisNmeaBuffer buffer) {
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  		String line1 = <span class="jxr_string">"&#92;&#92;g:1-2-1130,c:1334278696*29&#92;&#92;!BSVDM,2,1,0,A,55DSBL02&lt;Dm7&lt;I`OP005&lt;T4r0hTiT00000000016=hJ&lt;855f?&gt;kV`54Qh000,0*0B"</span>;
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  		String line2 = <span class="jxr_string">"&#92;&#92;g:2-2-1130*5E&#92;&#92;!BSVDM,2,2,0,A,00000000002,0*3D"</span>;
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  		assertFalse(buffer.add(NmeaUtil.parseNmea(line1)).isPresent());
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  		NmeaMessage m = AisNmeaBuffer.concatenateMessages(
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  		        buffer.add(NmeaUtil.parseNmea(line2)).get()).get();
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  		<em class="jxr_comment">// check that column 5 in line2 is appended to column 5 in line 1 and</em>
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  		<em class="jxr_comment">// line count and line number are 1 and tag block is as for line1.</em>
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  		System.out.println(m.toLine());
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  		assertEquals(
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  		        <span class="jxr_string">"&#92;&#92;g:1-1-1130,c:1334278696*2A&#92;&#92;!BSVDM,1,1,0,A,55DSBL02&lt;Dm7&lt;I`OP005&lt;T4r0hTiT00000000016=hJ&lt;855f?&gt;kV`54Qh00000000000002,0*3A"</span>,
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  		        m.toLine());
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  		System.out.println(<span class="jxr_string">"msg="</span>
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  		        + <strong class="jxr_keyword">new</strong> AisMessageParser().parse(
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		                <span class="jxr_string">"55DSBL02&lt;Dm7&lt;I`OP005&lt;T4r0hTiT00000000016=hJ&lt;855f?&gt;kV`54Qh00000000000002"</span>,
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  		                0));
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  	}
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> checkTwoLinesAreBufferedAndAggregateIsReturned(AisNmeaBuffer buffer) {
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          String line1 = <span class="jxr_string">"&#92;&#92;g:1-2-1130,c:1334278696*29&#92;&#92;!BSVDM,2,1,0,A,55DSBL02&lt;Dm7&lt;I`OP005&lt;T4r0hTiT00000000016=hJ&lt;855f?&gt;kV`54Qh000,0*0B"</span>;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          String line2 = <span class="jxr_string">"&#92;&#92;g:2-2-1130*5E&#92;&#92;!BSVDM,2,2,0,A,00000000002,0*3D"</span>;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          assertFalse(buffer.add(NmeaUtil.parseNmea(line1)).isPresent());
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          NmeaMessage m = AisNmeaBuffer.concatenateMessages(
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>                  buffer.add(NmeaUtil.parseNmea(line2)).get()).get();
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          <em class="jxr_comment">// check that column 5 in line2 is appended to column 5 in line 1 and</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          <em class="jxr_comment">// line count and line number are 1 and tag block is as for line1.</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          <em class="jxr_comment">// System.out.println(m.toLine());</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          assertEquals(
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>                  <span class="jxr_string">"&#92;&#92;g:1-1-1130,c:1334278696*2A&#92;&#92;!BSVDM,1,1,0,A,55DSBL02&lt;Dm7&lt;I`OP005&lt;T4r0hTiT00000000016=hJ&lt;855f?&gt;kV`54Qh00000000000002,0*3A"</span>,
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>                  m.toLine());
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <em class="jxr_comment">// System.out.println("msg="</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <em class="jxr_comment">// + new AisMessageParser().parse(</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          <em class="jxr_comment">// "55DSBL02&lt;Dm7&lt;I`OP005&lt;T4r0hTiT00000000016=hJ&lt;855f?&gt;kV`54Qh00000000000002",</em>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          <em class="jxr_comment">// 0));</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      }
 <a class="jxr_linenumber" name="L50" href="#L50">50</a>  
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  	<strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> checkTwoLinesAreBufferedAndAggregateIsReturnedWhenOutOfOrder(AisNmeaBuffer buffer) {
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>  		String line1 = <span class="jxr_string">"&#92;&#92;g:2-2-3987*58&#92;&#92;!BSVDM,2,2,0,A,lQ@@0000002,0*00"</span>;
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  		String line2 = <span class="jxr_string">"&#92;&#92;g:1-2-3987,c:1333239510*20&#92;&#92;!BSVDM,2,1,0,A,54`98002&gt;?A1`&lt;AGD00lEBr0PD5@PE:1&lt;4hiT01CKh`IC4w8NKjCPj1Ck`2k,0*7C"</span>;
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  		assertFalse(buffer.add(NmeaUtil.parseNmea(line1)).isPresent());
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  		NmeaMessage m = concatenateMessages(buffer.add(NmeaUtil.parseNmea(line2)).get()).get();
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  		<em class="jxr_comment">// check that column 5 in line2 is appended to column 5 in line 1 and</em>
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  		<em class="jxr_comment">// line count and line number are 1 and tag block is as for line1.</em>
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  		System.out.println(m.toLine());
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>  		assertEquals(
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  		        <span class="jxr_string">"&#92;&#92;g:1-1-3987,c:1333239510*23&#92;&#92;!BSVDM,1,1,0,A,54`98002&gt;?A1`&lt;AGD00lEBr0PD5@PE:1&lt;4hiT01CKh`IC4w8NKjCPj1Ck`2klQ@@0000002,0*70"</span>,
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  		        m.toLine());
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  	}
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">void</strong> checkTwoLinesAreBufferedAndAggregateIsReturnedWhenOutOfOrder(AisNmeaBuffer buffer) {
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          String line1 = <span class="jxr_string">"&#92;&#92;g:2-2-3987*58&#92;&#92;!BSVDM,2,2,0,A,lQ@@0000002,0*00"</span>;
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          String line2 = <span class="jxr_string">"&#92;&#92;g:1-2-3987,c:1333239510*20&#92;&#92;!BSVDM,2,1,0,A,54`98002&gt;?A1`&lt;AGD00lEBr0PD5@PE:1&lt;4hiT01CKh`IC4w8NKjCPj1Ck`2k,0*7C"</span>;
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          assertFalse(buffer.add(NmeaUtil.parseNmea(line1)).isPresent());
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          NmeaMessage m = concatenateMessages(buffer.add(NmeaUtil.parseNmea(line2)).get()).get();
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          <em class="jxr_comment">// check that column 5 in line2 is appended to column 5 in line 1 and</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <em class="jxr_comment">// line count and line number are 1 and tag block is as for line1.</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          <em class="jxr_comment">// System.out.println(m.toLine());</em>
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          assertEquals(
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>                  <span class="jxr_string">"&#92;&#92;g:1-1-3987,c:1333239510*23&#92;&#92;!BSVDM,1,1,0,A,54`98002&gt;?A1`&lt;AGD00lEBr0PD5@PE:1&lt;4hiT01CKh`IC4w8NKjCPj1Ck`2klQ@@0000002,0*70"</span>,
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>                  m.toLine());
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      }
 <a class="jxr_linenumber" name="L63" href="#L63">63</a>  
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  	@Test
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testTwoLinesAreBufferedAndAggregateIsReturnedThenRepeatIsTreatedTheSame() {
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>  		AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(10);
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>  		checkTwoLinesAreBufferedAndAggregateIsReturned(buffer);
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>  		checkTwoLinesAreBufferedAndAggregateIsReturned(buffer);
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>  		checkTwoLinesAreBufferedAndAggregateIsReturned(buffer);
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>  	}
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      @Test
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testTwoLinesAreBufferedAndAggregateIsReturnedThenRepeatIsTreatedTheSame() {
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(10);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          checkTwoLinesAreBufferedAndAggregateIsReturned(buffer);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          checkTwoLinesAreBufferedAndAggregateIsReturned(buffer);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          checkTwoLinesAreBufferedAndAggregateIsReturned(buffer);
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      }
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>  
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>  	@Test
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> checkBufferMaxSizeIsHonoured() {
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>  		AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(2);
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>  		<em class="jxr_comment">// this message</em>
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>  		String line = <span class="jxr_string">"&#92;&#92;g:2-2-3985*5A&#92;&#92;!AIVDM,2,2,9,B,PFRC88888888880,2*29"</span>;
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>  		assertFalse(buffer.add(NmeaUtil.parseNmea(line)).isPresent());
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>  		assertEquals(1, buffer.size());
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>  		String line2 = <span class="jxr_string">"&#92;&#92;g:2-2-1130*5E&#92;&#92;!BSVDM,2,2,0,A,00000000002,0*3D"</span>;
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>  		assertFalse(buffer.add(NmeaUtil.parseNmea(line2)).isPresent());
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>  		assertEquals(2, buffer.size());
-<a class="jxr_linenumber" name="L82" href="#L82">82</a>  		String line3 = <span class="jxr_string">"&#92;&#92;g:2-2-1132*5E&#92;&#92;!BSVDM,2,2,0,A,00000000002,0*3D"</span>;
-<a class="jxr_linenumber" name="L83" href="#L83">83</a>  		assertFalse(buffer.add(NmeaUtil.parseNmea(line3)).isPresent());
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>  		assertEquals(2, buffer.size());
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>  	}
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>      @Test
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> checkBufferMaxSizeIsHonoured() {
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(2);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          <em class="jxr_comment">// this message</em>
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>          String line = <span class="jxr_string">"&#92;&#92;g:2-2-3985*5A&#92;&#92;!AIVDM,2,2,9,B,PFRC88888888880,2*29"</span>;
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          assertFalse(buffer.add(NmeaUtil.parseNmea(line)).isPresent());
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>          assertEquals(1, buffer.size());
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          String line2 = <span class="jxr_string">"&#92;&#92;g:2-2-1130*5E&#92;&#92;!BSVDM,2,2,0,A,00000000002,0*3D"</span>;
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>          assertFalse(buffer.add(NmeaUtil.parseNmea(line2)).isPresent());
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          assertEquals(2, buffer.size());
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>          String line3 = <span class="jxr_string">"&#92;&#92;g:2-2-1132*5E&#92;&#92;!BSVDM,2,2,0,A,00000000002,0*3D"</span>;
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          assertFalse(buffer.add(NmeaUtil.parseNmea(line3)).isPresent());
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          assertEquals(2, buffer.size());
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>      }
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>  
-<a class="jxr_linenumber" name="L87" href="#L87">87</a>  	@Test
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> checkLineWithTimestampButWithoutGroupingIsReturnedImmediately() {
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>  		AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(2);
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>  		<em class="jxr_comment">// this message</em>
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>  		<em class="jxr_comment">// note I edited the sentence count from 2 to 1 which may have stuffed</em>
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>  		<em class="jxr_comment">// up checksum but still seems to process ?</em>
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>  		String line = <span class="jxr_string">"&#92;&#92;c:1334278696*29&#92;&#92;!BSVDM,1,1,0,A,55DSBL02&lt;Dm7&lt;I`OP005&lt;T4r0hTiT00000000016=hJ&lt;855f?&gt;kV`54Qh000,0*0B"</span>;
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>  		NmeaMessage m = NmeaUtil.parseNmea(line);
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>  		assertEquals(m, concatenateMessages(buffer.add(m).get()).get());
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>  	}
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>      @Test
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> checkLineWithTimestampButWithoutGroupingIsReturnedImmediately() {
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>          AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(2);
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>          <em class="jxr_comment">// this message</em>
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>          <em class="jxr_comment">// note I edited the sentence count from 2 to 1 which may have stuffed</em>
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          <em class="jxr_comment">// up checksum but still seems to process ?</em>
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>          String line = <span class="jxr_string">"&#92;&#92;c:1334278696*29&#92;&#92;!BSVDM,1,1,0,A,55DSBL02&lt;Dm7&lt;I`OP005&lt;T4r0hTiT00000000016=hJ&lt;855f?&gt;kV`54Qh000,0*0B"</span>;
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          NmeaMessage m = NmeaUtil.parseNmea(line);
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>          assertEquals(m, concatenateMessages(buffer.add(m).get()).get());
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>      }
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>  
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>  	@Test
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLinewithTooFewColumnsIsReturnedImmediately() {
-<a class="jxr_linenumber" name="L100" href="#L100">100</a> 		AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(5);
-<a class="jxr_linenumber" name="L101" href="#L101">101</a> 		NmeaMessage m = createMock(NmeaMessage.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="L102" href="#L102">102</a> 		@SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
-<a class="jxr_linenumber" name="L103" href="#L103">103</a> 		List&lt;String&gt; items = createMock(ArrayList.<strong class="jxr_keyword">class</strong>);
-<a class="jxr_linenumber" name="L104" href="#L104">104</a> 		expect(items.size()).andReturn(5).atLeastOnce();
-<a class="jxr_linenumber" name="L105" href="#L105">105</a> 		expect(m.getItems()).andReturn(items).atLeastOnce();
-<a class="jxr_linenumber" name="L106" href="#L106">106</a> 		replay(m, items);
-<a class="jxr_linenumber" name="L107" href="#L107">107</a> 		assertEquals(m, concatenateMessages(buffer.add(m).get()).get());
-<a class="jxr_linenumber" name="L108" href="#L108">108</a> 		verify(m, items);
-<a class="jxr_linenumber" name="L109" href="#L109">109</a> 	}
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>      @Test
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLinewithTooFewColumnsIsReturnedImmediately() {
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>         AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(5);
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>         NmeaMessage m = createMock(NmeaMessage.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>         @SuppressWarnings(<span class="jxr_string">"unchecked"</span>)
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         List&lt;String&gt; items = createMock(ArrayList.<strong class="jxr_keyword">class</strong>);
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>         expect(items.size()).andReturn(5).atLeastOnce();
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         expect(m.getItems()).andReturn(items).atLeastOnce();
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>         replay(m, items);
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>         assertEquals(m, concatenateMessages(buffer.add(m).get()).get());
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>         verify(m, items);
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>     }
 <a class="jxr_linenumber" name="L110" href="#L110">110</a> 
-<a class="jxr_linenumber" name="L111" href="#L111">111</a> 	@Test
-<a class="jxr_linenumber" name="L112" href="#L112">112</a> 	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testBufferReturnsCorrectTimestamp() {
-<a class="jxr_linenumber" name="L113" href="#L113">113</a> 		String line = <span class="jxr_string">"&#92;&#92;s:rEV03,c:1334073836*52&#92;&#92;!AIVDM,1,1,,A,1770&lt;U002V6pkcgmGalTw3sj1`QS,0*7E"</span>;
-<a class="jxr_linenumber" name="L114" href="#L114">114</a> 		AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(50);
-<a class="jxr_linenumber" name="L115" href="#L115">115</a> 		NmeaMessage m = NmeaUtil.parseNmea(line);
-<a class="jxr_linenumber" name="L116" href="#L116">116</a> 		assertEquals(m, concatenateMessages(buffer.add(m).get()).get());
-<a class="jxr_linenumber" name="L117" href="#L117">117</a> 		AisNmeaMessage a = <strong class="jxr_keyword">new</strong> AisNmeaMessage(m.toLine());
-<a class="jxr_linenumber" name="L118" href="#L118">118</a> 		assertEquals(1334073836000L, (<strong class="jxr_keyword">long</strong>) a.getTime());
-<a class="jxr_linenumber" name="L119" href="#L119">119</a> 	}
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>     @Test
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testBufferReturnsCorrectTimestamp() {
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>         String line = <span class="jxr_string">"&#92;&#92;s:rEV03,c:1334073836*52&#92;&#92;!AIVDM,1,1,,A,1770&lt;U002V6pkcgmGalTw3sj1`QS,0*7E"</span>;
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>         AisNmeaBuffer buffer = <strong class="jxr_keyword">new</strong> AisNmeaBuffer(50);
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>         NmeaMessage m = NmeaUtil.parseNmea(line);
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         assertEquals(m, concatenateMessages(buffer.add(m).get()).get());
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         AisNmeaMessage a = <strong class="jxr_keyword">new</strong> AisNmeaMessage(m.toLine());
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>         assertEquals(1334073836000L, (<strong class="jxr_keyword">long</strong>) a.getTime());
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>     }
 <a class="jxr_linenumber" name="L120" href="#L120">120</a> 
 <a class="jxr_linenumber" name="L121" href="#L121">121</a> }
 </pre>

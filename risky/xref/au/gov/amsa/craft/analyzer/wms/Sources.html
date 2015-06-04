@@ -22,7 +22,7 @@
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> rx.schedulers.Schedulers;
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.navigation.DriftCandidate;
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.navigation.DriftCandidates;
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.navigation.DriftingDetectorFix;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.navigation.DriftDetector;
 <a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.navigation.VesselPosition;
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.navigation.VesselPositions;
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.risky.format.BinaryFixes;
@@ -51,12 +51,12 @@
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>      }
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>  
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Observable&lt;VesselPosition&gt; fixes2(File file) {
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <strong class="jxr_keyword">return</strong> DriftCandidates.fromCsv(file).filter(<strong class="jxr_keyword">new</strong> Func1&lt;DriftCandidate, Boolean&gt;() {
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <strong class="jxr_keyword">return</strong> DriftCandidates.fromCsv(file, false).filter(<strong class="jxr_keyword">new</strong> Func1&lt;DriftCandidate, Boolean&gt;() {
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>  
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>              @Override
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>              <strong class="jxr_keyword">public</strong> Boolean call(<a href="../../../../../../au/gov/amsa/navigation/DriftCandidate.html">DriftCandidate</a> c) {
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>                  <strong class="jxr_keyword">return</strong> !c.fix().getNavigationalStatus().isPresent()
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>                          || c.fix().getNavigationalStatus().get() != NavigationalStatus.ENGAGED_IN_FISHING;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>                  <strong class="jxr_keyword">return</strong> !c.fix().navigationalStatus().isPresent()
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>                          || c.fix().navigationalStatus().get() != NavigationalStatus.ENGAGED_IN_FISHING;
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>              }
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>          }).map(VesselPositions.toVesselPosition(<strong class="jxr_keyword">new</strong> Func1&lt;DriftCandidate, Optional&lt;?&gt;&gt;() {
 <a class="jxr_linenumber" name="L54" href="#L54">54</a>              @Override
@@ -72,7 +72,7 @@
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>  
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>              @Override
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>              <strong class="jxr_keyword">public</strong> Observable&lt;Fix&gt; call(List&lt;File&gt; files) {
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>                  <strong class="jxr_keyword">return</strong> BinaryFixes.from(files).compose(DriftingDetectorFix.detectDrift())
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>                  <strong class="jxr_keyword">return</strong> BinaryFixes.from(files).compose(DriftDetector.detectDrift())
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>                          .map(<strong class="jxr_keyword">new</strong> Func1&lt;DriftCandidate, Fix&gt;() {
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>  
 <a class="jxr_linenumber" name="L70" href="#L70">70</a>                              @Override

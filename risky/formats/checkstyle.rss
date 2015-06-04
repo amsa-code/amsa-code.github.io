@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 25,
-             Errors: 1920,
+      <title>File: 33,
+             Errors: 642,
              Warnings: 0,
              Infos: 0
       </title>
@@ -60,6 +60,34 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.OperatorMinEffectiveSpeedThresholdTest.java">au/gov/amsa/risky/format/OperatorMinEffectiveSpeedThresholdTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  92
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.DownsampleMainTest.java">au/gov/amsa/risky/format/DownsampleMainTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.DownsampleTest.java">au/gov/amsa/risky/format/DownsampleTest.java</a>
                 </td>
                 <td>
@@ -69,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  94
+                  48
                 </td>
               </tr>
                           <tr>
@@ -88,6 +116,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.OperatorMinEffectiveSpeedThreshold.java">au/gov/amsa/risky/format/OperatorMinEffectiveSpeedThreshold.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  62
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.BinaryFixes.java">au/gov/amsa/risky/format/BinaryFixes.java</a>
                 </td>
                 <td>
@@ -97,7 +139,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  286
+                  2
                 </td>
               </tr>
                           <tr>
@@ -111,7 +153,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  30
+                  1
                 </td>
               </tr>
                           <tr>
@@ -125,7 +167,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  39
+                  26
                 </td>
               </tr>
                           <tr>
@@ -139,7 +181,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  83
+                  1
                 </td>
               </tr>
                           <tr>
@@ -167,7 +209,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  12
+                  1
                 </td>
               </tr>
                           <tr>
@@ -181,7 +223,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  66
+                  1
                 </td>
               </tr>
                           <tr>
@@ -209,7 +251,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  136
+                  44
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.LibSvm.java">au/gov/amsa/risky/format/LibSvm.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
                 </td>
               </tr>
                           <tr>
@@ -237,7 +293,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  14
+                  13
                 </td>
               </tr>
                           <tr>
@@ -251,7 +307,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  48
+                  49
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.LibSvmTest.java">au/gov/amsa/risky/format/LibSvmTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
                 </td>
               </tr>
                           <tr>
@@ -265,7 +335,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  83
+                  1
                 </td>
               </tr>
                           <tr>
@@ -279,7 +349,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  145
+                  1
                 </td>
               </tr>
                           <tr>
@@ -307,7 +377,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  176
+                  14
                 </td>
               </tr>
                           <tr>
@@ -321,7 +391,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  24
+                  6
                 </td>
               </tr>
                           <tr>
@@ -335,7 +405,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  250
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.FixImpl.java">au/gov/amsa/risky/format/FixImpl.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  48
                 </td>
               </tr>
                           <tr>
@@ -349,7 +433,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  168
+                  1
                 </td>
               </tr>
                           <tr>
@@ -363,7 +447,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  5
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.LibSvmMain.java">au/gov/amsa/risky/format/LibSvmMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -391,7 +489,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  58
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Fixes.java">au/gov/amsa/risky/format/Fixes.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                       </tbody>

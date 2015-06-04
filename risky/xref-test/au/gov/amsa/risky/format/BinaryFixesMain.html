@@ -14,65 +14,52 @@
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.util.regex.Pattern;
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> rx.Observable;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> rx.functions.Func1;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> rx.functions.Func2;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> rx.schedulers.Schedulers;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.util.Files;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> rx.schedulers.Schedulers;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.util.Files;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> com.github.davidmoten.rx.slf4j.Logging;
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> com.github.davidmoten.rx.slf4j.Logging;
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/risky/format/BinaryFixesMain.html">BinaryFixesMain</a> {
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/risky/format/BinaryFixesMain.html">BinaryFixesMain</a> {
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  		<em class="jxr_comment">// perform a speed test for loading BinaryFixes from disk</em>
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  		Fix.validate = false;
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  		<strong class="jxr_keyword">final</strong> ConcurrentHashMap&lt;Long, List&lt;Fix&gt;&gt; map = <strong class="jxr_keyword">new</strong> ConcurrentHashMap&lt;Long, List&lt;Fix&gt;&gt;();
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  		<em class="jxr_comment">// -downsample-5-mins</em>
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  		List&lt;File&gt; files = Files.find(
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  		        <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"/media/an/binary-fixes/2014-year-downsample-5-mins"</span>),
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  		        Pattern.compile(<span class="jxr_string">".*&#92;&#92;.track"</span>));
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		<strong class="jxr_keyword">long</strong> t = System.currentTimeMillis();
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  		<strong class="jxr_keyword">long</strong> count = Observable
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		<em class="jxr_comment">// list files</em>
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		        .from(files)
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  		        <em class="jxr_comment">// share the load between processors</em>
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  		        .buffer(Math.max(1, files.size() / Runtime.getRuntime().availableProcessors()))
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  		        <em class="jxr_comment">// count each file asynchronously</em>
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  		        .flatMap(<strong class="jxr_keyword">new</strong> Func1&lt;List&lt;File&gt;, Observable&lt;Long&gt;&gt;() {
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  			        @Override
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  			        <strong class="jxr_keyword">public</strong> Observable&lt;Long&gt; call(List&lt;File&gt; list) {
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  				        <strong class="jxr_keyword">return</strong> Observable.from(list).concatMap(<strong class="jxr_keyword">new</strong> Func1&lt;File, Observable&lt;Long&gt;&gt;() {
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  					        @Override
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  					        <strong class="jxr_keyword">public</strong> Observable&lt;Long&gt; call(File file) {
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  						        <strong class="jxr_keyword">return</strong> BinaryFixes.from(file).countLong();
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  					        }
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  				        })
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  				        <em class="jxr_comment">// schedule</em>
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  				                .subscribeOn(Schedulers.computation());
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  			        }
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  		        })
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		        <em class="jxr_comment">// total counts</em>
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  		        .scan(0L, <strong class="jxr_keyword">new</strong> Func2&lt;Long, Long, Long&gt;() {
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  			        @Override
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  			        <strong class="jxr_keyword">public</strong> Long call(Long a, Long b) {
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  				        <strong class="jxr_keyword">return</strong> a + b;
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>  			        }
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  		        })
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  		        <em class="jxr_comment">// log count so far</em>
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  		        .lift(Logging.&lt;Long&gt; logger().showCount().prefix(<span class="jxr_string">"records="</span>).showMemory()
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  		                .every(1000).log())
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  		        <em class="jxr_comment">// get last count (total)</em>
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  		        .last()
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>  		        <em class="jxr_comment">// block and get</em>
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  		        .toBlocking().single();
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  		<strong class="jxr_keyword">long</strong> elapsed = System.currentTimeMillis() - t;
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  		System.out.println(<span class="jxr_string">"Map size = "</span> + map.size());
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  		System.out.println(<span class="jxr_string">"Total records = "</span> + count + <span class="jxr_string">", numPerSecond="</span> + count * 1000.0
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  		        / elapsed + <span class="jxr_string">", timeMs="</span> + elapsed);
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  	}
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>  
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>  }
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>          <em class="jxr_comment">// perform a speed test for loading BinaryFixes from disk</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          FixImpl.validate = false;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          <strong class="jxr_keyword">final</strong> ConcurrentHashMap&lt;Long, List&lt;FixImpl&gt;&gt; map = <strong class="jxr_keyword">new</strong> ConcurrentHashMap&lt;Long, List&lt;FixImpl&gt;&gt;();
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          <em class="jxr_comment">// -downsample-5-mins</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          List&lt;File&gt; files = Files.find(
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>                  <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"/media/an/binary-fixes/2014-year-downsample-5-mins"</span>),
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>                  Pattern.compile(<span class="jxr_string">".*&#92;&#92;.track"</span>));
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          <strong class="jxr_keyword">long</strong> t = System.currentTimeMillis();
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          <strong class="jxr_keyword">long</strong> count = Observable
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          <em class="jxr_comment">// list files</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>                  .from(files)
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>                  <em class="jxr_comment">// share the load between processors</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>                  .buffer(Math.max(1, files.size() / Runtime.getRuntime().availableProcessors()))
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>                  <em class="jxr_comment">// count each file asynchronously</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>                  .flatMap(
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>                          list -&gt; {
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>                              <strong class="jxr_keyword">return</strong> Observable.from(list)
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>                                      .concatMap(file -&gt; BinaryFixes.from(file).countLong())
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>                                      <em class="jxr_comment">// schedule</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>                                      .subscribeOn(Schedulers.computation());
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>                          })
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>                  <em class="jxr_comment">// total counts</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>                  .scan(0L, (a, b) -&gt; a + b)
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>                  <em class="jxr_comment">// log count so far</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>                  .lift(Logging.&lt;Long&gt; logger().showCount().prefix(<span class="jxr_string">"records="</span>).showMemory()
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>                          .every(1000).log())
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>                  <em class="jxr_comment">// get last count (total)</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>                  .last()
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>                  <em class="jxr_comment">// block and get</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>                  .toBlocking().single();
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          <strong class="jxr_keyword">long</strong> elapsed = System.currentTimeMillis() - t;
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          System.out.println(<span class="jxr_string">"Map size = "</span> + map.size());
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          System.out.println(<span class="jxr_string">"Total records = "</span> + count + <span class="jxr_string">", numPerSecond="</span> + count * 1000.0
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>                  / elapsed + <span class="jxr_string">", timeMs="</span> + elapsed);
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>      }
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>
