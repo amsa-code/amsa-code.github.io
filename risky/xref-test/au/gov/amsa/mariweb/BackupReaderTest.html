@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>BackupReaderTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../testapidocs/au/gov/amsa/mariweb/BackupReaderTest.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.mariweb;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertEquals;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.io.ByteArrayInputStream;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.io.FileInputStream;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.io.InputStream;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> java.util.zip.GZIPInputStream;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> rx.functions.Action1;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.AisMessage;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.AisNmeaMessage;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.util.nmea.NmeaMessage;
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.util.nmea.NmeaMessageParser;
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.util.nmea.NmeaUtil;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../au/gov/amsa/mariweb/BackupReaderTest.html">BackupReaderTest</a> {
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>      @Test
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testRowsInSampleParseOk() {
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          InputStream is = OperatorExtractValuesFromInsertStatementTest.<strong class="jxr_keyword">class</strong>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>                  .getResourceAsStream(<span class="jxr_string">"/mariweb-backup-sample.txt"</span>);
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>          BackupReader.getNmea(is).subscribe(<strong class="jxr_keyword">new</strong> Action1&lt;String&gt;() {
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>              @Override
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>              <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> call(String line) {
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>                  System.out.println(line);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>                  NmeaUtil.parseNmea(line);
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>              }
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          });
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>      }
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>      @Test
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testFirstRowFromActualSample() {
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          InputStream is = OperatorExtractValuesFromInsertStatementTest.<strong class="jxr_keyword">class</strong>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>                  .getResourceAsStream(<span class="jxr_string">"/mariweb-backup-sample.txt"</span>);
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          String nmea = BackupReader.getNmea(is).toBlocking().first();
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          System.out.println(nmea);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          assertEquals(
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>                  <span class="jxr_string">"&#92;&#92;s:Lockhart River,c:1325980876,at:1383734682*69&#92;&#92;!AIVDM,1,1,,B,1E@LR2200Rbrdgqe@Pl68S4H0000,0*07"</span>,
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>                  nmea);
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          NmeaMessage n = <strong class="jxr_keyword">new</strong> NmeaMessageParser().parse(nmea);
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          assertEquals(<span class="jxr_string">"1383734682"</span>, n.getTags().get(<span class="jxr_string">"at"</span>));
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          assertEquals(<span class="jxr_string">"1325980876"</span>, n.getTags().get(<span class="jxr_string">"c"</span>));
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          AisMessage m = <strong class="jxr_keyword">new</strong> AisNmeaMessage(nmea).getMessage();
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          assertEquals(<span class="jxr_string">"Lockhart River"</span>, m.getSource());
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          assertEquals(1, m.getMessageId());
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          assertEquals(<span class="jxr_string">"69"</span>, NmeaUtil.getChecksum(<span class="jxr_string">"s:Lockhart River,c:1325980876,at:1383734682"</span>));
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      }
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      @Test
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testExtractValuesForMultilineMessage() {
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          List&lt;String&gt; list = BackupReader
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>                  .getNmea(
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>                          <strong class="jxr_keyword">new</strong> ByteArrayInputStream(
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>                                  <span class="jxr_string">"INSERT INTO `ITU411_data` VALUES (11861,'2013-04-16 01:35:43','2013-04-16 01:35:43','203.9.160.33:4001','IN','!AIVDM,2,1,3,B,58Hu?002;ASoUH4OF20P4V1&lt;PV22222222222216O@W&gt;O4E6NEB0FH43,0*6C|!AIVDM,2,2,3,B,jCU888888888880,2*60','&#92;&#92;&#92;&#92;i:|D=0|T=41380.0664713773|P=203.9.160.33:4001|R=IN|*36&#92;&#92;&#92;&#92;',5,0,'563040000',0,9127485,'9VAG5  ','HAI SHI             ',70,250,39,14,31,1,'01100630',8.5,'HAY POINT           ',0)"</span>
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>                                          .getBytes())).toList().toBlocking().single();
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          System.out.println(list);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          assertEquals(2, list.size());
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      }
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          System.out.println(<span class="jxr_string">"running"</span>);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          System.out.println(BackupReader
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>                  .getNmea(<strong class="jxr_keyword">new</strong> GZIPInputStream(<strong class="jxr_keyword">new</strong> FileInputStream(<span class="jxr_string">"/media/an/ITU_20150101.bu.gz"</span>)))
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>                  .count().toBlocking().single());
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>      }
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>  
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+</body>
+</html>

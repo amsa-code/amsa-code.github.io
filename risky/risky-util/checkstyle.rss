@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 2,
-             Errors: 69,
+      <title>File: 3,
+             Errors: 89,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,7 +55,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  37
+                  36
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.Pair.java">au/gov/amsa/util/Pair.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  21
                 </td>
               </tr>
                           <tr>

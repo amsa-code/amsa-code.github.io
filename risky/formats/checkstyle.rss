@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 33,
-             Errors: 642,
+      <title>File: 36,
+             Errors: 748,
              Warnings: 0,
              Infos: 0
       </title>
@@ -88,6 +88,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.HasPosition.java">au/gov/amsa/risky/format/HasPosition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.DownsampleTest.java">au/gov/amsa/risky/format/DownsampleTest.java</a>
                 </td>
                 <td>
@@ -139,7 +153,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -228,6 +242,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.netcdf.NetCdfWriterTest.java">au/gov/amsa/util/netcdf/NetCdfWriterTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.AisClass.java">au/gov/amsa/risky/format/AisClass.java</a>
                 </td>
                 <td>
@@ -307,7 +335,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  49
+                  48
                 </td>
               </tr>
                           <tr>
@@ -377,7 +405,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  14
+                  12
                 </td>
               </tr>
                           <tr>
@@ -419,7 +447,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  48
+                  62
                 </td>
               </tr>
                           <tr>
@@ -466,6 +494,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.netcdf.NetCdfWriter.java">au/gov/amsa/util/netcdf/NetCdfWriter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  93
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.NetcdfFixesWriterMain.java">au/gov/amsa/risky/format/NetcdfFixesWriterMain.java</a>
                 </td>
                 <td>
@@ -475,7 +517,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  19
+                  6
                 </td>
               </tr>
                           <tr>

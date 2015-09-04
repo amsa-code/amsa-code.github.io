@@ -10,27 +10,28 @@
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.text.SimpleDateFormat;
 <a class="jxr_linenumber" name="L4" href="#L4">4</a>   
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.util.navigation.Position;
-<a class="jxr_linenumber" name="L6" href="#L6">6</a>   
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> com.google.common.base.Optional;
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/geo/model/Util.html">Util</a> {
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a href="../../../../../au/gov/amsa/util/navigation/Position.html">Position</a> toPos(<a href="../../../../../au/gov/amsa/geo/model/HasPosition.html">HasPosition</a> a) {
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  		<strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../au/gov/amsa/util/navigation/Position.html">Position</a>(a.getPosition().getLat(), a.getPosition().getLon());
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  	}
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">double</strong> greatCircleDistanceNm(<a href="../../../../../au/gov/amsa/geo/model/HasPosition.html">HasPosition</a> p1, <a href="../../../../../au/gov/amsa/geo/model/HasPosition.html">HasPosition</a> p2) {
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  		<strong class="jxr_keyword">return</strong> toPos(p1).getDistanceToKm(toPos(p2)) / 1.852;
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  	}
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String formatDate(Optional&lt;Long&gt; time) {
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  		<strong class="jxr_keyword">if</strong> (time.isPresent()) {
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  			SimpleDateFormat sdf = <strong class="jxr_keyword">new</strong> SimpleDateFormat(<span class="jxr_string">"yyyy-MM-dd"</span>);
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  			<strong class="jxr_keyword">return</strong> sdf.format(time.get());
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  		} <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  			<strong class="jxr_keyword">return</strong> <span class="jxr_string">""</span>;
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  	}
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  }
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.risky.format.HasPosition;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.util.navigation.Position;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> com.google.common.base.Optional;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/geo/model/Util.html">Util</a> {
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <a href="../../../../../au/gov/amsa/util/navigation/Position.html">Position</a> toPos(HasPosition a) {
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> <a href="../../../../../au/gov/amsa/util/navigation/Position.html">Position</a>(a.lat(), a.lon());
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      }
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">double</strong> greatCircleDistanceNm(HasPosition p1, HasPosition p2) {
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>          <strong class="jxr_keyword">return</strong> toPos(p1).getDistanceToKm(toPos(p2)) / 1.852;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>      }
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> String formatDate(Optional&lt;Long&gt; time) {
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          <strong class="jxr_keyword">if</strong> (time.isPresent()) {
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>              SimpleDateFormat sdf = <strong class="jxr_keyword">new</strong> SimpleDateFormat(<span class="jxr_string">"yyyy-MM-dd"</span>);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>              <strong class="jxr_keyword">return</strong> sdf.format(time.get());
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          } <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>              <strong class="jxr_keyword">return</strong> <span class="jxr_string">""</span>;
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      }
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>

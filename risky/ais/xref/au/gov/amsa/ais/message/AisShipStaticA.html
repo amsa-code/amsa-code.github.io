@@ -11,13 +11,13 @@
 <a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.util.Calendar;
 <a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> java.util.TimeZone;
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   
-<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.AisExtractor;
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.AisExtractorFactory;
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.AisMessageType;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.Util;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> com.google.common.annotations.VisibleForTesting;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> com.google.common.base.Optional;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> com.google.common.annotations.VisibleForTesting;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> com.google.common.base.Optional;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.AisExtractor;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.AisExtractorFactory;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.AisMessageType;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.Util;
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>  
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment"> * Decoder for AIS ship static and voyage related data (message type 5).</em>
@@ -225,7 +225,7 @@
 <a class="jxr_linenumber" name="L217" href="#L217">217</a> 
 <a class="jxr_linenumber" name="L218" href="#L218">218</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">double</strong> getMaximumPresentStaticDraughtMetres() {
 <a class="jxr_linenumber" name="L219" href="#L219">219</a>         <strong class="jxr_keyword">if</strong> (maximumPresentStaticDraughtMetres == <strong class="jxr_keyword">null</strong>)
-<a class="jxr_linenumber" name="L220" href="#L220">220</a>             maximumPresentStaticDraughtMetres = (<strong class="jxr_keyword">double</strong>) extractor.getValue(294, 302);
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>             maximumPresentStaticDraughtMetres = extractor.getValue(294, 302) / 10.0;
 <a class="jxr_linenumber" name="L221" href="#L221">221</a>         <strong class="jxr_keyword">return</strong> maximumPresentStaticDraughtMetres;
 <a class="jxr_linenumber" name="L222" href="#L222">222</a>     }
 <a class="jxr_linenumber" name="L223" href="#L223">223</a> 
@@ -258,50 +258,48 @@
 <a class="jxr_linenumber" name="L250" href="#L250">250</a>         b.append(<span class="jxr_string">"AisShipStaticA [source="</span>);
 <a class="jxr_linenumber" name="L251" href="#L251">251</a>         b.append(source);
 <a class="jxr_linenumber" name="L252" href="#L252">252</a>         b.append(<span class="jxr_string">", messageId="</span>);
-<a class="jxr_linenumber" name="L253" href="#L253">253</a>         b.append(messageId);
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>         b.append(getMessageId());
 <a class="jxr_linenumber" name="L254" href="#L254">254</a>         b.append(<span class="jxr_string">", repeatIndicator="</span>);
-<a class="jxr_linenumber" name="L255" href="#L255">255</a>         b.append(repeatIndicator);
+<a class="jxr_linenumber" name="L255" href="#L255">255</a>         b.append(getRepeatIndicator());
 <a class="jxr_linenumber" name="L256" href="#L256">256</a>         b.append(<span class="jxr_string">", mmsi="</span>);
 <a class="jxr_linenumber" name="L257" href="#L257">257</a>         b.append(mmsi);
 <a class="jxr_linenumber" name="L258" href="#L258">258</a>         b.append(<span class="jxr_string">", aisVersionIndicator="</span>);
-<a class="jxr_linenumber" name="L259" href="#L259">259</a>         b.append(aisVersionIndicator);
+<a class="jxr_linenumber" name="L259" href="#L259">259</a>         b.append(getAisVersionIndicator());
 <a class="jxr_linenumber" name="L260" href="#L260">260</a>         b.append(<span class="jxr_string">", imo="</span>);
-<a class="jxr_linenumber" name="L261" href="#L261">261</a>         b.append(imo);
+<a class="jxr_linenumber" name="L261" href="#L261">261</a>         b.append(getImo());
 <a class="jxr_linenumber" name="L262" href="#L262">262</a>         b.append(<span class="jxr_string">", callsign="</span>);
-<a class="jxr_linenumber" name="L263" href="#L263">263</a>         b.append(callsign);
+<a class="jxr_linenumber" name="L263" href="#L263">263</a>         b.append(getCallsign());
 <a class="jxr_linenumber" name="L264" href="#L264">264</a>         b.append(<span class="jxr_string">", name="</span>);
-<a class="jxr_linenumber" name="L265" href="#L265">265</a>         b.append(name);
+<a class="jxr_linenumber" name="L265" href="#L265">265</a>         b.append(getName());
 <a class="jxr_linenumber" name="L266" href="#L266">266</a>         b.append(<span class="jxr_string">", dimensionA="</span>);
-<a class="jxr_linenumber" name="L267" href="#L267">267</a>         b.append(dimensionA);
+<a class="jxr_linenumber" name="L267" href="#L267">267</a>         b.append(getDimensionA());
 <a class="jxr_linenumber" name="L268" href="#L268">268</a>         b.append(<span class="jxr_string">", dimensionB="</span>);
-<a class="jxr_linenumber" name="L269" href="#L269">269</a>         b.append(dimensionB);
+<a class="jxr_linenumber" name="L269" href="#L269">269</a>         b.append(getDimensionB());
 <a class="jxr_linenumber" name="L270" href="#L270">270</a>         b.append(<span class="jxr_string">", dimensionC="</span>);
-<a class="jxr_linenumber" name="L271" href="#L271">271</a>         b.append(dimensionC);
+<a class="jxr_linenumber" name="L271" href="#L271">271</a>         b.append(getDimensionC());
 <a class="jxr_linenumber" name="L272" href="#L272">272</a>         b.append(<span class="jxr_string">", dimensionD="</span>);
-<a class="jxr_linenumber" name="L273" href="#L273">273</a>         b.append(dimensionD);
+<a class="jxr_linenumber" name="L273" href="#L273">273</a>         b.append(getDimensionD());
 <a class="jxr_linenumber" name="L274" href="#L274">274</a>         b.append(<span class="jxr_string">", typeOfElectronicPositionFixingDevice="</span>);
-<a class="jxr_linenumber" name="L275" href="#L275">275</a>         b.append(typeOfElectronicPositionFixingDevice);
+<a class="jxr_linenumber" name="L275" href="#L275">275</a>         b.append(getTypeOfElectronicPositionFixingDevice());
 <a class="jxr_linenumber" name="L276" href="#L276">276</a>         b.append(<span class="jxr_string">", expectedTimeOfArrival="</span>);
-<a class="jxr_linenumber" name="L277" href="#L277">277</a>         b.append(expectedTimeOfArrival);
+<a class="jxr_linenumber" name="L277" href="#L277">277</a>         b.append(getExpectedTimeOfArrival());
 <a class="jxr_linenumber" name="L278" href="#L278">278</a>         b.append(<span class="jxr_string">", expectedTimeOfArrivalUnprocessed="</span>);
-<a class="jxr_linenumber" name="L279" href="#L279">279</a>         b.append(expectedTimeOfArrivalUnprocessed);
+<a class="jxr_linenumber" name="L279" href="#L279">279</a>         b.append(getExpectedTimeOfArrivalUnprocessed());
 <a class="jxr_linenumber" name="L280" href="#L280">280</a>         b.append(<span class="jxr_string">", maximumPresentStaticDraughtMetres="</span>);
-<a class="jxr_linenumber" name="L281" href="#L281">281</a>         b.append(maximumPresentStaticDraughtMetres);
+<a class="jxr_linenumber" name="L281" href="#L281">281</a>         b.append(getMaximumPresentStaticDraughtMetres());
 <a class="jxr_linenumber" name="L282" href="#L282">282</a>         b.append(<span class="jxr_string">", destination="</span>);
-<a class="jxr_linenumber" name="L283" href="#L283">283</a>         b.append(destination);
+<a class="jxr_linenumber" name="L283" href="#L283">283</a>         b.append(getDestination());
 <a class="jxr_linenumber" name="L284" href="#L284">284</a>         b.append(<span class="jxr_string">", dataTerminalAvailable="</span>);
-<a class="jxr_linenumber" name="L285" href="#L285">285</a>         b.append(dataTerminalAvailable);
+<a class="jxr_linenumber" name="L285" href="#L285">285</a>         b.append(getDataTerminalAvailable());
 <a class="jxr_linenumber" name="L286" href="#L286">286</a>         b.append(<span class="jxr_string">", spare="</span>);
-<a class="jxr_linenumber" name="L287" href="#L287">287</a>         b.append(spare);
+<a class="jxr_linenumber" name="L287" href="#L287">287</a>         b.append(getSpare());
 <a class="jxr_linenumber" name="L288" href="#L288">288</a>         b.append(<span class="jxr_string">", shipType="</span>);
-<a class="jxr_linenumber" name="L289" href="#L289">289</a>         b.append(shipType);
-<a class="jxr_linenumber" name="L290" href="#L290">290</a>         b.append(<span class="jxr_string">", dimensionB="</span>);
-<a class="jxr_linenumber" name="L291" href="#L291">291</a>         b.append(dimensionB);
-<a class="jxr_linenumber" name="L292" href="#L292">292</a>         b.append(<span class="jxr_string">"]"</span>);
-<a class="jxr_linenumber" name="L293" href="#L293">293</a>         <strong class="jxr_keyword">return</strong> b.toString();
-<a class="jxr_linenumber" name="L294" href="#L294">294</a>     }
-<a class="jxr_linenumber" name="L295" href="#L295">295</a> 
-<a class="jxr_linenumber" name="L296" href="#L296">296</a> }
+<a class="jxr_linenumber" name="L289" href="#L289">289</a>         b.append(getShipType());
+<a class="jxr_linenumber" name="L290" href="#L290">290</a>         b.append(<span class="jxr_string">"]"</span>);
+<a class="jxr_linenumber" name="L291" href="#L291">291</a>         <strong class="jxr_keyword">return</strong> b.toString();
+<a class="jxr_linenumber" name="L292" href="#L292">292</a>     }
+<a class="jxr_linenumber" name="L293" href="#L293">293</a> 
+<a class="jxr_linenumber" name="L294" href="#L294">294</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>

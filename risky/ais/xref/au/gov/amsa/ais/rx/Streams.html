@@ -685,14 +685,11 @@
 <a class="jxr_linenumber" name="L677" href="#L677">677</a>     }
 <a class="jxr_linenumber" name="L678" href="#L678">678</a> 
 <a class="jxr_linenumber" name="L679" href="#L679">679</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
-<a class="jxr_linenumber" name="L680" href="#L680">680</a>         <em class="jxr_comment">// print(connectAndExtract("mariweb", 9010).take(10));</em>
-<a class="jxr_linenumber" name="L681" href="#L681">681</a>         <strong class="jxr_keyword">long</strong> t = System.currentTimeMillis();
-<a class="jxr_linenumber" name="L682" href="#L682">682</a>         <strong class="jxr_keyword">int</strong> count = extractMessages(nmeaFrom(<strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"/home/dxm/temp/NMEA_ITU_20150101"</span>))).count()
-<a class="jxr_linenumber" name="L683" href="#L683">683</a>                 .toBlocking().single();
-<a class="jxr_linenumber" name="L684" href="#L684">684</a>         <strong class="jxr_keyword">double</strong> rate = count * 1000.0 / (System.currentTimeMillis() - t);
-<a class="jxr_linenumber" name="L685" href="#L685">685</a>         System.out.println(<span class="jxr_string">"read "</span> + count + <span class="jxr_string">" records, rateMsgsPerSecond = "</span> + rate);
-<a class="jxr_linenumber" name="L686" href="#L686">686</a>     }
-<a class="jxr_linenumber" name="L687" href="#L687">687</a> }
+<a class="jxr_linenumber" name="L680" href="#L680">680</a>         Streams.nmeaFromGzip(<strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"/media/an/nmea/2015/NMEA_ITU_20150521.gz"</span>))
+<a class="jxr_linenumber" name="L681" href="#L681">681</a>                 .compose(o -&gt; Streams.extract(o)).takeLast(10000).forEach(System.out::println);
+<a class="jxr_linenumber" name="L682" href="#L682">682</a> 
+<a class="jxr_linenumber" name="L683" href="#L683">683</a>     }
+<a class="jxr_linenumber" name="L684" href="#L684">684</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>

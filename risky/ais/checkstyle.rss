@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2015</copyright>
     <item>
-      <title>File: 92,
-             Errors: 8252,
+      <title>File: 94,
+             Errors: 7973,
              Warnings: 0,
              Infos: 0
       </title>
@@ -83,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  164
+                  165
                 </td>
               </tr>
                           <tr>
@@ -363,7 +363,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  61
+                  69
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisShipStaticUtil.java">au/gov/amsa/ais/message/AisShipStaticUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  28
                 </td>
               </tr>
                           <tr>
@@ -881,7 +895,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  369
+                  146
                 </td>
               </tr>
                           <tr>
@@ -937,7 +951,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  58
+                  34
                 </td>
               </tr>
                           <tr>
@@ -1063,7 +1077,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  99
+                  29
                 </td>
               </tr>
                           <tr>
@@ -1278,6 +1292,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.StateMachineExampleTest.java">au/gov/amsa/util/StateMachineExampleTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.util.SixBitTest.java">au/gov/amsa/util/SixBitTest.java</a>
                 </td>
                 <td>
@@ -1287,7 +1315,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  77
+                  76
                 </td>
               </tr>
                           <tr>

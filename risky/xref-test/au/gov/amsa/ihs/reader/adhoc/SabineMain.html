@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>SabineMain xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../../testapidocs/au/gov/amsa/ihs/reader/adhoc/SabineMain.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.ihs.reader.adhoc;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> java.io.FileNotFoundException;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.io.PrintStream;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.util.Arrays;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.util.stream.Collectors;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.ihs.reader.IhsReader;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.ihs.reader.Key;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../../au/gov/amsa/ihs/reader/adhoc/SabineMain.html">SabineMain</a> {
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) <strong class="jxr_keyword">throws</strong> FileNotFoundException {
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>          File file = <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"/media/an/ship-data/ihs/608750-2015-04-01.zip"</span>);
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>          List&lt;Key&gt; keys = Arrays.asList(Key.LRIMOShipNo, Key.ShipName, Key.ShipbuilderCompanyCode,
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>                  Key.CountryOfBuildCode, Key.MainEngineBuilderCode, Key.MainEngineDesignerCode,
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>                  Key.MainEngineModel, Key.MainEngineType, Key.PropulsionTypeCode, Key.PropulsionType,
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>                  Key.DeathDate, Key.DeliveryDate, Key.DateOfBuild, Key.Deadweight, Key.GrossTonnage,
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>                  Key.LengthOverallLOA, Key.LiquidCapacity, Key.TEU, Key.PassengerCapacity,
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>                  Key.StatCode5, Key.ShipStatus, Key.ShipStatusCode, Key.ShipStatusEffectiveDate,
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>                  Key.FlagCode, Key.ClassificationSocietyCode,
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>                  Key.DocumentofComplianceDOCCompanyCode);
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          <strong class="jxr_keyword">try</strong> (PrintStream out = <strong class="jxr_keyword">new</strong> PrintStream(<span class="jxr_string">"target/ships.txt"</span>)) {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>              out.println(keys.stream().map(key -&gt; key.name()).collect(Collectors.joining(<span class="jxr_string">"\t"</span>)));
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>              IhsReader.fromZip(file).map(map -&gt; {
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>                  <strong class="jxr_keyword">return</strong> keys.stream().map(key -&gt; map.get(key.name())).map(x -&gt; x == <strong class="jxr_keyword">null</strong> ? <span class="jxr_string">""</span> : x)
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>                          .collect(Collectors.joining(<span class="jxr_string">"\t"</span>));
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>              })
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>                      <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>                      .doOnNext(out::println)
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>                      <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>                      .subscribe();
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          }
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      }
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+</body>
+</html>

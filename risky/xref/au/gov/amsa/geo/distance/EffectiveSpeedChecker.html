@@ -8,49 +8,50 @@
 <div id="overview"><a href="../../../../../../apidocs/au/gov/amsa/geo/distance/EffectiveSpeedChecker.html">View Javadoc</a></div><pre>
 <a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.geo.distance;
 <a class="jxr_linenumber" name="L2" href="#L2">2</a>   
-<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> au.gov.amsa.geo.Util.toPos;
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.util.concurrent.TimeUnit;
 <a class="jxr_linenumber" name="L4" href="#L4">4</a>   
-<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.util.concurrent.TimeUnit;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> com.google.common.base.Optional;
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   
-<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.geo.model.Fix;
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.geo.model.SegmentOptions;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> com.google.common.base.Optional;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/geo/distance/EffectiveSpeedChecker.html">EffectiveSpeedChecker</a> {
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> effectiveSpeedOk(<a href="../../../../../au/gov/amsa/geo/model/Fix.html">Fix</a> a, <a href="../../../../../au/gov/amsa/geo/model/Fix.html">Fix</a> b, <a href="../../../../../au/gov/amsa/geo/model/SegmentOptions.html">SegmentOptions</a> o) {
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  		Optional&lt;Double&gt; speedKnots = effectiveSpeedKnots(a, b, o);
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  		<strong class="jxr_keyword">return</strong> !speedKnots.isPresent() || speedKnots.get() &lt;= o.maxSpeedKnots();
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  	}
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Optional&lt;Double&gt; effectiveSpeedKnots(<a href="../../../../../au/gov/amsa/geo/model/Fix.html">Fix</a> a, <a href="../../../../../au/gov/amsa/geo/model/Fix.html">Fix</a> b,
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  			SegmentOptions o) {
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  		<strong class="jxr_keyword">long</strong> timeDiffMs = Math.abs(a.getTime() - b.getTime());
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  		<strong class="jxr_keyword">if</strong> (o.acceptAnyFixAfterHours() != <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  				&amp;&amp; timeDiffMs &gt;= TimeUnit.HOURS.toMillis(o
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  						.acceptAnyFixAfterHours())) {
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  			<strong class="jxr_keyword">return</strong> Optional.absent();
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  		} <strong class="jxr_keyword">else</strong> {
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  			<strong class="jxr_keyword">double</strong> distanceBetweenFixesNm = 1.852 * toPos(a).getDistanceToKm(
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  					toPos(b));
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  			<strong class="jxr_keyword">if</strong> (o.maxDistancePerSegmentNm() != <strong class="jxr_keyword">null</strong>
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  					&amp;&amp; distanceBetweenFixesNm &gt; o.maxDistancePerSegmentNm())
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  				<strong class="jxr_keyword">return</strong> Optional.absent();
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  			<strong class="jxr_keyword">if</strong> (distanceBetweenFixesNm &gt; o.speedCheckDistanceThresholdNm()) {
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  				<strong class="jxr_keyword">double</strong> timeDiffHoursFloored = (<strong class="jxr_keyword">double</strong>) Math.max(timeDiffMs,
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  						o.speedCheckMinTimeDiffMs())
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  						/ TimeUnit.HOURS.toMillis(1);
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  				<strong class="jxr_keyword">double</strong> effectiveSpeedKnots = distanceBetweenFixesNm
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  						/ timeDiffHoursFloored;
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  				<strong class="jxr_keyword">return</strong> Optional.of(effectiveSpeedKnots);
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  			} <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  				<strong class="jxr_keyword">return</strong> Optional.absent();
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  		}
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  	}
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  }
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.geo.model.SegmentOptions;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.risky.format.Fix;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.util.navigation.Position;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/geo/distance/EffectiveSpeedChecker.html">EffectiveSpeedChecker</a> {
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> effectiveSpeedOk(<a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a> a, <a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a> b, <a href="../../../../../au/gov/amsa/geo/model/SegmentOptions.html">SegmentOptions</a> o) {
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>          <strong class="jxr_keyword">return</strong> effectiveSpeedOk(a.time(), a.lat(), a.lon(), b.time(), b.lat(), b.lon(), o);
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      }
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> effectiveSpeedOk(<strong class="jxr_keyword">long</strong> aTime, <strong class="jxr_keyword">double</strong> aLat, <strong class="jxr_keyword">double</strong> aLon, <strong class="jxr_keyword">long</strong> bTime,
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>              <strong class="jxr_keyword">double</strong> bLat, <strong class="jxr_keyword">double</strong> bLon, <a href="../../../../../au/gov/amsa/geo/model/SegmentOptions.html">SegmentOptions</a> o) {
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          Optional&lt;Double&gt; speedKnots = effectiveSpeedKnots(aTime, aLat, aLon, bTime, bLat, bLon, o);
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          <strong class="jxr_keyword">return</strong> !speedKnots.isPresent() || speedKnots.get() &lt;= o.maxSpeedKnots();
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      }
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Optional&lt;Double&gt; effectiveSpeedKnots(<a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a> a, <a href="../../../../../au/gov/amsa/risky/format/Fix.html">Fix</a> b, <a href="../../../../../au/gov/amsa/geo/model/SegmentOptions.html">SegmentOptions</a> o) {
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          <strong class="jxr_keyword">return</strong> effectiveSpeedKnots(a.time(), a.lat(), a.lon(), b.time(), b.lat(), b.lon(), o);
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      }
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Optional&lt;Double&gt; effectiveSpeedKnots(<strong class="jxr_keyword">long</strong> aTime, <strong class="jxr_keyword">double</strong> aLat, <strong class="jxr_keyword">double</strong> aLon,
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>              <strong class="jxr_keyword">long</strong> bTime, <strong class="jxr_keyword">double</strong> bLat, <strong class="jxr_keyword">double</strong> bLon, <a href="../../../../../au/gov/amsa/geo/model/SegmentOptions.html">SegmentOptions</a> o) {
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <strong class="jxr_keyword">long</strong> timeDiffMs = Math.abs(aTime - bTime);
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          <strong class="jxr_keyword">if</strong> (o.acceptAnyFixAfterHours() != <strong class="jxr_keyword">null</strong>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>                  &amp;&amp; timeDiffMs &gt;= TimeUnit.HOURS.toMillis(o.acceptAnyFixAfterHours())) {
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>              <strong class="jxr_keyword">return</strong> Optional.absent();
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>              <strong class="jxr_keyword">double</strong> distanceBetweenFixesNm = Position.create(aLat, aLon)
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>                      .getDistanceToKm(Position.create(bLat, bLon)) / 1.852;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>              <strong class="jxr_keyword">if</strong> (distanceBetweenFixesNm &gt; o.speedCheckDistanceThresholdNm()) {
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>                  <strong class="jxr_keyword">double</strong> timeDiffHoursFloored = (<strong class="jxr_keyword">double</strong>) Math.max(timeDiffMs,
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>                          o.speedCheckMinTimeDiffMs()) / TimeUnit.HOURS.toMillis(1);
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>                  <strong class="jxr_keyword">double</strong> effectiveSpeedKnots = distanceBetweenFixesNm / timeDiffHoursFloored;
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>                  <strong class="jxr_keyword">return</strong> Optional.of(effectiveSpeedKnots);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>              } <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>                  <strong class="jxr_keyword">return</strong> Optional.absent();
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          }
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      }
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>

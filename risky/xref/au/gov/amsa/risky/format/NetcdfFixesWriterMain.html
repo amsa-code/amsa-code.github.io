@@ -13,18 +13,18 @@
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/risky/format/NetcdfFixesWriterMain.html">NetcdfFixesWriterMain</a> {
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   		<strong class="jxr_keyword">try</strong> {
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  			File input = <strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"input"</span>));
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  			File output = <strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"output"</span>));
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  			Pattern pattern = Pattern.compile(System.getProperty(<span class="jxr_string">"pattern"</span>));
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  			NetcdfFixesWriter.convertToNetcdf(input, output, pattern).count()
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  					.toBlocking().single();
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  		} <strong class="jxr_keyword">catch</strong> (RuntimeException e) {
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  			System.out
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  					.println(<span class="jxr_string">"Usage: -Dinput=&lt;input directory&gt; -Doutput=&lt;output directory&gt; -Dpattern=&lt;filename pattern&gt;"</span>);
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  		}
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  	}
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>       <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>           <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>              File input = <strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"input"</span>));
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>              File output = <strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"output"</span>));
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>              Pattern pattern = Pattern.compile(System.getProperty(<span class="jxr_string">"pattern"</span>));
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>              NetcdfFixesWriter.convertToNetcdf(input, output, pattern).count().toBlocking().single();
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>          } <strong class="jxr_keyword">catch</strong> (RuntimeException e) {
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>              e.printStackTrace();
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>              System.out
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>                      .println(<span class="jxr_string">"Usage: -Dinput=&lt;input directory&gt; -Doutput=&lt;output directory&gt; -Dpattern=&lt;filename pattern&gt;"</span>);
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>          }
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      }
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  }
 </pre>
 <hr/>

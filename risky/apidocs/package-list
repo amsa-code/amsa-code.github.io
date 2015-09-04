@@ -5,13 +5,13 @@ au.gov.amsa.ais.rx.operators
 au.gov.amsa.animator
 au.gov.amsa.craft.analyzer.wms
 au.gov.amsa.geo
-au.gov.amsa.geo.consensus
 au.gov.amsa.geo.distance
 au.gov.amsa.geo.model
 au.gov.amsa.geo.projection
 au.gov.amsa.gt
 au.gov.amsa.ihs.model
 au.gov.amsa.ihs.reader
+au.gov.amsa.mariweb
 au.gov.amsa.navigation
 au.gov.amsa.navigation.ais
 au.gov.amsa.risky.format
@@ -20,7 +20,10 @@ au.gov.amsa.streams
 au.gov.amsa.util
 au.gov.amsa.util.identity
 au.gov.amsa.util.navigation
+au.gov.amsa.util.netcdf
 au.gov.amsa.util.nmea
 au.gov.amsa.util.nmea.saver
 au.gov.amsa.util.rx
+au.gov.amsa.util.swing
 com.github.davidmoten.renjin
+com.github.davidmoten.util

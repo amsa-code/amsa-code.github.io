@@ -14,97 +14,107 @@
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertTrue;
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   
 <a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.io.File;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> java.io.IOException;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> java.io.InputStreamReader;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> java.util.List;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">import</strong> org.geotools.geometry.jts.JTSFactoryFinder;
-<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>  
-<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.streams.Strings;
-<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
-<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <strong class="jxr_keyword">import</strong> com.google.common.collect.Lists;
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> com.vividsolutions.jts.geom.Coordinate;
-<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> com.vividsolutions.jts.geom.GeometryFactory;
-<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> com.vividsolutions.jts.geom.Point;
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../au/gov/amsa/gt/ShapefileTest.html">ShapefileTest</a> {
-<a class="jxr_linenumber" name="L24" href="#L24">24</a>  
-<a class="jxr_linenumber" name="L25" href="#L25">25</a>  	@Test
-<a class="jxr_linenumber" name="L26" href="#L26">26</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLoadShapefileFromFileSystem() {
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>  		Shapefile shape = Shapefile.from(<strong class="jxr_keyword">new</strong> File(
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>  				<span class="jxr_string">"src/test/resources/shapefile-srr-polygon/srr.shp"</span>));
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>  		assertTrue(shape.contains(-20, 135));
-<a class="jxr_linenumber" name="L30" href="#L30">30</a>  		assertFalse(shape.contains(0, 0));
-<a class="jxr_linenumber" name="L31" href="#L31">31</a>  		assertEquals(4, shape.geometries().size());
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>  		shape.close();
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>  
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>  	}
-<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
-<a class="jxr_linenumber" name="L36" href="#L36">36</a>  	@Test
-<a class="jxr_linenumber" name="L37" href="#L37">37</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLoadShapefileFromZippedInputStream() <strong class="jxr_keyword">throws</strong> Exception {
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>  		Shapefile shape = Shapefile.fromZip(Shapefile.<strong class="jxr_keyword">class</strong>
-<a class="jxr_linenumber" name="L39" href="#L39">39</a>  				.getResourceAsStream(<span class="jxr_string">"/shapefile-srr-polygon.zip"</span>));
-<a class="jxr_linenumber" name="L40" href="#L40">40</a>  		assertFalse(shape.contains(0, 0));
-<a class="jxr_linenumber" name="L41" href="#L41">41</a>  		assertEquals(4, shape.geometries().size());
-<a class="jxr_linenumber" name="L42" href="#L42">42</a>  		shape.close();
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>  	}
-<a class="jxr_linenumber" name="L44" href="#L44">44</a>  
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>  	@Test
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testContainsInSrr() {
-<a class="jxr_linenumber" name="L47" href="#L47">47</a>  		<em class="jxr_comment">// northern border is -12, 113</em>
-<a class="jxr_linenumber" name="L48" href="#L48">48</a>  		Shapefile shape = Shapefile.fromZip(Shapefile.<strong class="jxr_keyword">class</strong>
-<a class="jxr_linenumber" name="L49" href="#L49">49</a>  				.getResourceAsStream(<span class="jxr_string">"/shapefile-srr-polygon.zip"</span>));
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>  
-<a class="jxr_linenumber" name="L51" href="#L51">51</a>  		assertTrue(shape.contains(-13, 113));
-<a class="jxr_linenumber" name="L52" href="#L52">52</a>  		assertFalse(shape.contains(-10, 113));
-<a class="jxr_linenumber" name="L53" href="#L53">53</a>  	}
-<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
-<a class="jxr_linenumber" name="L55" href="#L55">55</a>  	@Test
-<a class="jxr_linenumber" name="L56" href="#L56">56</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testShowDistanceBetweenPoints() {
-<a class="jxr_linenumber" name="L57" href="#L57">57</a>  		GeometryFactory gf = JTSFactoryFinder.getGeometryFactory();
-<a class="jxr_linenumber" name="L58" href="#L58">58</a>  		Point a = gf.createPoint(<strong class="jxr_keyword">new</strong> Coordinate(-10, 114.0));
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>  		Point b = gf.createPoint(<strong class="jxr_keyword">new</strong> Coordinate(-11, 113.0));
-<a class="jxr_linenumber" name="L60" href="#L60">60</a>  		System.out.println(<span class="jxr_string">"distance="</span> + a.distance(b));
-<a class="jxr_linenumber" name="L61" href="#L61">61</a>  	}
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>  
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>  	@Test
-<a class="jxr_linenumber" name="L64" href="#L64">64</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testContainsInSrrWithBuffer() {
-<a class="jxr_linenumber" name="L65" href="#L65">65</a>  		<em class="jxr_comment">// northern border is -12, 113</em>
-<a class="jxr_linenumber" name="L66" href="#L66">66</a>  		Shapefile shape = Shapefile.fromZip(Shapefile.<strong class="jxr_keyword">class</strong>
-<a class="jxr_linenumber" name="L67" href="#L67">67</a>  				.getResourceAsStream(<span class="jxr_string">"/shapefile-srr-polygon.zip"</span>), 3);
-<a class="jxr_linenumber" name="L68" href="#L68">68</a>  
-<a class="jxr_linenumber" name="L69" href="#L69">69</a>  		assertTrue(shape.contains(-13, 113));
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>  		assertTrue(shape.contains(-10, 113));
-<a class="jxr_linenumber" name="L71" href="#L71">71</a>  		assertFalse(shape.contains(-8, 113));
-<a class="jxr_linenumber" name="L72" href="#L72">72</a>  	}
-<a class="jxr_linenumber" name="L73" href="#L73">73</a>  
-<a class="jxr_linenumber" name="L74" href="#L74">74</a>  	@Test
-<a class="jxr_linenumber" name="L75" href="#L75">75</a>  	<strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCreatePolygonShapefile() <strong class="jxr_keyword">throws</strong> IOException {
-<a class="jxr_linenumber" name="L76" href="#L76">76</a>  		<strong class="jxr_keyword">try</strong> (InputStreamReader r = <strong class="jxr_keyword">new</strong> InputStreamReader(
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>  				Shapefile.<strong class="jxr_keyword">class</strong>.getResourceAsStream(<span class="jxr_string">"/southwest.txt"</span>))) {
-<a class="jxr_linenumber" name="L78" href="#L78">78</a>  			<em class="jxr_comment">// read coordinates from classpath</em>
-<a class="jxr_linenumber" name="L79" href="#L79">79</a>  			List&lt;Coordinate&gt; coords = Strings
-<a class="jxr_linenumber" name="L80" href="#L80">80</a>  					.lines(r)
-<a class="jxr_linenumber" name="L81" href="#L81">81</a>  					.map(line -&gt; line.trim())
-<a class="jxr_linenumber" name="L82" href="#L82">82</a>  					.filter(line -&gt; line.length() &gt; 0)
-<a class="jxr_linenumber" name="L83" href="#L83">83</a>  					.filter(line -&gt; line.charAt(0) != '#')
-<a class="jxr_linenumber" name="L84" href="#L84">84</a>  					.doOnNext(System.out::println)
-<a class="jxr_linenumber" name="L85" href="#L85">85</a>  					.map(line -&gt; line.split(<span class="jxr_string">" "</span>))
-<a class="jxr_linenumber" name="L86" href="#L86">86</a>  					.map(items -&gt; <strong class="jxr_keyword">new</strong> Coordinate(parseDouble(items[0]),
-<a class="jxr_linenumber" name="L87" href="#L87">87</a>  							parseDouble(items[1])))
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>  					.toList()
-<a class="jxr_linenumber" name="L89" href="#L89">89</a>  					.map(list -&gt; {
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>  						List&lt;Coordinate&gt; list2 = Lists.newArrayList(list);
-<a class="jxr_linenumber" name="L91" href="#L91">91</a>  						list2.add(<strong class="jxr_keyword">new</strong> Coordinate(list.get(0).x, list.get(0).y));
-<a class="jxr_linenumber" name="L92" href="#L92">92</a>  						<strong class="jxr_keyword">return</strong> list2;
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>  					}).toBlocking().single();
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>  			ShapefileCreator.createPolygon(coords, <strong class="jxr_keyword">new</strong> File(
-<a class="jxr_linenumber" name="L95" href="#L95">95</a>  					<span class="jxr_string">"target/southwest.shp"</span>));
-<a class="jxr_linenumber" name="L96" href="#L96">96</a>  		}
-<a class="jxr_linenumber" name="L97" href="#L97">97</a>  	}
-<a class="jxr_linenumber" name="L98" href="#L98">98</a>  
-<a class="jxr_linenumber" name="L99" href="#L99">99</a>  }
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> java.io.FileWriter;
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> java.io.InputStreamReader;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> java.util.List;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> org.geotools.geometry.jts.JTSFactoryFinder;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.streams.Strings;
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">import</strong> com.google.common.collect.Lists;
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <strong class="jxr_keyword">import</strong> com.vividsolutions.jts.geom.Coordinate;
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <strong class="jxr_keyword">import</strong> com.vividsolutions.jts.geom.GeometryFactory;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <strong class="jxr_keyword">import</strong> com.vividsolutions.jts.geom.Point;
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../au/gov/amsa/gt/ShapefileTest.html">ShapefileTest</a> {
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>      @Test
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLoadShapefileFromFileSystem() {
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          Shapefile shape = Shapefile.from(<strong class="jxr_keyword">new</strong> File(
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>                  <span class="jxr_string">"src/test/resources/shapefile-srr-polygon/srr.shp"</span>));
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          assertTrue(shape.contains(-20, 135));
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          assertFalse(shape.contains(0, 0));
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          assertEquals(4, shape.geometries().size());
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          shape.close();
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      }
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      @Test
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testLoadShapefileFromZippedInputStream() <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          Shapefile shape = Shapefile.fromZip(Shapefile.<strong class="jxr_keyword">class</strong>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>                  .getResourceAsStream(<span class="jxr_string">"/shapefile-srr-polygon.zip"</span>));
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          assertFalse(shape.contains(0, 0));
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          assertEquals(4, shape.geometries().size());
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          shape.close();
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      }
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>      @Test
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testContainsInSrr() {
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          <em class="jxr_comment">// northern border is -12, 113</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          Shapefile shape = Shapefile.fromZip(Shapefile.<strong class="jxr_keyword">class</strong>
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>                  .getResourceAsStream(<span class="jxr_string">"/shapefile-srr-polygon.zip"</span>));
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          assertTrue(shape.contains(-13, 113));
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          assertFalse(shape.contains(-10, 113));
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      }
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      @Test
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testShowDistanceBetweenPoints() {
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          GeometryFactory gf = JTSFactoryFinder.getGeometryFactory();
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          Point a = gf.createPoint(<strong class="jxr_keyword">new</strong> Coordinate(-10, 114.0));
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          Point b = gf.createPoint(<strong class="jxr_keyword">new</strong> Coordinate(-11, 113.0));
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          System.out.println(<span class="jxr_string">"distance="</span> + a.distance(b));
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      }
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      @Test
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testContainsInSrrWithBuffer() {
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          <em class="jxr_comment">// northern border is -12, 113</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          Shapefile shape = Shapefile.fromZip(
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>                  Shapefile.<strong class="jxr_keyword">class</strong>.getResourceAsStream(<span class="jxr_string">"/shapefile-srr-polygon.zip"</span>), 3);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>          assertTrue(shape.contains(-13, 113));
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          assertTrue(shape.contains(-10, 113));
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>          assertFalse(shape.contains(-8, 113));
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      }
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>  
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>      @Test
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testCreatePolygonShapefile() <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          <strong class="jxr_keyword">try</strong> (InputStreamReader r = <strong class="jxr_keyword">new</strong> InputStreamReader(
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>                  Shapefile.<strong class="jxr_keyword">class</strong>.getResourceAsStream(<span class="jxr_string">"/southwest.txt"</span>))) {
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>              <em class="jxr_comment">// read coordinates from classpath</em>
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>              List&lt;Coordinate&gt; coords = Strings.lines(r).map(line -&gt; line.trim())
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>                      .filter(line -&gt; line.length() &gt; 0).filter(line -&gt; line.charAt(0) != '#')
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>                      .doOnNext(System.out::println).map(line -&gt; line.split(<span class="jxr_string">" "</span>))
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>                      .map(items -&gt; <strong class="jxr_keyword">new</strong> Coordinate(parseDouble(items[0]), parseDouble(items[1])))
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>                      .toList().map(list -&gt; {
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>                          List&lt;Coordinate&gt; list2 = Lists.newArrayList(list);
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>                          list2.add(<strong class="jxr_keyword">new</strong> Coordinate(list.get(0).x, list.get(0).y));
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>                          <strong class="jxr_keyword">return</strong> list2;
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>                      }).toBlocking().single();
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>              ShapefileCreator.createPolygon(coords, <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"target/southwest.shp"</span>));
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>          }
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>      }
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>      @Test
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testToGeoJson() <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>          Shapefile shape = Shapefile.fromZip(
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>                  Shapefile.<strong class="jxr_keyword">class</strong>.getResourceAsStream(<span class="jxr_string">"/shapefile-srr-polygon.zip"</span>), 3);
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          FileWriter writer = <strong class="jxr_keyword">new</strong> FileWriter(<span class="jxr_string">"target/srr.geojson"</span>);
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>          shape.writeGeoJson(writer, <span class="jxr_string">"EPSG:4326"</span>);
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>          writer.close();
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>     }
+<a class="jxr_linenumber" name="L101" href="#L101">101</a> 
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         Shapefile shape = Shapefile.from(<strong class="jxr_keyword">new</strong> File(System.getProperty(<span class="jxr_string">"user.home"</span>)
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>                 + <span class="jxr_string">"/temp/amb06_map_eez_pl.shp"</span>));
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         FileWriter writer = <strong class="jxr_keyword">new</strong> FileWriter(<span class="jxr_string">"target/geojson-eez.txt"</span>);
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>         shape.writeGeoJson(writer, <span class="jxr_string">"EPSG:3857"</span>);
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>         writer.close();
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>     }
+<a class="jxr_linenumber" name="L109" href="#L109">109</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2015. All rights reserved.</div>
