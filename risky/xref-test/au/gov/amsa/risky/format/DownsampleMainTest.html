@@ -24,7 +24,7 @@
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>          File file = <strong class="jxr_keyword">new</strong> File(filename);
 <a class="jxr_linenumber" name="L17" href="#L17">17</a>          file.getParentFile().mkdirs();
 <a class="jxr_linenumber" name="L18" href="#L18">18</a>          File outFile = <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"target/ds-output/123456789.track"</span>);
-<a class="jxr_linenumber" name="L19" href="#L19">19</a>          TestingUtil.writeTwoBinaryFixes(filename);
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>          TestingUtil.writeTwoBinaryFixes(filename, BinaryFixesFormat.WITHOUT_MMSI);
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>          setProperty(<span class="jxr_string">"input"</span>, file.getParent());
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>          setProperty(<span class="jxr_string">"output"</span>, outFile.getParent());
 <a class="jxr_linenumber" name="L22" href="#L22">22</a>          setProperty(<span class="jxr_string">"pattern"</span>, <span class="jxr_string">".*.track"</span>);
@@ -33,11 +33,11 @@
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>          <em class="jxr_comment">// only one file should be there</em>
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>          assertEquals(1, outFile.getParentFile().list().length);
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>          <em class="jxr_comment">// only one of the fixes should make it through to the output file</em>
-<a class="jxr_linenumber" name="L28" href="#L28">28</a>          assertEquals(BinaryFixes.BINARY_FIX_BYTES, outFile.length());
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          assertEquals(BinaryFixes.recordSize(BinaryFixesFormat.WITHOUT_MMSI), outFile.length());
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>      }
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2016. All rights reserved.</div>
 </body>
 </html>

@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>streams - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2015</copyright>
+    <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 21,
-             Errors: 579,
+      <title>File: 20,
+             Errors: 497,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,7 +55,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  48
+                  49
                 </td>
               </tr>
                           <tr>
@@ -83,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  15
+                  14
                 </td>
               </tr>
                           <tr>
@@ -111,21 +111,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  30
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.BufferedSubscriber.java">au/gov/amsa/streams/BufferedSubscriber.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  29
+                  27
                 </td>
               </tr>
                           <tr>
@@ -139,7 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  16
+                  17
                 </td>
               </tr>
                           <tr>
@@ -195,7 +181,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  25
+                  3
                 </td>
               </tr>
                           <tr>
@@ -223,7 +209,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  40
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringSplitTest.java">au/gov/amsa/streams/StringSplitTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  44
                 </td>
               </tr>
                           <tr>
@@ -242,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.StringSplitTest.java">au/gov/amsa/streams/StringSplitTest.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Bytes.java">au/gov/amsa/streams/Bytes.java</a>
                 </td>
                 <td>
                   0
@@ -251,21 +251,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  46
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Ob.java">au/gov/amsa/streams/Ob.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  10
+                  48
                 </td>
               </tr>
                           <tr>
@@ -284,7 +270,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Bytes.java">au/gov/amsa/streams/Bytes.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.Ob.java">au/gov/amsa/streams/Ob.java</a>
                 </td>
                 <td>
                   0
@@ -293,7 +279,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  48
+                  9
                 </td>
               </tr>
                           <tr>

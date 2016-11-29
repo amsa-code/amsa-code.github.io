@@ -12,8 +12,8 @@
 <div class="separator">&nbsp;</div>
 <table class="report">
 <thead><tr>  <td class="heading">Classes in this File</td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Line Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Branch Coverage</a></td>  <td class="heading"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">Complexity</a></td></tr></thead>
-  <tr><td><a href="au.gov.amsa.util.nmea.NmeaMessage.html">NmeaMessage</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">91%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:91px"><span class="text">56/61</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">92%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:92px"><span class="text">24/26</span></div></div></td></tr></table></td><td class="value"><span class="hidden">2.238095238095238;</span>2.238</td></tr>
-  <tr><td><a href="au.gov.amsa.util.nmea.NmeaMessage.html">NmeaMessage$SentenceInfo</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">100%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:100px"><span class="text">5/5</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></td><td class="percentgraph"><div class="percentgraph"><div class="na" style="width:100px"><span class="text"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></span></div></div></td></tr></table></td><td class="value"><span class="hidden">2.238095238095238;</span>2.238</td></tr>
+  <tr><td><a href="au.gov.amsa.util.nmea.NmeaMessage.html">NmeaMessage</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">95%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:95px"><span class="text">68/71</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">91%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:91px"><span class="text">33/36</span></div></div></td></tr></table></td><td class="value"><span class="hidden">2.4761904761904763;</span>2.476</td></tr>
+  <tr><td><a href="au.gov.amsa.util.nmea.NmeaMessage.html">NmeaMessage$SentenceInfo</a></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40">100%</td><td class="percentgraph"><div class="percentgraph"><div class="greenbar" style="width:100px"><span class="text">5/5</span></div></div></td></tr></table></td><td><table cellpadding="0px" cellspacing="0px" class="percentgraph"><tr class="percentgraph"><td align="right" class="percentgraph" width="40"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></td><td class="percentgraph"><div class="percentgraph"><div class="na" style="width:100px"><span class="text"><a class="dfn" href="help.html" onclick="popupwindow('help.html'); return false;">N/A</a></span></div></div></td></tr></table></td><td class="value"><span class="hidden">2.4761904761904763;</span>2.476</td></tr>
 
 </table>
 <div class="separator">&nbsp;</div>
@@ -27,381 +27,413 @@
 <tr>  <td class="numLine">&nbsp;4</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.List;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;5</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.Map.Entry;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;6</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.regex.Matcher;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;7</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Bean to carry NMEA fields.</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">import</span> java.util.regex.Pattern;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;8</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;9</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author dxm</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">/**</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;10</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * Bean to carry NMEA fields.</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;11</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;12</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> NmeaMessage {</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * @author dxm</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;13</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> * </span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;14</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> LinkedHashMap&lt;String, String&gt; tags;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment"> */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;15</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;String&gt; items;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="keyword">public</span> <span class="keyword">class</span> NmeaMessage {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;16</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> Talker talker;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;17</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> SentenceInfo sentenceInfo;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> LinkedHashMap&lt;String, String&gt; tags;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;18</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> String checksum;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> List&lt;String&gt; items;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;19</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> Talker talker;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;20</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> SentenceInfo sentenceInfo;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;21</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Constructor.</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> String checksum;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;22</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;23</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tags</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;24</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *            is a list of tags from the tag block section of an NMEA</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Constructor.</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;25</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *            message</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;26</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param items</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param tags</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;27</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *            is the list of columns from the NMEA message (not including</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *            is a list of tags from the tag block section of an NMEA</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;28</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     *            the tag block) but including the checksum on the final column.</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *            message</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;29</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @param items</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;30</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *            is the list of columns from the NMEA message (not including</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;31</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     *            the tag block) but including the checksum on the final column.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;32</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;30</td>  <td class="nbHitsCovered">&nbsp;234972</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> NmeaMessage(LinkedHashMap&lt;String, String&gt; tags, List&lt;String&gt; items, String checksum) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;31</td>  <td class="nbHitsCovered">&nbsp;234972</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.tags = tags;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;32</td>  <td class="nbHitsCovered">&nbsp;234972</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.items = items;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;33</td>  <td class="nbHitsCovered"><a title="Line 33: Conditional coverage 100% (2/2).">&nbsp;234972</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 33: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (items.get(0).length() &gt;= 3)</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;34</td>  <td class="nbHitsCovered">&nbsp;234970</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.talker = NmeaUtil.getTalker((items.get(0).substring(1, 3)));</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;35</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLineCover">&nbsp;33</td>  <td class="nbHitsCovered">&nbsp;234986</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> NmeaMessage(LinkedHashMap&lt;String, String&gt; tags, List&lt;String&gt; items, String checksum) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;34</td>  <td class="nbHitsCovered">&nbsp;234986</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.tags = tags;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;35</td>  <td class="nbHitsCovered">&nbsp;234986</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.items = items;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;36</td>  <td class="nbHitsCovered"><a title="Line 36: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;234986</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 36: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">if</span> (!items.isEmpty() &amp;&amp; items.get(0).length() &gt;= 3)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;37</td>  <td class="nbHitsCovered">&nbsp;234978</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.talker = NmeaUtil.getTalker((items.get(0).substring(1, 3)));</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;38</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;36</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;            talker = Talker.UNKNOWN;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;37</td>  <td class="nbHitsCovered">&nbsp;234972</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.sentenceInfo = getSentenceInfo(tags, items);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;38</td>  <td class="nbHitsCovered">&nbsp;234818</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.checksum = checksum;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;39</td>  <td class="nbHitsCovered">&nbsp;234818</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;40</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;41</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;42</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 's:' value from the tag block.</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;39</td>  <td class="nbHitsCovered">&nbsp;8</td>  <td class="src"><pre class="src">&nbsp;            talker = Talker.UNKNOWN;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;40</td>  <td class="nbHitsCovered">&nbsp;234986</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.sentenceInfo = getSentenceInfo(tags, items);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;41</td>  <td class="nbHitsCovered">&nbsp;234832</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.checksum = checksum;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;42</td>  <td class="nbHitsCovered">&nbsp;234832</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;43</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;44</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;45</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 's:' value from the tag block.</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;46</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getSource() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;47</td>  <td class="nbHitsCovered">&nbsp;1007</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags.get(<span class="string">"s"</span>);</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;47</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;48</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;49</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;50</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getSource() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;50</td>  <td class="nbHitsCovered">&nbsp;1010</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags.get(<span class="string">"s"</span>);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;51</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'c:' value from the tag block times 1000 to convert to</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;52</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * millis. Returns null if not present.</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;53</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;54</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'c:' value from the tag block times 1000 to convert to</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;55</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * millis. Returns null if not present.</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;56</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;57</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;58</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;59</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Long getUnixTimeMillis() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;57</td>  <td class="nbHitsCovered">&nbsp;37029</td>  <td class="src"><pre class="src">&nbsp;        String time = tags.get(<span class="string">"c"</span>);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;58</td>  <td class="nbHitsCovered"><a title="Line 58: Conditional coverage 100% (2/2).">&nbsp;37029</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 58: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (time == <span class="keyword">null</span>)</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;59</td>  <td class="nbHitsCovered">&nbsp;35408</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;60</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLineCover">&nbsp;60</td>  <td class="nbHitsCovered">&nbsp;37034</td>  <td class="src"><pre class="src">&nbsp;        String time = tags.get(<span class="string">"c"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;61</td>  <td class="nbHitsCovered"><a title="Line 61: Conditional coverage 100% (2/2).">&nbsp;37034</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 61: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (time == <span class="keyword">null</span>)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;62</td>  <td class="nbHitsCovered">&nbsp;35409</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;63</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;61</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLine">&nbsp;64</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            <span class="keyword">try</span> {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;62</td>  <td class="nbHitsCovered">&nbsp;1621</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> Long.parseLong(time) * 1000;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;63</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            } <span class="keyword">catch</span> (NumberFormatException e) {</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;64</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;65</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;66</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;67</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;65</td>  <td class="nbHitsCovered">&nbsp;1625</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> Long.parseLong(time) * 1000;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;66</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;            } <span class="keyword">catch</span> (NumberFormatException e) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;67</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;68</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;69</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'd:' value from the tag block.</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;70</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;71</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;72</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;73</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getDestination() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;74</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags.get(<span class="string">"d"</span>);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;75</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;76</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;77</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;78</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'g:' value from the tag block.</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;79</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;80</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;81</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;82</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getSentenceGroupingFromTagBlock() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;83</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags.get(<span class="string">"g"</span>);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;84</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;85</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;86</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;87</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'n:' value from the tag block.</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;88</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;89</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;90</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;91</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Integer getLineCount() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;92</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;        String count = tags.get(<span class="string">"n"</span>);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;93</td>  <td class="nbHitsCovered"><a title="Line 93: Conditional coverage 100% (2/2).">&nbsp;3</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 93: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (count == <span class="keyword">null</span>)</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;94</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;95</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;96</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> Integer.parseInt(count);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;97</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;98</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;99</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;100</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'r:' value from the tag block times 1000 to convert to</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;101</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * millis.</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;102</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;103</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;104</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;105</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Long getRelativeTimeMillis() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;106</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;        String time = tags.get(<span class="string">"r"</span>);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;107</td>  <td class="nbHitsCovered"><a title="Line 107: Conditional coverage 100% (2/2).">&nbsp;3</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 107: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (time == <span class="keyword">null</span>)</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;108</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;109</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;110</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> Long.parseLong(time) * 1000;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;111</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;112</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;113</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;114</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 't:' value from the tag block.</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;115</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;116</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;117</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;118</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getText() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;119</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags.get(<span class="string">"t"</span>);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;120</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;121</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;122</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;123</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns a list of the NMEA items from the columns after the tag block.</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;124</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;125</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;126</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;127</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> List&lt;String&gt; getItems() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;128</td>  <td class="nbHitsCovered">&nbsp;1183911</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> items;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;129</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;130</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;131</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> LinkedHashMap&lt;String, String&gt; getTags() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;132</td>  <td class="nbHitsCovered">&nbsp;74</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;133</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;134</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;135</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Talker getTalker() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;136</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> talker;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;137</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;138</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;139</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String toLine() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;140</td>  <td class="nbHitsCovered">&nbsp;211</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> NmeaUtil.createNmeaLine(tags, items);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;141</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;142</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;143</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Integer getSentenceNumber() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;144</td>  <td class="nbHitsUncovered"><a title="Line 144: Conditional coverage 50% (1/2).">&nbsp;148</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 144: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (sentenceInfo != <span class="keyword">null</span>)</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;145</td>  <td class="nbHitsCovered">&nbsp;148</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> sentenceInfo.number;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;146</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;147</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;148</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;149</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;150</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Integer getSentenceCount() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;151</td>  <td class="nbHitsCovered"><a title="Line 151: Conditional coverage 100% (2/2).">&nbsp;5277</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 151: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (sentenceInfo != <span class="keyword">null</span>)</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;152</td>  <td class="nbHitsCovered">&nbsp;4262</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> sentenceInfo.count;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;153</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;154</td>  <td class="nbHitsCovered">&nbsp;1015</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;155</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;156</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;157</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getSentenceGroupId() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;158</td>  <td class="nbHitsUncovered"><a title="Line 158: Conditional coverage 50% (1/2).">&nbsp;224</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 158: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (sentenceInfo != <span class="keyword">null</span>)</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;159</td>  <td class="nbHitsCovered">&nbsp;224</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> sentenceInfo.id;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;160</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;161</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;162</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;163</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;164</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;165</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns a recalculated checksum.</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;166</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;167</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return calculated checksum</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;168</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;169</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String calculateChecksum() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;170</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> NmeaUtil.getChecksum(NmeaUtil.createNmeaLine(tags, items));</span></pre></td></tr>
-<tr>  <td class="numLine">&nbsp;171</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;172</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;173</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getChecksum() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;174</td>  <td class="nbHitsCovered">&nbsp;60730</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> checksum;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;175</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;176</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;177</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> SentenceInfo getSentenceInfo(LinkedHashMap&lt;String, String&gt; tags,</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;178</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            List&lt;String&gt; items) {</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;179</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">try</span> {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;180</td>  <td class="nbHitsCovered">&nbsp;234972</td>  <td class="src"><pre class="src">&nbsp;            String g = tags.get(<span class="string">"g"</span>);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;181</td>  <td class="nbHitsCovered"><a title="Line 181: Conditional coverage 100% (2/2).">&nbsp;234972</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 181: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (g == <span class="keyword">null</span>) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;182</td>  <td class="nbHitsCovered"><a title="Line 182: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;234745</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 182: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">                <span class="keyword">if</span> (items.size() &gt; 2 &amp;&amp; isEncapsulationSentence(items)) {</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;183</td>  <td class="nbHitsCovered">&nbsp;173400</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">int</span> number = Integer.parseInt(items.get(2));</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;184</td>  <td class="nbHitsCovered">&nbsp;173249</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">int</span> count = Integer.parseInt(items.get(1));</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;185</td>  <td class="nbHitsCovered">&nbsp;173249</td>  <td class="src"><pre class="src">&nbsp;                    String id = items.get(3);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;186</td>  <td class="nbHitsCovered">&nbsp;173249</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> <span class="keyword">new</span> SentenceInfo(number, count, id);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;187</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;                } <span class="keyword">else</span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;188</td>  <td class="nbHitsCovered">&nbsp;61345</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;189</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;            } <span class="keyword">else</span> {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;190</td>  <td class="nbHitsCovered">&nbsp;227</td>  <td class="src"><pre class="src">&nbsp;                String[] parts = g.split(<span class="string">"-"</span>);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;191</td>  <td class="nbHitsCovered"><a title="Line 191: Conditional coverage 100% (2/2).">&nbsp;227</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 191: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (parts.length &lt; 3)</a></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;192</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">throw</span> <span class="keyword">new</span> NmeaMessageParseException(<span class="string">"not enough parts available in g tag"</span>);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;193</td>  <td class="nbHitsCovered">&nbsp;224</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> number = Integer.parseInt(parts[0]);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;194</td>  <td class="nbHitsCovered">&nbsp;224</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> count = Integer.parseInt(parts[1]);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;195</td>  <td class="nbHitsCovered">&nbsp;224</td>  <td class="src"><pre class="src">&nbsp;                String id = parts[2];</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;196</td>  <td class="nbHitsCovered">&nbsp;224</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">new</span> SentenceInfo(number, count, id);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;197</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;198</td>  <td class="nbHitsCovered">&nbsp;151</td>  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">catch</span> (NumberFormatException e) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;199</td>  <td class="nbHitsCovered">&nbsp;151</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> NmeaMessageParseException(e.getMessage(), e);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;200</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;201</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLine">&nbsp;69</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;202</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLine">&nbsp;70</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;203</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> isEncapsulationSentence(List&lt;String&gt; items) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;204</td>  <td class="nbHitsCovered">&nbsp;234743</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> items.get(0).startsWith(<span class="string">"!"</span>);</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;205</td>  <td class="nbHits">&nbsp;</td>
+<tr>  <td class="numLine">&nbsp;71</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;72</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'd:' value from the tag block.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;73</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;74</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;75</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;76</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getDestination() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;77</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags.get(<span class="string">"d"</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;78</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;79</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;80</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;81</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'g:' value from the tag block.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;82</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;83</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;84</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;85</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getSentenceGroupingFromTagBlock() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;86</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags.get(<span class="string">"g"</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;87</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;88</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;89</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;90</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'n:' value from the tag block.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;91</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;92</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;93</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;94</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Integer getLineCount() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;95</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;        String count = tags.get(<span class="string">"n"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;96</td>  <td class="nbHitsCovered"><a title="Line 96: Conditional coverage 100% (2/2).">&nbsp;3</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 96: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (count == <span class="keyword">null</span>)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;97</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;98</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;99</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> Integer.parseInt(count);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;100</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;101</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;102</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;103</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 'r:' value from the tag block times 1000 to convert to</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;104</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * millis.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;105</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;106</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;107</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;108</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Long getRelativeTimeMillis() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;109</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;        String time = tags.get(<span class="string">"r"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;110</td>  <td class="nbHitsCovered"><a title="Line 110: Conditional coverage 100% (2/2).">&nbsp;3</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 110: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (time == <span class="keyword">null</span>)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;111</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;112</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;113</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> Long.parseLong(time) * 1000;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;114</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;115</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;116</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;117</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns the 't:' value from the tag block.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;118</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;119</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;120</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;121</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getText() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;122</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags.get(<span class="string">"t"</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;123</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;124</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;125</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;126</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns a list of the NMEA items from the columns after the tag block.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;127</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;128</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;129</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;130</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> List&lt;String&gt; getItems() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;131</td>  <td class="nbHitsCovered">&nbsp;1184444</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> items;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;132</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;133</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;134</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> LinkedHashMap&lt;String, String&gt; getTags() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;135</td>  <td class="nbHitsCovered">&nbsp;78</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> tags;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;136</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;137</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;138</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Talker getTalker() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;139</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> talker;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;140</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;141</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;142</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String toLine() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;143</td>  <td class="nbHitsCovered">&nbsp;213</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> NmeaUtil.createNmeaLine(tags, items);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;144</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;145</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;146</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Integer getSentenceNumber() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;147</td>  <td class="nbHitsUncovered"><a title="Line 147: Conditional coverage 50% (1/2).">&nbsp;158</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 147: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (sentenceInfo != <span class="keyword">null</span>)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;148</td>  <td class="nbHitsCovered">&nbsp;158</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> sentenceInfo.number;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;149</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;150</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;151</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;152</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;153</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Integer getSentenceCount() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;154</td>  <td class="nbHitsCovered"><a title="Line 154: Conditional coverage 100% (2/2).">&nbsp;5303</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 154: Conditional coverage 100% (2/2).">        <span class="keyword">if</span> (sentenceInfo != <span class="keyword">null</span>)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;155</td>  <td class="nbHitsCovered">&nbsp;4287</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> sentenceInfo.count;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;156</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;157</td>  <td class="nbHitsCovered">&nbsp;1016</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;158</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;159</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;160</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getSentenceGroupId() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;161</td>  <td class="nbHitsUncovered"><a title="Line 161: Conditional coverage 50% (1/2).">&nbsp;235</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 161: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (sentenceInfo != <span class="keyword">null</span>)</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;162</td>  <td class="nbHitsCovered">&nbsp;235</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">return</span> sentenceInfo.id;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;163</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;164</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;            <span class="keyword">return</span> <span class="keyword">null</span>;</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;165</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;166</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;167</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="comment">/**</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;168</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * Returns a recalculated checksum.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;169</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * </span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;170</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     * @return calculated checksum</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;171</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;<span class="comment">     */</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;172</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String calculateChecksum() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;173</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> NmeaUtil.getChecksum(NmeaUtil.createNmeaLine(tags, items));</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;174</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;175</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;176</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> String getChecksum() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;177</td>  <td class="nbHitsCovered">&nbsp;60730</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> checksum;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;178</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;179</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;180</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Pattern sentenceTagPattern = Pattern</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;181</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;            .compile(<span class="string">"([1-9][0-9]*)G([1-9][0-9]*)"</span>);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;182</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;183</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> SentenceInfo getSentenceInfo(LinkedHashMap&lt;String, String&gt; tags,</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;184</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            List&lt;String&gt; items) {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;185</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">try</span> {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;186</td>  <td class="nbHitsCovered">&nbsp;234986</td>  <td class="src"><pre class="src">&nbsp;            String g = tags.get(<span class="string">"g"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;187</td>  <td class="nbHitsCovered"><a title="Line 187: Conditional coverage 100% (2/2).">&nbsp;234986</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 187: Conditional coverage 100% (2/2).">            <span class="keyword">if</span> (g != <span class="keyword">null</span>) {</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;188</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// old style NMEA 4.0.0 sentence grouping tag</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;189</td>  <td class="nbHitsCovered">&nbsp;230</td>  <td class="src"><pre class="src">&nbsp;                String[] parts = g.split(<span class="string">"-"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;190</td>  <td class="nbHitsCovered"><a title="Line 190: Conditional coverage 100% (2/2).">&nbsp;230</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 190: Conditional coverage 100% (2/2).">                <span class="keyword">if</span> (parts.length &lt; 3)</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;191</td>  <td class="nbHitsCovered">&nbsp;3</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">throw</span> <span class="keyword">new</span> NmeaMessageParseException(<span class="string">"not enough parts available in g tag"</span>);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;192</td>  <td class="nbHitsCovered">&nbsp;227</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> number = Integer.parseInt(parts[0]);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;193</td>  <td class="nbHitsCovered">&nbsp;227</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">int</span> count = Integer.parseInt(parts[1]);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;194</td>  <td class="nbHitsCovered">&nbsp;227</td>  <td class="src"><pre class="src">&nbsp;                String id = parts[2];</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;195</td>  <td class="nbHitsCovered">&nbsp;227</td>  <td class="src"><pre class="src">&nbsp;                <span class="keyword">return</span> <span class="keyword">new</span> SentenceInfo(number, count, id);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;196</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;197</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;            } <span class="keyword">else</span> {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;198</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// look for new style NMEA 4.1.0 sentence grouping tag (e.g.</span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;199</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// 1G2)</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;200</td>  <td class="nbHitsCovered"><a title="Line 200: Conditional coverage 100% (2/2).">&nbsp;234756</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 200: Conditional coverage 100% (2/2).">                <span class="keyword">for</span> (Entry&lt;String, String&gt; entry : tags.entrySet()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;201</td>  <td class="nbHitsCovered">&nbsp;1317</td>  <td class="src"><pre class="src">&nbsp;                    Matcher matcher = sentenceTagPattern.matcher(entry.getKey());</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;202</td>  <td class="nbHitsCovered"><a title="Line 202: Conditional coverage 100% (2/2).">&nbsp;1317</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 202: Conditional coverage 100% (2/2).">                    <span class="keyword">if</span> (matcher.matches()) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;203</td>  <td class="nbHitsCovered">&nbsp;9</td>  <td class="src"><pre class="src">&nbsp;                        <span class="keyword">int</span> number = Integer.parseInt(matcher.group(1));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;204</td>  <td class="nbHitsCovered">&nbsp;9</td>  <td class="src"><pre class="src">&nbsp;                        <span class="keyword">int</span> count = Integer.parseInt(matcher.group(2));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;205</td>  <td class="nbHitsCovered">&nbsp;9</td>  <td class="src"><pre class="src">&nbsp;                        String id = entry.getValue();</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;206</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;207</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> SentenceInfo {</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                        <span class="comment">// found it so return the sentence info</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;207</td>  <td class="nbHitsCovered">&nbsp;9</td>  <td class="src"><pre class="src">&nbsp;                        <span class="keyword">return</span> <span class="keyword">new</span> SentenceInfo(number, count, id);</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;208</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> number;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;209</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> count;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                    }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;209</td>  <td class="nbHitsCovered">&nbsp;1308</td>  <td class="src"><pre class="src">&nbsp;                }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;210</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        String id;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;211</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;212</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> SentenceInfo(<span class="keyword">int</span> number, <span class="keyword">int</span> count, String id) {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;213</td>  <td class="nbHitsCovered">&nbsp;173473</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">super</span>();</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;214</td>  <td class="nbHitsCovered">&nbsp;173473</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.number = number;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;215</td>  <td class="nbHitsCovered">&nbsp;173473</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.count = count;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;216</td>  <td class="nbHitsCovered">&nbsp;173473</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.id = id;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;217</td>  <td class="nbHitsCovered">&nbsp;173473</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;                <span class="comment">// didn't find the grouping tag</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;211</td>  <td class="nbHitsCovered"><a title="Line 211: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;234747</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 211: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">                <span class="keyword">if</span> (items.size() &gt; 2 &amp;&amp; isEncapsulationSentence(items)) {</a></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;212</td>  <td class="nbHitsCovered">&nbsp;173401</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">int</span> number = Integer.parseInt(items.get(2));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;213</td>  <td class="nbHitsCovered">&nbsp;173250</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">int</span> count = Integer.parseInt(items.get(1));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;214</td>  <td class="nbHitsCovered">&nbsp;173250</td>  <td class="src"><pre class="src">&nbsp;                    String id = items.get(3);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;215</td>  <td class="nbHitsCovered">&nbsp;173250</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> <span class="keyword">new</span> SentenceInfo(number, count, id);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;216</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;                } <span class="keyword">else</span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;217</td>  <td class="nbHitsCovered">&nbsp;61346</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">return</span> <span class="keyword">null</span>;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;218</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;219</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLine">&nbsp;220</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">boolean</span> isSingleSentence() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;221</td>  <td class="nbHitsCovered"><a title="Line 221: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;3069</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 221: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">return</span> getSentenceCount() == <span class="keyword">null</span> || getSentenceCount() == 1;</a></pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;219</td>  <td class="nbHitsCovered">&nbsp;151</td>  <td class="src"><pre class="src">&nbsp;        } <span class="keyword">catch</span> (NumberFormatException e) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;220</td>  <td class="nbHitsCovered">&nbsp;151</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">throw</span> <span class="keyword">new</span> NmeaMessageParseException(e.getMessage(), e);</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;221</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;222</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;223</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;224</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">boolean</span> isEncapsulationSentence(List&lt;String&gt; items) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;225</td>  <td class="nbHitsUncovered"><a title="Line 225: Conditional coverage 75% (3/4) [each condition: 50%, 100%].">&nbsp;234744</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 225: Conditional coverage 75% (3/4) [each condition: 50%, 100%].">        <span class="keyword">return</span> items.size() &gt; 0 &amp;&amp; items.get(0).startsWith(<span class="string">"!"</span>);</a></span></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;226</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;227</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;228</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">class</span> SentenceInfo {</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;229</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> number;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;230</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">int</span> count;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;231</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        String id;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;232</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;233</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> SentenceInfo(<span class="keyword">int</span> number, <span class="keyword">int</span> count, String id) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;234</td>  <td class="nbHitsCovered">&nbsp;173486</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">super</span>();</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;235</td>  <td class="nbHitsCovered">&nbsp;173486</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.number = number;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;236</td>  <td class="nbHitsCovered">&nbsp;173486</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.count = count;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;237</td>  <td class="nbHitsCovered">&nbsp;173486</td>  <td class="src"><pre class="src">&nbsp;            <span class="keyword">this</span>.id = id;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;238</td>  <td class="nbHitsCovered">&nbsp;173486</td>  <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;239</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;240</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;241</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">boolean</span> isSingleSentence() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;242</td>  <td class="nbHitsCovered"><a title="Line 242: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">&nbsp;3078</a></td>  <td class="src"><pre class="src">&nbsp;<a title="Line 242: Conditional coverage 100% (4/4) [each condition: 100%, 100%].">        <span class="keyword">return</span> getSentenceCount() == <span class="keyword">null</span> || getSentenceCount() == 1;</a></pre></td></tr>
+<tr>  <td class="numLine">&nbsp;243</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;244</td>  <td class="nbHits">&nbsp;</td>
+  <td class="src"><pre class="src">&nbsp;</pre></td></tr>
+<tr>  <td class="numLine">&nbsp;245</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 4/09/15 3:26 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 29/11/16 1:37 PM.</div>
 </body>
 </html>

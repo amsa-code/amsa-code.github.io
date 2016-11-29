@@ -45,7 +45,7 @@
 <tr>  <td class="numLine">&nbsp;14</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;15</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">long</span> mmsi;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">int</span> mmsi;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;16</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">private</span> <span class="keyword">final</span> <span class="keyword">float</span> lat;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;17</td>  <td class="nbHits">&nbsp;</td>
@@ -69,62 +69,62 @@
 <tr>  <td class="numLine">&nbsp;26</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;27</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> FixImpl(<span class="keyword">long</span> mmsi, <span class="keyword">float</span> lat, <span class="keyword">float</span> lon, <span class="keyword">long</span> time, AisClass aisClass) {</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> FixImpl(<span class="keyword">int</span> mmsi, <span class="keyword">float</span> lat, <span class="keyword">float</span> lon, <span class="keyword">long</span> time, AisClass aisClass) {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;28</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">this</span>(mmsi, lat, lon, time, Optional.absent(), Optional.absent(), Optional.absent(),</span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;29</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                Optional.absent(), Optional.absent(), Optional.absent(), aisClass);</span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;30</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;    }</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;31</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;32</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> FixImpl(<span class="keyword">long</span> mmsi, <span class="keyword">float</span> lat, <span class="keyword">float</span> lon, <span class="keyword">long</span> time, Optional&lt;Integer&gt; latencySeconds,</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> FixImpl(<span class="keyword">int</span> mmsi, <span class="keyword">float</span> lat, <span class="keyword">float</span> lon, <span class="keyword">long</span> time, Optional&lt;Integer&gt; latencySeconds,</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;33</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            Optional&lt;Short&gt; source, Optional&lt;NavigationalStatus&gt; navigationalStatus,</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;34</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            Optional&lt;Float&gt; speedOverGroundKnots, Optional&lt;Float&gt; courseOverGroundDegrees,</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;35</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;            Optional&lt;Float&gt; headingDegrees, AisClass aisClass) {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;35</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;            Optional&lt;Float&gt; headingDegrees, AisClass aisClass) {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;36</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;37</td>  <td class="nbHitsUncovered"><a title="Line 37: Conditional coverage 50% (1/2).">&nbsp;2020056</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 37: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (validate) {</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;38</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(navigationalStatus);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;39</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(courseOverGroundDegrees);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;40</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(headingDegrees);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;41</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(aisClass);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;42</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(latencySeconds);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;43</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(source);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;44</td>  <td class="nbHitsUncovered"><a title="Line 44: Conditional coverage 50% (1/2).">&nbsp;2020056</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 44: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> (courseOverGroundDegrees.isPresent()) {</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;45</td>  <td class="nbHitsUncovered"><a title="Line 45: Conditional coverage 50% (1/2).">&nbsp;4040112</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 45: Conditional coverage 50% (1/2).">                Preconditions.checkArgument(courseOverGroundDegrees.get() &lt; 360</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;46</td>  <td class="nbHitsUncovered"><a title="Line 46: Conditional coverage 50% (1/2).">&nbsp;2020056</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 46: Conditional coverage 50% (1/2).">                        &amp;&amp; courseOverGroundDegrees.get() &gt;= 0,</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;47</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;                        <span class="string">"cog="</span> + courseOverGroundDegrees.get());</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;37</td>  <td class="nbHitsUncovered"><a title="Line 37: Conditional coverage 50% (1/2).">&nbsp;2030057</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 37: Conditional coverage 50% (1/2).">        <span class="keyword">if</span> (validate) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;38</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(navigationalStatus);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;39</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(courseOverGroundDegrees);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;40</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(headingDegrees);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;41</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(aisClass);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;42</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(latencySeconds);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;43</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;            Preconditions.checkNotNull(source);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;44</td>  <td class="nbHitsUncovered"><a title="Line 44: Conditional coverage 50% (1/2).">&nbsp;2030057</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 44: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> (courseOverGroundDegrees.isPresent()) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;45</td>  <td class="nbHitsCovered">&nbsp;4060114</td>  <td class="src"><pre class="src">&nbsp;                Preconditions.checkArgument(</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;46</td>  <td class="nbHitsUncovered"><a title="Line 46: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2030057</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 46: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">                        courseOverGroundDegrees.get() &lt; 360 &amp;&amp; courseOverGroundDegrees.get() &gt;= 0,</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;47</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;                        <span class="string">"cog="</span> + courseOverGroundDegrees.get());</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;48</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;49</td>  <td class="nbHitsUncovered"><a title="Line 49: Conditional coverage 50% (1/2).">&nbsp;2020056</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 49: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> (headingDegrees.isPresent()) {</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;50</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;                Preconditions</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;51</td>  <td class="nbHitsUncovered"><a title="Line 51: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2020056</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 51: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">                        .checkArgument(headingDegrees.get() &lt; 360 &amp;&amp; headingDegrees.get() &gt;= 0);</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;49</td>  <td class="nbHitsUncovered"><a title="Line 49: Conditional coverage 50% (1/2).">&nbsp;2030057</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 49: Conditional coverage 50% (1/2).">            <span class="keyword">if</span> (headingDegrees.isPresent()) {</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;50</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;                Preconditions</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;51</td>  <td class="nbHitsUncovered"><a title="Line 51: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2030057</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 51: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">                        .checkArgument(headingDegrees.get() &lt; 360 &amp;&amp; headingDegrees.get() &gt;= 0);</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;52</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;            }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;53</td>  <td class="nbHitsUncovered"><a title="Line 53: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2020056</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 53: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">            Preconditions.checkArgument(lat &gt;= -90 &amp;&amp; lat &lt;= 90);</a></span></pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;54</td>  <td class="nbHitsUncovered"><a title="Line 54: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2020056</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 54: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">            Preconditions.checkArgument(lon &gt;= -180 &amp;&amp; lon &lt;= 180);</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;53</td>  <td class="nbHitsUncovered"><a title="Line 53: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2030057</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 53: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">            Preconditions.checkArgument(lat &gt;= -90 &amp;&amp; lat &lt;= 90);</a></span></pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;54</td>  <td class="nbHitsUncovered"><a title="Line 54: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">&nbsp;2030057</a></td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;<a title="Line 54: Conditional coverage 50% (2/4) [each condition: 50%, 50%].">            Preconditions.checkArgument(lon &gt;= -180 &amp;&amp; lon &lt;= 180);</a></span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;55</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        }</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;56</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.mmsi = mmsi;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;57</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.lat = lat;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;58</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.lon = lon;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;59</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.time = time;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;60</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.latencySeconds = latencySeconds;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;61</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.source = source;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;62</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.navigationalStatus = navigationalStatus;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;63</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.speedOverGroundKnots = speedOverGroundKnots;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;64</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.courseOverGroundDegrees = courseOverGroundDegrees;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;65</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.headingDegrees = headingDegrees;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;66</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.aisClass = aisClass;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;67</td>  <td class="nbHitsCovered">&nbsp;2020056</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;56</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.mmsi = mmsi;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;57</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.lat = lat;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;58</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.lon = lon;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;59</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.time = time;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;60</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.latencySeconds = latencySeconds;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;61</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.source = source;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;62</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.navigationalStatus = navigationalStatus;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;63</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.speedOverGroundKnots = speedOverGroundKnots;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;64</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.courseOverGroundDegrees = courseOverGroundDegrees;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;65</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.headingDegrees = headingDegrees;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;66</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">this</span>.aisClass = aisClass;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;67</td>  <td class="nbHitsCovered">&nbsp;2030057</td>  <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;68</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;69</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;70</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">long</span> mmsi() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;71</td>  <td class="nbHitsCovered">&nbsp;47</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> mmsi;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">int</span> mmsi() {</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;71</td>  <td class="nbHitsCovered">&nbsp;49</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> mmsi;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;72</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;73</td>  <td class="nbHits">&nbsp;</td>
@@ -133,7 +133,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;75</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">long</span> time() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;76</td>  <td class="nbHitsCovered">&nbsp;175</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> time;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;76</td>  <td class="nbHitsCovered">&nbsp;177</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> time;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;77</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;78</td>  <td class="nbHits">&nbsp;</td>
@@ -142,7 +142,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;80</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">float</span> lat() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;81</td>  <td class="nbHitsCovered">&nbsp;46</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> lat;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;81</td>  <td class="nbHitsCovered">&nbsp;48</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> lat;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;82</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;83</td>  <td class="nbHits">&nbsp;</td>
@@ -151,7 +151,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;85</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">float</span> lon() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;86</td>  <td class="nbHitsCovered">&nbsp;53</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> lon;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;86</td>  <td class="nbHitsCovered">&nbsp;55</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> lon;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;87</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;88</td>  <td class="nbHits">&nbsp;</td>
@@ -160,7 +160,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;90</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Optional&lt;NavigationalStatus&gt; navigationalStatus() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;91</td>  <td class="nbHitsCovered">&nbsp;27</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> navigationalStatus;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;91</td>  <td class="nbHitsCovered">&nbsp;30</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> navigationalStatus;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;92</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;93</td>  <td class="nbHits">&nbsp;</td>
@@ -169,7 +169,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;95</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Optional&lt;Float&gt; speedOverGroundKnots() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;96</td>  <td class="nbHitsCovered">&nbsp;27</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> speedOverGroundKnots;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;96</td>  <td class="nbHitsCovered">&nbsp;30</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> speedOverGroundKnots;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;97</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;98</td>  <td class="nbHits">&nbsp;</td>
@@ -178,7 +178,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;100</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Optional&lt;Float&gt; courseOverGroundDegrees() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;101</td>  <td class="nbHitsCovered">&nbsp;27</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> courseOverGroundDegrees;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;101</td>  <td class="nbHitsCovered">&nbsp;30</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> courseOverGroundDegrees;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;102</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;103</td>  <td class="nbHits">&nbsp;</td>
@@ -187,7 +187,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;105</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Optional&lt;Float&gt; headingDegrees() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;106</td>  <td class="nbHitsCovered">&nbsp;27</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> headingDegrees;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;106</td>  <td class="nbHitsCovered">&nbsp;30</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> headingDegrees;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;107</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;108</td>  <td class="nbHits">&nbsp;</td>
@@ -196,7 +196,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;110</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> AisClass aisClass() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;111</td>  <td class="nbHitsCovered">&nbsp;14</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> aisClass;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;111</td>  <td class="nbHitsCovered">&nbsp;16</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> aisClass;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;112</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;113</td>  <td class="nbHits">&nbsp;</td>
@@ -205,7 +205,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;115</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Optional&lt;Integer&gt; latencySeconds() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;116</td>  <td class="nbHitsCovered">&nbsp;23</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> latencySeconds;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;116</td>  <td class="nbHitsCovered">&nbsp;26</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> latencySeconds;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;117</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;118</td>  <td class="nbHits">&nbsp;</td>
@@ -214,7 +214,7 @@
   <td class="src"><pre class="src">&nbsp;    @Override</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;120</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> Optional&lt;Short&gt; source() {</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;121</td>  <td class="nbHitsCovered">&nbsp;23</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> source;</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;121</td>  <td class="nbHitsCovered">&nbsp;26</td>  <td class="src"><pre class="src">&nbsp;        <span class="keyword">return</span> source;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;122</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    }</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;123</td>  <td class="nbHits">&nbsp;</td>
@@ -240,8 +240,8 @@
 <tr>  <td class="numLineCover">&nbsp;136</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        b.append(<span class="string">", lon="</span>);</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;137</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        b.append(lon);</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;138</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        b.append(<span class="string">", time="</span>);</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;139</td>  <td class="nbHitsCovered">&nbsp;8</td>  <td class="src"><pre class="src">&nbsp;        b.append(DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.ofInstant(</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;140</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;                Instant.ofEpochMilli(time), ZoneId.of(<span class="string">"UTC"</span>))));</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;139</td>  <td class="nbHitsCovered">&nbsp;8</td>  <td class="src"><pre class="src">&nbsp;        b.append(DateTimeFormatter.ISO_DATE_TIME</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;140</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;                .format(ZonedDateTime.ofInstant(Instant.ofEpochMilli(time), ZoneId.of(<span class="string">"UTC"</span>))));</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;141</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        b.append(<span class="string">", navigationalStatus="</span>);</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;142</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        b.append(navigationalStatus.orNull());</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;143</td>  <td class="nbHitsCovered">&nbsp;4</td>  <td class="src"><pre class="src">&nbsp;        b.append(<span class="string">", speedOverGroundKnots="</span>);</pre></td></tr>
@@ -275,6 +275,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 4/09/15 3:26 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 29/11/16 1:37 PM.</div>
 </body>
 </html>

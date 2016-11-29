@@ -27,7 +27,7 @@
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../au/gov/amsa/navigation/ShipStaticData.html">ShipStaticData</a> {
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>  
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../au/gov/amsa/navigation/ShipStaticData.html">Info</a> {
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> mmsi;
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> mmsi;
 <a class="jxr_linenumber" name="L23" href="#L23">23</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Optional&lt;String&gt; imo;
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <a href="../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> cls;
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Integer&gt; shipType;
@@ -38,7 +38,7 @@
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Integer&gt; dimensionDMetres;
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> Optional&lt;String&gt; name;
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>  
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>          <strong class="jxr_keyword">public</strong> <a href="../../../../au/gov/amsa/navigation/ShipStaticData.html">Info</a>(<strong class="jxr_keyword">long</strong> mmsi, Optional&lt;String&gt; imo, <a href="../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> cls, Optional&lt;Integer&gt; shipType,
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          <strong class="jxr_keyword">public</strong> <a href="../../../../au/gov/amsa/navigation/ShipStaticData.html">Info</a>(<strong class="jxr_keyword">int</strong> mmsi, Optional&lt;String&gt; imo, <a href="../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> cls, Optional&lt;Integer&gt; shipType,
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>                  Optional&lt;Float&gt; maxDraftMetres, Optional&lt;Integer&gt; dimensionAMetres,
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>                  Optional&lt;Integer&gt; dimensionBMetres, Optional&lt;Integer&gt; dimensionCMetres,
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>                  Optional&lt;Integer&gt; dimensionDMetres, Optional&lt;String&gt; name) {
@@ -93,12 +93,12 @@
 <a class="jxr_linenumber" name="L85" href="#L85">85</a>  
 <a class="jxr_linenumber" name="L86" href="#L86">86</a>      }
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>  
-<a class="jxr_linenumber" name="L88" href="#L88">88</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Map&lt;Long, Info&gt; getMapFromResource(String resource) {
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Map&lt;Integer, Info&gt; getMapFromResource(String resource) {
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>          <strong class="jxr_keyword">return</strong> getMapFromReader(<strong class="jxr_keyword">new</strong> InputStreamReader(
 <a class="jxr_linenumber" name="L90" href="#L90">90</a>                  ShipStaticData.<strong class="jxr_keyword">class</strong>.getResourceAsStream(resource), Charsets.UTF_8));
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>      }
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>  
-<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Map&lt;Long, Info&gt; getMapFromReader(Reader reader) {
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Map&lt;Integer, Info&gt; getMapFromReader(Reader reader) {
 <a class="jxr_linenumber" name="L94" href="#L94">94</a>          <strong class="jxr_keyword">return</strong> <a href="../../../../au/gov/amsa/navigation/ShipStaticData.html">ShipStaticData</a>
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>                  <em class="jxr_comment">// read ship static data from classpath</em>
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>                  .from(reader)
@@ -131,7 +131,7 @@
 <a class="jxr_linenumber" name="L123" href="#L123">123</a>                 <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L124" href="#L124">124</a>                 .map(items -&gt; {
 <a class="jxr_linenumber" name="L125" href="#L125">125</a>                     <strong class="jxr_keyword">int</strong> i = 0;
-<a class="jxr_linenumber" name="L126" href="#L126">126</a>                     <strong class="jxr_keyword">long</strong> mmsi = Long.parseLong(items[i++]);
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>                     <strong class="jxr_keyword">int</strong> mmsi = Integer.parseInt(items[i++]);
 <a class="jxr_linenumber" name="L127" href="#L127">127</a>                     String imoTemp = items[i++];
 <a class="jxr_linenumber" name="L128" href="#L128">128</a>                     Optional&lt;String&gt; imo;
 <a class="jxr_linenumber" name="L129" href="#L129">129</a>                     <strong class="jxr_keyword">if</strong> (imoTemp.trim().length() == 0 || Integer.parseInt(imoTemp.trim()) == -1)
@@ -165,6 +165,6 @@
 <a class="jxr_linenumber" name="L157" href="#L157">157</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2016. All rights reserved.</div>
 </body>
 </html>

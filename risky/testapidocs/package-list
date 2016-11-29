@@ -1,5 +1,6 @@
 au.gov.amsa.ais
 au.gov.amsa.ais.message
+au.gov.amsa.ais.router
 au.gov.amsa.ais.rx
 au.gov.amsa.craft.analyzer.wms
 au.gov.amsa.geo
@@ -21,4 +22,3 @@ au.gov.amsa.util.nmea
 au.gov.amsa.util.nmea.saver
 au.gov.amsa.util.rx
 com.github.davidmoten.h2gis
-com.github.davidmoten.renjin

@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>animator - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2015</copyright>
+    <copyright>&#169;2016</copyright>
     <item>
       <title>File: 17,
-             Errors: 164,
+             Errors: 165,
              Warnings: 0,
              Infos: 0
       </title>
@@ -195,7 +195,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  36
+                  37
                 </td>
               </tr>
                           <tr>

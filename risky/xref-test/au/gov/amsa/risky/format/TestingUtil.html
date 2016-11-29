@@ -17,7 +17,7 @@
 <a class="jxr_linenumber" name="L9" href="#L9">9</a>   
 <a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/risky/format/TestingUtil.html">TestingUtil</a> {
 <a class="jxr_linenumber" name="L11" href="#L11">11</a>  
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> writeTwoBinaryFixes(String filename) {
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> writeTwoBinaryFixes(String filename, BinaryFixesFormat format) {
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>          <strong class="jxr_keyword">try</strong> {
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>              OutputStream os = <strong class="jxr_keyword">new</strong> BufferedOutputStream(<strong class="jxr_keyword">new</strong> FileOutputStream(filename));
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>              <strong class="jxr_keyword">long</strong> t = 1421708455237L;
@@ -27,8 +27,8 @@
 <a class="jxr_linenumber" name="L19" href="#L19">19</a>              Fix fix2 = <strong class="jxr_keyword">new</strong> FixImpl(213456789, -10.1f, 135.2f, t + 1000 * 3600 * 2L, of(13),
 <a class="jxr_linenumber" name="L20" href="#L20">20</a>                      of((<strong class="jxr_keyword">short</strong>) 2), of(NavigationalStatus.AT_ANCHOR), of(4.5f), of(20f), of(30f),
 <a class="jxr_linenumber" name="L21" href="#L21">21</a>                      AisClass.B);
-<a class="jxr_linenumber" name="L22" href="#L22">22</a>              BinaryFixes.write(fix1, os);
-<a class="jxr_linenumber" name="L23" href="#L23">23</a>              BinaryFixes.write(fix2, os);
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>              BinaryFixes.write(fix1, os, format);
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>              BinaryFixes.write(fix2, os, format);
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>              os.close();
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>          } <strong class="jxr_keyword">catch</strong> (IOException e) {
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException(e);
@@ -38,6 +38,6 @@
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2016. All rights reserved.</div>
 </body>
 </html>

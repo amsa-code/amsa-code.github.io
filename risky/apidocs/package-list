@@ -1,5 +1,7 @@
 au.gov.amsa.ais
 au.gov.amsa.ais.message
+au.gov.amsa.ais.router
+au.gov.amsa.ais.router.model
 au.gov.amsa.ais.rx
 au.gov.amsa.ais.rx.operators
 au.gov.amsa.animator
@@ -25,5 +27,4 @@ au.gov.amsa.util.nmea
 au.gov.amsa.util.nmea.saver
 au.gov.amsa.util.rx
 au.gov.amsa.util.swing
-com.github.davidmoten.renjin
 com.github.davidmoten.util

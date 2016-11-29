@@ -60,7 +60,7 @@
 <tr>  <td class="numLine">&nbsp;21</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">class</span> Info {</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;22</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">long</span> mmsi;</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">int</span> mmsi;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;23</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> <span class="keyword">final</span> Optional&lt;String&gt; imo;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;24</td>  <td class="nbHits">&nbsp;</td>
@@ -82,7 +82,7 @@
 <tr>  <td class="numLine">&nbsp;32</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;33</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Info(<span class="keyword">long</span> mmsi, Optional&lt;String&gt; imo, AisClass cls, Optional&lt;Integer&gt; shipType,</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;        <span class="keyword">public</span> Info(<span class="keyword">int</span> mmsi, Optional&lt;String&gt; imo, AisClass cls, Optional&lt;Integer&gt; shipType,</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;34</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                Optional&lt;Float&gt; maxDraftMetres, Optional&lt;Integer&gt; dimensionAMetres,</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;35</td>  <td class="nbHits">&nbsp;</td>
@@ -155,7 +155,7 @@
 <tr>  <td class="numLine">&nbsp;87</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;88</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Long, Info&gt; getMapFromResource(String resource) {</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Info&gt; getMapFromResource(String resource) {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;89</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> getMapFromReader(<span class="keyword">new</span> InputStreamReader(</span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;90</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;                ShipStaticData.<span class="keyword">class</span>.getResourceAsStream(resource), Charsets.UTF_8));</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;91</td>  <td class="nbHits">&nbsp;</td>
@@ -163,7 +163,7 @@
 <tr>  <td class="numLine">&nbsp;92</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;93</td>  <td class="nbHits">&nbsp;</td>
-  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Long, Info&gt; getMapFromReader(Reader reader) {</pre></td></tr>
+  <td class="src"><pre class="src">&nbsp;    <span class="keyword">public</span> <span class="keyword">static</span> Map&lt;Integer, Info&gt; getMapFromReader(Reader reader) {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;94</td>  <td class="nbHitsUncovered">&nbsp;0</td>  <td class="src"><pre class="src"><span class="srcUncovered">&nbsp;        <span class="keyword">return</span> ShipStaticData</span></pre></td></tr>
 <tr>  <td class="numLine">&nbsp;95</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                <span class="comment">// read ship static data from classpath</span></pre></td></tr>
@@ -213,7 +213,7 @@
   <td class="src"><pre class="src">&nbsp;                <span class="comment">//</span></pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;124</td>  <td class="nbHitsCovered">&nbsp;1</td>  <td class="src"><pre class="src">&nbsp;                .map(items -&gt; {</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;125</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">int</span> i = 0;</pre></td></tr>
-<tr>  <td class="numLineCover">&nbsp;126</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">long</span> mmsi = Long.parseLong(items[i++]);</pre></td></tr>
+<tr>  <td class="numLineCover">&nbsp;126</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    <span class="keyword">int</span> mmsi = Integer.parseInt(items[i++]);</pre></td></tr>
 <tr>  <td class="numLineCover">&nbsp;127</td>  <td class="nbHitsCovered">&nbsp;2</td>  <td class="src"><pre class="src">&nbsp;                    String imoTemp = items[i++];</pre></td></tr>
 <tr>  <td class="numLine">&nbsp;128</td>  <td class="nbHits">&nbsp;</td>
   <td class="src"><pre class="src">&nbsp;                    Optional&lt;String&gt; imo;</pre></td></tr>
@@ -256,6 +256,6 @@
   <td class="src"><pre class="src">&nbsp;}</pre></td></tr>
 </table>
 
-<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 4/09/15 3:27 PM.</div>
+<div class="footer">Report generated by <a href="http://cobertura.sourceforge.net/" target="_top">Cobertura</a> 2.1.1 on 29/11/16 1:38 PM.</div>
 </body>
 </html>

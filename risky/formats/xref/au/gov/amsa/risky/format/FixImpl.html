@@ -20,7 +20,7 @@
 <a class="jxr_linenumber" name="L12" href="#L12">12</a>  
 <a class="jxr_linenumber" name="L13" href="#L13">13</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">boolean</strong> validate = <strong class="jxr_keyword">true</strong>;
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  
-<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> mmsi;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> mmsi;
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">float</strong> lat;
 <a class="jxr_linenumber" name="L17" href="#L17">17</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">float</strong> lon;
 <a class="jxr_linenumber" name="L18" href="#L18">18</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> time;
@@ -32,12 +32,12 @@
 <a class="jxr_linenumber" name="L24" href="#L24">24</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Integer&gt; latencySeconds;
 <a class="jxr_linenumber" name="L25" href="#L25">25</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> Optional&lt;Short&gt; source;
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>  
-<a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/FixImpl.html">FixImpl</a>(<strong class="jxr_keyword">long</strong> mmsi, <strong class="jxr_keyword">float</strong> lat, <strong class="jxr_keyword">float</strong> lon, <strong class="jxr_keyword">long</strong> time, <a href="../../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> aisClass) {
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/FixImpl.html">FixImpl</a>(<strong class="jxr_keyword">int</strong> mmsi, <strong class="jxr_keyword">float</strong> lat, <strong class="jxr_keyword">float</strong> lon, <strong class="jxr_keyword">long</strong> time, <a href="../../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> aisClass) {
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>          <strong class="jxr_keyword">this</strong>(mmsi, lat, lon, time, Optional.absent(), Optional.absent(), Optional.absent(),
 <a class="jxr_linenumber" name="L29" href="#L29">29</a>                  Optional.absent(), Optional.absent(), Optional.absent(), aisClass);
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>      }
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  
-<a class="jxr_linenumber" name="L32" href="#L32">32</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/FixImpl.html">FixImpl</a>(<strong class="jxr_keyword">long</strong> mmsi, <strong class="jxr_keyword">float</strong> lat, <strong class="jxr_keyword">float</strong> lon, <strong class="jxr_keyword">long</strong> time, Optional&lt;Integer&gt; latencySeconds,
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>      <strong class="jxr_keyword">public</strong> <a href="../../../../../au/gov/amsa/risky/format/FixImpl.html">FixImpl</a>(<strong class="jxr_keyword">int</strong> mmsi, <strong class="jxr_keyword">float</strong> lat, <strong class="jxr_keyword">float</strong> lon, <strong class="jxr_keyword">long</strong> time, Optional&lt;Integer&gt; latencySeconds,
 <a class="jxr_linenumber" name="L33" href="#L33">33</a>              Optional&lt;Short&gt; source, Optional&lt;NavigationalStatus&gt; navigationalStatus,
 <a class="jxr_linenumber" name="L34" href="#L34">34</a>              Optional&lt;Float&gt; speedOverGroundKnots, Optional&lt;Float&gt; courseOverGroundDegrees,
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>              Optional&lt;Float&gt; headingDegrees, <a href="../../../../../au/gov/amsa/risky/format/AisClass.html">AisClass</a> aisClass) {
@@ -50,8 +50,8 @@
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>              Preconditions.checkNotNull(latencySeconds);
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>              Preconditions.checkNotNull(source);
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>              <strong class="jxr_keyword">if</strong> (courseOverGroundDegrees.isPresent()) {
-<a class="jxr_linenumber" name="L45" href="#L45">45</a>                  Preconditions.checkArgument(courseOverGroundDegrees.get() &lt; 360
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>                          &amp;&amp; courseOverGroundDegrees.get() &gt;= 0,
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>                  Preconditions.checkArgument(
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>                          courseOverGroundDegrees.get() &lt; 360 &amp;&amp; courseOverGroundDegrees.get() &gt;= 0,
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>                          <span class="jxr_string">"cog="</span> + courseOverGroundDegrees.get());
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>              }
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>              <strong class="jxr_keyword">if</strong> (headingDegrees.isPresent()) {
@@ -75,7 +75,7 @@
 <a class="jxr_linenumber" name="L67" href="#L67">67</a>      }
 <a class="jxr_linenumber" name="L68" href="#L68">68</a>  
 <a class="jxr_linenumber" name="L69" href="#L69">69</a>      @Override
-<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">long</strong> mmsi() {
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">int</strong> mmsi() {
 <a class="jxr_linenumber" name="L71" href="#L71">71</a>          <strong class="jxr_keyword">return</strong> mmsi;
 <a class="jxr_linenumber" name="L72" href="#L72">72</a>      }
 <a class="jxr_linenumber" name="L73" href="#L73">73</a>  
@@ -144,8 +144,8 @@
 <a class="jxr_linenumber" name="L136" href="#L136">136</a>         b.append(<span class="jxr_string">", lon="</span>);
 <a class="jxr_linenumber" name="L137" href="#L137">137</a>         b.append(lon);
 <a class="jxr_linenumber" name="L138" href="#L138">138</a>         b.append(<span class="jxr_string">", time="</span>);
-<a class="jxr_linenumber" name="L139" href="#L139">139</a>         b.append(DateTimeFormatter.ISO_DATE_TIME.format(ZonedDateTime.ofInstant(
-<a class="jxr_linenumber" name="L140" href="#L140">140</a>                 Instant.ofEpochMilli(time), ZoneId.of(<span class="jxr_string">"UTC"</span>))));
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>         b.append(DateTimeFormatter.ISO_DATE_TIME
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>                 .format(ZonedDateTime.ofInstant(Instant.ofEpochMilli(time), ZoneId.of(<span class="jxr_string">"UTC"</span>))));
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>         b.append(<span class="jxr_string">", navigationalStatus="</span>);
 <a class="jxr_linenumber" name="L142" href="#L142">142</a>         b.append(navigationalStatus.orNull());
 <a class="jxr_linenumber" name="L143" href="#L143">143</a>         b.append(<span class="jxr_string">", speedOverGroundKnots="</span>);
@@ -172,6 +172,6 @@
 <a class="jxr_linenumber" name="L164" href="#L164">164</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2016. All rights reserved.</div>
 </body>
 </html>

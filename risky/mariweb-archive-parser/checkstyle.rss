@@ -23,7 +23,7 @@ under the License.
     <link>${project.url}</link>
     <description>mariweb-archive-parser - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2015</copyright>
+    <copyright>&#169;2016</copyright>
     <item>
       <title>File: 6,
              Errors: 105,
@@ -46,6 +46,20 @@ under the License.
           <tbody>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.OperatorExtractValuesFromInsertStatementTest.java">au/gov/amsa/mariweb/OperatorExtractValuesFromInsertStatementTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  32
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.Benchmarks.java">au/gov/amsa/mariweb/Benchmarks.java</a>
                 </td>
                 <td>
@@ -60,20 +74,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.OperatorExtractValuesFromInsertStatementTest.java">au/gov/amsa/mariweb/OperatorExtractValuesFromInsertStatementTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  31
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.BackupReaderTest.java">au/gov/amsa/mariweb/BackupReaderTest.java</a>
                 </td>
                 <td>
@@ -83,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  16
+                  15
                 </td>
               </tr>
                           <tr>
@@ -102,20 +102,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.BackupReaderMain.java">au/gov/amsa/mariweb/BackupReaderMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.OperatorExtractValuesFromInsertStatement.java">au/gov/amsa/mariweb/OperatorExtractValuesFromInsertStatement.java</a>
                 </td>
                 <td>
@@ -125,7 +111,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  41
+                  42
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.BackupReaderMain.java">au/gov/amsa/mariweb/BackupReaderMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
                 </td>
               </tr>
                       </tbody>

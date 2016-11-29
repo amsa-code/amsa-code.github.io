@@ -13,12 +13,12 @@
 <a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> java.util.concurrent.TimeUnit;
 <a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.util.regex.Pattern;
 <a class="jxr_linenumber" name="L7" href="#L7">7</a>   
-<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> rx.Observable;
-<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">import</strong> rx.Observable.Transformer;
-<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> rx.functions.Action2;
-<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> rx.functions.Func1;
-<a class="jxr_linenumber" name="L12" href="#L12">12</a>  
-<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">import</strong> com.github.davidmoten.rx.Functions;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> com.github.davidmoten.rx.Functions;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> rx.Observable;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <strong class="jxr_keyword">import</strong> rx.Observable.Transformer;
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> rx.functions.Action2;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <strong class="jxr_keyword">import</strong> rx.functions.Func1;
 <a class="jxr_linenumber" name="L14" href="#L14">14</a>  
 <a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_javadoccomment">/**</em>
 <a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_javadoccomment"> * Assumes input stream is in time order.</em>
@@ -64,16 +64,16 @@
 <a class="jxr_linenumber" name="L56" href="#L56">56</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Observable&lt;Integer&gt; downsample(<strong class="jxr_keyword">final</strong> File input, <strong class="jxr_keyword">final</strong> File output,
 <a class="jxr_linenumber" name="L57" href="#L57">57</a>              Pattern pattern, <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">long</strong> duration, <strong class="jxr_keyword">final</strong> TimeUnit unit) {
 <a class="jxr_linenumber" name="L58" href="#L58">58</a>          <strong class="jxr_keyword">return</strong> Formats.transform(input, output, pattern, Downsample.minTimeStep(duration, unit),
-<a class="jxr_linenumber" name="L59" href="#L59">59</a>                  FIXES_WRITER, Functions.&lt;String&gt; identity());
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>                  FIXES_WRITER_WITHOUT_MMSI, Functions.&lt;String&gt; identity());
 <a class="jxr_linenumber" name="L60" href="#L60">60</a>      }
 <a class="jxr_linenumber" name="L61" href="#L61">61</a>  
-<a class="jxr_linenumber" name="L62" href="#L62">62</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> Action2&lt;List&lt;HasFix&gt;, File&gt; FIXES_WRITER = (list, file) -&gt; {
-<a class="jxr_linenumber" name="L63" href="#L63">63</a>          BinaryFixesWriter.writeFixes(list, file, false, false);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> Action2&lt;List&lt;HasFix&gt;, File&gt; FIXES_WRITER_WITHOUT_MMSI = (list, file) -&gt; {
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          BinaryFixesWriter.writeFixes(list, file, false, false, BinaryFixesFormat.WITHOUT_MMSI);
 <a class="jxr_linenumber" name="L64" href="#L64">64</a>      };
 <a class="jxr_linenumber" name="L65" href="#L65">65</a>  
 <a class="jxr_linenumber" name="L66" href="#L66">66</a>  }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2015. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2016. All rights reserved.</div>
 </body>
 </html>

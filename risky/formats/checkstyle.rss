@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>formats - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2015</copyright>
+    <copyright>&#169;2016</copyright>
     <item>
-      <title>File: 36,
-             Errors: 748,
+      <title>File: 39,
+             Errors: 724,
              Warnings: 0,
              Infos: 0
       </title>
@@ -83,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  6
                 </td>
               </tr>
                           <tr>
@@ -111,7 +111,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  48
+                  49
                 </td>
               </tr>
                           <tr>
@@ -125,7 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  27
+                  37
                 </td>
               </tr>
                           <tr>
@@ -153,7 +153,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  4
+                  3
                 </td>
               </tr>
                           <tr>
@@ -181,7 +181,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  26
+                  27
                 </td>
               </tr>
                           <tr>
@@ -270,20 +270,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.BinaryFixesOnSubscribeWithBackp.java">au/gov/amsa/risky/format/BinaryFixesOnSubscribeWithBackp.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  44
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.LibSvm.java">au/gov/amsa/risky/format/LibSvm.java</a>
                 </td>
                 <td>
@@ -294,6 +280,20 @@ under the License.
                 </td>
                 <td>
                   7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.BinaryFixesOnSubscribeWithBackp.java">au/gov/amsa/risky/format/BinaryFixesOnSubscribeWithBackp.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  52
                 </td>
               </tr>
                           <tr>
@@ -335,7 +335,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  48
+                  50
                 </td>
               </tr>
                           <tr>
@@ -349,7 +349,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  11
+                  10
                 </td>
               </tr>
                           <tr>
@@ -364,6 +364,20 @@ under the License.
                 </td>
                 <td>
                   1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.ByMmsiToDailyConverter.java">au/gov/amsa/risky/format/ByMmsiToDailyConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                           <tr>
@@ -391,21 +405,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  84
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Fix.java">au/gov/amsa/risky/format/Fix.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  12
+                  26
                 </td>
               </tr>
                           <tr>
@@ -424,6 +424,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Fix.java">au/gov/amsa/risky/format/Fix.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  12
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.NetcdfFixesWriter.java">au/gov/amsa/risky/format/NetcdfFixesWriter.java</a>
                 </td>
                 <td>
@@ -438,6 +452,34 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.ByMmsiToDailyMain.java">au/gov/amsa/risky/format/ByMmsiToDailyMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.BinaryFixesFormat.java">au/gov/amsa/risky/format/BinaryFixesFormat.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.FixImpl.java">au/gov/amsa/risky/format/FixImpl.java</a>
                 </td>
                 <td>
@@ -447,7 +489,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  62
+                  64
                 </td>
               </tr>
                           <tr>
@@ -545,7 +587,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                       </tbody>

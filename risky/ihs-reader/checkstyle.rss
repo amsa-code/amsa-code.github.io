@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>ihs-reader - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2015</copyright>
+    <copyright>&#169;2016</copyright>
     <item>
       <title>File: 10,
-             Errors: 429,
+             Errors: 426,
              Warnings: 0,
              Infos: 0
       </title>
@@ -46,20 +46,6 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ihs.reader.IhsReaderMain.java">au/gov/amsa/ihs/reader/IhsReaderMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  5
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ihs.reader.OperatorIhsReader.java">au/gov/amsa/ihs/reader/OperatorIhsReader.java</a>
                 </td>
                 <td>
@@ -75,6 +61,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ihs.reader.IhsReader.java">au/gov/amsa/ihs/reader/IhsReader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ihs.reader.IhsReaderMain.java">au/gov/amsa/ihs/reader/IhsReaderMain.java</a>
                 </td>
                 <td>
                   0
@@ -125,7 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
