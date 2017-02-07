@@ -190,7 +190,7 @@
 <a class="jxr_linenumber" name="L182" href="#L182">182</a>         NmeaMessage m = NmeaUtil.parseNmea(msg);
 <a class="jxr_linenumber" name="L183" href="#L183">183</a>         assertNotNull(m);
 <a class="jxr_linenumber" name="L184" href="#L184">184</a>         String s = NmeaUtil.supplementWithTime(msg, 1000);
-<a class="jxr_linenumber" name="L185" href="#L185">185</a>         assertEquals(msg, s);
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>         assertEquals(<span class="jxr_string">"&#92;&#92;1G4:53958,s:Gantheaume Pt,c:1481700261,a:1000*0B&#92;&#92;"</span>, s);
 <a class="jxr_linenumber" name="L186" href="#L186">186</a>     }
 <a class="jxr_linenumber" name="L187" href="#L187">187</a> 
 <a class="jxr_linenumber" name="L188" href="#L188">188</a> }
