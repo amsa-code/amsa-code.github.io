@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>parent - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2016</copyright>
+    <copyright>&#169;2017</copyright>
     <item>
       <title>File: 317,
-             Errors: 15980,
+             Errors: 15747,
              Warnings: 0,
              Infos: 0
       </title>
@@ -965,7 +965,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  63
+                  66
                 </td>
               </tr>
                           <tr>
@@ -2309,7 +2309,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  264
+                  108
                 </td>
               </tr>
                           <tr>
@@ -2491,7 +2491,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  89
+                  97
                 </td>
               </tr>
                           <tr>
@@ -2939,7 +2939,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  30
+                  27
                 </td>
               </tr>
                           <tr>
@@ -3975,7 +3975,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  122
+                  37
                 </td>
               </tr>
                           <tr>

@@ -174,7 +174,7 @@
 <a class="jxr_linenumber" name="L166" href="#L166">166</a>     @Test
 <a class="jxr_linenumber" name="L167" href="#L167">167</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTimeDoesNothingToMultilineMessagesAfterFirst() {
 <a class="jxr_linenumber" name="L168" href="#L168">168</a>         String line = <span class="jxr_string">"&#92;&#92;g:2-2-3987*58&#92;&#92;!BSVDM,2,2,0,A,lQ@@0000002,0*00"</span>;
-<a class="jxr_linenumber" name="L169" href="#L169">169</a>         assertEquals(line, NmeaUtil.supplementWithTime(line, 0));
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>         assertEquals(<span class="jxr_string">"&#92;&#92;g:2-2-3987,c:0,a:0*5A&#92;&#92;!BSVDM,2,2,0,A,lQ@@0000002,0*00"</span>, NmeaUtil.supplementWithTime(line, 0));
 <a class="jxr_linenumber" name="L170" href="#L170">170</a>     }
 <a class="jxr_linenumber" name="L171" href="#L171">171</a> 
 <a class="jxr_linenumber" name="L172" href="#L172">172</a>     @Test
@@ -207,10 +207,16 @@
 <a class="jxr_linenumber" name="L199" href="#L199">199</a>                 NmeaUtil.supplementWithTime(line, 1234567890));
 <a class="jxr_linenumber" name="L200" href="#L200">200</a>         assertEquals(<span class="jxr_string">"69"</span>, NmeaUtil.getChecksum(<span class="jxr_string">"s:rEV02,d:1334337321,c:1234567,a:1234567890"</span>));
 <a class="jxr_linenumber" name="L201" href="#L201">201</a>     }
-<a class="jxr_linenumber" name="L202" href="#L202">202</a> 
-<a class="jxr_linenumber" name="L203" href="#L203">203</a> }
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>     
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>     @Test
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testSupplementWithTime() {
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>         NmeaUtil.supplementWithTime(<span class="jxr_string">"&#92;&#92;1G3:33799,s:Point Lookout,c:1486441015*73&#92;&#92;"</span>,123);
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>     }
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>   
+<a class="jxr_linenumber" name="L208" href="#L208">208</a> 
+<a class="jxr_linenumber" name="L209" href="#L209">209</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2016. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2017. All rights reserved.</div>
 </body>
 </html>
