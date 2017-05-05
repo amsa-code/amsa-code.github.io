@@ -48,10 +48,10 @@
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>          String nmea = BackupReader.getNmea(is).toBlocking().first();
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>          System.out.println(nmea);
 <a class="jxr_linenumber" name="L42" href="#L42">42</a>          assertEquals(
-<a class="jxr_linenumber" name="L43" href="#L43">43</a>                  <span class="jxr_string">"&#92;&#92;s:Lockhart River,c:1325980876,at:1383734682*69&#92;&#92;!AIVDM,1,1,,B,1E@LR2200Rbrdgqe@Pl68S4H0000,0*07"</span>,
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>                  <span class="jxr_string">"&#92;&#92;s:Lockhart River,c:1325980876,a:1383734682000*2D&#92;&#92;!AIVDM,1,1,,B,1E@LR2200Rbrdgqe@Pl68S4H0000,0*07"</span>,
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>                  nmea);
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>          NmeaMessage n = <strong class="jxr_keyword">new</strong> NmeaMessageParser().parse(nmea);
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>          assertEquals(<span class="jxr_string">"1383734682"</span>, n.getTags().get(<span class="jxr_string">"at"</span>));
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          assertEquals(<span class="jxr_string">"1383734682000"</span>, n.getTags().get(<span class="jxr_string">"a"</span>));
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>          assertEquals(<span class="jxr_string">"1325980876"</span>, n.getTags().get(<span class="jxr_string">"c"</span>));
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>          AisMessage m = <strong class="jxr_keyword">new</strong> AisNmeaMessage(nmea).getMessage();
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>          assertEquals(<span class="jxr_string">"Lockhart River"</span>, m.getSource());
