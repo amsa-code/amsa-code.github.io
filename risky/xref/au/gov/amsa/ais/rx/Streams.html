@@ -634,7 +634,7 @@
 <a class="jxr_linenumber" name="L626" href="#L626">626</a>                 <strong class="jxr_keyword">int</strong> num = count.incrementAndGet();
 <a class="jxr_linenumber" name="L627" href="#L627">627</a>                 <strong class="jxr_keyword">double</strong> filesPerSecond = (System.currentTimeMillis() - start) / (<strong class="jxr_keyword">double</strong>) num
 <a class="jxr_linenumber" name="L628" href="#L628">628</a>                         / 1000.0;
-<a class="jxr_linenumber" name="L629" href="#L629">629</a>                 log.info(<span class="jxr_string">"file "</span> + num + <span class="jxr_string">" of "</span> + fileList.size() + <span class="jxr_string">", rateFilesPerSecond="</span>
+<a class="jxr_linenumber" name="L629" href="#L629">629</a>                 log.info(<span class="jxr_string">"file "</span> + num + <span class="jxr_string">" of "</span> + fileList.size() + <span class="jxr_string">", "</span> + file.getName() + <span class="jxr_string">", rateFilesPerSecond="</span>
 <a class="jxr_linenumber" name="L630" href="#L630">630</a>                         + filesPerSecond);
 <a class="jxr_linenumber" name="L631" href="#L631">631</a>             }
 <a class="jxr_linenumber" name="L632" href="#L632">632</a>         };
