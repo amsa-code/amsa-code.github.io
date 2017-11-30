@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 46,
-             Errors: 1175,
+      <title>File: 56,
+             Errors: 1203,
              Warnings: 0,
              Infos: 0
       </title>
@@ -44,20 +44,6 @@ under the License.
             </tr>
           </thead>
           <tbody>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.DriftCandidates.java">au/gov/amsa/navigation/DriftCandidates.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Identifier.java">au/gov/amsa/navigation/Identifier.java</a>
@@ -84,20 +70,6 @@ under the License.
                 </td>
                 <td>
                   1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Region.java">au/gov/amsa/navigation/Region.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  105
                 </td>
               </tr>
                           <tr>
@@ -144,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.DriftDetectorMain.java">au/gov/amsa/navigation/DriftDetectorMain.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.LineAndAisMessageMain.java">au/gov/amsa/geo/adhoc/LineAndAisMessageMain.java</a>
                 </td>
                 <td>
                   0
@@ -153,21 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ais.SortOperator.java">au/gov/amsa/navigation/ais/SortOperator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  54
+                  2
                 </td>
               </tr>
                           <tr>
@@ -186,34 +144,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Vector.java">au/gov/amsa/navigation/Vector.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  42
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipStaticDataMain.java">au/gov/amsa/geo/adhoc/ShipStaticDataMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  9
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.State.java">au/gov/amsa/navigation/State.java</a>
                 </td>
                 <td>
@@ -228,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.GeoffHosackAdhocMain.java">au/gov/amsa/geo/adhoc/GeoffHosackAdhocMain.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.CountCrossingsIntoRegionMain.java">au/gov/amsa/geo/adhoc/CountCrossingsIntoRegionMain.java</a>
                 </td>
                 <td>
                   0
@@ -242,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.CountCrossingsIntoRegionMain.java">au/gov/amsa/geo/adhoc/CountCrossingsIntoRegionMain.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.VesselsInCoverageMain.java">au/gov/amsa/geo/adhoc/VesselsInCoverageMain.java</a>
                 </td>
                 <td>
                   0
@@ -284,20 +214,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Mmsi.java">au/gov/amsa/navigation/Mmsi.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ais.VesselProperties.java">au/gov/amsa/navigation/ais/VesselProperties.java</a>
                 </td>
                 <td>
@@ -308,34 +224,6 @@ under the License.
                 </td>
                 <td>
                   39
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Collator.java">au/gov/amsa/navigation/Collator.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ShipStaticData.java">au/gov/amsa/navigation/ShipStaticData.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
                 </td>
               </tr>
                           <tr>
@@ -368,35 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DriftDetectionValidationAdHocMain.java">au/gov/amsa/geo/adhoc/DriftDetectionValidationAdHocMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Comparators.java">au/gov/amsa/navigation/Comparators.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.VesselPositions.java">au/gov/amsa/navigation/VesselPositions.java</a>
                 </td>
                 <td>
                   0
@@ -424,7 +284,343 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.SabineDriftCandidatesMain.java">au/gov/amsa/geo/adhoc/SabineDriftCandidatesMain.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.VesselPosition.java">au/gov/amsa/navigation/VesselPosition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.VesselPositionsTest.java">au/gov/amsa/navigation/VesselPositionsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  26
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.VesselsInGbrMain.java">au/gov/amsa/geo/adhoc/VesselsInGbrMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DriftCandidatesMain.java">au/gov/amsa/geo/adhoc/DriftCandidatesMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ais.ValueAndTime.java">au/gov/amsa/navigation/ais/ValueAndTime.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.PositionsInGbrMain.java">au/gov/amsa/geo/adhoc/PositionsInGbrMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipTypeBreakdownMain.java">au/gov/amsa/geo/adhoc/ShipTypeBreakdownMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.SatelliteReportingIntervalsMain.java">au/gov/amsa/geo/adhoc/SatelliteReportingIntervalsMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.DriftCandidates.java">au/gov/amsa/navigation/DriftCandidates.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Region.java">au/gov/amsa/navigation/Region.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  105
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.DriftDetectorMain.java">au/gov/amsa/navigation/DriftDetectorMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ais.SortOperator.java">au/gov/amsa/navigation/ais/SortOperator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  54
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Vector.java">au/gov/amsa/navigation/Vector.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  42
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipStaticDataParseCheckerMain.java">au/gov/amsa/geo/adhoc/ShipStaticDataParseCheckerMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipStaticDataMain.java">au/gov/amsa/geo/adhoc/ShipStaticDataMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.SingleThreadedPerfMain.java">au/gov/amsa/geo/adhoc/SingleThreadedPerfMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.Sorter.java">au/gov/amsa/geo/adhoc/Sorter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Mmsi.java">au/gov/amsa/navigation/Mmsi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.GeoffHAdhocMain.java">au/gov/amsa/geo/adhoc/GeoffHAdhocMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipStaticDataWithTimeMain.java">au/gov/amsa/geo/adhoc/ShipStaticDataWithTimeMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Collator.java">au/gov/amsa/navigation/Collator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ShipStaticData.java">au/gov/amsa/navigation/ShipStaticData.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ZipShapefilesMain.java">au/gov/amsa/geo/adhoc/ZipShapefilesMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  10
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DriftDetectionValidationAdHocMain.java">au/gov/amsa/geo/adhoc/DriftDetectionValidationAdHocMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.VesselPositions.java">au/gov/amsa/navigation/VesselPositions.java</a>
                 </td>
                 <td>
                   0
@@ -452,7 +648,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.VesselPosition.java">au/gov/amsa/navigation/VesselPosition.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.AdhocMain2.java">au/gov/amsa/geo/adhoc/AdhocMain2.java</a>
                 </td>
                 <td>
                   0
@@ -461,7 +657,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -476,20 +672,6 @@ under the License.
                 </td>
                 <td>
                   22
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.VesselPositionsTest.java">au/gov/amsa/navigation/VesselPositionsTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  26
                 </td>
               </tr>
                           <tr>
@@ -532,20 +714,6 @@ under the License.
                 </td>
                 <td>
                   1
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ais.ValueAndTime.java">au/gov/amsa/navigation/ais/ValueAndTime.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  24
                 </td>
               </tr>
                           <tr>
@@ -620,20 +788,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipTypeBreakdownMain.java">au/gov/amsa/geo/adhoc/ShipTypeBreakdownMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.DriftDetectorTest.java">au/gov/amsa/navigation/DriftDetectorTest.java</a>
                 </td>
                 <td>
@@ -644,20 +798,6 @@ under the License.
                 </td>
                 <td>
                   194
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.SatelliteReportingIntervalsMain.java">au/gov/amsa/geo/adhoc/SatelliteReportingIntervalsMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
                 </td>
               </tr>
                           <tr>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>ShipStaticDataParseCheckerMain xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../testapidocs/au/gov/amsa/geo/adhoc/ShipStaticDataParseCheckerMain.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.geo.adhoc;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <strong class="jxr_keyword">import</strong> com.github.davidmoten.rx.Transformers;
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> au.gov.amsa.ais.rx.Streams;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> rx.Observable;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/geo/adhoc/ShipStaticDataParseCheckerMain.html">ShipStaticDataParseCheckerMain</a> {
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) {
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>          Observable&lt;String&gt; nmea = Streams.nmeaFrom(<strong class="jxr_keyword">new</strong> File(
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>                  <span class="jxr_string">"/media/an/amsa_26_05_2017_5_IEC/iec/amsa_26_05_2017_5_ITU5_20170526_1.txt"</span>))
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>                  .compose(Transformers.split(<span class="jxr_string">"&#92;&#92;|"</span>))
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>                  .doOnNext(System.out::println);
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>          Streams.extractWithLines(nmea) <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>                  .filter(m -&gt; m.getError() != <strong class="jxr_keyword">null</strong>) <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>                  .doOnNext(System.out::println) <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>                  .count().toBlocking().single();
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      }
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2017. All rights reserved.</div>
+</body>
+</html>

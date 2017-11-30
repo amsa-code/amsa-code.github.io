@@ -34,7 +34,7 @@
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>      @Test
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testWriteAndReadBinaryFixes() <strong class="jxr_keyword">throws</strong> IOException {
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>          File trace = <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"target/123456789.track"</span>);
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <strong class="jxr_keyword">int</strong> numFixes = 10000;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          <strong class="jxr_keyword">int</strong> numFixes = 2;
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>          writeTrace(trace, numFixes, BinaryFixesFormat.WITHOUT_MMSI);
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>  
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>          System.out.println(<span class="jxr_string">"wrote "</span> + numFixes + <span class="jxr_string">" fixes"</span>);
@@ -135,11 +135,21 @@
 <a class="jxr_linenumber" name="L127" href="#L127">127</a>                 .toBlocking().single();
 <a class="jxr_linenumber" name="L128" href="#L128">128</a>         System.out.println(<span class="jxr_string">"total fixes = "</span> + count);
 <a class="jxr_linenumber" name="L129" href="#L129">129</a>     }
-<a class="jxr_linenumber" name="L130" href="#L130">130</a> 
-<a class="jxr_linenumber" name="L131" href="#L131">131</a>     <strong class="jxr_keyword">private</strong> Func1&lt;File, Observable&lt;Integer&gt;&gt; countFixes() {
-<a class="jxr_linenumber" name="L132" href="#L132">132</a>         <strong class="jxr_keyword">return</strong> file -&gt; BinaryFixes.from(file).count();
-<a class="jxr_linenumber" name="L133" href="#L133">133</a>     }
-<a class="jxr_linenumber" name="L134" href="#L134">134</a> }
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>     
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>     @Test
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testIterable() {
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         File file = <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"target/123456790.track"</span>);
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>         TestingUtil.writeTwoBinaryFixes(file.getAbsolutePath(), BinaryFixesFormat.WITHOUT_MMSI);
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>         <strong class="jxr_keyword">for</strong> (Fix fix:BinaryFixes.iterable(file)) {
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>             System.out.println(fix);
+<a class="jxr_linenumber" name="L137" href="#L137">137</a>         }
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>     }
+<a class="jxr_linenumber" name="L139" href="#L139">139</a> 
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>     <strong class="jxr_keyword">private</strong> Func1&lt;File, Observable&lt;Integer&gt;&gt; countFixes() {
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>         <strong class="jxr_keyword">return</strong> file -&gt; BinaryFixes.from(file).count();
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>     }
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>     
+<a class="jxr_linenumber" name="L144" href="#L144">144</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>

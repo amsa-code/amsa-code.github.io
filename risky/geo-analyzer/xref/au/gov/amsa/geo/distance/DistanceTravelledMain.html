@@ -189,29 +189,23 @@
 <a class="jxr_linenumber" name="L181" href="#L181">181</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) <strong class="jxr_keyword">throws</strong> InterruptedException {
 <a class="jxr_linenumber" name="L182" href="#L182">182</a> 
 <a class="jxr_linenumber" name="L183" href="#L183">183</a>         log.info(<span class="jxr_string">"starting"</span>);
-<a class="jxr_linenumber" name="L184" href="#L184">184</a>         String directory;
-<a class="jxr_linenumber" name="L185" href="#L185">185</a>         <strong class="jxr_keyword">if</strong> (args.length &gt; 0)
-<a class="jxr_linenumber" name="L186" href="#L186">186</a>             directory = args[0];
-<a class="jxr_linenumber" name="L187" href="#L187">187</a>         <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="L188" href="#L188">188</a>             directory = <span class="jxr_string">"/media/an/binary-fixes-5-minute/2013"</span>;
-<a class="jxr_linenumber" name="L189" href="#L189">189</a>         <em class="jxr_comment">// directory = System.getProperty("user.home")</em>
-<a class="jxr_linenumber" name="L190" href="#L190">190</a>         <em class="jxr_comment">// + "/Downloads/positions-183-days";</em>
-<a class="jxr_linenumber" name="L191" href="#L191">191</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> cellSizeDegrees;
-<a class="jxr_linenumber" name="L192" href="#L192">192</a>         <strong class="jxr_keyword">if</strong> (args.length &gt; 1)
-<a class="jxr_linenumber" name="L193" href="#L193">193</a>             cellSizeDegrees = Double.parseDouble(args[1]);
-<a class="jxr_linenumber" name="L194" href="#L194">194</a>         <strong class="jxr_keyword">else</strong>
-<a class="jxr_linenumber" name="L195" href="#L195">195</a>             cellSizeDegrees = 0.02;
-<a class="jxr_linenumber" name="L196" href="#L196">196</a> 
-<a class="jxr_linenumber" name="L197" href="#L197">197</a>         <strong class="jxr_keyword">final</strong> <a href="../../../../../au/gov/amsa/geo/model/Options.html">Options</a> options = createOptions(cellSizeDegrees);
-<a class="jxr_linenumber" name="L198" href="#L198">198</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt;= 10; i++)
-<a class="jxr_linenumber" name="L199" href="#L199">199</a>             System.out.println(options.getGrid().centreLon(i));
-<a class="jxr_linenumber" name="L200" href="#L200">200</a> 
-<a class="jxr_linenumber" name="L201" href="#L201">201</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 2012; i &lt;= 2013; i++) {
-<a class="jxr_linenumber" name="L202" href="#L202">202</a>             directory = <span class="jxr_string">"/media/an/binary-fixes-5-minute/"</span> + i;
-<a class="jxr_linenumber" name="L203" href="#L203">203</a>             run(directory, options, false, i + <span class="jxr_string">""</span>);
-<a class="jxr_linenumber" name="L204" href="#L204">204</a>         }
-<a class="jxr_linenumber" name="L205" href="#L205">205</a>     }
-<a class="jxr_linenumber" name="L206" href="#L206">206</a> }
+<a class="jxr_linenumber" name="L184" href="#L184">184</a> 
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>         <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> cellSizeDegrees;
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>         <strong class="jxr_keyword">if</strong> (args.length &gt; 1)
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>             cellSizeDegrees = Double.parseDouble(args[1]);
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>         <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>             cellSizeDegrees = 0.02;
+<a class="jxr_linenumber" name="L190" href="#L190">190</a> 
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>         <strong class="jxr_keyword">final</strong> <a href="../../../../../au/gov/amsa/geo/model/Options.html">Options</a> options = createOptions(cellSizeDegrees);
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt;= 10; i++)
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>             System.out.println(options.getGrid().centreLon(i));
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> 
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 2014; i &lt;= 2016; i++) {
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>             String directory = <span class="jxr_string">"/media/an/binary-fixes-5-minute/"</span> + i;
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>             run(directory, options, false, i + <span class="jxr_string">""</span>);
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>         }
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>     }
+<a class="jxr_linenumber" name="L200" href="#L200">200</a> }
 </pre>
 <hr/>
 <div id="footer">Copyright &#169; 2017. All rights reserved.</div>
