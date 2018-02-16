@@ -143,7 +143,7 @@
 <a class="jxr_linenumber" name="L135" href="#L135">135</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testGTagDoesNotHaveSufficientPartsThrowsNmeaMessageParseException() {
 <a class="jxr_linenumber" name="L136" href="#L136">136</a>         LinkedHashMap&lt;String, String&gt; map = Maps.newLinkedHashMap();
 <a class="jxr_linenumber" name="L137" href="#L137">137</a>         map.put(<span class="jxr_string">"g"</span>, <span class="jxr_string">"1-2"</span>);
-<a class="jxr_linenumber" name="L138" href="#L138">138</a>         <strong class="jxr_keyword">new</strong> NmeaMessage(map, Lists.&lt;String&gt; newArrayList(<span class="jxr_string">"ABVDN"</span>, <span class="jxr_string">"2"</span>, <span class="jxr_string">"2"</span>), <span class="jxr_string">"00"</span>);
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>         <strong class="jxr_keyword">new</strong> NmeaMessage(map, Lists.&lt;String&gt;newArrayList(<span class="jxr_string">"ABVDN"</span>, <span class="jxr_string">"2"</span>, <span class="jxr_string">"2"</span>), <span class="jxr_string">"00"</span>);
 <a class="jxr_linenumber" name="L139" href="#L139">139</a>     }
 <a class="jxr_linenumber" name="L140" href="#L140">140</a> 
 <a class="jxr_linenumber" name="L141" href="#L141">141</a>     @Test
@@ -202,14 +202,12 @@
 <a class="jxr_linenumber" name="L194" href="#L194">194</a>     @Test
 <a class="jxr_linenumber" name="L195" href="#L195">195</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testExtractMissingAisMessage() {
 <a class="jxr_linenumber" name="L196" href="#L196">196</a>         String msg = <span class="jxr_string">"&#92;&#92;s:AISSat_2,c:1495765889,T:2017-05-26 02.31.29*24&#92;&#92;!AIVDM,1,1,,A,15Qp0b0029:obOH0wMO6k5Dp00S7,0*17"</span>;
-<a class="jxr_linenumber" name="L197" href="#L197">197</a>         NmeaMessage m = NmeaUtil.parseNmea(msg);
-<a class="jxr_linenumber" name="L198" href="#L198">198</a>         
-<a class="jxr_linenumber" name="L199" href="#L199">199</a> 
-<a class="jxr_linenumber" name="L200" href="#L200">200</a>     }
-<a class="jxr_linenumber" name="L201" href="#L201">201</a> 
-<a class="jxr_linenumber" name="L202" href="#L202">202</a> }
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>         NmeaUtil.parseNmea(msg);
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>     }
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>     
+<a class="jxr_linenumber" name="L200" href="#L200">200</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2017. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2018. All rights reserved.</div>
 </body>
 </html>

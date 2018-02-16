@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>behaviour-detector - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2017</copyright>
+    <copyright>&#169;2018</copyright>
     <item>
-      <title>File: 56,
-             Errors: 1203,
+      <title>File: 57,
+             Errors: 1204,
              Warnings: 0,
              Infos: 0
       </title>
@@ -607,6 +607,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DriftDetectionValidationAdHocMain.java">au/gov/amsa/geo/adhoc/DriftDetectionValidationAdHocMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.CountPositions.java">au/gov/amsa/geo/adhoc/CountPositions.java</a>
                 </td>
                 <td>
                   0
