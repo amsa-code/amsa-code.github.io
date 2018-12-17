@@ -602,7 +602,7 @@
 <a class="jxr_linenumber" name="L594" href="#L594">594</a> 
 <a class="jxr_linenumber" name="L595" href="#L595">595</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> Observable&lt;String&gt; connectOnce(<strong class="jxr_keyword">final</strong> <a href="../../../../../au/gov/amsa/streams/HostPort.html">HostPort</a> hostPort) {
 <a class="jxr_linenumber" name="L596" href="#L596">596</a> 
-<a class="jxr_linenumber" name="L597" href="#L597">597</a>         <strong class="jxr_keyword">return</strong> Observable.create(<strong class="jxr_keyword">new</strong> OnSubscribe&lt;String&gt;() {
+<a class="jxr_linenumber" name="L597" href="#L597">597</a>         <strong class="jxr_keyword">return</strong> Observable.unsafeCreate(<strong class="jxr_keyword">new</strong> OnSubscribe&lt;String&gt;() {
 <a class="jxr_linenumber" name="L598" href="#L598">598</a> 
 <a class="jxr_linenumber" name="L599" href="#L599">599</a>             <strong class="jxr_keyword">private</strong> Socket socket = <strong class="jxr_keyword">null</strong>;
 <a class="jxr_linenumber" name="L600" href="#L600">600</a> 

@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2018</copyright>
     <item>
-      <title>File: 314,
-             Errors: 15605,
+      <title>File: 310,
+             Errors: 15488,
              Warnings: 0,
              Infos: 0
       </title>
@@ -224,6 +224,20 @@ under the License.
                 </td>
                 <td>
                   1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.ParquetTest.java">au/gov/amsa/risky/format/ParquetTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
                 </td>
               </tr>
                           <tr>
@@ -769,7 +783,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  44
+                  19
                 </td>
               </tr>
                           <tr>
@@ -1316,20 +1330,6 @@ under the License.
                 </td>
                 <td>
                   2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.OperatorExtractValuesFromInsertStatement.java">au/gov/amsa/mariweb/OperatorExtractValuesFromInsertStatement.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  42
                 </td>
               </tr>
                           <tr>
@@ -1964,20 +1964,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.BackupReaderTest.java">au/gov/amsa/mariweb/BackupReaderTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  15
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaStreamProcessorIntegrationTest.java">au/gov/amsa/ais/NmeaStreamProcessorIntegrationTest.java</a>
                 </td>
                 <td>
@@ -2412,20 +2398,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.OperatorExtractValuesFromInsertStatementTest.java">au/gov/amsa/mariweb/OperatorExtractValuesFromInsertStatementTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  32
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.DriftDetector.java">au/gov/amsa/navigation/DriftDetector.java</a>
                 </td>
                 <td>
@@ -2832,20 +2804,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.BackupReader.java">au/gov/amsa/mariweb/BackupReader.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipStaticDataMain.java">au/gov/amsa/geo/adhoc/ShipStaticDataMain.java</a>
                 </td>
                 <td>
@@ -2939,7 +2897,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  50
+                  56
                 </td>
               </tr>
                           <tr>
@@ -3224,20 +3182,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.Benchmarks.java">au/gov/amsa/mariweb/Benchmarks.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.Util.java">au/gov/amsa/geo/Util.java</a>
                 </td>
                 <td>
@@ -3458,20 +3402,6 @@ under the License.
                 </td>
                 <td>
                   47
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.mariweb.BackupReaderMain.java">au/gov/amsa/mariweb/BackupReaderMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  7
                 </td>
               </tr>
                           <tr>
@@ -4074,6 +4004,20 @@ under the License.
                 </td>
                 <td>
                   22
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.Parquet.java">au/gov/amsa/risky/format/Parquet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
                 </td>
               </tr>
                           <tr>
