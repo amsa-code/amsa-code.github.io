@@ -23,7 +23,7 @@ under the License.
     <link>${project.url}</link>
     <description>geotools-extras - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2018</copyright>
+    <copyright>&#169;2019</copyright>
     <item>
       <title>File: 8,
              Errors: 131,
@@ -97,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  28
+                  27
                 </td>
               </tr>
                           <tr>
@@ -116,20 +116,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.gt.ZipUtil.java">au/gov/amsa/gt/ZipUtil.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  6
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.gt.Shapes.java">au/gov/amsa/gt/Shapes.java</a>
                 </td>
                 <td>
@@ -144,6 +130,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.gt.ZipUtil.java">au/gov/amsa/gt/ZipUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.gt.Shapefile.java">au/gov/amsa/gt/Shapefile.java</a>
                 </td>
                 <td>
@@ -153,7 +153,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                       </tbody>

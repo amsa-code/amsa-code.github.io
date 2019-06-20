@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>behaviour-detector - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2018</copyright>
+    <copyright>&#169;2019</copyright>
     <item>
-      <title>File: 57,
-             Errors: 1204,
+      <title>File: 58,
+             Errors: 1212,
              Warnings: 0,
              Infos: 0
       </title>
@@ -83,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -251,7 +251,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -294,6 +294,20 @@ under the License.
                 </td>
                 <td>
                   2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.NmeaToBinaryFixesConvertorMain.java">au/gov/amsa/geo/adhoc/NmeaToBinaryFixesConvertorMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
                 </td>
               </tr>
                           <tr>
@@ -419,7 +433,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  105
+                  106
                 </td>
               </tr>
                           <tr>
@@ -447,7 +461,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  54
+                  53
                 </td>
               </tr>
                           <tr>
@@ -466,20 +480,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipStaticDataParseCheckerMain.java">au/gov/amsa/geo/adhoc/ShipStaticDataParseCheckerMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipStaticDataMain.java">au/gov/amsa/geo/adhoc/ShipStaticDataMain.java</a>
                 </td>
                 <td>
@@ -490,6 +490,20 @@ under the License.
                 </td>
                 <td>
                   9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.ShipStaticDataParseCheckerMain.java">au/gov/amsa/geo/adhoc/ShipStaticDataParseCheckerMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -587,7 +601,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -755,7 +769,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -774,20 +788,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ais.Util.java">au/gov/amsa/navigation/ais/Util.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.VesselClass.java">au/gov/amsa/navigation/VesselClass.java</a>
                 </td>
                 <td>
@@ -798,6 +798,20 @@ under the License.
                 </td>
                 <td>
                   4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ais.Util.java">au/gov/amsa/navigation/ais/Util.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
                 </td>
               </tr>
                           <tr>

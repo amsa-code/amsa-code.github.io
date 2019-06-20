@@ -82,7 +82,7 @@
 <a class="jxr_linenumber" name="L74" href="#L74">74</a>                  <em class="jxr_comment">// logger().showCount().every(100000).log())</em>
 <a class="jxr_linenumber" name="L75" href="#L75">75</a>                  .filter(fix -&gt; fix.mmsi() != 0)
 <a class="jxr_linenumber" name="L76" href="#L76">76</a>                  <em class="jxr_comment">// add in or out of region</em>
-<a class="jxr_linenumber" name="L77" href="#L77">77</a>                  .map(fix -&gt; <strong class="jxr_keyword">new</strong> <a href="../../../../../au/gov/amsa/geo/adhoc/CountCrossingsIntoRegionMain.html">FixAndRegion</a>(fix, region.contains(fix.lat(), fix.lon())))
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>                  .map(fix -&gt; <strong class="jxr_keyword">new</strong> <a href="../../../../../au/gov/amsa/geo/adhoc/LMSAdhocMain.html">FixAndRegion</a>(fix, region.contains(fix.lat(), fix.lon())))
 <a class="jxr_linenumber" name="L78" href="#L78">78</a>                  <em class="jxr_comment">// detect changes in being in</em>
 <a class="jxr_linenumber" name="L79" href="#L79">79</a>                  <em class="jxr_comment">// our out of region</em>
 <a class="jxr_linenumber" name="L80" href="#L80">80</a>                  .distinctUntilChanged(fix -&gt; fix.inRegion)
@@ -95,11 +95,11 @@
 <a class="jxr_linenumber" name="L87" href="#L87">87</a>                  .map(list -&gt; list.get(1).fix);
 <a class="jxr_linenumber" name="L88" href="#L88">88</a>      }
 <a class="jxr_linenumber" name="L89" href="#L89">89</a>  
-<a class="jxr_linenumber" name="L90" href="#L90">90</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/geo/adhoc/CountCrossingsIntoRegionMain.html">FixAndRegion</a> {
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> <a href="../../../../../au/gov/amsa/geo/adhoc/LMSAdhocMain.html">FixAndRegion</a> {
 <a class="jxr_linenumber" name="L91" href="#L91">91</a>          <strong class="jxr_keyword">final</strong> Fix fix;
 <a class="jxr_linenumber" name="L92" href="#L92">92</a>          <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">boolean</strong> inRegion;
 <a class="jxr_linenumber" name="L93" href="#L93">93</a>  
-<a class="jxr_linenumber" name="L94" href="#L94">94</a>          <a href="../../../../../au/gov/amsa/geo/adhoc/CountCrossingsIntoRegionMain.html">FixAndRegion</a>(Fix fix, <strong class="jxr_keyword">boolean</strong> inRegion) {
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          <a href="../../../../../au/gov/amsa/geo/adhoc/LMSAdhocMain.html">FixAndRegion</a>(Fix fix, <strong class="jxr_keyword">boolean</strong> inRegion) {
 <a class="jxr_linenumber" name="L95" href="#L95">95</a>              <strong class="jxr_keyword">super</strong>();
 <a class="jxr_linenumber" name="L96" href="#L96">96</a>              <strong class="jxr_keyword">this</strong>.fix = fix;
 <a class="jxr_linenumber" name="L97" href="#L97">97</a>              <strong class="jxr_keyword">this</strong>.inRegion = inRegion;
@@ -110,6 +110,6 @@
 <a class="jxr_linenumber" name="L102" href="#L102">102</a> }
 </pre>
 <hr/>
-<div id="footer">Copyright &#169; 2018. All rights reserved.</div>
+<div id="footer">Copyright &#169; 2019. All rights reserved.</div>
 </body>
 </html>

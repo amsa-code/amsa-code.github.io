@@ -23,7 +23,7 @@ under the License.
     <link>${project.url}</link>
     <description>geo-analyzer - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2018</copyright>
+    <copyright>&#169;2019</copyright>
     <item>
       <title>File: 51,
              Errors: 5392,
@@ -97,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  94
+                  93
                 </td>
               </tr>
                           <tr>
@@ -125,7 +125,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  12
+                  11
                 </td>
               </tr>
                           <tr>
@@ -153,7 +153,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -195,21 +195,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  46
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.distance.OperatorEffectiveSpeedChecker.java">au/gov/amsa/geo/distance/OperatorEffectiveSpeedChecker.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  13
+                  45
                 </td>
               </tr>
                           <tr>
@@ -224,6 +210,20 @@ under the License.
                 </td>
                 <td>
                   746
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.distance.OperatorEffectiveSpeedChecker.java">au/gov/amsa/geo/distance/OperatorEffectiveSpeedChecker.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
                 </td>
               </tr>
                           <tr>
@@ -321,7 +321,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  28
+                  29
                 </td>
               </tr>
                           <tr>
@@ -377,7 +377,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  10
+                  11
                 </td>
               </tr>
                           <tr>
@@ -447,7 +447,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  78
+                  77
                 </td>
               </tr>
                           <tr>
@@ -545,7 +545,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  1
+                  2
                 </td>
               </tr>
                           <tr>
@@ -671,7 +671,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  21
+                  22
                 </td>
               </tr>
                           <tr>
@@ -699,7 +699,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  102
+                  103
                 </td>
               </tr>
                           <tr>
@@ -713,7 +713,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  2
                 </td>
               </tr>
                           <tr>

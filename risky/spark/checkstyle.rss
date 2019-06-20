@@ -23,7 +23,7 @@ under the License.
     <link>${project.url}</link>
     <description>spark - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2018</copyright>
+    <copyright>&#169;2019</copyright>
     <item>
       <title>File: 4,
              Errors: 47,
@@ -83,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  1
                 </td>
               </tr>
                           <tr>
@@ -97,7 +97,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  3
                 </td>
               </tr>
                       </tbody>

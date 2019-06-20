@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>ais - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2018</copyright>
+    <copyright>&#169;2019</copyright>
     <item>
-      <title>File: 96,
-             Errors: 6501,
+      <title>File: 98,
+             Errors: 6609,
              Warnings: 0,
              Infos: 0
       </title>
@@ -55,49 +55,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  130
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisNmeaMessage.java">au/gov/amsa/ais/AisNmeaMessage.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  247
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisShipStaticA.java">au/gov/amsa/ais/message/AisShipStaticA.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  165
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.ShipTypeDecoder.java">au/gov/amsa/ais/ShipTypeDecoder.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  39
+                  129
                 </td>
               </tr>
                           <tr>
@@ -116,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Internationalization.java">au/gov/amsa/ais/Internationalization.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaUtil.java">au/gov/amsa/util/nmea/NmeaUtil.java</a>
                 </td>
                 <td>
                   0
@@ -125,7 +83,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  46
+                  74
                 </td>
               </tr>
                           <tr>
@@ -144,20 +102,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaUtil.java">au/gov/amsa/util/nmea/NmeaUtil.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  74
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPosition.java">au/gov/amsa/ais/message/AisPosition.java</a>
                 </td>
                 <td>
@@ -167,35 +111,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  20
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.Talker.java">au/gov/amsa/util/nmea/Talker.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  153
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisNmeaBufferTest.java">au/gov/amsa/ais/AisNmeaBufferTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  65
+                  21
                 </td>
               </tr>
                           <tr>
@@ -214,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisExtractor.java">au/gov/amsa/ais/AisExtractor.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisNmeaBufferTest.java">au/gov/amsa/ais/AisNmeaBufferTest.java</a>
                 </td>
                 <td>
                   0
@@ -223,7 +139,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  47
+                  65
                 </td>
               </tr>
                           <tr>
@@ -270,6 +186,692 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaUtilTest.java">au/gov/amsa/util/nmea/NmeaUtilTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  100
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionB.java">au/gov/amsa/ais/message/AisPositionB.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  125
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisAidToNavigation.java">au/gov/amsa/ais/message/AisAidToNavigation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  127
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisShipStaticUtil.java">au/gov/amsa/ais/message/AisShipStaticUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  28
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisMessageOther.java">au/gov/amsa/ais/message/AisMessageOther.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  43
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionGPS.java">au/gov/amsa/ais/message/AisPositionGPS.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  83
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.InternationalizationTest.java">au/gov/amsa/ais/InternationalizationTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.SixBit.java">au/gov/amsa/util/SixBit.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  239
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaMessage.java">au/gov/amsa/util/nmea/NmeaMessage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  109
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisMessageParser.java">au/gov/amsa/ais/AisMessageParser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  94
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.operators.OperatorCraftPropertAggregator.java">au/gov/amsa/ais/rx/operators/OperatorCraftPropertAggregator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  48
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.CommunicationsTest.java">au/gov/amsa/ais/CommunicationsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  93
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AtonTypeDecoder.java">au/gov/amsa/ais/AtonTypeDecoder.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  90
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Util.java">au/gov/amsa/ais/Util.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  377
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaStreamProcessorTest.java">au/gov/amsa/ais/NmeaStreamProcessorTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  112
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaReader.java">au/gov/amsa/util/nmea/NmeaReader.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  11
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Main.java">au/gov/amsa/ais/Main.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  35
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.UweExample.java">au/gov/amsa/ais/UweExample.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  9
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionGPSTest.java">au/gov/amsa/ais/message/AisPositionGPSTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisExtractorTest.java">au/gov/amsa/ais/AisExtractorTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.LiveStreamer.java">au/gov/amsa/ais/LiveStreamer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  38
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaReaderFromSocket.java">au/gov/amsa/util/nmea/NmeaReaderFromSocket.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  63
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.NmeaSaverTest.java">au/gov/amsa/util/nmea/saver/NmeaSaverTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  27
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Timestamped.java">au/gov/amsa/ais/Timestamped.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  48
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionBExtended.java">au/gov/amsa/ais/message/AisPositionBExtended.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  131
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Communications.java">au/gov/amsa/ais/Communications.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  333
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisNmeaMessageTest.java">au/gov/amsa/ais/AisNmeaMessageTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  56
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.identity.MmsiValidator2.java">au/gov/amsa/util/identity/MmsiValidator2.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  34
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.UtilTest.java">au/gov/amsa/ais/UtilTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  226
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.SocketReaderRunnable.java">au/gov/amsa/ais/rx/SocketReaderRunnable.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  121
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaReaderFromInputStream.java">au/gov/amsa/ais/NmeaReaderFromInputStream.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  28
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.NavigationalStatus.java">au/gov/amsa/ais/message/NavigationalStatus.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  22
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.OperatorCraftPropertyTest.java">au/gov/amsa/ais/rx/OperatorCraftPropertyTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  26
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaMessageParserTest.java">au/gov/amsa/util/nmea/NmeaMessageParserTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  73
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.FileFactoryPerDay.java">au/gov/amsa/util/nmea/saver/FileFactoryPerDay.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  39
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionA.java">au/gov/amsa/ais/message/AisPositionA.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  112
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisMessageType.java">au/gov/amsa/ais/AisMessageType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  57
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisExtractorFactory.java">au/gov/amsa/ais/AisExtractorFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  20
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.CraftPropertyName.java">au/gov/amsa/ais/rx/CraftPropertyName.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.NmeaGzToBinaryFixesMain.java">au/gov/amsa/ais/rx/NmeaGzToBinaryFixesMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionBTest.java">au/gov/amsa/ais/message/AisPositionBTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  42
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.SixBitTest.java">au/gov/amsa/util/SixBitTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  76
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.Cache.java">au/gov/amsa/ais/rx/Cache.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  32
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisShipStaticA.java">au/gov/amsa/ais/message/AisShipStaticA.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  165
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisNmeaMessage.java">au/gov/amsa/ais/AisNmeaMessage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  247
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.ShipTypeDecoder.java">au/gov/amsa/ais/ShipTypeDecoder.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  39
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Internationalization.java">au/gov/amsa/ais/Internationalization.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  46
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.Talker.java">au/gov/amsa/util/nmea/Talker.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  153
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisExtractor.java">au/gov/amsa/ais/AisExtractor.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  47
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaStreamProcessor.java">au/gov/amsa/ais/NmeaStreamProcessor.java</a>
                 </td>
                 <td>
@@ -312,48 +914,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaUtilTest.java">au/gov/amsa/util/nmea/NmeaUtilTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  101
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionB.java">au/gov/amsa/ais/message/AisPositionB.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  126
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisAidToNavigation.java">au/gov/amsa/ais/message/AisAidToNavigation.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  127
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.CraftProperty.java">au/gov/amsa/ais/rx/CraftProperty.java</a>
                 </td>
                 <td>
@@ -363,7 +923,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  60
+                  61
                 </td>
               </tr>
                           <tr>
@@ -377,35 +937,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisMessageOther.java">au/gov/amsa/ais/message/AisMessageOther.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  43
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisShipStaticUtil.java">au/gov/amsa/ais/message/AisShipStaticUtil.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  28
+                  1
                 </td>
               </tr>
                           <tr>
@@ -438,20 +970,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.InternationalizationTest.java">au/gov/amsa/ais/InternationalizationTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  8
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.FileFactory.java">au/gov/amsa/util/nmea/saver/FileFactory.java</a>
                 </td>
                 <td>
@@ -462,34 +980,6 @@ under the License.
                 </td>
                 <td>
                   5
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.SixBit.java">au/gov/amsa/util/SixBit.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  238
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaMessage.java">au/gov/amsa/util/nmea/NmeaMessage.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  109
                 </td>
               </tr>
                           <tr>
@@ -508,20 +998,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.RxUtil.java">au/gov/amsa/ais/rx/RxUtil.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.CraftProperties.java">au/gov/amsa/ais/rx/CraftProperties.java</a>
                 </td>
                 <td>
@@ -536,7 +1012,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.operators.OperatorCraftPropertAggregator.java">au/gov/amsa/ais/rx/operators/OperatorCraftPropertAggregator.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.RxUtil.java">au/gov/amsa/ais/rx/RxUtil.java</a>
                 </td>
                 <td>
                   0
@@ -545,35 +1021,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  47
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisMessageParser.java">au/gov/amsa/ais/AisMessageParser.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  90
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.TstUtil.java">au/gov/amsa/ais/TstUtil.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  36
+                  1
                 </td>
               </tr>
                           <tr>
@@ -592,7 +1040,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.CommunicationsTest.java">au/gov/amsa/ais/CommunicationsTest.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.TstUtil.java">au/gov/amsa/ais/TstUtil.java</a>
                 </td>
                 <td>
                   0
@@ -601,7 +1049,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  94
+                  36
                 </td>
               </tr>
                           <tr>
@@ -615,49 +1063,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  33
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Util.java">au/gov/amsa/ais/Util.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  377
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AtonTypeDecoder.java">au/gov/amsa/ais/AtonTypeDecoder.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  90
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaStreamProcessorTest.java">au/gov/amsa/ais/NmeaStreamProcessorTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  112
+                  34
                 </td>
               </tr>
                           <tr>
@@ -672,34 +1078,6 @@ under the License.
                 </td>
                 <td>
                   14
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaReader.java">au/gov/amsa/util/nmea/NmeaReader.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  11
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Main.java">au/gov/amsa/ais/Main.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  35
                 </td>
               </tr>
                           <tr>
@@ -746,49 +1124,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.UweExample.java">au/gov/amsa/ais/UweExample.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  9
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.NmeaSaver.java">au/gov/amsa/util/nmea/saver/NmeaSaver.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  37
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisExtractorTest.java">au/gov/amsa/ais/AisExtractorTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.LiveStreamer.java">au/gov/amsa/ais/LiveStreamer.java</a>
                 </td>
                 <td>
                   0
@@ -812,34 +1148,6 @@ under the License.
                 </td>
                 <td>
                   139
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaReaderFromSocket.java">au/gov/amsa/util/nmea/NmeaReaderFromSocket.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  63
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.NmeaSaverTest.java">au/gov/amsa/util/nmea/saver/NmeaSaverTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  27
                 </td>
               </tr>
                           <tr>
@@ -872,20 +1180,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Timestamped.java">au/gov/amsa/ais/Timestamped.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  49
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionATest.java">au/gov/amsa/ais/message/AisPositionATest.java</a>
                 </td>
                 <td>
@@ -896,90 +1190,6 @@ under the License.
                 </td>
                 <td>
                   58
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.Communications.java">au/gov/amsa/ais/Communications.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  333
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionBExtended.java">au/gov/amsa/ais/message/AisPositionBExtended.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  131
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisNmeaMessageTest.java">au/gov/amsa/ais/AisNmeaMessageTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  56
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaMessageExactEarthTimestamp.java">au/gov/amsa/ais/NmeaMessageExactEarthTimestamp.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  166
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisShipStatic.java">au/gov/amsa/ais/message/AisShipStatic.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  19
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.identity.MmsiValidator2.java">au/gov/amsa/util/identity/MmsiValidator2.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  34
                 </td>
               </tr>
                           <tr>
@@ -998,7 +1208,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.UtilTest.java">au/gov/amsa/ais/UtilTest.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaMessageExactEarthTimestamp.java">au/gov/amsa/ais/NmeaMessageExactEarthTimestamp.java</a>
                 </td>
                 <td>
                   0
@@ -1007,12 +1217,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  225
+                  167
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.SocketReaderRunnable.java">au/gov/amsa/ais/rx/SocketReaderRunnable.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisShipStatic.java">au/gov/amsa/ais/message/AisShipStatic.java</a>
                 </td>
                 <td>
                   0
@@ -1021,21 +1231,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  121
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.NmeaReaderFromInputStream.java">au/gov/amsa/ais/NmeaReaderFromInputStream.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  28
+                  19
                 </td>
               </tr>
                           <tr>
@@ -1050,34 +1246,6 @@ under the License.
                 </td>
                 <td>
                   51
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.NavigationalStatus.java">au/gov/amsa/ais/message/NavigationalStatus.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  22
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.OperatorCraftPropertyTest.java">au/gov/amsa/ais/rx/OperatorCraftPropertyTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  25
                 </td>
               </tr>
                           <tr>
@@ -1133,12 +1301,12 @@ under the License.
                   0
                 </td>
                 <td>
-                  7
+                  8
                 </td>
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.NmeaMessageParserTest.java">au/gov/amsa/util/nmea/NmeaMessageParserTest.java</a>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.SixBitException.java">au/gov/amsa/util/SixBitException.java</a>
                 </td>
                 <td>
                   0
@@ -1147,63 +1315,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  73
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.nmea.saver.FileFactoryPerDay.java">au/gov/amsa/util/nmea/saver/FileFactoryPerDay.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  40
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionA.java">au/gov/amsa/ais/message/AisPositionA.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  112
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisMessageType.java">au/gov/amsa/ais/AisMessageType.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  55
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.CraftPropertyName.java">au/gov/amsa/ais/rx/CraftPropertyName.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  16
+                  8
                 </td>
               </tr>
                           <tr>
@@ -1236,34 +1348,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisExtractorFactory.java">au/gov/amsa/ais/AisExtractorFactory.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  20
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.SixBitException.java">au/gov/amsa/util/SixBitException.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  9
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.HasCommunications.java">au/gov/amsa/ais/HasCommunications.java</a>
                 </td>
                 <td>
@@ -1278,20 +1362,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.NmeaGzToBinaryFixesMain.java">au/gov/amsa/ais/rx/NmeaGzToBinaryFixesMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  23
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisBaseStationTest.java">au/gov/amsa/ais/message/AisBaseStationTest.java</a>
                 </td>
                 <td>
@@ -1301,21 +1371,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  90
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.message.AisPositionBTest.java">au/gov/amsa/ais/message/AisPositionBTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  42
+                  89
                 </td>
               </tr>
                           <tr>
@@ -1330,34 +1386,6 @@ under the License.
                 </td>
                 <td>
                   2
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.SixBitTest.java">au/gov/amsa/util/SixBitTest.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  76
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.Cache.java">au/gov/amsa/ais/rx/Cache.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  32
                 </td>
               </tr>
                           <tr>
