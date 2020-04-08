@@ -19,4 +19,5 @@ au.gov.amsa.util.navigation
 au.gov.amsa.util.netcdf
 au.gov.amsa.util.nmea
 au.gov.amsa.util.nmea.saver
+au.gov.amsa.util.rx
 com.github.davidmoten.h2gis

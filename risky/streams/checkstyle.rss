@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>streams - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2019</copyright>
+    <copyright>&#169;2020</copyright>
     <item>
       <title>File: 20,
-             Errors: 497,
+             Errors: 506,
              Warnings: 0,
              Infos: 0
       </title>
@@ -111,7 +111,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  28
+                  36
                 </td>
               </tr>
                           <tr>
@@ -153,7 +153,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  4
                 </td>
               </tr>
                           <tr>

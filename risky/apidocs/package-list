@@ -4,6 +4,7 @@ au.gov.amsa.ais.router
 au.gov.amsa.ais.router.model
 au.gov.amsa.ais.rx
 au.gov.amsa.ais.rx.operators
+au.gov.amsa.animator
 au.gov.amsa.craft.analyzer.wms
 au.gov.amsa.geo
 au.gov.amsa.geo.distance
@@ -24,3 +25,5 @@ au.gov.amsa.util.netcdf
 au.gov.amsa.util.nmea
 au.gov.amsa.util.nmea.saver
 au.gov.amsa.util.rx
+au.gov.amsa.util.swing
+com.github.davidmoten.util

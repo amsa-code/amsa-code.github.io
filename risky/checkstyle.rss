@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>parent - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2019</copyright>
+    <copyright>&#169;2020</copyright>
     <item>
-      <title>File: 313,
-             Errors: 15604,
+      <title>File: 333,
+             Errors: 15808,
              Warnings: 0,
              Infos: 0
       </title>
@@ -126,6 +126,20 @@ under the License.
                 </td>
                 <td>
                   16
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.AnimatorDemoMain.java">au/gov/amsa/animator/AnimatorDemoMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
                 </td>
               </tr>
                           <tr>
@@ -816,6 +830,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.Map.java">au/gov/amsa/animator/Map.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  22
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Mmsi.java">au/gov/amsa/navigation/Mmsi.java</a>
                 </td>
                 <td>
@@ -923,7 +951,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  28
+                  36
                 </td>
               </tr>
                           <tr>
@@ -1040,6 +1068,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.rx.OperatorDynamicBufferTest.java">au/gov/amsa/util/rx/OperatorDynamicBufferTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.model.PositionComparator.java">au/gov/amsa/geo/model/PositionComparator.java</a>
                 </td>
                 <td>
@@ -1082,6 +1124,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.ImageDemo.java">au/gov/amsa/animator/ImageDemo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  26
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.ShipTypeDecoder.java">au/gov/amsa/ais/ShipTypeDecoder.java</a>
                 </td>
                 <td>
@@ -1110,6 +1166,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.CsvHilbertIndexSearchMain.java">au/gov/amsa/ais/rx/CsvHilbertIndexSearchMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.CollisionDetector.java">au/gov/amsa/navigation/CollisionDetector.java</a>
                 </td>
                 <td>
@@ -1134,6 +1204,20 @@ under the License.
                 </td>
                 <td>
                   93
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.ViewRecentTracksOption.java">au/gov/amsa/animator/ViewRecentTracksOption.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                           <tr>
@@ -2328,6 +2412,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.Animator.java">au/gov/amsa/animator/Animator.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.risky.format.TestingUtil.java">au/gov/amsa/risky/format/TestingUtil.java</a>
                 </td>
                 <td>
@@ -2352,6 +2450,20 @@ under the License.
                 </td>
                 <td>
                   147
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.Sources.java">au/gov/amsa/animator/Sources.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -2548,6 +2660,20 @@ under the License.
                 </td>
                 <td>
                   83
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.rx.OperatorDynamicBuffer.java">au/gov/amsa/util/rx/OperatorDynamicBuffer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  24
                 </td>
               </tr>
                           <tr>
@@ -2776,6 +2902,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.util.swing.FramePreferences.java">au/gov/amsa/util/swing/FramePreferences.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.streams.RxJava.java">au/gov/amsa/streams/RxJava.java</a>
                 </td>
                 <td>
@@ -2800,6 +2940,20 @@ under the License.
                 </td>
                 <td>
                   22
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#com.github.davidmoten.util.MapWithIndex.java">com/github/davidmoten/util/MapWithIndex.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  23
                 </td>
               </tr>
                           <tr>
@@ -3009,7 +3163,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  4
                 </td>
               </tr>
                           <tr>
@@ -3024,6 +3178,20 @@ under the License.
                 </td>
                 <td>
                   1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.View.java">au/gov/amsa/animator/View.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
                 </td>
               </tr>
                           <tr>
@@ -3084,6 +3252,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.NmeaGzToCsvMain.java">au/gov/amsa/ais/rx/NmeaGzToCsvMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.ShipStaticDataCreator.java">au/gov/amsa/navigation/ShipStaticDataCreator.java</a>
                 </td>
                 <td>
@@ -3108,6 +3290,20 @@ under the License.
                 </td>
                 <td>
                   1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.AnimatorPreferences.java">au/gov/amsa/animator/AnimatorPreferences.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
                 </td>
               </tr>
                           <tr>
@@ -3154,6 +3350,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.ViewRecentTracks.java">au/gov/amsa/animator/ViewRecentTracks.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  38
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.AisMessageType.java">au/gov/amsa/ais/AisMessageType.java</a>
                 </td>
                 <td>
@@ -3177,7 +3387,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  3
+                  4
                 </td>
               </tr>
                           <tr>
@@ -3448,6 +3658,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.ModelEmpty.java">au/gov/amsa/animator/ModelEmpty.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.DriftCandidatesTest.java">au/gov/amsa/navigation/DriftCandidatesTest.java</a>
                 </td>
                 <td>
@@ -3500,6 +3724,20 @@ under the License.
                 </td>
                 <td>
                   45
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.ModelManyCraft.java">au/gov/amsa/animator/ModelManyCraft.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -3854,6 +4092,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.ais.rx.CsvHilbertIndexCreatorMain.java">au/gov/amsa/ais/rx/CsvHilbertIndexCreatorMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.navigation.Vector.java">au/gov/amsa/navigation/Vector.java</a>
                 </td>
                 <td>
@@ -4032,6 +4284,20 @@ under the License.
                 </td>
                 <td>
                   1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.AnimatorMain.java">au/gov/amsa/animator/AnimatorMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
                 </td>
               </tr>
                           <tr>
@@ -4396,6 +4662,20 @@ under the License.
                 </td>
                 <td>
                   50
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.Model.java">au/gov/amsa/animator/Model.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
                 </td>
               </tr>
                           <tr>

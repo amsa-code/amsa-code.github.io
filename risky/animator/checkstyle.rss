@@ -23,10 +23,10 @@ under the License.
     <link>${project.url}</link>
     <description>animator - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2017</copyright>
+    <copyright>&#169;2020</copyright>
     <item>
-      <title>File: 17,
-             Errors: 165,
+      <title>File: 18,
+             Errors: 191,
              Warnings: 0,
              Infos: 0
       </title>
@@ -70,6 +70,20 @@ under the License.
                 </td>
                 <td>
                   7
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.animator.ImageDemo.java">au/gov/amsa/animator/ImageDemo.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  26
                 </td>
               </tr>
                           <tr>
@@ -195,7 +209,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  37
+                  38
                 </td>
               </tr>
                           <tr>
@@ -251,7 +265,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  7
+                  6
                 </td>
               </tr>
                           <tr>
