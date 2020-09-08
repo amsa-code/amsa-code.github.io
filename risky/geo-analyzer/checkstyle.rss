@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2020</copyright>
     <item>
-      <title>File: 51,
-             Errors: 5392,
+      <title>File: 59,
+             Errors: 5435,
              Warnings: 0,
              Infos: 0
       </title>
@@ -44,6 +44,20 @@ under the License.
             </tr>
           </thead>
           <tbody>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.TimedPosition.java">au/gov/amsa/geo/TimedPosition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  15
+                </td>
+              </tr>
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.model.GridTest.java">au/gov/amsa/geo/model/GridTest.java</a>
@@ -145,6 +159,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.EffectiveSpeedFailuresMain.java">au/gov/amsa/geo/adhoc/EffectiveSpeedFailuresMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.BinaryFixesWithMmsiErrorDiagnosisMain.java">au/gov/amsa/geo/adhoc/BinaryFixesWithMmsiErrorDiagnosisMain.java</a>
                 </td>
                 <td>
                   0
@@ -284,6 +312,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.ShapefileUtil.java">au/gov/amsa/geo/ShapefileUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  13
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.distance.DisplayPanel.java">au/gov/amsa/geo/distance/DisplayPanel.java</a>
                 </td>
                 <td>
@@ -294,6 +336,20 @@ under the License.
                 </td>
                 <td>
                   225
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.NmeaGzToBinaryFixesWithMmsiGzMain.java">au/gov/amsa/geo/adhoc/NmeaGzToBinaryFixesWithMmsiGzMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -438,6 +494,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.BinaryFixesWithMmsiGzCombinedSortMain.java">au/gov/amsa/geo/adhoc/BinaryFixesWithMmsiGzCombinedSortMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.distance.DistanceTravelledCalculatorTest.java">au/gov/amsa/geo/distance/DistanceTravelledCalculatorTest.java</a>
                 </td>
                 <td>
@@ -476,6 +546,20 @@ under the License.
                 </td>
                 <td>
                   63
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DistanceTravelledInEezMain.java">au/gov/amsa/geo/adhoc/DistanceTravelledInEezMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                           <tr>
@@ -545,7 +629,21 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.BinaryFixesWithMmsiGzSorterMain.java">au/gov/amsa/geo/adhoc/BinaryFixesWithMmsiGzSorterMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -620,6 +718,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.Eez.java">au/gov/amsa/geo/Eez.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  7
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.AdHocMain.java">au/gov/amsa/geo/adhoc/AdHocMain.java</a>
                 </td>
                 <td>
@@ -671,7 +783,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  22
+                  21
                 </td>
               </tr>
                           <tr>

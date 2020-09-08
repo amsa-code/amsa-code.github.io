@@ -38,8 +38,8 @@
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>          <strong class="jxr_keyword">long</strong> aTime = 1498199825552L;
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>          <strong class="jxr_keyword">long</strong> bTime = aTime + TimeUnit.DAYS.toMillis(2);
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>          <strong class="jxr_keyword">long</strong> cTime = bTime + TimeUnit.DAYS.toMillis(4);
-<a class="jxr_linenumber" name="L33" href="#L33">33</a>          Shapefile eezLine = VoyageDatasetProducer.loadEezLine();
-<a class="jxr_linenumber" name="L34" href="#L34">34</a>          Shapefile eezPolygon = VoyageDatasetProducer.loadEezPolygon();
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          Shapefile eezLine = Eez.loadEezLine();
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          Shapefile eezPolygon = Eez.loadEezPolygon();
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>          assertTrue(eezPolygon.contains(-35, 149));
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>          assertTrue(!eezPolygon.contains(-35, 175));
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>  
