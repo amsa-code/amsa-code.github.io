@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2020</copyright>
     <item>
-      <title>File: 346,
-             Errors: 16526,
+      <title>File: 349,
+             Errors: 16593,
              Warnings: 0,
              Infos: 0
       </title>
@@ -685,7 +685,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  74
+                  76
                 </td>
               </tr>
                           <tr>
@@ -1343,7 +1343,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  253
+                  259
                 </td>
               </tr>
                           <tr>
@@ -1610,6 +1610,20 @@ under the License.
                 </td>
                 <td>
                   19
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DistanceTravelledInEezCsvViewerMain.java">au/gov/amsa/geo/adhoc/DistanceTravelledInEezCsvViewerMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>
@@ -2090,6 +2104,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DistanceTravelledInEezTest.java">au/gov/amsa/geo/adhoc/DistanceTravelledInEezTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.model.GridTraversor.java">au/gov/amsa/geo/model/GridTraversor.java</a>
                 </td>
                 <td>
@@ -2100,6 +2128,20 @@ under the License.
                 </td>
                 <td>
                   255
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.AdHocMain2.java">au/gov/amsa/geo/adhoc/AdHocMain2.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                           <tr>
@@ -3079,7 +3121,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -3192,20 +3234,6 @@ under the License.
                 </td>
                 <td>
                   56
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.BinaryFixesWithMmsiGzSorterMain.java">au/gov/amsa/geo/adhoc/BinaryFixesWithMmsiGzSorterMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
                 </td>
               </tr>
                           <tr>
@@ -3765,7 +3793,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  172
+                  222
                 </td>
               </tr>
                           <tr>
@@ -4760,6 +4788,20 @@ under the License.
                 </td>
                 <td>
                   2
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.StateTest.java">au/gov/amsa/geo/adhoc/StateTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>

@@ -25,8 +25,8 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2020</copyright>
     <item>
-      <title>File: 59,
-             Errors: 5435,
+      <title>File: 62,
+             Errors: 5444,
              Warnings: 0,
              Infos: 0
       </title>
@@ -312,6 +312,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DistanceTravelledInEezCsvViewerMain.java">au/gov/amsa/geo/adhoc/DistanceTravelledInEezCsvViewerMain.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.ShapefileUtil.java">au/gov/amsa/geo/ShapefileUtil.java</a>
                 </td>
                 <td>
@@ -559,7 +573,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  2
+                  4
                 </td>
               </tr>
                           <tr>
@@ -634,20 +648,6 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.BinaryFixesWithMmsiGzSorterMain.java">au/gov/amsa/geo/adhoc/BinaryFixesWithMmsiGzSorterMain.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  1
-                </td>
-              </tr>
-                          <tr>
-                <td>
                   <a href="${project.url}/checkstyle.html#log4j.properties">log4j.properties</a>
                 </td>
                 <td>
@@ -676,6 +676,20 @@ under the License.
               </tr>
                           <tr>
                 <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.DistanceTravelledInEezTest.java">au/gov/amsa/geo/adhoc/DistanceTravelledInEezTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
                   <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.model.GridTraversor.java">au/gov/amsa/geo/model/GridTraversor.java</a>
                 </td>
                 <td>
@@ -700,6 +714,20 @@ under the License.
                 </td>
                 <td>
                   116
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.AdHocMain2.java">au/gov/amsa/geo/adhoc/AdHocMain2.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  2
                 </td>
               </tr>
                           <tr>
@@ -798,6 +826,20 @@ under the License.
                 </td>
                 <td>
                   5
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#au.gov.amsa.geo.adhoc.StateTest.java">au/gov/amsa/geo/adhoc/StateTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
                 </td>
               </tr>
                           <tr>

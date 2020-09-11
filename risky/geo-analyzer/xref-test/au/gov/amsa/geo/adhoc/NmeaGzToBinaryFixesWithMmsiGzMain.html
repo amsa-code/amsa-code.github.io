@@ -34,7 +34,7 @@
 <a class="jxr_linenumber" name="L26" href="#L26">26</a>          <em class="jxr_comment">// input is one year of nmea lines split into daily files</em>
 <a class="jxr_linenumber" name="L27" href="#L27">27</a>          <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L28" href="#L28">28</a>          File inputDir = <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"/home/dxm/AIS"</span>);
-<a class="jxr_linenumber" name="L29" href="#L29">29</a>          File outputDir = <strong class="jxr_keyword">new</strong> File(inputDir, <span class="jxr_string">"tracks"</span>);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          File outputDir = <strong class="jxr_keyword">new</strong> File(inputDir, <span class="jxr_string">"tracks2"</span>);
 <a class="jxr_linenumber" name="L30" href="#L30">30</a>          outputDir.mkdir();
 <a class="jxr_linenumber" name="L31" href="#L31">31</a>          Observable&lt;File&gt; inputFiles = Observable.from(inputDir.listFiles()) <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L32" href="#L32">32</a>                  .filter(f -&gt; f.getName().endsWith(<span class="jxr_string">".txt.gz"</span>)).toSortedList() <em class="jxr_comment">//</em>
@@ -43,7 +43,7 @@
 <a class="jxr_linenumber" name="L35" href="#L35">35</a>          inputFiles <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L36" href="#L36">36</a>                  .flatMap(x -&gt; Observable.just(x) <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L37" href="#L37">37</a>                          .doOnNext(f -&gt; convert(f, outputDir, n)) <em class="jxr_comment">//</em>
-<a class="jxr_linenumber" name="L38" href="#L38">38</a>                          .subscribeOn(Schedulers.computation())) <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>                          .subscribeOn(Schedulers.computation()), Runtime.getRuntime().availableProcessors()) <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L39" href="#L39">39</a>                  .toBlocking().subscribe();
 <a class="jxr_linenumber" name="L40" href="#L40">40</a>      }
 <a class="jxr_linenumber" name="L41" href="#L41">41</a>  
@@ -55,7 +55,7 @@
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>              Observable&lt;String&gt; nmea = Streams.nmeaFromGzip(file).onErrorResumeNext(e -&gt; Observable.empty());
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>              <strong class="jxr_keyword">long</strong> count;
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>              String outFilename = file.getName().substring(0, file.getName().indexOf(<span class="jxr_string">".txt.gz"</span>)) + <span class="jxr_string">".track.gz"</span>;
-<a class="jxr_linenumber" name="L50" href="#L50">50</a>              File outFile = <strong class="jxr_keyword">new</strong> File(file.getParentFile(), outFilename);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>              File outFile = <strong class="jxr_keyword">new</strong> File(outputDir, outFilename);
 <a class="jxr_linenumber" name="L51" href="#L51">51</a>              <strong class="jxr_keyword">try</strong> (OutputStream out = <strong class="jxr_keyword">new</strong> GZIPOutputStream(<strong class="jxr_keyword">new</strong> BufferedOutputStream(<strong class="jxr_keyword">new</strong> FileOutputStream(outFile)))) {
 <a class="jxr_linenumber" name="L52" href="#L52">52</a>                  count = nmea <em class="jxr_comment">//</em>
 <a class="jxr_linenumber" name="L53" href="#L53">53</a>                          .compose(o -&gt; Streams.extractFixes(o)) <em class="jxr_comment">//</em>
