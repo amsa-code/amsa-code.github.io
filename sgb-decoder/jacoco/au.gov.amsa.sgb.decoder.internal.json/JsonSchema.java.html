@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>JsonSchema.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.sgb.decoder.internal.json</a> &gt; <span class="el_source">JsonSchema.java</span></div><h1>JsonSchema.java</h1><pre class="source lang-java linenums">package au.gov.amsa.sgb.decoder.internal.json;
+
+import static au.gov.amsa.sgb.decoder.internal.Util.quoted;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.lang.reflect.ParameterizedType;
+import java.time.OffsetTime;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
+
+import au.gov.amsa.sgb.decoder.internal.Util;
+
+/**
+ * Simplified JSON schema generator only targeting Detection class and
+ * its dependents. Honours Jackson {@link JsonIgnore} annotations on fields.
+ *
+ * &lt;p&gt;
+ * Limitations include:
+ * &lt;ul&gt;
+ * &lt;li&gt;arrays not supported (not required for Detection class)&lt;/li&gt;
+ * &lt;li&gt;fields are considered {@code required} if not typed using
+ * {@link Optional}&lt;/li&gt;
+ * &lt;/ul&gt;
+ */
+public final class JsonSchema {
+
+    private static final char DQ = '&quot;';
+    private static final String COLON = &quot; : &quot;;
+    private static final String COMMA = &quot;,&quot;;
+
+    private JsonSchema() {
+        // prevent instantiation
+    }
+
+    /**
+     * Returns the JSON Schema for the heirarchy of classes pointed to by
+     * {@code classes}. Targets Detection class only (but might be extended
+     * in the future for more). Any subclasses within the heirarchy should be
+     * mentioned in {@code subclasses} so that the appropriate JSON Schema
+     * structures are produced. Subclasses should include a discriminator field that
+     * allows users to differentiate the JSON representations.
+     *
+     * @param cls        root class to be converted into a JSON Schema
+     * @param subclasses maps classes to a list of their subclasses
+     * @param schemaId   value to be used in the {@code $id} field.
+     * @return JSON Schema
+     */
+    public static String generateSchema(Class&lt;?&gt; cls, Map&lt;Class&lt;?&gt;, List&lt;Class&lt;?&gt;&gt;&gt; subclasses, String schemaId) {
+        // use all private fields to generate schema
+<span class="fc" id="L62">        Map&lt;String, Definition&gt; clsNameDefinitions = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L63">        collectDefinitions(cls, clsNameDefinitions, subclasses);</span>
+<span class="fc" id="L64">        StringBuilder s = new StringBuilder();</span>
+<span class="fc" id="L65">        addPreamble(schemaId, s);</span>
+<span class="fc" id="L66">        addDefinitions(clsNameDefinitions, s);</span>
+<span class="fc" id="L67">        s.append(COMMA + quoted(&quot;$ref&quot;) + COLON + quoted(toRef(cls)));</span>
+<span class="fc" id="L68">        return &quot;{&quot; + s.toString() + &quot;}&quot;;</span>
+    }
+
+    private static void addDefinitions(Map&lt;String, Definition&gt; clsNameDefinitions, StringBuilder s) {
+<span class="fc" id="L72">        s.append(quoted(&quot;definitions&quot;) + COLON + &quot;{&quot;);</span>
+<span class="fc" id="L73">        s.append(clsNameDefinitions.values() //</span>
+<span class="fc" id="L74">                .stream() //</span>
+<span class="fc" id="L75">                .map(x -&gt; x.json) //</span>
+<span class="fc" id="L76">                .collect(Collectors.joining(&quot;,&quot;)));</span>
+<span class="fc" id="L77">        s.append(&quot;}&quot;);</span>
+<span class="fc" id="L78">    }</span>
+
+    private static void addPreamble(String schemaId, StringBuilder s) {
+<span class="fc" id="L81">        add(s, &quot;$id&quot;, schemaId);</span>
+<span class="fc" id="L82">        s.append(COMMA);</span>
+<span class="fc" id="L83">        add(s, &quot;$schema&quot;, &quot;http://json-schema.org/draft/2019-09/schema&quot;);</span>
+<span class="fc" id="L84">        s.append(COMMA);</span>
+<span class="fc" id="L85">    }</span>
+
+    private static final class Definition {
+        private final String json;
+
+<span class="fc" id="L90">        Definition(String json) {</span>
+<span class="fc" id="L91">            this.json = json;</span>
+<span class="fc" id="L92">        }</span>
+    }
+
+    private static void collectDefinitions(Class&lt;?&gt; cls, Map&lt;String, Definition&gt; clsNameDefinitions,
+            Map&lt;Class&lt;?&gt;, List&lt;Class&lt;?&gt;&gt;&gt; subclasses) {
+<span class="fc" id="L97">        collectDefinitions(cls, clsNameDefinitions, new HashSet&lt;String&gt;(), subclasses);</span>
+<span class="fc" id="L98">    }</span>
+
+    private static void collectDefinitions(Class&lt;?&gt; cls, Map&lt;String, Definition&gt; clsNameDefinitions,
+            Set&lt;String&gt; classesAlreadyProcessed, Map&lt;Class&lt;?&gt;, List&lt;Class&lt;?&gt;&gt;&gt; subclasses) {
+<span class="fc" id="L102">        JsonType t = toJsonType(cls.getName());</span>
+<span class="fc bfc" id="L103" title="All 4 branches covered.">        if (t.typeName.equals(&quot;object&quot;) &amp;&amp; !classesAlreadyProcessed.contains(cls.getName())) {</span>
+<span class="fc" id="L104">            classesAlreadyProcessed.add(cls.getName());</span>
+            // will be an implementation of HasFormatter
+<span class="fc" id="L106">            fields(cls).forEach(f -&gt; {</span>
+<span class="fc" id="L107">                JsonType type = toJsonType(f.javaType());</span>
+<span class="fc bfc" id="L108" title="All 2 branches covered.">                if (type.typeName.equals(&quot;object&quot;)) {</span>
+<span class="fc" id="L109">                    collectDefinitions(toClass(f.javaType()), clsNameDefinitions, classesAlreadyProcessed, subclasses);</span>
+<span class="fc bfc" id="L110" title="All 4 branches covered.">                } else if (type.typeName.equals(&quot;string&quot;) &amp;&amp; !type.enumeration.isEmpty()) {</span>
+                    // TODO use classesAlreadyProcessed
+<span class="fc" id="L112">                    StringBuilder json = new StringBuilder();</span>
+<span class="fc" id="L113">                    json.append(quoted(definitionName(f.javaType())) + COLON + &quot;{&quot;);</span>
+<span class="fc" id="L114">                    add(json, &quot;type&quot;, &quot;string&quot;);</span>
+<span class="fc" id="L115">                    json.append(&quot;, &quot;);</span>
+<span class="fc" id="L116">                    json.append(quoted(&quot;enum&quot;) + COLON);</span>
+<span class="fc" id="L117">                    json.append(</span>
+<span class="fc" id="L118">                            &quot;[&quot; + type.enumeration.stream().map(Util::quoted).collect(Collectors.joining(COMMA)) + &quot;]&quot;);</span>
+<span class="fc" id="L119">                    json.append(&quot;}&quot;);</span>
+<span class="fc" id="L120">                    clsNameDefinitions.put(f.javaType(), new Definition(json.toString()));</span>
+                }
+<span class="fc" id="L122">            });</span>
+<span class="fc" id="L123">            StringBuilder json = new StringBuilder();</span>
+<span class="fc" id="L124">            json.append(quoted(definitionName(cls)) + COLON + &quot;{&quot;);</span>
+<span class="fc" id="L125">            List&lt;Class&lt;?&gt;&gt; list = subclasses.get(cls);</span>
+<span class="fc bfc" id="L126" title="All 2 branches covered.">            if (list != null) {</span>
+<span class="fc" id="L127">                StringBuilder s = new StringBuilder();</span>
+                // cls must be an interface because we don't use class inheritance
+<span class="fc bfc" id="L129" title="All 2 branches covered.">                for (Class&lt;?&gt; c : list) {</span>
+<span class="fc" id="L130">                    collectDefinitions(c, clsNameDefinitions, subclasses);</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">                    if (s.length() &gt; 0) {</span>
+<span class="fc" id="L132">                        s.append(&quot;, &quot;);</span>
+                    }
+<span class="fc" id="L134">                    s.append(&quot;{&quot; + quoted(&quot;$ref&quot;) + COLON + quoted(toRef(c)) + &quot;}&quot;);</span>
+
+<span class="fc" id="L136">                }</span>
+<span class="fc" id="L137">                String types = &quot;[&quot; + s.toString() + &quot;]&quot;;</span>
+<span class="fc" id="L138">                json.append(quoted(&quot;oneOf&quot;) + COLON + types);</span>
+<span class="fc" id="L139">            } else {</span>
+<span class="fc" id="L140">                json.append(quoted(&quot;type&quot;) + COLON + quoted(&quot;object&quot;));</span>
+            }
+
+<span class="fc" id="L143">            String properties = properties(cls);</span>
+<span class="fc bfc" id="L144" title="All 2 branches covered.">            if (!properties.isEmpty()) {</span>
+<span class="fc" id="L145">                json.append(&quot;, &quot;);</span>
+<span class="fc" id="L146">                json.append(properties);</span>
+            }
+
+<span class="fc" id="L149">            String required = fields(cls) //</span>
+<span class="fc" id="L150">                    .filter(f -&gt; f.isRequired()) //</span>
+<span class="fc" id="L151">                    .map(f -&gt; quoted(f.name())) //</span>
+<span class="fc" id="L152">                    .collect(Collectors.joining(&quot;, &quot;));</span>
+
+<span class="fc bfc" id="L154" title="All 2 branches covered.">            if (!required.isEmpty()) {</span>
+<span class="fc" id="L155">                json.append(COMMA);</span>
+<span class="fc" id="L156">                json.append(quoted(&quot;required&quot;) + COLON + &quot;[&quot; + required + &quot;]&quot;);</span>
+            }
+<span class="fc" id="L158">            json.append(&quot;}&quot;);</span>
+<span class="fc" id="L159">            clsNameDefinitions.put(cls.getName(), new Definition(json.toString()));</span>
+        }
+<span class="fc" id="L161">    }</span>
+
+    private static Stream&lt;MyField&gt; fields(Class&lt;?&gt; cls) {
+<span class="fc" id="L164">        return Arrays.stream(cls.getDeclaredFields()) //</span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">                .filter(f -&gt; !isStatic(f)) //</span>
+<span class="fc bfc" id="L166" title="All 2 branches covered.">                .filter(f -&gt; !ignore(f)) //</span>
+<span class="fc" id="L167">                .map(JsonSchema::toMyField);</span>
+    }
+
+    private static boolean ignore(Field f) {
+<span class="fc bfc" id="L171" title="All 2 branches covered.">        return f.getAnnotation(JsonIgnore.class) != null;</span>
+    }
+
+    @VisibleForTesting
+    static Class&lt;?&gt; toClass(String javaClassName) {
+        try {
+<span class="fc" id="L177">            return Class.forName(javaClassName);</span>
+<span class="fc" id="L178">        } catch (ClassNotFoundException e) {</span>
+<span class="fc" id="L179">            throw new RuntimeException(e);</span>
+        }
+    }
+
+    private static String generateDefinition(MyField f) {
+<span class="fc" id="L184">        StringBuilder b = new StringBuilder();</span>
+<span class="fc" id="L185">        b.append(DQ);</span>
+<span class="fc" id="L186">        b.append(f.name());</span>
+<span class="fc" id="L187">        b.append(DQ);</span>
+<span class="fc" id="L188">        b.append(&quot; : &quot;);</span>
+<span class="fc" id="L189">        b.append(&quot;{&quot;);</span>
+<span class="fc" id="L190">        JsonType t = toJsonType(f.javaType());</span>
+<span class="fc bfc" id="L191" title="All 4 branches covered.">        if (t.typeName.equals(&quot;object&quot;) || !t.enumeration.isEmpty()) {</span>
+<span class="fc" id="L192">            add(b, &quot;$ref&quot;, toRef(f.javaType()));</span>
+<span class="fc bfc" id="L193" title="All 2 branches covered.">        } else if (t.typeName.equals(&quot;time&quot;)) {</span>
+<span class="fc" id="L194">            add(b, &quot;type&quot;, &quot;string&quot;);</span>
+<span class="fc" id="L195">            b.append(COMMA);</span>
+<span class="fc" id="L196">            add(b, &quot;format&quot;, &quot;time&quot;);</span>
+        } else {
+<span class="fc" id="L198">            add(b, &quot;type&quot;, t.typeName);</span>
+        }
+
+<span class="fc" id="L201">        b.append(&quot;}&quot;);</span>
+<span class="fc" id="L202">        return b.toString();</span>
+    }
+
+    private static String toRef(Class&lt;?&gt; cls) {
+<span class="fc" id="L206">        return &quot;#/definitions/&quot; + definitionName(cls);</span>
+    }
+
+    private static String toRef(String javaClassName) {
+<span class="fc" id="L210">        return &quot;#/definitions/&quot; + definitionName(javaClassName);</span>
+    }
+
+    private static String definitionName(Class&lt;?&gt; cls) {
+<span class="fc" id="L214">        return definitionName(cls.getName());</span>
+    }
+
+    private static String definitionName(String javaClassName) {
+<span class="fc" id="L218">        return simpleName(javaClassName);</span>
+    }
+
+    @VisibleForTesting
+    static String simpleName(String javaClassName) {
+<span class="fc" id="L223">        int i = javaClassName.lastIndexOf('.');</span>
+<span class="fc bfc" id="L224" title="All 2 branches covered.">        if (i == -1) {</span>
+<span class="fc" id="L225">            return javaClassName;</span>
+        } else {
+<span class="fc" id="L227">            return javaClassName.substring(i + 1);</span>
+        }
+    }
+
+    private static String properties(Class&lt;?&gt; cls) {
+<span class="fc" id="L232">        String content = fields(cls) //</span>
+<span class="fc" id="L233">                .map(JsonSchema::generateDefinition) //</span>
+<span class="fc" id="L234">                .collect(Collectors.joining(&quot;,&quot;));</span>
+<span class="fc bfc" id="L235" title="All 2 branches covered.">        if (content.trim().isEmpty()) {</span>
+<span class="fc" id="L236">            return &quot;&quot;;</span>
+        } else {
+<span class="fc" id="L238">            return quoted(&quot;properties&quot;) + COLON + &quot;{&quot; + content //</span>
+                    + &quot;}&quot;;
+        }
+    }
+
+    private static boolean isStatic(Field f) {
+<span class="fc" id="L244">        return Modifier.isStatic(f.getModifiers());</span>
+    }
+
+    private static MyField toMyField(Field field) {
+<span class="fc" id="L248">        Class&lt;?&gt; t = field.getType();</span>
+        final boolean required;
+        final String javaType;
+<span class="fc bfc" id="L251" title="All 2 branches covered.">        if (t.equals(Optional.class)) {</span>
+<span class="fc" id="L252">            ParameterizedType p = (ParameterizedType) field.getGenericType();</span>
+<span class="fc" id="L253">            javaType = p.getActualTypeArguments()[0].getTypeName();</span>
+<span class="fc" id="L254">            required = false;</span>
+<span class="fc" id="L255">        } else {</span>
+<span class="fc" id="L256">            javaType = t.getName();</span>
+<span class="fc" id="L257">            required = true;</span>
+        }
+<span class="fc" id="L259">        return new MyField(field.getName(), javaType, required);</span>
+    }
+
+    private static void add(StringBuilder b, String key, String value) {
+<span class="fc" id="L263">        b.append(quoted(key) + COLON + quoted(value));</span>
+<span class="fc" id="L264">    }</span>
+
+<span class="fc" id="L266">    private static final Map&lt;String, String&gt; JAVA_TYPE_TO_JSON_TYPE = createJavaTypeToJsonTypeMap();</span>
+
+    private static final class JsonType {
+        private final String typeName;
+        private final List&lt;String&gt; enumeration;
+
+<span class="fc" id="L272">        private JsonType(String name, List&lt;String&gt; enumeration) {</span>
+<span class="fc" id="L273">            this.typeName = name;</span>
+<span class="fc" id="L274">            this.enumeration = enumeration;</span>
+<span class="fc" id="L275">        }</span>
+    }
+
+    private static JsonType toJsonType(String javaType) {
+<span class="fc" id="L279">        String t = JAVA_TYPE_TO_JSON_TYPE.get(javaType);</span>
+<span class="fc bfc" id="L280" title="All 2 branches covered.">        if (t != null) {</span>
+<span class="fc" id="L281">            return new JsonType(t, Collections.emptyList());</span>
+        } else {
+<span class="fc" id="L283">            Class&lt;?&gt; cls = toClass(javaType);</span>
+<span class="fc bfc" id="L284" title="All 2 branches covered.">            if (cls.isEnum()) {</span>
+<span class="fc" id="L285">                List&lt;String&gt; list = Arrays.stream(cls.getEnumConstants()).map(x -&gt; x.toString())</span>
+<span class="fc" id="L286">                        .collect(Collectors.toList());</span>
+<span class="fc" id="L287">                return new JsonType(&quot;string&quot;, list);</span>
+            } else {
+<span class="fc" id="L289">                return new JsonType(&quot;object&quot;, Collections.emptyList());</span>
+            }
+        }
+    }
+
+    private static Map&lt;String, String&gt; createJavaTypeToJsonTypeMap() {
+<span class="fc" id="L295">        Map&lt;String, String&gt; map = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L296">        map.put(Boolean.class.getName(), &quot;boolean&quot;);</span>
+<span class="fc" id="L297">        map.put(&quot;boolean&quot;, &quot;boolean&quot;);</span>
+<span class="fc" id="L298">        map.put(Integer.class.getName(), &quot;integer&quot;);</span>
+<span class="fc" id="L299">        map.put(&quot;int&quot;, &quot;integer&quot;);</span>
+<span class="fc" id="L300">        map.put(Double.class.getName(), &quot;number&quot;);</span>
+<span class="fc" id="L301">        map.put(&quot;double&quot;, &quot;number&quot;);</span>
+<span class="fc" id="L302">        map.put(String.class.getName(), &quot;string&quot;);</span>
+<span class="fc" id="L303">        map.put(OffsetTime.class.getName(), &quot;time&quot;);</span>
+<span class="fc" id="L304">        return map;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

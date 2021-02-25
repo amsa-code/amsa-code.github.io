@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>sgb-decoder - Checkstyle report</title>
+    <link>http://github.com/amsa-code/sgb-decoder</link>
+    <description>sgb-decoder - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2021</copyright>
+    <item>
+      <title>File: 67,
+             Errors: 26,
+             Warnings: 0,
+             Infos: 0
+      </title>
+            <link>http://github.com/amsa-code/sgb-decoder/checkstyle.html</link>
+      <description>
+        <p>Click <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.CancellationTest.java">au/gov/amsa/sgb/decoder/rotatingfield/CancellationTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.package-info.java">au/gov/amsa/sgb/decoder/internal/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RotatingField.java">au/gov/amsa/sgb/decoder/rotatingfield/RotatingField.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.VesselIdType.java">au/gov/amsa/sgb/decoder/vesselid/VesselIdType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.Rls.java">au/gov/amsa/sgb/decoder/rotatingfield/Rls.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.BeaconFeedbackTest.java">au/gov/amsa/sgb/decoder/rotatingfield/BeaconFeedbackTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RangeTest.java">au/gov/amsa/sgb/decoder/rotatingfield/RangeTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.BeaconFeedback.java">au/gov/amsa/sgb/decoder/rotatingfield/BeaconFeedback.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.Hex.java">au/gov/amsa/sgb/decoder/internal/Hex.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.AircraftRegistrationMarkingTest.java">au/gov/amsa/sgb/decoder/vesselid/AircraftRegistrationMarkingTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.Cancellation.java">au/gov/amsa/sgb/decoder/rotatingfield/Cancellation.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.json.Json.java">au/gov/amsa/sgb/decoder/internal/json/Json.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.json.JsonSchema.java">au/gov/amsa/sgb/decoder/internal/json/JsonSchema.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.TestingUtil.java">au/gov/amsa/sgb/decoder/TestingUtil.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.AircraftOperatorAndSerialNumberTest.java">au/gov/amsa/sgb/decoder/vesselid/AircraftOperatorAndSerialNumberTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.ComplianceKitTest.java">au/gov/amsa/sgb/decoder/ComplianceKitTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  4
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.Range.java">au/gov/amsa/sgb/decoder/rotatingfield/Range.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.VesselId.java">au/gov/amsa/sgb/decoder/vesselid/VesselId.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.json.MyField.java">au/gov/amsa/sgb/decoder/internal/json/MyField.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.Util.java">au/gov/amsa/sgb/decoder/internal/Util.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.MmsiTest.java">au/gov/amsa/sgb/decoder/vesselid/MmsiTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.NationalUse.java">au/gov/amsa/sgb/decoder/rotatingfield/NationalUse.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.EltDtInFlightEmergencyTest.java">au/gov/amsa/sgb/decoder/rotatingfield/EltDtInFlightEmergencyTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.NationalUseTest.java">au/gov/amsa/sgb/decoder/rotatingfield/NationalUseTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.ActivationMethod.java">au/gov/amsa/sgb/decoder/rotatingfield/ActivationMethod.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.package-info.java">au/gov/amsa/sgb/decoder/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.package-info.java">au/gov/amsa/sgb/decoder/vesselid/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.Bits.java">au/gov/amsa/sgb/decoder/internal/Bits.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.EltDtInFlightEmergency.java">au/gov/amsa/sgb/decoder/rotatingfield/EltDtInFlightEmergency.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.BaudotCode.java">au/gov/amsa/sgb/decoder/internal/BaudotCode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.RadioCallSign.java">au/gov/amsa/sgb/decoder/vesselid/RadioCallSign.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.Aviation24BitAddress.java">au/gov/amsa/sgb/decoder/vesselid/Aviation24BitAddress.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.Beacon23HexId.java">au/gov/amsa/sgb/decoder/Beacon23HexId.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.json.JsonTest.java">au/gov/amsa/sgb/decoder/internal/json/JsonTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.json.JsonSchemaTest.java">au/gov/amsa/sgb/decoder/internal/json/JsonSchemaTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  3
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.EncodedGnssPosition.java">au/gov/amsa/sgb/decoder/EncodedGnssPosition.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.DetectionTest.java">au/gov/amsa/sgb/decoder/DetectionTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.Beacon23HexIdTest.java">au/gov/amsa/sgb/decoder/Beacon23HexIdTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.Detection.java">au/gov/amsa/sgb/decoder/Detection.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.package-info.java">au/gov/amsa/sgb/decoder/rotatingfield/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RangeEndTest.java">au/gov/amsa/sgb/decoder/rotatingfield/RangeEndTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.UnknownRotatingField.java">au/gov/amsa/sgb/decoder/rotatingfield/UnknownRotatingField.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RotatingFieldConstants.java">au/gov/amsa/sgb/decoder/rotatingfield/RotatingFieldConstants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RotatingFieldConstantsTest.java">au/gov/amsa/sgb/decoder/rotatingfield/RotatingFieldConstantsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RlsType.java">au/gov/amsa/sgb/decoder/rotatingfield/RlsType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.json.package-info.java">au/gov/amsa/sgb/decoder/internal/json/package-info.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.BaudotCodeTest.java">au/gov/amsa/sgb/decoder/internal/BaudotCodeTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RlsProvider.java">au/gov/amsa/sgb/decoder/rotatingfield/RlsProvider.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RotatingFieldType.java">au/gov/amsa/sgb/decoder/rotatingfield/RotatingFieldType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.DeactivationMethod.java">au/gov/amsa/sgb/decoder/rotatingfield/DeactivationMethod.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.Mmsi.java">au/gov/amsa/sgb/decoder/vesselid/Mmsi.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.UtilTest.java">au/gov/amsa/sgb/decoder/internal/UtilTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.ObjectiveRequirements.java">au/gov/amsa/sgb/decoder/rotatingfield/ObjectiveRequirements.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.BitsTest.java">au/gov/amsa/sgb/decoder/internal/BitsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  6
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.BeaconType.java">au/gov/amsa/sgb/decoder/BeaconType.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.GnssStatus.java">au/gov/amsa/sgb/decoder/rotatingfield/GnssStatus.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.ObjectiveRequirementsTest.java">au/gov/amsa/sgb/decoder/rotatingfield/ObjectiveRequirementsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.UnknownRotatingFieldTest.java">au/gov/amsa/sgb/decoder/rotatingfield/UnknownRotatingFieldTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RangeEnd.java">au/gov/amsa/sgb/decoder/rotatingfield/RangeEnd.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.AircraftRegistrationMarking.java">au/gov/amsa/sgb/decoder/vesselid/AircraftRegistrationMarking.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.Aviation24BitAddressTest.java">au/gov/amsa/sgb/decoder/vesselid/Aviation24BitAddressTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.internal.HexTest.java">au/gov/amsa/sgb/decoder/internal/HexTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.TriggeringEvent.java">au/gov/amsa/sgb/decoder/rotatingfield/TriggeringEvent.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.RadioCallSignTest.java">au/gov/amsa/sgb/decoder/vesselid/RadioCallSignTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.vesselid.AircraftOperatorAndSerialNumber.java">au/gov/amsa/sgb/decoder/vesselid/AircraftOperatorAndSerialNumber.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.EncodedGnssPositionTest.java">au/gov/amsa/sgb/decoder/EncodedGnssPositionTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  1
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="http://github.com/amsa-code/sgb-decoder/checkstyle.html#au.gov.amsa.sgb.decoder.rotatingfield.RlsTest.java">au/gov/amsa/sgb/decoder/rotatingfield/RlsTest.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

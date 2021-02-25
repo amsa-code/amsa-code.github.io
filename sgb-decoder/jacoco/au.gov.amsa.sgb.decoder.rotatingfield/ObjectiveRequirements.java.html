@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ObjectiveRequirements.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.sgb.decoder.rotatingfield</a> &gt; <span class="el_source">ObjectiveRequirements.java</span></div><h1>ObjectiveRequirements.java</h1><pre class="source lang-java linenums">package au.gov.amsa.sgb.decoder.rotatingfield;
+
+import java.util.Optional;
+
+public final class ObjectiveRequirements implements RotatingField {
+
+    // used for serialization
+<span class="fc" id="L8">    private final RotatingFieldType rotatingFieldType = RotatingFieldType.OBJECTIVE_REQUIREMENTS;</span>
+    private final int elapsedTimeSinceActivationHours;
+    private final int timeSinceLastEncodedLocationMinutes;
+    private final int altitudeEncodedLocationMetres;
+    private final Optional&lt;Range&gt; dilutionPrecisionHdop;
+    private final Optional&lt;Range&gt; dilutionPrecisionVdop;
+    private final ActivationMethod activationMethod;
+    private final Optional&lt;Range&gt; remainingBatteryCapacityPercent;
+    private final GnssStatus gnssStatus;
+
+    public ObjectiveRequirements(int elapsedTimeSinceActivationHours, int timeSinceLastEncodedLocationMinutes,
+            int altitudeEncodedLocationMetres, Optional&lt;Range&gt; dilutionPrecisionHdop,
+            Optional&lt;Range&gt; dilutionPrecisionVdop, ActivationMethod activationMethod,
+<span class="fc" id="L21">            Optional&lt;Range&gt; remainingBatteryCapacityPercent, GnssStatus gnssStatus) {</span>
+<span class="fc" id="L22">        this.elapsedTimeSinceActivationHours = elapsedTimeSinceActivationHours;</span>
+<span class="fc" id="L23">        this.timeSinceLastEncodedLocationMinutes = timeSinceLastEncodedLocationMinutes;</span>
+<span class="fc" id="L24">        this.altitudeEncodedLocationMetres = altitudeEncodedLocationMetres;</span>
+<span class="fc" id="L25">        this.dilutionPrecisionHdop = dilutionPrecisionHdop;</span>
+<span class="fc" id="L26">        this.dilutionPrecisionVdop = dilutionPrecisionVdop;</span>
+<span class="fc" id="L27">        this.activationMethod = activationMethod;</span>
+<span class="fc" id="L28">        this.remainingBatteryCapacityPercent = remainingBatteryCapacityPercent;</span>
+<span class="fc" id="L29">        this.gnssStatus = gnssStatus;</span>
+<span class="fc" id="L30">    }</span>
+
+    public RotatingFieldType rotatingFieldType() {
+<span class="fc" id="L33">        return rotatingFieldType;</span>
+    }
+
+    public int elapsedTimeSinceActivationHours() {
+<span class="fc" id="L37">        return elapsedTimeSinceActivationHours;</span>
+    }
+
+    public int timeSinceLastEncodedLocationMinutes() {
+<span class="fc" id="L41">        return timeSinceLastEncodedLocationMinutes;</span>
+    }
+
+    public int altitudeEncodedLocationMetres() {
+<span class="fc" id="L45">        return altitudeEncodedLocationMetres;</span>
+    }
+
+    public Optional&lt;Range&gt; dilutionPrecisionHdop() {
+<span class="fc" id="L49">        return dilutionPrecisionHdop;</span>
+    }
+
+    public Optional&lt;Range&gt; dilutionPrecisionDop() {
+<span class="fc" id="L53">        return dilutionPrecisionVdop;</span>
+    }
+
+    public ActivationMethod activationMethod() {
+<span class="fc" id="L57">        return activationMethod;</span>
+    }
+
+    public Optional&lt;Range&gt; remainingBatteryCapacityPercent() {
+<span class="fc" id="L61">        return remainingBatteryCapacityPercent;</span>
+    }
+
+    public GnssStatus gnssStatus() {
+<span class="fc" id="L65">        return gnssStatus;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

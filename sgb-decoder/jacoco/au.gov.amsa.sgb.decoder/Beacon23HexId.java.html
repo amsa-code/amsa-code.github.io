@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Beacon23HexId.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.sgb.decoder</a> &gt; <span class="el_source">Beacon23HexId.java</span></div><h1>Beacon23HexId.java</h1><pre class="source lang-java linenums">package au.gov.amsa.sgb.decoder;
+
+import java.util.Optional;
+
+import com.github.davidmoten.guavamini.Preconditions;
+
+import au.gov.amsa.sgb.decoder.internal.Bits;
+import au.gov.amsa.sgb.decoder.internal.json.Json;
+import au.gov.amsa.sgb.decoder.vesselid.VesselId;
+
+/**
+ * Decodes a Beacon 23 Hex character ID. Based on C/T.018 Rev 6
+ * (May 2020).
+ */
+public final class Beacon23HexId {
+
+    private final int countryCode;
+    private final int tac;
+    private final int serialNumber;
+    private final boolean testProtocolFlag;
+    private final Optional&lt;VesselId&gt; vesselId;
+
+<span class="fc" id="L23">    private Beacon23HexId(String hex) {</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">        Preconditions.checkArgument(hex.length() == 23);</span>
+<span class="fc" id="L25">        Bits bits = Bits.fromHex(hex);</span>
+<span class="fc" id="L26">        bits.skip(1);</span>
+<span class="fc" id="L27">        countryCode = bits.readUnsignedInt(10);</span>
+<span class="fc" id="L28">        bits.skip(3);</span>
+<span class="fc" id="L29">        tac = bits.readUnsignedInt(16);</span>
+<span class="fc" id="L30">        serialNumber = bits.readUnsignedInt(14);</span>
+<span class="fc" id="L31">        testProtocolFlag = bits.readBoolean();</span>
+<span class="fc" id="L32">        vesselId = Detection.readVesselId(bits);</span>
+<span class="fc" id="L33">    }</span>
+
+    public static Beacon23HexId fromHex(String hex) {
+<span class="fc" id="L36">        return new Beacon23HexId(hex);</span>
+    }
+
+    public int countryCode() {
+<span class="fc" id="L40">        return countryCode;</span>
+    }
+
+    public int tac() {
+<span class="fc" id="L44">        return tac;</span>
+    }
+
+    public int serialNumber() {
+<span class="fc" id="L48">        return serialNumber;</span>
+    }
+
+    public boolean testProtocolFlag() {
+<span class="fc" id="L52">        return testProtocolFlag;</span>
+    }
+
+    public Optional&lt;VesselId&gt; vesselId() {
+<span class="fc" id="L56">        return vesselId;</span>
+    }
+
+    public String toJson() {
+<span class="fc" id="L60">        return Json.toJson(this);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

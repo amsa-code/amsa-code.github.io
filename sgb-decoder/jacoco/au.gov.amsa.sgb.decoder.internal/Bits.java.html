@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Bits.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.sgb.decoder.internal</a> &gt; <span class="el_source">Bits.java</span></div><h1>Bits.java</h1><pre class="source lang-java linenums">package au.gov.amsa.sgb.decoder.internal;
+
+import java.util.Arrays;
+
+import com.github.davidmoten.guavamini.Preconditions;
+
+public final class Bits {
+
+    private static final int BITS_PER_HEX_CHAR = 4;
+    private final boolean[] bits;
+    private int pos;
+
+<span class="fc" id="L13">    private Bits(boolean[] bits) {</span>
+<span class="fc" id="L14">        this.bits = bits;</span>
+<span class="fc" id="L15">    }</span>
+
+    public static Bits from(boolean[] bits) {
+<span class="fc" id="L18">        return new Bits(bits);</span>
+    }
+
+    public static Bits zeros(int length) {
+<span class="fc" id="L22">        return Bits.from(new boolean[length]);</span>
+    }
+
+    public static Bits from(String bitString) {
+<span class="fc" id="L26">        boolean[] bits = new boolean[bitString.length()];</span>
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        for (int i = 0; i &lt; bits.length; i++) {</span>
+<span class="fc" id="L28">            char ch = bitString.charAt(i);</span>
+<span class="fc bfc" id="L29" title="All 2 branches covered.">            if (ch == '1') {</span>
+<span class="fc" id="L30">                bits[i] = true;</span>
+<span class="fc bfc" id="L31" title="All 2 branches covered.">            } else if (ch != '0') {</span>
+<span class="fc" id="L32">                throw new IllegalArgumentException(&quot;illegal character in bit string &quot; + bitString);</span>
+            }
+        }
+<span class="fc" id="L35">        return from(bits);</span>
+    }
+
+    public static Bits fromHex(String hex) {
+<span class="fc" id="L39">        return Bits.from(Hex.hexToBinary(hex));</span>
+    }
+
+    public Bits concatWith(String bitString) {
+<span class="fc" id="L43">        return concatWith(Bits.from(bitString));</span>
+    }
+
+    public Bits concatWith(Bits b) {
+<span class="fc" id="L47">        boolean[] array = Arrays.copyOf(bits, bits.length + b.bits.length);</span>
+<span class="fc" id="L48">        System.arraycopy(b.bits, 0, array, bits.length, b.bits.length);</span>
+<span class="fc" id="L49">        return Bits.from(array);</span>
+    }
+
+    public Bits position(int position) {
+<span class="fc bfc" id="L53" title="All 4 branches covered.">        Preconditions.checkArgument(position &gt;= 0 &amp;&amp; position &lt;= bits.length);</span>
+<span class="fc" id="L54">        this.pos = position;</span>
+<span class="fc" id="L55">        return this;</span>
+    }
+
+    public Bits skip(int numBits) {
+<span class="fc bfc" id="L59" title="All 2 branches covered.">        Preconditions.checkArgument(numBits &gt;= 0);</span>
+<span class="fc" id="L60">        return position(pos + numBits);</span>
+    }
+
+    public boolean atEnd() {
+<span class="fc bfc" id="L64" title="All 2 branches covered.">        return pos == bits.length;</span>
+    }
+
+    private int value(int index) {
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        return bits[index] ? 1 : 0;</span>
+    }
+
+    /**
+     * Assumes the most significant bit is on the left.
+     *
+     * @param numBits number of bits reads
+     * @return the bits as an integer
+     */
+    public int readUnsignedInt(int numBits) {
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        Preconditions.checkArgument(numBits &gt; 0);</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">        Preconditions.checkArgument(pos + numBits &lt;= bits.length);</span>
+<span class="fc" id="L80">        int result = 0;</span>
+<span class="fc bfc" id="L81" title="All 2 branches covered.">        for (int i = pos; i &lt; pos + numBits; i++) {</span>
+<span class="fc" id="L82">            result = 2 * result + value(i);</span>
+        }
+<span class="fc" id="L84">        pos += numBits;</span>
+<span class="fc" id="L85">        return result;</span>
+    }
+
+    //////////////////////////////////////////////////////////////
+    // Modified Baudot parsing
+    //////////////////////////////////////////////////////////////
+
+    private static final int SHORT_BAUDOT_CODE_BINARY_LENGTH = 5;
+    private static final int BAUDOT_CODE_BINARY_LENGTH = 6;
+
+    public String readBaudotCharactersShort(int numChars) {
+<span class="fc" id="L96">        StringBuilder s = new StringBuilder();</span>
+<span class="fc bfc" id="L97" title="All 2 branches covered.">        for (int i = 0; i &lt; numChars; i++) {</span>
+<span class="fc" id="L98">            int v = readUnsignedInt(SHORT_BAUDOT_CODE_BINARY_LENGTH);</span>
+<span class="fc" id="L99">            s.append(BaudotCode.toCharFromShortCode(v));</span>
+        }
+<span class="fc" id="L101">        return s.toString();</span>
+    }
+
+    public String readBaudotCharacters(int numChars) {
+<span class="fc" id="L105">        StringBuilder s = new StringBuilder();</span>
+<span class="fc bfc" id="L106" title="All 2 branches covered.">        for (int i = 0; i &lt; numChars; i++) {</span>
+<span class="fc" id="L107">            int v = readUnsignedInt(BAUDOT_CODE_BINARY_LENGTH);</span>
+<span class="fc" id="L108">            s.append(BaudotCode.toChar(v));</span>
+        }
+<span class="fc" id="L110">        return s.toString();</span>
+    }
+
+    //////////////////////////////////////////////////////////////
+
+    public boolean readBoolean() {
+<span class="fc bfc" id="L116" title="All 2 branches covered.">        Preconditions.checkArgument(!atEnd(), &quot;already at end&quot;);</span>
+<span class="fc" id="L117">        pos += 1;</span>
+<span class="fc" id="L118">        return bits[pos - 1];</span>
+    }
+
+    public String readHex(int numChars) {
+<span class="fc" id="L122">        return Hex.bitStringToHex(readBitString(numChars * BITS_PER_HEX_CHAR));</span>
+    }
+
+    public String readBitString(int numBits) {
+<span class="fc" id="L126">        String s = readBitsString(pos, numBits);</span>
+<span class="fc" id="L127">        pos += numBits;</span>
+<span class="fc" id="L128">        return s;</span>
+    }
+
+    private String readBitsString(int pos, int numBits) {
+<span class="fc" id="L132">        StringBuilder b = new StringBuilder();</span>
+<span class="fc bfc" id="L133" title="All 2 branches covered.">        for (int i = pos; i &lt; pos + numBits; i++) {</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">            b.append(bits[i] ? '1' : '0');</span>
+        }
+<span class="fc" id="L136">        return b.toString();</span>
+    }
+
+    public boolean isEqualTo(Bits b) {
+<span class="fc bfc" id="L140" title="All 6 branches covered.">        return b != null &amp;&amp; b.bits.length == bits.length &amp;&amp; Arrays.equals(b.bits, bits);</span>
+    }
+
+    public boolean[] readBooleanArray(int numBits) {
+<span class="fc" id="L144">        boolean[] b = readBooleanArray(pos, numBits);</span>
+<span class="fc" id="L145">        pos += numBits;</span>
+<span class="fc" id="L146">        return b;</span>
+    }
+
+    private boolean[] readBooleanArray(int pos, int numBits) {
+<span class="fc bfc" id="L150" title="All 2 branches covered.">        Preconditions.checkArgument(numBits &gt; 0);</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">        Preconditions.checkArgument(pos + numBits &lt;= bits.length);</span>
+<span class="fc" id="L152">        return Arrays.copyOfRange(bits, pos, pos + numBits);</span>
+    }
+
+    public Bits readBits(int numBits) {
+<span class="fc" id="L156">        return Bits.from(readBooleanArray(numBits));</span>
+    }
+
+    public boolean isZero() {
+<span class="fc bfc" id="L160" title="All 2 branches covered.">        for (boolean b : bits) {</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">            if (b) {</span>
+<span class="fc" id="L162">                return false;</span>
+            }
+        }
+<span class="fc" id="L165">        return true;</span>
+    }
+
+    public int position() {
+<span class="fc" id="L169">        return pos;</span>
+    }
+
+    public int length() {
+<span class="fc" id="L173">        return bits.length;</span>
+    }
+
+    public String toBitString() {
+<span class="fc" id="L177">        return readBitsString(0, bits.length);</span>
+    }
+
+    public Bits remainderOnPolynomialDivision(Bits divisor) {
+<span class="fc" id="L181">        divisor = divisor.trimLeadingZeros();</span>
+<span class="fc" id="L182">        Bits b = new Bits(this.bits);</span>
+<span class="fc" id="L183">        int i = 0;</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">        while (i &lt;= b.length() - divisor.length()) {</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">            if (b.bits[i]) {</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">                for (int j = i; j &lt; i + divisor.length(); j++) {</span>
+<span class="fc" id="L187">                    b.bits[j] = b.bits[j] ^ divisor.bits[j - i];</span>
+                }
+            }
+<span class="fc" id="L190">            i++;</span>
+        }
+<span class="fc" id="L192">        return b;</span>
+    }
+
+    public Bits trimLeadingZeros() {
+<span class="fc" id="L196">        int p = bits.length - 1;</span>
+<span class="fc bfc" id="L197" title="All 2 branches covered.">        for (int i = 0; i &lt; bits.length - 1; i++) {</span>
+<span class="fc bfc" id="L198" title="All 2 branches covered.">            if (bits[i]) {</span>
+<span class="fc" id="L199">                p = i;</span>
+<span class="fc" id="L200">                break;</span>
+            }
+        }
+<span class="fc" id="L203">        boolean[] b = Arrays.copyOfRange(bits, p, bits.length);</span>
+<span class="fc" id="L204">        return Bits.from(b);</span>
+    }
+
+    public Bits last(int numBits) {
+<span class="fc" id="L208">        return Bits.from(readBooleanArray(length() - numBits, numBits));</span>
+    }
+
+    @Override
+    public String toString() {
+<span class="fc" id="L213">        return toBitString();</span>
+    }
+
+    public Bits replace(int i, Bits b) {
+<span class="fc" id="L217">        boolean[] a = Arrays.copyOf(bits, bits.length);</span>
+<span class="fc" id="L218">        System.arraycopy(b.bits, 0, a, i, b.bits.length);</span>
+<span class="fc" id="L219">        return Bits.from(a);</span>
+    }
+
+    public String toHex() {
+<span class="fc" id="L223">        return Hex.bitStringToHex(toBitString());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>

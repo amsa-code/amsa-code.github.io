@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>Beacon23HexIdTest xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../testapidocs/au/gov/amsa/sgb/decoder/Beacon23HexIdTest.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.sgb.decoder;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertEquals;
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <strong class="jxr_keyword">import</strong> <strong class="jxr_keyword">static</strong> org.junit.Assert.assertFalse;
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <strong class="jxr_keyword">import</strong> java.io.File;
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <strong class="jxr_keyword">import</strong> java.io.IOException;
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <strong class="jxr_keyword">import</strong> java.nio.charset.StandardCharsets;
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <strong class="jxr_keyword">import</strong> org.junit.Test;
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <strong class="jxr_keyword">import</strong> com.google.common.io.Files;
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <strong class="jxr_keyword">import</strong> au.gov.amsa.sgb.decoder.internal.json.Json;
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> <a name="Beacon23HexIdTest" href="../../../../../au/gov/amsa/sgb/decoder/Beacon23HexIdTest.html#Beacon23HexIdTest">Beacon23HexIdTest</a> {
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      @Test
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDecode() <strong class="jxr_keyword">throws</strong> IOException {
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>          Beacon23HexId b = Beacon23HexId.fromHex(<span class="jxr_string">"9934039823D000000000000"</span>);
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>          assertEquals(201, b.countryCode());
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>          assertEquals(230, b.tac());
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>          assertEquals(573, b.serialNumber());
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>          assertFalse(b.testProtocolFlag());
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>          assertFalse(b.vesselId().isPresent());
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>          TestingUtil.assertJsonEquals(
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>                  <span class="jxr_string">"{\&quot;countryCode\&quot;:201,\&quot;tac\&quot;:230,\&quot;serialNumber\&quot;:573,\&quot;testProtocolFlag\&quot;:false}"</span>, b.toJson());
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>          File f = <strong class="jxr_keyword">new</strong> File(<span class="jxr_string">"src/test/resources/compliance-kit/beacon-23-hex-id-sample.json"</span>);
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>          f.delete();
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>          Files.write(Json.prettyPrint(b.toJson()).getBytes(StandardCharsets.UTF_8), f);
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>      }
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      @Test(expected = IllegalArgumentException.<strong class="jxr_keyword">class</strong>)
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> testDecodeHexWrongSize() {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          Beacon23HexId.fromHex(<span class="jxr_string">"123"</span>);
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>      }
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2021. All rights reserved.</div>
+</body>
+</html>
