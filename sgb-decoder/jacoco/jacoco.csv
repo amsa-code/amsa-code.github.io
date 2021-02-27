@@ -15,15 +15,15 @@ sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,Range.BuilderMin,0,42,0,0,0,8,
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,GnssStatus,0,44,0,0,0,2,0,1,0,1
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,Range.BuilderMax,0,31,0,0,0,7,0,3,0,3
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,Range,0,189,0,16,0,38,0,17,0,9
+sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,RotatingFieldType,0,64,0,0,0,2,0,1,0,1
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,NationalUse,0,15,0,0,0,6,0,3,0,3
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,RlsProvider,0,34,0,0,0,2,0,1,0,1
-sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,RotatingFieldType,0,64,0,0,0,2,0,1,0,1
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,Rls,0,33,0,0,0,12,0,6,0,6
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,TriggeringEvent,0,44,0,0,0,5,0,1,0,1
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,Cancellation,0,15,0,0,0,6,0,3,0,3
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,ObjectiveRequirements,0,57,0,0,0,20,0,10,0,10
-sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,UnknownRotatingField,0,15,0,0,0,6,0,3,0,3
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,RlsType,0,34,0,0,0,2,0,1,0,1
+sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,UnknownRotatingField,0,15,0,0,0,6,0,3,0,3
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,BeaconFeedback,0,27,0,0,0,10,0,5,0,5
 sgb-decoder,au.gov.amsa.sgb.decoder.rotatingfield,EltDtInFlightEmergency,0,39,0,0,0,14,0,7,0,7
 sgb-decoder,au.gov.amsa.sgb.decoder,EncodedGnssPosition,0,15,0,0,0,6,0,3,0,3
