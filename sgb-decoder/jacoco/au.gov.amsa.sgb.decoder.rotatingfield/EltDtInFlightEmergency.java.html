@@ -23,29 +23,30 @@ public final class EltDtInFlightEmergency implements RotatingField {
 <span class="fc" id="L23">        this.remainingBatteryCapacityPercent = remainingBatteryCapacityPercent;</span>
 <span class="fc" id="L24">    }</span>
 
+    @Override
     public RotatingFieldType rotatingFieldType() {
-<span class="fc" id="L27">        return rotatingFieldType;</span>
+<span class="fc" id="L28">        return rotatingFieldType;</span>
     }
 
     public OffsetTime timeOfLastEncodedLocation() {
-<span class="fc" id="L31">        return timeOfLastEncodedLocation;</span>
+<span class="fc" id="L32">        return timeOfLastEncodedLocation;</span>
     }
 
     public int altitudeEncodedLocationMetres() {
-<span class="fc" id="L35">        return altitudeEncodedLocationMetres;</span>
+<span class="fc" id="L36">        return altitudeEncodedLocationMetres;</span>
     }
 
     public TriggeringEvent triggeringEvent() {
-<span class="fc" id="L39">        return triggeringEvent;</span>
+<span class="fc" id="L40">        return triggeringEvent;</span>
     }
 
     public GnssStatus gnssStatus() {
-<span class="fc" id="L43">        return gnssStatus;</span>
+<span class="fc" id="L44">        return gnssStatus;</span>
     }
 
     public Optional&lt;Range&gt; remainingBatteryCapacityPercent() {
-<span class="fc" id="L47">        return remainingBatteryCapacityPercent;</span>
+<span class="fc" id="L48">        return remainingBatteryCapacityPercent;</span>
     }
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

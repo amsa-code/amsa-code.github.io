@@ -41,10 +41,12 @@ import au.gov.amsa.sgb.decoder.vesselid.VesselId;
  */
 public final class Detection {
 
-<span class="fc" id="L44">    private static final Bits NO_ENCODED_LOCATION_CAPABILITY = Bits</span>
-<span class="fc" id="L45">            .from(&quot;11111111000001111100000111111111111110000011111&quot;);</span>
+    private static final String EPIRB_MMSI_PREFIX = &quot;974&quot;;
 
-<span class="fc" id="L47">    private static final Bits BCH_DIVISOR = Bits.from(&quot;1110001111110101110000101110111110011110010010111&quot;);</span>
+<span class="fc" id="L46">    private static final Bits NO_ENCODED_LOCATION_CAPABILITY = Bits</span>
+<span class="fc" id="L47">            .from(&quot;11111111000001111100000111111111111110000011111&quot;);</span>
+
+<span class="fc" id="L49">    private static final Bits BCH_DIVISOR = Bits.from(&quot;1110001111110101110000101110111110011110010010111&quot;);</span>
 
     @JsonIgnore
     private final Bits bits;
@@ -62,541 +64,541 @@ public final class Detection {
     private final String beacon23HexId;
     private final String beacon15HexId;
 
-<span class="fc" id="L65">    private Detection(Bits bits) {</span>
-<span class="fc bfc" id="L66" title="All 2 branches covered.">        Preconditions.checkArgument(bits.length() == 202, &quot;length should be 202 but was &quot; + bits.length());</span>
-<span class="fc" id="L67">        this.bits = bits;</span>
-<span class="fc" id="L68">        tac = bits.readUnsignedInt(16);</span>
-<span class="fc" id="L69">        serialNo = bits.readUnsignedInt(14);</span>
-<span class="fc" id="L70">        countryCode = bits.readUnsignedInt(10);</span>
-<span class="fc" id="L71">        hasAtLeastOneEnabledHomingSignal = bits.readBoolean();</span>
-<span class="fc" id="L72">        hasEnabledRls = bits.readBoolean();</span>
-<span class="fc" id="L73">        testProtocolMessage = bits.readBoolean();</span>
-<span class="fc" id="L74">        encodedGnssPosition = readPosition(bits.readBits(47));</span>
-<span class="fc" id="L75">        vesselId = readVesselId(bits);</span>
-<span class="fc" id="L76">        beaconType = readBeaconType(bits);</span>
+<span class="fc" id="L67">    private Detection(Bits bits) {</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">        Preconditions.checkArgument(bits.length() == 202, &quot;length should be 202 but was &quot; + bits.length());</span>
+<span class="fc" id="L69">        this.bits = bits;</span>
+<span class="fc" id="L70">        tac = bits.readUnsignedInt(16);</span>
+<span class="fc" id="L71">        serialNo = bits.readUnsignedInt(14);</span>
+<span class="fc" id="L72">        countryCode = bits.readUnsignedInt(10);</span>
+<span class="fc" id="L73">        hasAtLeastOneEnabledHomingSignal = bits.readBoolean();</span>
+<span class="fc" id="L74">        hasEnabledRls = bits.readBoolean();</span>
+<span class="fc" id="L75">        testProtocolMessage = bits.readBoolean();</span>
+<span class="fc" id="L76">        encodedGnssPosition = readPosition(bits.readBits(47));</span>
+<span class="fc" id="L77">        vesselId = readVesselId(bits);</span>
+<span class="fc" id="L78">        beaconType = readBeaconType(bits);</span>
         // skip spare bits
-<span class="fc" id="L78">        bits.skip(14);</span>
-<span class="fc" id="L79">        rotatingField = readRotatingField(bits);</span>
-<span class="fc" id="L80">        beacon23HexId = readBeacon23HexID(bits.position(0));</span>
-<span class="fc" id="L81">        beacon15HexId = beacon23HexId.substring(0, 15);</span>
-<span class="fc" id="L82">    }</span>
+<span class="fc" id="L80">        bits.skip(14);</span>
+<span class="fc" id="L81">        rotatingField = readRotatingField(bits);</span>
+<span class="fc" id="L82">        beacon23HexId = readBeacon23HexID(bits.position(0));</span>
+<span class="fc" id="L83">        beacon15HexId = beacon23HexId.substring(0, 15);</span>
+<span class="fc" id="L84">    }</span>
 
     public static Detection fromBitString(String bitString) {
-<span class="fc" id="L85">        return from(Bits.from(bitString));</span>
+<span class="fc" id="L87">        return from(Bits.from(bitString));</span>
     }
 
     public static Detection fromHexGroundSegmentRepresentation(String hex) {
-<span class="fc" id="L89">        String bitString = Hex.hexToBinary(hex).substring(2);</span>
-<span class="fc" id="L90">        return fromBitString(bitString);</span>
+<span class="fc" id="L91">        String bitString = Hex.hexToBinary(hex).substring(2);</span>
+<span class="fc" id="L92">        return fromBitString(bitString);</span>
     }
 
     @VisibleForTesting
     static Detection from(Bits bits) {
-<span class="fc" id="L95">        return new Detection(bits);</span>
+<span class="fc" id="L97">        return new Detection(bits);</span>
     }
 
     private String readBeacon23HexID(Bits bits) {
-<span class="fc" id="L99">        StringBuilder s = new StringBuilder();</span>
-<span class="fc" id="L100">        s.append(&quot;1&quot;);</span>
-<span class="fc" id="L101">        bits.position(0);</span>
-<span class="fc" id="L102">        String tacBits = bits.readBitString(16);</span>
-<span class="fc" id="L103">        String serialBits = bits.readBitString(14);</span>
-<span class="fc" id="L104">        String countryCodeBits = bits.readBitString(10);</span>
-<span class="fc" id="L105">        s.append(countryCodeBits);</span>
-<span class="fc" id="L106">        s.append(&quot;101&quot;);</span>
-<span class="fc" id="L107">        s.append(tacBits);</span>
-<span class="fc" id="L108">        s.append(serialBits);</span>
-<span class="fc" id="L109">        String testProtocolFlagBits = bits.position(42).readBitString(1);</span>
-<span class="fc" id="L110">        s.append(testProtocolFlagBits);</span>
-<span class="fc" id="L111">        String vesselIdBits = bits.position(90).readBitString(47);</span>
-<span class="fc" id="L112">        s.append(vesselIdBits);</span>
-<span class="fc" id="L113">        Bits b = Bits.from(s.toString());</span>
-<span class="fc" id="L114">        return b.readHex(23);</span>
+<span class="fc" id="L101">        StringBuilder s = new StringBuilder();</span>
+<span class="fc" id="L102">        s.append(&quot;1&quot;);</span>
+<span class="fc" id="L103">        bits.position(0);</span>
+<span class="fc" id="L104">        String tacBits = bits.readBitString(16);</span>
+<span class="fc" id="L105">        String serialBits = bits.readBitString(14);</span>
+<span class="fc" id="L106">        String countryCodeBits = bits.readBitString(10);</span>
+<span class="fc" id="L107">        s.append(countryCodeBits);</span>
+<span class="fc" id="L108">        s.append(&quot;101&quot;);</span>
+<span class="fc" id="L109">        s.append(tacBits);</span>
+<span class="fc" id="L110">        s.append(serialBits);</span>
+<span class="fc" id="L111">        String testProtocolFlagBits = bits.position(42).readBitString(1);</span>
+<span class="fc" id="L112">        s.append(testProtocolFlagBits);</span>
+<span class="fc" id="L113">        String vesselIdBits = bits.position(90).readBitString(47);</span>
+<span class="fc" id="L114">        s.append(vesselIdBits);</span>
+<span class="fc" id="L115">        Bits b = Bits.from(s.toString());</span>
+<span class="fc" id="L116">        return b.readHex(23);</span>
     }
 
     @VisibleForTesting
     static RotatingField readRotatingField(Bits bits) {
         // read rotating field identifier
-<span class="fc" id="L120">        int rid = bits.readUnsignedInt(4);</span>
-<span class="fc bfc" id="L121" title="All 2 branches covered.">        if (rid == 0) {</span>
-<span class="fc" id="L122">            return readRotatingFieldObjectiveRequirements(bits);</span>
-<span class="fc bfc" id="L123" title="All 2 branches covered.">        } else if (rid == 1) {</span>
-<span class="fc" id="L124">            return readRotatingFieldEltDtInFlightEmergency(bits);</span>
-<span class="fc bfc" id="L125" title="All 2 branches covered.">        } else if (rid == 2) {</span>
-<span class="fc" id="L126">            return readRotatingFieldRls(bits);</span>
-<span class="fc bfc" id="L127" title="All 2 branches covered.">        } else if (rid == 3) {</span>
-<span class="fc" id="L128">            return readRotatingFieldNationalUse(bits);</span>
-<span class="fc bfc" id="L129" title="All 2 branches covered.">        } else if (rid == 15) {</span>
-<span class="fc" id="L130">            return readRotatingFieldCancellationMessage(bits);</span>
+<span class="fc" id="L122">        int rid = bits.readUnsignedInt(4);</span>
+<span class="fc bfc" id="L123" title="All 2 branches covered.">        if (rid == 0) {</span>
+<span class="fc" id="L124">            return readRotatingFieldObjectiveRequirements(bits);</span>
+<span class="fc bfc" id="L125" title="All 2 branches covered.">        } else if (rid == 1) {</span>
+<span class="fc" id="L126">            return readRotatingFieldEltDtInFlightEmergency(bits);</span>
+<span class="fc bfc" id="L127" title="All 2 branches covered.">        } else if (rid == 2) {</span>
+<span class="fc" id="L128">            return readRotatingFieldRls(bits);</span>
+<span class="fc bfc" id="L129" title="All 2 branches covered.">        } else if (rid == 3) {</span>
+<span class="fc" id="L130">            return readRotatingFieldNationalUse(bits);</span>
+<span class="fc bfc" id="L131" title="All 2 branches covered.">        } else if (rid == 15) {</span>
+<span class="fc" id="L132">            return readRotatingFieldCancellationMessage(bits);</span>
         } else {
-<span class="fc" id="L132">            return readRotatingFieldUnknown(bits);</span>
+<span class="fc" id="L134">            return readRotatingFieldUnknown(bits);</span>
         }
     }
 
     private static ObjectiveRequirements readRotatingFieldObjectiveRequirements(Bits bits) {
-<span class="fc" id="L137">        int elapsedTimeSinceActivationHours = bits.readUnsignedInt(6);</span>
-<span class="fc" id="L138">        int timeSinceLastEncodedLocationMinutes = bits.readUnsignedInt(11);</span>
-<span class="fc" id="L139">        int altitudeEncodedLocationMetres = readAltitudeEncodedLocationMetres(bits);</span>
-<span class="fc" id="L140">        Optional&lt;Range&gt; dilutionPrecisionHdop = readDop(bits);</span>
-<span class="fc" id="L141">        Optional&lt;Range&gt; dilutionPrecisionDop = readDop(bits);</span>
-<span class="fc" id="L142">        ActivationMethod activationMethod = readActivationMethod(bits);</span>
-<span class="fc" id="L143">        Optional&lt;Range&gt; remainingBatteryCapacityPercent = readBatteryPercent(bits);</span>
-<span class="fc" id="L144">        GnssStatus gnssStatus = readGnssStatus(bits);</span>
-<span class="fc" id="L145">        bits.skip(2);</span>
-<span class="fc" id="L146">        return new ObjectiveRequirements(elapsedTimeSinceActivationHours, timeSinceLastEncodedLocationMinutes,</span>
+<span class="fc" id="L139">        int elapsedTimeSinceActivationHours = bits.readUnsignedInt(6);</span>
+<span class="fc" id="L140">        int timeSinceLastEncodedLocationMinutes = bits.readUnsignedInt(11);</span>
+<span class="fc" id="L141">        int altitudeEncodedLocationMetres = readAltitudeEncodedLocationMetres(bits);</span>
+<span class="fc" id="L142">        Optional&lt;Range&gt; dilutionPrecisionHdop = readDop(bits);</span>
+<span class="fc" id="L143">        Optional&lt;Range&gt; dilutionPrecisionDop = readDop(bits);</span>
+<span class="fc" id="L144">        ActivationMethod activationMethod = readActivationMethod(bits);</span>
+<span class="fc" id="L145">        Optional&lt;Range&gt; remainingBatteryCapacityPercent = readBatteryPercent(bits);</span>
+<span class="fc" id="L146">        GnssStatus gnssStatus = readGnssStatus(bits);</span>
+<span class="fc" id="L147">        bits.skip(2);</span>
+<span class="fc" id="L148">        return new ObjectiveRequirements(elapsedTimeSinceActivationHours, timeSinceLastEncodedLocationMinutes,</span>
                 altitudeEncodedLocationMetres, dilutionPrecisionHdop, dilutionPrecisionDop, activationMethod,
                 remainingBatteryCapacityPercent, gnssStatus);
     }
 
     @VisibleForTesting
     static GnssStatus readGnssStatus(Bits bits) {
-<span class="fc" id="L153">        return toGnssStatus(bits.readUnsignedInt(2));</span>
+<span class="fc" id="L155">        return toGnssStatus(bits.readUnsignedInt(2));</span>
     }
 
     private static GnssStatus toGnssStatus(int code) {
-<span class="fc bfc" id="L157" title="All 2 branches covered.">        if (code == 0) {</span>
-<span class="fc" id="L158">            return GnssStatus.NO_FIX;</span>
-<span class="fc bfc" id="L159" title="All 2 branches covered.">        } else if (code == 1) {</span>
-<span class="fc" id="L160">            return GnssStatus.LOCATION_2D;</span>
-<span class="fc bfc" id="L161" title="All 2 branches covered.">        } else if (code == 2) {</span>
-<span class="fc" id="L162">            return GnssStatus.LOCATION_3D;</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">        if (code == 0) {</span>
+<span class="fc" id="L160">            return GnssStatus.NO_FIX;</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">        } else if (code == 1) {</span>
+<span class="fc" id="L162">            return GnssStatus.LOCATION_2D;</span>
+<span class="fc bfc" id="L163" title="All 2 branches covered.">        } else if (code == 2) {</span>
+<span class="fc" id="L164">            return GnssStatus.LOCATION_3D;</span>
         } else {
-<span class="fc" id="L164">            return GnssStatus.OTHER;</span>
+<span class="fc" id="L166">            return GnssStatus.OTHER;</span>
         }
     }
 
     @VisibleForTesting
     static Optional&lt;Range&gt; readBatteryPercent(Bits bits) {
-<span class="fc" id="L170">        return toBatteryPercent(bits.readUnsignedInt(3));</span>
+<span class="fc" id="L172">        return toBatteryPercent(bits.readUnsignedInt(3));</span>
     }
 
     private static Optional&lt;Range&gt; toBatteryPercent(int code) {
-<span class="fc bfc" id="L174" title="All 2 branches covered.">        if (code == 0) {</span>
-<span class="fc" id="L175">            return Optional.of(Range.min(0).max(5).build());</span>
-<span class="fc bfc" id="L176" title="All 2 branches covered.">        } else if (code == 1) {</span>
-<span class="fc" id="L177">            return Optional.of(Range.min(5).exclusive().max(10).build());</span>
-<span class="fc bfc" id="L178" title="All 2 branches covered.">        } else if (code == 2) {</span>
-<span class="fc" id="L179">            return Optional.of(Range.min(10).exclusive().max(25).build());</span>
-<span class="fc bfc" id="L180" title="All 2 branches covered.">        } else if (code == 3) {</span>
-<span class="fc" id="L181">            return Optional.of(Range.min(25).exclusive().max(50).build());</span>
-<span class="fc bfc" id="L182" title="All 2 branches covered.">        } else if (code == 4) {</span>
-<span class="fc" id="L183">            return Optional.of(Range.min(50).exclusive().max(75).build());</span>
-<span class="fc bfc" id="L184" title="All 2 branches covered.">        } else if (code == 5) {</span>
-<span class="fc" id="L185">            return Optional.of(Range.min(75).exclusive().max(100).build());</span>
+<span class="fc bfc" id="L176" title="All 2 branches covered.">        if (code == 0) {</span>
+<span class="fc" id="L177">            return Optional.of(Range.min(0).max(5).build());</span>
+<span class="fc bfc" id="L178" title="All 2 branches covered.">        } else if (code == 1) {</span>
+<span class="fc" id="L179">            return Optional.of(Range.min(5).exclusive().max(10).build());</span>
+<span class="fc bfc" id="L180" title="All 2 branches covered.">        } else if (code == 2) {</span>
+<span class="fc" id="L181">            return Optional.of(Range.min(10).exclusive().max(25).build());</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">        } else if (code == 3) {</span>
+<span class="fc" id="L183">            return Optional.of(Range.min(25).exclusive().max(50).build());</span>
+<span class="fc bfc" id="L184" title="All 2 branches covered.">        } else if (code == 4) {</span>
+<span class="fc" id="L185">            return Optional.of(Range.min(50).exclusive().max(75).build());</span>
+<span class="fc bfc" id="L186" title="All 2 branches covered.">        } else if (code == 5) {</span>
+<span class="fc" id="L187">            return Optional.of(Range.min(75).exclusive().max(100).build());</span>
         } else {
-<span class="fc" id="L187">            return Optional.empty();</span>
+<span class="fc" id="L189">            return Optional.empty();</span>
         }
     }
 
     @VisibleForTesting
     static Optional&lt;Range&gt; readDop(Bits bits) {
-<span class="fc" id="L193">        return toDop(bits.readUnsignedInt(4));</span>
+<span class="fc" id="L195">        return toDop(bits.readUnsignedInt(4));</span>
     }
 
     private static Optional&lt;Range&gt; toDop(int code) {
-<span class="fc bfc" id="L197" title="All 2 branches covered.">        if (code == 0) {</span>
-<span class="fc" id="L198">            return Optional.of(Range.min(0).max(1).build());</span>
-<span class="fc bfc" id="L199" title="All 2 branches covered.">        } else if (code &lt;= 7) {</span>
-<span class="fc" id="L200">            return Optional.of(Range.min(code).exclusive().max(code + 1).build());</span>
-<span class="fc bfc" id="L201" title="All 2 branches covered.">        } else if (code == 8) {</span>
-<span class="fc" id="L202">            return Optional.of(Range.min(8).exclusive().max(10).build());</span>
-<span class="fc bfc" id="L203" title="All 2 branches covered.">        } else if (code == 9) {</span>
-<span class="fc" id="L204">            return Optional.of(Range.min(10).exclusive().max(12).build());</span>
-<span class="fc bfc" id="L205" title="All 2 branches covered.">        } else if (code == 10) {</span>
-<span class="fc" id="L206">            return Optional.of(Range.min(12).exclusive().max(15).build());</span>
-<span class="fc bfc" id="L207" title="All 2 branches covered.">        } else if (code == 11) {</span>
-<span class="fc" id="L208">            return Optional.of(Range.min(15).exclusive().max(20).build());</span>
-<span class="fc bfc" id="L209" title="All 2 branches covered.">        } else if (code == 12) {</span>
-<span class="fc" id="L210">            return Optional.of(Range.min(20).exclusive().max(30).build());</span>
-<span class="fc bfc" id="L211" title="All 2 branches covered.">        } else if (code == 13) {</span>
-<span class="fc" id="L212">            return Optional.of(Range.min(30).exclusive().max(50).build());</span>
-<span class="fc bfc" id="L213" title="All 2 branches covered.">        } else if (code == 14) {</span>
-<span class="fc" id="L214">            return Optional.of(Range.min(50).exclusive().build());</span>
+<span class="fc bfc" id="L199" title="All 2 branches covered.">        if (code == 0) {</span>
+<span class="fc" id="L200">            return Optional.of(Range.min(0).max(1).build());</span>
+<span class="fc bfc" id="L201" title="All 2 branches covered.">        } else if (code &lt;= 7) {</span>
+<span class="fc" id="L202">            return Optional.of(Range.min(code).exclusive().max(code + 1).build());</span>
+<span class="fc bfc" id="L203" title="All 2 branches covered.">        } else if (code == 8) {</span>
+<span class="fc" id="L204">            return Optional.of(Range.min(8).exclusive().max(10).build());</span>
+<span class="fc bfc" id="L205" title="All 2 branches covered.">        } else if (code == 9) {</span>
+<span class="fc" id="L206">            return Optional.of(Range.min(10).exclusive().max(12).build());</span>
+<span class="fc bfc" id="L207" title="All 2 branches covered.">        } else if (code == 10) {</span>
+<span class="fc" id="L208">            return Optional.of(Range.min(12).exclusive().max(15).build());</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">        } else if (code == 11) {</span>
+<span class="fc" id="L210">            return Optional.of(Range.min(15).exclusive().max(20).build());</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">        } else if (code == 12) {</span>
+<span class="fc" id="L212">            return Optional.of(Range.min(20).exclusive().max(30).build());</span>
+<span class="fc bfc" id="L213" title="All 2 branches covered.">        } else if (code == 13) {</span>
+<span class="fc" id="L214">            return Optional.of(Range.min(30).exclusive().max(50).build());</span>
+<span class="fc bfc" id="L215" title="All 2 branches covered.">        } else if (code == 14) {</span>
+<span class="fc" id="L216">            return Optional.of(Range.min(50).exclusive().build());</span>
         } else {
-<span class="fc" id="L216">            return Optional.empty();</span>
+<span class="fc" id="L218">            return Optional.empty();</span>
         }
     }
 
     @VisibleForTesting
     static ActivationMethod readActivationMethod(Bits bits) {
-<span class="fc" id="L222">        return toActivationMethod(bits.readUnsignedInt(2));</span>
+<span class="fc" id="L224">        return toActivationMethod(bits.readUnsignedInt(2));</span>
     }
 
     private static ActivationMethod toActivationMethod(int code) {
-<span class="fc bfc" id="L226" title="All 2 branches covered.">        if (code == 0) {</span>
-<span class="fc" id="L227">            return ActivationMethod.MANUAL_ACTIVATION_BY_USER;</span>
-<span class="fc bfc" id="L228" title="All 2 branches covered.">        } else if (code == 1) {</span>
-<span class="fc" id="L229">            return ActivationMethod.AUTOMATIC_ACTIVATION_BY_BEACON;</span>
-<span class="fc bfc" id="L230" title="All 2 branches covered.">        } else if (code == 2) {</span>
-<span class="fc" id="L231">            return ActivationMethod.AUTOMATIC_ACTIVATION_BY_EXTERNAL_MEANS;</span>
+<span class="fc bfc" id="L228" title="All 2 branches covered.">        if (code == 0) {</span>
+<span class="fc" id="L229">            return ActivationMethod.MANUAL_ACTIVATION_BY_USER;</span>
+<span class="fc bfc" id="L230" title="All 2 branches covered.">        } else if (code == 1) {</span>
+<span class="fc" id="L231">            return ActivationMethod.AUTOMATIC_ACTIVATION_BY_BEACON;</span>
+<span class="fc bfc" id="L232" title="All 2 branches covered.">        } else if (code == 2) {</span>
+<span class="fc" id="L233">            return ActivationMethod.AUTOMATIC_ACTIVATION_BY_EXTERNAL_MEANS;</span>
         } else {
-<span class="fc" id="L233">            return ActivationMethod.OTHER;</span>
+<span class="fc" id="L235">            return ActivationMethod.OTHER;</span>
         }
     }
 
     private static EltDtInFlightEmergency readRotatingFieldEltDtInFlightEmergency(Bits bits) {
-<span class="fc" id="L238">        OffsetTime timeOfLastEncodedLocationSeconds = readTimeOfLastEncodedLocationSeconds(bits);</span>
-<span class="fc" id="L239">        int altitudeEncodedLocationMetres = readAltitudeEncodedLocationMetres(bits);</span>
-<span class="fc" id="L240">        TriggeringEvent triggeringEvent = readTriggeringEvent(bits);</span>
-<span class="fc" id="L241">        GnssStatus gnssStatus = readGnssStatus(bits);</span>
-<span class="fc" id="L242">        Optional&lt;Range&gt; remainingBatteryCapacityPercent = readBatteryPercentInFlightEmergency(bits);</span>
-<span class="fc" id="L243">        bits.skip(9);</span>
-<span class="fc" id="L244">        return new EltDtInFlightEmergency(timeOfLastEncodedLocationSeconds, altitudeEncodedLocationMetres,</span>
+<span class="fc" id="L240">        OffsetTime timeOfLastEncodedLocationSeconds = readTimeOfLastEncodedLocationSeconds(bits);</span>
+<span class="fc" id="L241">        int altitudeEncodedLocationMetres = readAltitudeEncodedLocationMetres(bits);</span>
+<span class="fc" id="L242">        TriggeringEvent triggeringEvent = readTriggeringEvent(bits);</span>
+<span class="fc" id="L243">        GnssStatus gnssStatus = readGnssStatus(bits);</span>
+<span class="fc" id="L244">        Optional&lt;Range&gt; remainingBatteryCapacityPercent = readBatteryPercentInFlightEmergency(bits);</span>
+<span class="fc" id="L245">        bits.skip(9);</span>
+<span class="fc" id="L246">        return new EltDtInFlightEmergency(timeOfLastEncodedLocationSeconds, altitudeEncodedLocationMetres,</span>
                 triggeringEvent, gnssStatus, remainingBatteryCapacityPercent);
     }
 
     private static int readAltitudeEncodedLocationMetres(Bits bits) {
-<span class="fc" id="L249">        return bits.readUnsignedInt(10) * 16 - 400;</span>
+<span class="fc" id="L251">        return bits.readUnsignedInt(10) * 16 - 400;</span>
     }
 
     @VisibleForTesting
     static OffsetTime readTimeOfLastEncodedLocationSeconds(Bits bits) {
-<span class="fc" id="L254">        int seconds = bits.readUnsignedInt(17);</span>
-<span class="fc" id="L255">        return OffsetTime.of(0, 0, 0, 0, ZoneOffset.UTC).plus(seconds, ChronoUnit.SECONDS);</span>
+<span class="fc" id="L256">        int seconds = bits.readUnsignedInt(17);</span>
+<span class="fc" id="L257">        return OffsetTime.of(0, 0, 0, 0, ZoneOffset.UTC).plus(seconds, ChronoUnit.SECONDS);</span>
     }
 
     @VisibleForTesting
     static Optional&lt;Range&gt; readBatteryPercentInFlightEmergency(Bits bits) {
-<span class="fc" id="L260">        return toBatteryPercentInFlightEmergency(bits.readUnsignedInt(2));</span>
+<span class="fc" id="L262">        return toBatteryPercentInFlightEmergency(bits.readUnsignedInt(2));</span>
     }
 
     private static Optional&lt;Range&gt; toBatteryPercentInFlightEmergency(int code) {
-<span class="fc bfc" id="L264" title="All 2 branches covered.">        if (code == 0) {</span>
-<span class="fc" id="L265">            return Optional.of(Range.min(0).max(33).build());</span>
-<span class="fc bfc" id="L266" title="All 2 branches covered.">        } else if (code == 1) {</span>
-<span class="fc" id="L267">            return Optional.of(Range.min(33).exclusive().max(66).build());</span>
-<span class="fc bfc" id="L268" title="All 2 branches covered.">        } else if (code == 2) {</span>
-<span class="fc" id="L269">            return Optional.of(Range.min(66).exclusive().max(100).build());</span>
+<span class="fc bfc" id="L266" title="All 2 branches covered.">        if (code == 0) {</span>
+<span class="fc" id="L267">            return Optional.of(Range.min(0).max(33).build());</span>
+<span class="fc bfc" id="L268" title="All 2 branches covered.">        } else if (code == 1) {</span>
+<span class="fc" id="L269">            return Optional.of(Range.min(33).exclusive().max(66).build());</span>
+<span class="fc bfc" id="L270" title="All 2 branches covered.">        } else if (code == 2) {</span>
+<span class="fc" id="L271">            return Optional.of(Range.min(66).exclusive().max(100).build());</span>
         } else {
-<span class="fc" id="L271">            return Optional.empty();</span>
+<span class="fc" id="L273">            return Optional.empty();</span>
         }
     }
 
     @VisibleForTesting
     static TriggeringEvent readTriggeringEvent(Bits bits) {
-<span class="fc" id="L277">        return toTriggeringEvent(bits.readUnsignedInt(4));</span>
+<span class="fc" id="L279">        return toTriggeringEvent(bits.readUnsignedInt(4));</span>
     }
 
     private static TriggeringEvent toTriggeringEvent(int code) {
-<span class="fc bfc" id="L281" title="All 2 branches covered.">        if (code == 1) {</span>
-<span class="fc" id="L282">            return TriggeringEvent.MANUAL_ACTIVATION_BY_CREW;</span>
-<span class="fc bfc" id="L283" title="All 2 branches covered.">        } else if (code == 4) {</span>
-<span class="fc" id="L284">            return TriggeringEvent.G_SWITCH_OR_DEFORMATION_ACTIVATION;</span>
-<span class="fc bfc" id="L285" title="All 2 branches covered.">        } else if (code == 8) {</span>
-<span class="fc" id="L286">            return TriggeringEvent.AUTOMATIC_ACTIVATION_FROM_AVIONICS_OR_TRIGGERING_SYSTEM;</span>
+<span class="fc bfc" id="L283" title="All 2 branches covered.">        if (code == 1) {</span>
+<span class="fc" id="L284">            return TriggeringEvent.MANUAL_ACTIVATION_BY_CREW;</span>
+<span class="fc bfc" id="L285" title="All 2 branches covered.">        } else if (code == 4) {</span>
+<span class="fc" id="L286">            return TriggeringEvent.G_SWITCH_OR_DEFORMATION_ACTIVATION;</span>
+<span class="fc bfc" id="L287" title="All 2 branches covered.">        } else if (code == 8) {</span>
+<span class="fc" id="L288">            return TriggeringEvent.AUTOMATIC_ACTIVATION_FROM_AVIONICS_OR_TRIGGERING_SYSTEM;</span>
         } else {
-<span class="fc" id="L288">            return TriggeringEvent.OTHER;</span>
+<span class="fc" id="L290">            return TriggeringEvent.OTHER;</span>
         }
     }
 
     private static Rls readRotatingFieldRls(Bits bits) {
-<span class="fc" id="L293">        bits.skip(2);</span>
-<span class="fc" id="L294">        boolean canProcessAutomaticallyGeneratedAckRlmType1 = bits.readBoolean();</span>
-<span class="fc" id="L295">        boolean canProcessManuallyGeneratedRlm = bits.readBoolean();</span>
-<span class="fc" id="L296">        bits.skip(4);</span>
-<span class="fc" id="L297">        RlsProvider rlsProvider = readRlsProvider(bits);</span>
-<span class="fc" id="L298">        Optional&lt;BeaconFeedback&gt; beaconFeedback = readBeaconFeadback(bits, rlsProvider);</span>
-<span class="fc" id="L299">        bits.skip(11);</span>
-<span class="fc" id="L300">        return new Rls(canProcessAutomaticallyGeneratedAckRlmType1, canProcessManuallyGeneratedRlm, rlsProvider,</span>
+<span class="fc" id="L295">        bits.skip(2);</span>
+<span class="fc" id="L296">        boolean canProcessAutomaticallyGeneratedAckRlmType1 = bits.readBoolean();</span>
+<span class="fc" id="L297">        boolean canProcessManuallyGeneratedRlm = bits.readBoolean();</span>
+<span class="fc" id="L298">        bits.skip(4);</span>
+<span class="fc" id="L299">        RlsProvider rlsProvider = readRlsProvider(bits);</span>
+<span class="fc" id="L300">        Optional&lt;BeaconFeedback&gt; beaconFeedback = readBeaconFeadback(bits, rlsProvider);</span>
+<span class="fc" id="L301">        bits.skip(11);</span>
+<span class="fc" id="L302">        return new Rls(canProcessAutomaticallyGeneratedAckRlmType1, canProcessManuallyGeneratedRlm, rlsProvider,</span>
                 beaconFeedback);
     }
 
     @VisibleForTesting
     static RlsProvider readRlsProvider(Bits bits) {
-<span class="fc" id="L306">        return toRlsProvider(bits.readUnsignedInt(3));</span>
+<span class="fc" id="L308">        return toRlsProvider(bits.readUnsignedInt(3));</span>
     }
 
     private static RlsProvider toRlsProvider(int code) {
-<span class="fc bfc" id="L310" title="All 2 branches covered.">        if (code == 1) {</span>
-<span class="fc" id="L311">            return RlsProvider.GALILEO;</span>
-<span class="fc bfc" id="L312" title="All 2 branches covered.">        } else if (code == 2) {</span>
-<span class="fc" id="L313">            return RlsProvider.GLONASS;</span>
+<span class="fc bfc" id="L312" title="All 2 branches covered.">        if (code == 1) {</span>
+<span class="fc" id="L313">            return RlsProvider.GALILEO;</span>
+<span class="fc bfc" id="L314" title="All 2 branches covered.">        } else if (code == 2) {</span>
+<span class="fc" id="L315">            return RlsProvider.GLONASS;</span>
         } else {
-<span class="fc" id="L315">            return RlsProvider.OTHER;</span>
+<span class="fc" id="L317">            return RlsProvider.OTHER;</span>
         }
     }
 
     @VisibleForTesting
     static Optional&lt;BeaconFeedback&gt; readBeaconFeadback(Bits bits, RlsProvider rlsProvider) {
-<span class="fc" id="L321">        boolean rlmType1FeedbackReceived = bits.readBoolean();</span>
-<span class="fc" id="L322">        boolean rlmType2FeedbackReceived = bits.readBoolean();</span>
-<span class="fc" id="L323">        RlsType rlsType = readRlsType(bits);</span>
-<span class="fc bfc" id="L324" title="All 2 branches covered.">        if (rlsProvider == RlsProvider.GALILEO) {</span>
+<span class="fc" id="L323">        boolean rlmType1FeedbackReceived = bits.readBoolean();</span>
+<span class="fc" id="L324">        boolean rlmType2FeedbackReceived = bits.readBoolean();</span>
+<span class="fc" id="L325">        RlsType rlsType = readRlsType(bits);</span>
+<span class="fc bfc" id="L326" title="All 2 branches covered.">        if (rlsProvider == RlsProvider.GALILEO) {</span>
             final Optional&lt;String&gt; shortRlmParametersBitString;
-<span class="fc bfc" id="L326" title="All 2 branches covered.">            if (rlsType == RlsType.ACKNOWLEDGEMENT_SERVICE) {</span>
-<span class="fc" id="L327">                bits.skip(2);</span>
-<span class="fc" id="L328">                shortRlmParametersBitString = Optional.of(bits.readBitString(13));</span>
+<span class="fc bfc" id="L328" title="All 2 branches covered.">            if (rlsType == RlsType.ACKNOWLEDGEMENT_SERVICE) {</span>
+<span class="fc" id="L329">                bits.skip(2);</span>
+<span class="fc" id="L330">                shortRlmParametersBitString = Optional.of(bits.readBitString(13));</span>
                 // skip parity bit
-<span class="fc" id="L330">                bits.skip(1);</span>
-<span class="fc bfc" id="L331" title="All 2 branches covered.">            } else if (rlsType == RlsType.TEST_SERVICE) {</span>
-<span class="fc" id="L332">                shortRlmParametersBitString = Optional.of(bits.readBitString(15));</span>
+<span class="fc" id="L332">                bits.skip(1);</span>
+<span class="fc bfc" id="L333" title="All 2 branches covered.">            } else if (rlsType == RlsType.TEST_SERVICE) {</span>
+<span class="fc" id="L334">                shortRlmParametersBitString = Optional.of(bits.readBitString(15));</span>
                 // skip parity bit
-<span class="fc" id="L334">                bits.skip(1);</span>
+<span class="fc" id="L336">                bits.skip(1);</span>
             } else { // OTHER
-<span class="fc" id="L336">                shortRlmParametersBitString = Optional.of(bits.readBitString(15));</span>
+<span class="fc" id="L338">                shortRlmParametersBitString = Optional.of(bits.readBitString(15));</span>
             }
-<span class="fc" id="L338">            return Optional.of(new BeaconFeedback(rlmType1FeedbackReceived, rlmType2FeedbackReceived, rlsType,</span>
+<span class="fc" id="L340">            return Optional.of(new BeaconFeedback(rlmType1FeedbackReceived, rlmType2FeedbackReceived, rlsType,</span>
                     shortRlmParametersBitString));
         } else {
-<span class="fc" id="L341">            return Optional.empty();</span>
+<span class="fc" id="L343">            return Optional.empty();</span>
         }
     }
 
     @VisibleForTesting
     static RlsType readRlsType(Bits bits) {
-<span class="fc" id="L347">        return toRlsType(bits.readUnsignedInt(4));</span>
+<span class="fc" id="L349">        return toRlsType(bits.readUnsignedInt(4));</span>
     }
 
     private static RlsType toRlsType(int code) {
-<span class="fc bfc" id="L351" title="All 2 branches covered.">        if (code == 1) {</span>
-<span class="fc" id="L352">            return RlsType.ACKNOWLEDGEMENT_SERVICE;</span>
-<span class="fc bfc" id="L353" title="All 2 branches covered.">        } else if (code == 15) {</span>
-<span class="fc" id="L354">            return RlsType.TEST_SERVICE;</span>
+<span class="fc bfc" id="L353" title="All 2 branches covered.">        if (code == 1) {</span>
+<span class="fc" id="L354">            return RlsType.ACKNOWLEDGEMENT_SERVICE;</span>
+<span class="fc bfc" id="L355" title="All 2 branches covered.">        } else if (code == 15) {</span>
+<span class="fc" id="L356">            return RlsType.TEST_SERVICE;</span>
         } else {
-<span class="fc" id="L356">            return RlsType.OTHER;</span>
+<span class="fc" id="L358">            return RlsType.OTHER;</span>
         }
     }
 
     private static NationalUse readRotatingFieldNationalUse(Bits bits) {
-<span class="fc" id="L361">        String bitString = bits.readBitString(44);</span>
-<span class="fc" id="L362">        return new NationalUse(bitString);</span>
+<span class="fc" id="L363">        String bitString = bits.readBitString(44);</span>
+<span class="fc" id="L364">        return new NationalUse(bitString);</span>
     }
 
     @VisibleForTesting
     static Cancellation readRotatingFieldCancellationMessage(Bits bits) {
-<span class="fc" id="L367">        bits.skip(42);</span>
-<span class="fc" id="L368">        DeactivationMethod deactivationMethod = toDeactivationMethod(bits.readUnsignedInt(2));</span>
-<span class="fc" id="L369">        return new Cancellation(deactivationMethod);</span>
+<span class="fc" id="L369">        bits.skip(42);</span>
+<span class="fc" id="L370">        DeactivationMethod deactivationMethod = toDeactivationMethod(bits.readUnsignedInt(2));</span>
+<span class="fc" id="L371">        return new Cancellation(deactivationMethod);</span>
     }
 
     private static DeactivationMethod toDeactivationMethod(int code) {
-<span class="fc bfc" id="L373" title="All 2 branches covered.">        if (code == 1) {</span>
-<span class="fc" id="L374">            return DeactivationMethod.AUTOMATIC_DEACTIVATION_BY_EXTERNAL_MEANS;</span>
-<span class="fc bfc" id="L375" title="All 2 branches covered.">        } else if (code == 2) {</span>
-<span class="fc" id="L376">            return DeactivationMethod.MANUAL_DEACTIVATION_BY_USER;</span>
+<span class="fc bfc" id="L375" title="All 2 branches covered.">        if (code == 1) {</span>
+<span class="fc" id="L376">            return DeactivationMethod.AUTOMATIC_DEACTIVATION_BY_EXTERNAL_MEANS;</span>
+<span class="fc bfc" id="L377" title="All 2 branches covered.">        } else if (code == 2) {</span>
+<span class="fc" id="L378">            return DeactivationMethod.MANUAL_DEACTIVATION_BY_USER;</span>
         } else {
-<span class="fc" id="L378">            return DeactivationMethod.OTHER;</span>
+<span class="fc" id="L380">            return DeactivationMethod.OTHER;</span>
         }
     }
 
     private static RotatingField readRotatingFieldUnknown(Bits bits) {
-<span class="fc" id="L383">        String bitString = bits.readBitString(44);</span>
-<span class="fc" id="L384">        return new UnknownRotatingField(bitString);</span>
+<span class="fc" id="L385">        String bitString = bits.readBitString(44);</span>
+<span class="fc" id="L386">        return new UnknownRotatingField(bitString);</span>
     }
 
     @VisibleForTesting
     static Optional&lt;EncodedGnssPosition&gt; readPosition(Bits bits) {
-<span class="fc bfc" id="L389" title="All 2 branches covered.">        Preconditions.checkArgument(bits.length() == 47);</span>
-<span class="fc bfc" id="L390" title="All 2 branches covered.">        if (bits.isEqualTo(NO_ENCODED_LOCATION_CAPABILITY)) {</span>
-<span class="fc" id="L391">            return Optional.empty();</span>
+<span class="fc bfc" id="L391" title="All 2 branches covered.">        Preconditions.checkArgument(bits.length() == 47);</span>
+<span class="fc bfc" id="L392" title="All 2 branches covered.">        if (bits.isEqualTo(NO_ENCODED_LOCATION_CAPABILITY)) {</span>
+<span class="fc" id="L393">            return Optional.empty();</span>
         } else {
-<span class="fc" id="L393">            double lat = readLat(bits);</span>
-<span class="fc" id="L394">            double lon = readLon(bits);</span>
-<span class="fc" id="L395">            return Optional.of(new EncodedGnssPosition(lat, lon));</span>
+<span class="fc" id="L395">            double lat = readLat(bits);</span>
+<span class="fc" id="L396">            double lon = readLon(bits);</span>
+<span class="fc" id="L397">            return Optional.of(new EncodedGnssPosition(lat, lon));</span>
         }
     }
 
     private static double readLat(Bits bits) {
-<span class="fc" id="L400">        return readPositionCoordinate(bits, 7);</span>
+<span class="fc" id="L402">        return readPositionCoordinate(bits, 7);</span>
     }
 
     private static double readLon(Bits bits) {
-<span class="fc" id="L404">        return readPositionCoordinate(bits, 8);</span>
+<span class="fc" id="L406">        return readPositionCoordinate(bits, 8);</span>
     }
 
     private static double readPositionCoordinate(Bits bits, int numDegreesBits) {
-<span class="fc bfc" id="L408" title="All 2 branches covered.">        int sign = bits.readBoolean() ? -1 : 1;</span>
-<span class="fc" id="L409">        int degrees = bits.readUnsignedInt(numDegreesBits);</span>
+<span class="fc bfc" id="L410" title="All 2 branches covered.">        int sign = bits.readBoolean() ? -1 : 1;</span>
+<span class="fc" id="L411">        int degrees = bits.readUnsignedInt(numDegreesBits);</span>
         // use BigDecimal so don't lose precision
-<span class="fc" id="L411">        BigDecimal d = readDecimalPart(bits);</span>
-<span class="fc" id="L412">        d = d.add(BigDecimal.valueOf(degrees));</span>
-<span class="fc" id="L413">        d = d.multiply(BigDecimal.valueOf(sign));</span>
-<span class="fc" id="L414">        return d.doubleValue();</span>
+<span class="fc" id="L413">        BigDecimal d = readDecimalPart(bits);</span>
+<span class="fc" id="L414">        d = d.add(BigDecimal.valueOf(degrees));</span>
+<span class="fc" id="L415">        d = d.multiply(BigDecimal.valueOf(sign));</span>
+<span class="fc" id="L416">        return d.doubleValue();</span>
     }
 
     private static BigDecimal readDecimalPart(Bits bits) {
-<span class="fc" id="L418">        boolean[] decimalPart = bits.readBooleanArray(15);</span>
-<span class="fc" id="L419">        BigDecimal d = BigDecimal.ZERO;</span>
-<span class="fc" id="L420">        BigDecimal f = BigDecimal.ONE;</span>
-<span class="fc bfc" id="L421" title="All 2 branches covered.">        for (int i = 0; i &lt; decimalPart.length; i++) {</span>
-<span class="fc" id="L422">            f = f.divide(BigDecimal.valueOf(2));</span>
-<span class="fc bfc" id="L423" title="All 2 branches covered.">            if (decimalPart[i]) {</span>
-<span class="fc" id="L424">                d = d.add(f);</span>
+<span class="fc" id="L420">        boolean[] decimalPart = bits.readBooleanArray(15);</span>
+<span class="fc" id="L421">        BigDecimal d = BigDecimal.ZERO;</span>
+<span class="fc" id="L422">        BigDecimal f = BigDecimal.ONE;</span>
+<span class="fc bfc" id="L423" title="All 2 branches covered.">        for (int i = 0; i &lt; decimalPart.length; i++) {</span>
+<span class="fc" id="L424">            f = f.divide(BigDecimal.valueOf(2));</span>
+<span class="fc bfc" id="L425" title="All 2 branches covered.">            if (decimalPart[i]) {</span>
+<span class="fc" id="L426">                d = d.add(f);</span>
             }
         }
-<span class="fc" id="L427">        return d;</span>
+<span class="fc" id="L429">        return d;</span>
     }
 
     @VisibleForTesting
     static Optional&lt;VesselId&gt; readVesselId(Bits bits) {
-<span class="fc" id="L432">        int type = bits.readUnsignedInt(3);</span>
-<span class="fc bfc" id="L433" title="All 2 branches covered.">        if (type == 0) {</span>
+<span class="fc" id="L434">        int type = bits.readUnsignedInt(3);</span>
+<span class="fc bfc" id="L435" title="All 2 branches covered.">        if (type == 0) {</span>
             // no aircraft or maritime identity
-<span class="fc" id="L435">            bits.skip(44);</span>
-<span class="fc" id="L436">            return Optional.empty();</span>
-<span class="fc bfc" id="L437" title="All 2 branches covered.">        } else if (type == 1) {</span>
-<span class="fc" id="L438">            return Optional.of(readVesselIdMmsi(bits));</span>
-<span class="fc bfc" id="L439" title="All 2 branches covered.">        } else if (type == 2) {</span>
-<span class="fc" id="L440">            return Optional.of(readVesselIdRadioCallSign(bits));</span>
-<span class="fc bfc" id="L441" title="All 2 branches covered.">        } else if (type == 3) {</span>
-<span class="fc" id="L442">            return Optional.of(readVesselIdAicraftRegistrationMarking(bits));</span>
-<span class="fc bfc" id="L443" title="All 2 branches covered.">        } else if (type == 4) {</span>
-<span class="fc" id="L444">            return Optional.of(readVesselIdAviation24BitAddress(bits));</span>
-<span class="fc bfc" id="L445" title="All 2 branches covered.">        } else if (type == 5) {</span>
-<span class="fc" id="L446">            return Optional.of(readVesselIdAircraftOperatoAndSerialNumber(bits));</span>
+<span class="fc" id="L437">            bits.skip(44);</span>
+<span class="fc" id="L438">            return Optional.empty();</span>
+<span class="fc bfc" id="L439" title="All 2 branches covered.">        } else if (type == 1) {</span>
+<span class="fc" id="L440">            return Optional.of(readVesselIdMmsi(bits));</span>
+<span class="fc bfc" id="L441" title="All 2 branches covered.">        } else if (type == 2) {</span>
+<span class="fc" id="L442">            return Optional.of(readVesselIdRadioCallSign(bits));</span>
+<span class="fc bfc" id="L443" title="All 2 branches covered.">        } else if (type == 3) {</span>
+<span class="fc" id="L444">            return Optional.of(readVesselIdAicraftRegistrationMarking(bits));</span>
+<span class="fc bfc" id="L445" title="All 2 branches covered.">        } else if (type == 4) {</span>
+<span class="fc" id="L446">            return Optional.of(readVesselIdAviation24BitAddress(bits));</span>
+<span class="fc bfc" id="L447" title="All 2 branches covered.">        } else if (type == 5) {</span>
+<span class="fc" id="L448">            return Optional.of(readVesselIdAircraftOperatoAndSerialNumber(bits));</span>
         } else {
-<span class="fc" id="L448">            return Optional.empty();</span>
+<span class="fc" id="L450">            return Optional.empty();</span>
         }
     }
 
     @VisibleForTesting
     static AircraftOperatorAndSerialNumber readVesselIdAircraftOperatoAndSerialNumber(Bits bits) {
-<span class="fc" id="L454">        String aircraftOperatorDesignator = bits.readBaudotCharactersShort(3);</span>
-<span class="fc" id="L455">        int serialNumber = bits.readUnsignedInt(12);</span>
-<span class="fc" id="L456">        bits.skip(17);</span>
-<span class="fc" id="L457">        return new AircraftOperatorAndSerialNumber(aircraftOperatorDesignator, serialNumber);</span>
+<span class="fc" id="L456">        String aircraftOperatorDesignator = bits.readBaudotCharactersShort(3);</span>
+<span class="fc" id="L457">        int serialNumber = bits.readUnsignedInt(12);</span>
+<span class="fc" id="L458">        bits.skip(17);</span>
+<span class="fc" id="L459">        return new AircraftOperatorAndSerialNumber(aircraftOperatorDesignator, serialNumber);</span>
     }
 
     @VisibleForTesting
     static Mmsi readVesselIdMmsi(Bits bits) {
-<span class="fc" id="L462">        int mmsi = bits.readUnsignedInt(30);</span>
-<span class="fc" id="L463">        String mmsiString = padLeftWithZeros(mmsi, 9);</span>
-<span class="fc" id="L464">        int epirbLast4 = bits.readUnsignedInt(14);</span>
-<span class="fc" id="L465">        String epirbLast4String = padLeftWithZeros(epirbLast4, 4);</span>
-<span class="fc" id="L466">        String epirbMmsi = &quot;974&quot; + mmsiString.charAt(3) + mmsiString.charAt(4) + epirbLast4String;</span>
+<span class="fc" id="L464">        int mmsi = bits.readUnsignedInt(30);</span>
+<span class="fc" id="L465">        String mmsiString = padLeftWithZeros(mmsi, 9);</span>
+<span class="fc" id="L466">        int epirbLast4 = bits.readUnsignedInt(14);</span>
+<span class="fc" id="L467">        String epirbLast4String = padLeftWithZeros(epirbLast4, 4);</span>
+<span class="fc" id="L468">        String epirbMmsi = EPIRB_MMSI_PREFIX + mmsiString.charAt(3) + mmsiString.charAt(4) + epirbLast4String;</span>
         final Optional&lt;Integer&gt; a;
-<span class="fc bfc" id="L468" title="All 2 branches covered.">        if (mmsi == 111111) {</span>
-<span class="fc" id="L469">            a = Optional.empty();</span>
+<span class="fc bfc" id="L470" title="All 2 branches covered.">        if (mmsi == 111111) {</span>
+<span class="fc" id="L471">            a = Optional.empty();</span>
         } else {
-<span class="fc" id="L471">            a = Optional.of(mmsi);</span>
+<span class="fc" id="L473">            a = Optional.of(mmsi);</span>
         }
         final Optional&lt;Integer&gt; b;
-<span class="fc bfc" id="L474" title="All 2 branches covered.">        if (epirbLast4 == 10922) {</span>
-<span class="fc" id="L475">            b = Optional.empty();</span>
+<span class="fc bfc" id="L476" title="All 2 branches covered.">        if (epirbLast4 == 10922) {</span>
+<span class="fc" id="L477">            b = Optional.empty();</span>
         } else {
-<span class="fc" id="L477">            b = Optional.of(Integer.parseInt(epirbMmsi));</span>
+<span class="fc" id="L479">            b = Optional.of(Integer.parseInt(epirbMmsi));</span>
         }
-<span class="fc" id="L479">        Mmsi m = new Mmsi(a, b);</span>
-<span class="fc" id="L480">        return m;</span>
+<span class="fc" id="L481">        Mmsi m = new Mmsi(a, b);</span>
+<span class="fc" id="L482">        return m;</span>
     }
 
     @VisibleForTesting
     static String padLeftWithZeros(long number, int desiredLength) {
-<span class="fc" id="L485">        String s = Long.toString(number);</span>
-<span class="fc bfc" id="L486" title="All 2 branches covered.">        while (s.length() &lt; desiredLength) {</span>
-<span class="fc" id="L487">            s = &quot;0&quot; + s;</span>
+<span class="fc" id="L487">        String s = Long.toString(number);</span>
+<span class="fc bfc" id="L488" title="All 2 branches covered.">        while (s.length() &lt; desiredLength) {</span>
+<span class="fc" id="L489">            s = &quot;0&quot; + s;</span>
         }
-<span class="fc" id="L489">        return s;</span>
+<span class="fc" id="L491">        return s;</span>
     }
 
     @VisibleForTesting
     static RadioCallSign readVesselIdRadioCallSign(Bits bits) {
-<span class="fc" id="L494">        bits.skip(2);</span>
-<span class="fc" id="L495">        String s = bits.readBaudotCharacters(7).trim();</span>
-<span class="fc" id="L496">        return new RadioCallSign(s);</span>
+<span class="fc" id="L496">        bits.skip(2);</span>
+<span class="fc" id="L497">        String s = bits.readBaudotCharacters(7).trim();</span>
+<span class="fc" id="L498">        return new RadioCallSign(s);</span>
     }
 
     @VisibleForTesting
     static AircraftRegistrationMarking readVesselIdAicraftRegistrationMarking(Bits bits) {
-<span class="fc" id="L501">        bits.skip(2);</span>
-<span class="fc" id="L502">        String s = bits.readBaudotCharacters(7).trim();</span>
-<span class="fc" id="L503">        return new AircraftRegistrationMarking(s);</span>
+<span class="fc" id="L503">        bits.skip(2);</span>
+<span class="fc" id="L504">        String s = bits.readBaudotCharacters(7).trim();</span>
+<span class="fc" id="L505">        return new AircraftRegistrationMarking(s);</span>
     }
 
     @VisibleForTesting
     static Aviation24BitAddress readVesselIdAviation24BitAddress(Bits bits) {
-<span class="fc" id="L508">        String addressHex = bits.readHex(6);</span>
+<span class="fc" id="L510">        String addressHex = bits.readHex(6);</span>
         final Optional&lt;String&gt; aircraftOperatorDesignator;
-<span class="fc" id="L510">        Bits b = bits.readBits(20);</span>
-<span class="fc bfc" id="L511" title="All 2 branches covered.">        if (b.isZero()) {</span>
-<span class="fc" id="L512">            aircraftOperatorDesignator = Optional.empty();</span>
+<span class="fc" id="L512">        Bits b = bits.readBits(20);</span>
+<span class="fc bfc" id="L513" title="All 2 branches covered.">        if (b.isZero()) {</span>
+<span class="fc" id="L514">            aircraftOperatorDesignator = Optional.empty();</span>
         } else {
-<span class="fc" id="L514">            aircraftOperatorDesignator = Optional.of(b.readBaudotCharactersShort(3));</span>
+<span class="fc" id="L516">            aircraftOperatorDesignator = Optional.of(b.readBaudotCharactersShort(3));</span>
         }
-<span class="fc" id="L516">        return new Aviation24BitAddress(addressHex, aircraftOperatorDesignator);</span>
+<span class="fc" id="L518">        return new Aviation24BitAddress(addressHex, aircraftOperatorDesignator);</span>
     }
 
     @VisibleForTesting
     static BeaconType readBeaconType(Bits bits) {
-<span class="fc" id="L521">        int v = bits.readUnsignedInt(3);</span>
-<span class="fc bfc" id="L522" title="All 2 branches covered.">        if (v == 0) {</span>
-<span class="fc" id="L523">            return BeaconType.ELT_NOT_DT;</span>
-<span class="fc bfc" id="L524" title="All 2 branches covered.">        } else if (v == 1) {</span>
-<span class="fc" id="L525">            return BeaconType.EPIRB;</span>
-<span class="fc bfc" id="L526" title="All 2 branches covered.">        } else if (v == 2) {</span>
-<span class="fc" id="L527">            return BeaconType.PLB;</span>
-<span class="fc bfc" id="L528" title="All 2 branches covered.">        } else if (v == 3) {</span>
-<span class="fc" id="L529">            return BeaconType.ELT_DT;</span>
-<span class="fc bfc" id="L530" title="All 2 branches covered.">        } else if (v == 7) {</span>
-<span class="fc" id="L531">            return BeaconType.SYSTEM;</span>
+<span class="fc" id="L523">        int v = bits.readUnsignedInt(3);</span>
+<span class="fc bfc" id="L524" title="All 2 branches covered.">        if (v == 0) {</span>
+<span class="fc" id="L525">            return BeaconType.ELT_NOT_DT;</span>
+<span class="fc bfc" id="L526" title="All 2 branches covered.">        } else if (v == 1) {</span>
+<span class="fc" id="L527">            return BeaconType.EPIRB;</span>
+<span class="fc bfc" id="L528" title="All 2 branches covered.">        } else if (v == 2) {</span>
+<span class="fc" id="L529">            return BeaconType.PLB;</span>
+<span class="fc bfc" id="L530" title="All 2 branches covered.">        } else if (v == 3) {</span>
+<span class="fc" id="L531">            return BeaconType.ELT_DT;</span>
+<span class="fc bfc" id="L532" title="All 2 branches covered.">        } else if (v == 7) {</span>
+<span class="fc" id="L533">            return BeaconType.SYSTEM;</span>
         } else {
-<span class="fc" id="L533">            return BeaconType.OTHER;</span>
+<span class="fc" id="L535">            return BeaconType.OTHER;</span>
         }
     }
 
     public int tac() {
-<span class="fc" id="L538">        return tac;</span>
+<span class="fc" id="L540">        return tac;</span>
     }
 
     public int serialNo() {
-<span class="fc" id="L542">        return serialNo;</span>
+<span class="fc" id="L544">        return serialNo;</span>
     }
 
     public int countryCode() {
-<span class="fc" id="L546">        return countryCode;</span>
+<span class="fc" id="L548">        return countryCode;</span>
     }
 
     public boolean hasAtLeastOneEnabledHomingSignal() {
-<span class="fc" id="L550">        return hasAtLeastOneEnabledHomingSignal;</span>
+<span class="fc" id="L552">        return hasAtLeastOneEnabledHomingSignal;</span>
     }
 
     public boolean hasEnabledRls() {
-<span class="fc" id="L554">        return hasEnabledRls;</span>
+<span class="fc" id="L556">        return hasEnabledRls;</span>
     }
 
     public boolean isTestProtocolMessage() {
-<span class="fc" id="L558">        return testProtocolMessage;</span>
+<span class="fc" id="L560">        return testProtocolMessage;</span>
     }
 
     public Optional&lt;EncodedGnssPosition&gt; encodedGnssPosition() {
-<span class="fc" id="L562">        return encodedGnssPosition;</span>
+<span class="fc" id="L564">        return encodedGnssPosition;</span>
     }
 
     public Optional&lt;? extends VesselId&gt; vesselId() {
-<span class="fc" id="L566">        return vesselId;</span>
+<span class="fc" id="L568">        return vesselId;</span>
     }
 
     public BeaconType beaconType() {
-<span class="fc" id="L570">        return beaconType;</span>
+<span class="fc" id="L572">        return beaconType;</span>
     }
 
     public RotatingField rotatingField() {
-<span class="fc" id="L574">        return rotatingField;</span>
+<span class="fc" id="L576">        return rotatingField;</span>
     }
 
     public String beacon23HexId() {
-<span class="fc" id="L578">        return beacon23HexId;</span>
+<span class="fc" id="L580">        return beacon23HexId;</span>
     }
 
     public String beacon15HexId() {
-<span class="fc" id="L582">        return beacon15HexId;</span>
+<span class="fc" id="L584">        return beacon15HexId;</span>
     }
 
     public Bits calculateBchErrorCorrectionCode() {
-<span class="fc" id="L586">        return bits //</span>
-<span class="fc" id="L587">                .concatWith(Bits.zeros(48)) //</span>
-<span class="fc" id="L588">                .remainderOnPolynomialDivision(BCH_DIVISOR) //</span>
-<span class="fc" id="L589">                .last(48);</span>
+<span class="fc" id="L588">        return bits //</span>
+<span class="fc" id="L589">                .concatWith(Bits.zeros(48)) //</span>
+<span class="fc" id="L590">                .remainderOnPolynomialDivision(BCH_DIVISOR) //</span>
+<span class="fc" id="L591">                .last(48);</span>
     }
 
     public String toJson() {
-<span class="fc" id="L593">        return Json.toJson(this);</span>
+<span class="fc" id="L595">        return Json.toJson(this);</span>
     }
 
     @Override
     public String toString() {
-<span class="fc" id="L598">        return toJson();</span>
+<span class="fc" id="L600">        return toJson();</span>
     }
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.6.202009150832</span></div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

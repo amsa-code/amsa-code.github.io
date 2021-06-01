@@ -51,7 +51,7 @@
 <a class="jxr_linenumber" name="L43" href="#L43">43</a>          <strong class="jxr_keyword">return</strong> concatWith(Bits.from(bitString));
 <a class="jxr_linenumber" name="L44" href="#L44">44</a>      }
 <a class="jxr_linenumber" name="L45" href="#L45">45</a>  
-<a class="jxr_linenumber" name="L46" href="#L46">46</a>      <strong class="jxr_keyword">public</strong> <a name="Bits" h<a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a>"../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> concatWith(<a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> b) {
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>      <strong class="jxr_keyword">public</strong> <a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> concatWith(<a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> b) {
 <a class="jxr_linenumber" name="L47" href="#L47">47</a>          <strong class="jxr_keyword">boolean</strong>[] array = Arrays.copyOf(bits, bits.length + b.bits.length);
 <a class="jxr_linenumber" name="L48" href="#L48">48</a>          System.arraycopy(b.bits, 0, array, bits.length, b.bits.length);
 <a class="jxr_linenumber" name="L49" href="#L49">49</a>          <strong class="jxr_keyword">return</strong> Bits.from(array);
@@ -185,9 +185,9 @@
 <a class="jxr_linenumber" name="L177" href="#L177">177</a>         <strong class="jxr_keyword">return</strong> readBitsString(0, bits.length);
 <a class="jxr_linenumber" name="L178" href="#L178">178</a>     }
 <a class="jxr_linenumber" name="L179" href="#L179">179</a> 
-<a class="jxr_linenumber" name="L180" href="#L180">180</a>     <strong class="jxr_keyword">public</strong> <a name="Bits" href="../../../../..<a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a>au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> remainderOnPolynomialDivision(<a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> divisor) {
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>     <strong class="jxr_keyword">public</strong> <a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> remainderOnPolynomialDivision(<a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> divisor) {
 <a class="jxr_linenumber" name="L181" href="#L181">181</a>         divisor = divisor.trimLeadingZeros();
-<a class="jxr_linenumber" name="L182" href="#L182">182</a>         <a name="Bits" href="../../../../../../au/gov/amsa<a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a>/decoder/internal/Bits.html#Bits">Bits</a> b = <strong class="jxr_keyword">new</strong> <a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a>(<strong class="jxr_keyword">this</strong>.bits);
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>         <a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> b = <strong class="jxr_keyword">new</strong> <a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a>(<strong class="jxr_keyword">this</strong>.bits);
 <a class="jxr_linenumber" name="L183" href="#L183">183</a>         <strong class="jxr_keyword">int</strong> i = 0;
 <a class="jxr_linenumber" name="L184" href="#L184">184</a>         <strong class="jxr_keyword">while</strong> (i &lt;= b.length() - divisor.length()) {
 <a class="jxr_linenumber" name="L185" href="#L185">185</a>             <strong class="jxr_keyword">if</strong> (b.bits[i]) {
@@ -221,7 +221,7 @@
 <a class="jxr_linenumber" name="L213" href="#L213">213</a>         <strong class="jxr_keyword">return</strong> toBitString();
 <a class="jxr_linenumber" name="L214" href="#L214">214</a>     }
 <a class="jxr_linenumber" name="L215" href="#L215">215</a> 
-<a class="jxr_linenumber" name="L216" href="#L216">216</a>     <strong class="jxr_keyword">public</strong> <a name="Bits" href="../../../../../../au/gov/amsa/sgb/de<a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a>r/internal/Bits.html#Bits">Bits</a> replace(<strong class="jxr_keyword">int</strong> i, <a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> b) {
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>     <strong class="jxr_keyword">public</strong> <a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> replace(<strong class="jxr_keyword">int</strong> i, <a name="Bits" href="../../../../../../au/gov/amsa/sgb/decoder/internal/Bits.html#Bits">Bits</a> b) {
 <a class="jxr_linenumber" name="L217" href="#L217">217</a>         <strong class="jxr_keyword">boolean</strong>[] a = Arrays.copyOf(bits, bits.length);
 <a class="jxr_linenumber" name="L218" href="#L218">218</a>         System.arraycopy(b.bits, 0, a, i, b.bits.length);
 <a class="jxr_linenumber" name="L219" href="#L219">219</a>         <strong class="jxr_keyword">return</strong> Bits.from(a);
