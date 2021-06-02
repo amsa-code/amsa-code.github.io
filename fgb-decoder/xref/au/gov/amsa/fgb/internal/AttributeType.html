@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>AttributeType xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/au/gov/amsa/fgb/internal/AttributeType.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.fgb.internal;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   enum <a name="AttributeType" href="../../../../../au/gov/amsa/fgb/internal/AttributeType.html#AttributeType">AttributeType</a> {
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>       _121_5_MHZ_HOMING(<span class="jxr_string">"homing121_5MHz"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>       ACTIVATION_TYPE(<span class="jxr_string">"activationType"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>       ADDITIONAL_DATA_FLAG(<span class="jxr_string">"additionalDataFlag"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>       ADDITIONAL_ELT_NUMBERS(<span class="jxr_string">"additionalEltNumbers"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>       AIRCRAFT_24_BIT_ADDRESS_HEX(<span class="jxr_string">"aircraft24BitAddressHex"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>       AIRCRAFT_24_BIT_ADDRESS_OCTAL(<span class="jxr_string">"aircraft24BitAddressOctal"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>      AIRCRAFT_CALL_SIGN(<span class="jxr_string">"aircraftCallsign"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>      AIRCRAFT_OPERATOR(<span class="jxr_string">"aircraftOperator"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>      AIRCRAFT_REG_MARKING(<span class="jxr_string">"aircraftRegistrationMarking"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      AIRCRAFT_SERIAL_NUMBER(<span class="jxr_string">"aircraftSerialNumber"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>      AUX_RADIO_LOCATING_DEVICE(<span class="jxr_string">"auxiliaryRadioLocatingDevice"</span>), <em class="jxr_comment">// TODO set enum in schema</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>      BCH_2(<span class="jxr_string">"bch2"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>      BEACON_SERIAL_NUMBER(<span class="jxr_string">"beaconSerialNumber"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>      BEACON_TYPE(<span class="jxr_string">"beaconType"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>      COARSE_POSITION_LATITUDE(<span class="jxr_string">"coarsePositionLatitude"</span>, JsonType.NUMBER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>      COARSE_POSITION_LONGITUDE(<span class="jxr_string">"coarsePositionLongitude"</span>, JsonType.NUMBER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>      COUNTRY_CODE(<span class="jxr_string">"countryCode"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>      COUNTRY_OF_REGISTRATION(<span class="jxr_string">"countryOfRegistration"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>      CS_CERT_NO_PRESENT(<span class="jxr_string">"cSCertNumberPresent"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>      CS_TYPE_APPROVAL(<span class="jxr_string">"cSTypeApproval"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>      CS_TYPE_APPROVAL_NUMBER(<span class="jxr_string">"cSTypeApprovalNumber"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>      DISABLED(<span class="jxr_string">"disabled"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>      EMERGENCY_CODE_PRESENT(<span class="jxr_string">"emergencyCodePresent"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>      EMERGENCY_CODE_FLAG(<span class="jxr_string">"emergencyCodeFlag"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>      ENCODED_POSITION_SOURCE(<span class="jxr_string">"encodedPositionSource"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>      ERROR(<span class="jxr_string">"error"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>      ERROR_CORRECTING_CODE_1(<span class="jxr_string">"errorCorrectingCode1"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>      ERROR_CORRECTING_CODE_2(<span class="jxr_string">"errorCorrectingCode2"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>      FIRE_FLAG(<span class="jxr_string">"fireFlag"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      FIXED_BITS(<span class="jxr_string">"fixedBits"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>      HEX_DATA(<span class="jxr_string">"hexData"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      HEX_ID(<span class="jxr_string">"hexId"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>      ID_POSN(<span class="jxr_string">"idPosition"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      IS_LONG_MESSAGE_DEFAULT(<span class="jxr_string">"isLongMessageDefault"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>      LATITUDE(<span class="jxr_string">"latitude"</span>, JsonType.NUMBER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      LONGITUDE(<span class="jxr_string">"longitude"</span>, JsonType.NUMBER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>      MEDICAL_HELP_FLAG(<span class="jxr_string">"medicalHelpFlag"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      MESSAGE_TYPE(<span class="jxr_string">"messageType"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>      NATIONAL_USE(<span class="jxr_string">"nationalUse"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>      NATURE_OF_DISTRESS(<span class="jxr_string">"natureOfDistress"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      OFFSET_POSITION_LATITUDE_DIFF(<span class="jxr_string">"offsetPositionLatitudeDiff"</span>, JsonType.NUMBER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      OFFSET_POSITION_LONGITUDE_DIFF(<span class="jxr_string">"offsetPositionLongitudeDiff"</span>, JsonType.NUMBER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>      ORBITOGRAPHY_4_BITS(<span class="jxr_string">"orbitography4Bits"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>      ORBITOGRAPHY_DATA(<span class="jxr_string">"orbitographyData"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>      ORBITOGRAPHY_ID(<span class="jxr_string">"orbitographyId"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      PDF_2(<span class="jxr_string">"pdf2"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>      PROTOCOL_TYPE(<span class="jxr_string">"protocolType"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      RADIO_CALLSIGN(<span class="jxr_string">"radioCallsign"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>      RLM_CAPABILITY_TYPE_1_AUTO(<span class="jxr_string">"rlmCapabilityType1Auto"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      RLM_CAPABILITY_TYPE_2_MANUAL(<span class="jxr_string">"rlmCapabilityType2Manual"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      RLM_CAPABILITY_TYPE(<span class="jxr_string">"rlmCapabilityType"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      RLM_RECEIVED_TYPE_1_AUTO(<span class="jxr_string">"rlmReceivedType1Auto"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>      RLM_RECEIVED_TYPE_2_MANUAL(<span class="jxr_string">"rlmReceivedType2Manual"</span>, JsonType.BOOLEAN), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      RLS_ID(<span class="jxr_string">"rlsId"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      RLS_PROVIDER_ID(<span class="jxr_string">"rlsProviderId"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      RLS_TAC_NUMBER(<span class="jxr_string">"rlsTacNumber"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>      RLS_MMSI_LAST_6_DIGITS(<span class="jxr_string">"rlsMmsiLast6Digits"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      SERIAL_NUMBER(<span class="jxr_string">"serialNumber"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>      SHIP_MMSI_LAST_6_DIGITS(<span class="jxr_string">"shipMmsiLast6Digits"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>      SHIP_MMSI(<span class="jxr_string">"shipMmsi"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>      SHIP_SECURITY_MMSI(<span class="jxr_string">"shipSecurityMmsi"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>      SPARE(<span class="jxr_string">"spare"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      SPECIFIC_BEACON_NUMBER(<span class="jxr_string">"specificBeaconNumber"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>      SPECIFIC_ELT_NUMBER(<span class="jxr_string">"specificEltNumber"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>      SUPPLEMENTARY_DATA(<span class="jxr_string">"supplementaryData"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>      USER_PROTOCOL_TYPE(<span class="jxr_string">"userProtocolType"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      US_MANUFACTURER_ID(<span class="jxr_string">"uSManufacturerId"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>      US_MODEL_ID(<span class="jxr_string">"uSModelId"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>      US_NATIONAL_USE(<span class="jxr_string">"uSNationalUse"</span>), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      US_RUN_NO(<span class="jxr_string">"uSRunNumber"</span>, JsonType.INTEGER), <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>      US_SEQUENCE_NO(<span class="jxr_string">"uSSequenceNumber"</span>, JsonType.INTEGER);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> String name;
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <a name="JsonType" href="../../../../../au/gov/amsa/fgb/internal/JsonType.html#JsonType">JsonType</a> jsonType;
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>      <a name="AttributeType" href="../../../../../au/gov/amsa/fgb/internal/AttributeType.html#AttributeType">AttributeType</a>(String name) {
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>          <strong class="jxr_keyword">this</strong>(name, JsonType.STRING);
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      }
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>      <a name="AttributeType" href="../../../../../au/gov/amsa/fgb/internal/AttributeType.html#AttributeType">AttributeType</a>(String name, <a name="JsonType" href="../../../../../au/gov/amsa/fgb/internal/JsonType.html#JsonType">JsonType</a> jsonType) {
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          <strong class="jxr_keyword">this</strong>.name = name;
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>          <strong class="jxr_keyword">this</strong>.jsonType = jsonType;
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>      }
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>  
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>      @Override
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>      <strong class="jxr_keyword">public</strong> String toString() {
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>          <strong class="jxr_keyword">return</strong> name;
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>      }
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>  
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>      <a name="JsonType" href="../../../../../au/gov/amsa/fgb/internal/JsonType.html#JsonType">JsonType</a> jsonType() {
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          <strong class="jxr_keyword">return</strong> jsonType;
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>      }
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2021. All rights reserved.</div>
+</body>
+</html>

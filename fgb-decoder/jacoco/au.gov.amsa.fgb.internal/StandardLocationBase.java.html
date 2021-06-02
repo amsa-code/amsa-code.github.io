@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>StandardLocationBase.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">StandardLocationBase.java</span></div><h1>StandardLocationBase.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.ArrayList;
+import java.util.List;
+
+abstract class StandardLocationBase extends StandardLocation {
+
+    private final Consumer consumer;
+
+    StandardLocationBase(String stdProtocolCode, String protocolName, Consumer consumer) {
+<span class="fc" id="L11">        super(stdProtocolCode, protocolName);</span>
+<span class="fc" id="L12">        this.consumer = consumer;</span>
+<span class="fc" id="L13">    }</span>
+
+    @Override
+    List&lt;HexAttribute&gt; decode(String hexStr) {
+<span class="fc" id="L17">        String binCode = Conversions.hexToBinary(hexStr);</span>
+<span class="fc" id="L18">        List&lt;HexAttribute&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L19">        result.add(this.messageType(binCode, 25, 26));</span>
+<span class="fc" id="L20">        result.add(this.hexData(hexStr, 25, binCode.length() - 1));</span>
+<span class="fc" id="L21">        HexAttribute hexId = this.hexIdWithDefaultLocation(binCode, 26, 65);</span>
+<span class="fc" id="L22">        result.add(hexId);</span>
+<span class="fc" id="L23">        result.add(this.countryCode(binCode, 27, 36));</span>
+<span class="fc" id="L24">        result.add(this.protocolType(binCode, 37, 40));</span>
+
+<span class="fc" id="L26">        consumer.accept(this, binCode, result);</span>
+
+<span class="fc" id="L28">        result.addAll(this.coarsePositions(binCode, 65, 85));</span>
+
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (hexStr.length() &gt; 15) {</span>
+<span class="fc" id="L31">            result = this.bch1(result, binCode, hexId);</span>
+
+<span class="fc" id="L33">            result.add(this.fixedBits(binCode, 107, 110));</span>
+
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (this.isLongMessage(binCode)) {</span>
+<span class="fc" id="L36">                result.add(this.encodedPositionSource(binCode, 111));</span>
+<span class="fc" id="L37">                result.add(this.homing(binCode, 112));</span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">                if (this.defaultFFFFFFFF(hexStr)) {</span>
+<span class="fc" id="L39">                    result.add(this.longMessage(binCode, 113, 144));</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                } else if (this.default00000000(hexStr)) {</span>
+<span class="fc" id="L41">                    result.add(this.longMessage(binCode, 113, 144));</span>
+                } else {
+<span class="fc" id="L43">                    result.addAll(offsetPosition(binCode, 113, 132));</span>
+<span class="fc" id="L44">                    result.add(this.bch2(binCode, 133, 144));</span>
+                }
+            } else {
+<span class="fc" id="L47">                result.add(this.encodedPositionSource(binCode, 111));</span>
+<span class="fc" id="L48">                result.add(this.homing(binCode, 112));</span>
+            }
+<span class="fc bfc" id="L50" title="All 2 branches covered.">            if (this.actualLatLong()) {</span>
+<span class="fc" id="L51">                result.add(actualLatitude());</span>
+<span class="fc" id="L52">                result.add(actualLongitude());</span>
+            }
+        }
+<span class="fc" id="L55">        return result;</span>
+    }
+
+    @Override
+    HexAttribute specificBeaconNumber(String binCode, int s, int f) {
+<span class="fc" id="L60">        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));</span>
+<span class="fc" id="L61">        String e = &quot;&quot;;</span>
+
+<span class="fc" id="L63">        return new HexAttribute(AttributeType.SPECIFIC_BEACON_NUMBER, s, f, v, e);</span>
+    }
+
+    interface Consumer {
+        void accept(StandardLocationBase s, String binCode, List&lt;HexAttribute&gt; result);
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>BeaconProtocol.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">BeaconProtocol.java</span></div><h1>BeaconProtocol.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+abstract class BeaconProtocol {
+
+    private static final String GENERATOR_POLYNOMIAL = &quot;1001101101100111100011&quot;;
+
+<span class="fc" id="L11">    private boolean isUS = false;</span>
+
+    private final List&lt;String&gt; beaconTypeCodes;
+    private final String protocolName;
+
+    private boolean actualLatLong;
+    private double latSeconds;
+    private double lonSeconds;
+
+    private final String defaultFixedBits;
+
+    BeaconProtocol(List&lt;String&gt; beaconTypeCodes, String protocolName) {
+<span class="fc" id="L23">        this(beaconTypeCodes, protocolName, null);</span>
+<span class="fc" id="L24">    }</span>
+
+<span class="fc" id="L26">    BeaconProtocol(List&lt;String&gt; beaconTypeCodes, String protocolName, String defaultFixedBits) {</span>
+<span class="fc" id="L27">        this.beaconTypeCodes = beaconTypeCodes;</span>
+<span class="fc" id="L28">        this.protocolName = protocolName;</span>
+<span class="fc" id="L29">        this.actualLatLong = false;</span>
+<span class="fc" id="L30">        this.latSeconds = 0;</span>
+<span class="fc" id="L31">        this.lonSeconds = 0;</span>
+<span class="fc" id="L32">        this.defaultFixedBits = defaultFixedBits;</span>
+<span class="fc" id="L33">    }</span>
+
+    abstract boolean canDecode(String binCode);
+
+    // This method is also overwritten by subclasses but
+    // all sub-classes should call super.decode(binStr)
+    // as this method will decode those bits that are
+    // common to ALL protocols.
+    abstract List&lt;HexAttribute&gt; decode(String hexStr);
+
+    abstract String getName();
+
+    boolean isUS() {
+<span class="fc" id="L46">        return isUS;</span>
+    }
+
+    List&lt;String&gt; beaconTypeCodes() {
+<span class="fc" id="L50">        return Collections.unmodifiableList(beaconTypeCodes);</span>
+    }
+
+    String protocolName() {
+<span class="fc" id="L54">        return protocolName;</span>
+    }
+
+    protected void setPosition(double latSeconds, double lonSeconds) {
+<span class="fc" id="L58">        this.latSeconds = latSeconds;</span>
+<span class="fc" id="L59">        this.lonSeconds = lonSeconds;</span>
+<span class="fc" id="L60">        this.actualLatLong = true;</span>
+<span class="fc" id="L61">    }</span>
+
+    protected double latSeconds() {
+<span class="fc" id="L64">        return latSeconds;</span>
+    }
+
+    protected double lonSeconds() {
+<span class="fc" id="L68">        return lonSeconds;</span>
+    }
+
+    protected void setLatSeconds(double latSeconds) {
+<span class="fc" id="L72">        this.latSeconds = latSeconds;</span>
+<span class="fc" id="L73">    }</span>
+
+    protected void setLonSeconds(double lonSeconds) {
+<span class="fc" id="L76">        this.lonSeconds = lonSeconds;</span>
+<span class="fc" id="L77">    }</span>
+
+    protected boolean actualLatLong() {
+<span class="fc" id="L80">        return actualLatLong;</span>
+    }
+
+    boolean isLongMessage(String binCode) {
+<span class="fc" id="L84">        String code = binCode.substring(25, 27);</span>
+<span class="fc" id="L85">        List&lt;String&gt; longCodes = new ArrayList&lt;&gt;(2);</span>
+<span class="fc" id="L86">        longCodes.add(&quot;10&quot;);</span>
+<span class="fc" id="L87">        longCodes.add(&quot;11&quot;);</span>
+<span class="fc" id="L88">        return longCodes.contains(code);</span>
+    }
+
+    // 16 May 2005
+    boolean isShortMessage(String binCode) {
+<span class="fc" id="L93">        String code = binCode.substring(25, 27);</span>
+<span class="fc" id="L94">        List&lt;String&gt; shortCodes = new ArrayList&lt;&gt;(2);</span>
+<span class="fc" id="L95">        shortCodes.add(&quot;00&quot;);</span>
+<span class="fc" id="L96">        shortCodes.add(&quot;01&quot;);</span>
+<span class="fc" id="L97">        return shortCodes.contains(code);</span>
+    }
+
+    // 16 May 2005
+    String getMsgTypeDesc(String v, String binCode) {
+<span class="fc bfc" id="L102" title="All 2 branches covered.">        if (this.isLongMessage(binCode)) {</span>
+<span class="fc" id="L103">            v = v + &quot; (Long)&quot;;</span>
+<span class="fc bfc" id="L104" title="All 2 branches covered.">        } else if (this.isShortMessage(binCode)) {</span>
+<span class="fc" id="L105">            v = v + &quot; (Short)&quot;;</span>
+        } else {
+<span class="fc" id="L107">            v = v + &quot; (Format - Unknown)&quot;;</span>
+        }
+<span class="fc" id="L109">        return v;</span>
+    }
+
+    boolean defaultFFFFFFFF(String hexStr) {
+<span class="fc" id="L113">        int len = hexStr.length();</span>
+<span class="fc" id="L114">        String code = hexStr.substring(len - 8, len);</span>
+<span class="fc" id="L115">        return code.equals(&quot;FFFFFFFF&quot;);</span>
+    }
+
+    HexAttribute longMessage(String binCode, int s, int f) {
+<span class="fc" id="L119">        String v = &quot;YES&quot;;</span>
+<span class="fc" id="L120">        String e = &quot;&quot;;</span>
+<span class="fc" id="L121">        return new HexAttribute(AttributeType.IS_LONG_MESSAGE_DEFAULT, s, f, v, e);</span>
+    }
+
+    boolean default00000000(String hexStr) {
+<span class="fc" id="L125">        int len = hexStr.length();</span>
+<span class="fc" id="L126">        String code = hexStr.substring(len - 8, len);</span>
+<span class="fc" id="L127">        return code.equals(&quot;00000000&quot;);</span>
+    }
+
+    HexAttribute protocolType(String binCode, int s, int f) {
+<span class="fc" id="L131">        String name = this.getName();</span>
+<span class="fc" id="L132">        String e = &quot;&quot;;</span>
+<span class="fc" id="L133">        return new HexAttribute(AttributeType.PROTOCOL_TYPE, s, f, name, e);</span>
+    }
+
+    HexAttribute rlsTacNumber(String binCode, int s, int f) {
+<span class="fc" id="L137">        char prefix = rlsTacNumberPrefix(binCode, s);</span>
+<span class="fc" id="L138">        String v = binCode.substring(s + 2, f + 1);</span>
+<span class="fc" id="L139">        String last3Digits = Conversions</span>
+<span class="fc" id="L140">                .zeroPadFromLeft(Integer.toString(Conversions.binaryToDecimal(v)), 3);</span>
+<span class="fc" id="L141">        String result = prefix + last3Digits;</span>
+<span class="fc" id="L142">        String e = &quot;&quot;;</span>
+<span class="fc" id="L143">        return new HexAttribute(AttributeType.RLS_TAC_NUMBER, s, f, result, e);</span>
+    }
+
+    private char rlsTacNumberPrefix(String binCode, int s) {
+<span class="fc" id="L147">        final String v = binCode.substring(s, s + 2);</span>
+<span class="fc bfc" id="L148" title="All 2 branches covered.">        if (v.equals(&quot;00&quot;)) {</span>
+<span class="fc" id="L149">            return '2';</span>
+<span class="fc bfc" id="L150" title="All 2 branches covered.">        } else if (v.equals(&quot;01&quot;)) {</span>
+<span class="fc" id="L151">            return '1';</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">        } else if (v.equals(&quot;10&quot;)) {</span>
+<span class="fc" id="L153">            return '3';</span>
+        } else {
+<span class="fc" id="L155">            return 'T';</span>
+        }
+    }
+
+    HexAttribute rlsId(String binCode, int s, int f) {
+<span class="fc" id="L160">        String v = binCode.substring(s, f + 1);</span>
+<span class="fc" id="L161">        String e = &quot;&quot;;</span>
+<span class="fc" id="L162">        int result = Conversions.binaryToDecimal(v);</span>
+<span class="fc" id="L163">        return new HexAttribute(AttributeType.RLS_ID, s, f, result, e);</span>
+    }
+
+    HexAttribute hexData(String hexStr, int s, int f) {
+<span class="fc" id="L167">        String e = &quot;&quot;;</span>
+
+        // return new HexAttribute(&quot;Hex Data&quot;, s, f, hexStr, e);
+
+        // 16 May 2005
+<span class="fc bfc" id="L172" title="All 2 branches covered.">        if (hexStr.trim().length() != 30) {</span>
+<span class="fc" id="L173">            return new HexAttribute(AttributeType.HEX_DATA, 25, 144, &quot;Unknown&quot;, e);</span>
+        } else {
+<span class="fc" id="L175">            return new HexAttribute(AttributeType.HEX_DATA, s, f, hexStr, e);</span>
+        }
+    }
+
+    HexAttribute hexId(String binCode, int s, int f) { // b26-85
+<span class="fc" id="L180">        String binHexId = binCode.substring(s, f + 1);</span>
+<span class="fc" id="L181">        String v = Conversions.binaryToHex(binHexId);</span>
+<span class="fc" id="L182">        String e = &quot;&quot;;</span>
+<span class="fc" id="L183">        return new HexAttribute(AttributeType.HEX_ID, s, f, v, e);</span>
+    }
+
+    private static int getCountryCode(String binCode, int s, int f) {
+<span class="fc" id="L187">        String binCC = binCode.substring(s, f + 1);</span>
+<span class="fc" id="L188">        return Conversions.binaryToDecimal(binCC);</span>
+    }
+
+    HexAttribute countryCode(String binCode, int s, int f) {
+<span class="fc" id="L192">        int cc = getCountryCode(binCode, s, f);</span>
+<span class="fc" id="L193">        String e = &quot;&quot;;</span>
+<span class="fc" id="L194">        String v = cc + &quot;&quot;;</span>
+
+        // Is this a US beacon
+<span class="fc" id="L197">        List&lt;String&gt; usCodes = new ArrayList&lt;String&gt;(0);</span>
+<span class="fc" id="L198">        usCodes.add(&quot;338&quot;);</span>
+<span class="fc" id="L199">        usCodes.add(&quot;366&quot;);</span>
+<span class="fc" id="L200">        usCodes.add(&quot;367&quot;);</span>
+<span class="fc" id="L201">        usCodes.add(&quot;368&quot;);</span>
+<span class="fc" id="L202">        usCodes.add(&quot;369&quot;);</span>
+
+<span class="fc" id="L204">        this.isUS = usCodes.contains(v);</span>
+<span class="fc" id="L205">        return new HexAttribute(AttributeType.COUNTRY_CODE, s, f, v, e);</span>
+    }
+
+    // Beacon Serial Number&lt;/TD&gt;&lt;TD&gt;b51-64&lt;/TD&gt;&lt;TD&gt;999&lt;/TD&gt;&lt;/TR&gt;
+    HexAttribute beaconSerialNumber(String binCode, int s, int f) {
+<span class="fc" id="L210">        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));</span>
+<span class="fc" id="L211">        String e = &quot;&quot;;</span>
+
+<span class="fc" id="L213">        return new HexAttribute(AttributeType.BEACON_SERIAL_NUMBER, s, f, v, e);</span>
+    }
+
+    List&lt;HexAttribute&gt; aircraft24BitAddress(String binCode, int s, int f) {
+<span class="fc" id="L217">        String code = binCode.substring(s, f + 1);</span>
+<span class="fc" id="L218">        String e = &quot;&quot;;</span>
+<span class="fc" id="L219">        List&lt;HexAttribute&gt; list = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L220">        String hex = Conversions.binaryToHex(code);</span>
+<span class="fc" id="L221">        String oct = removeLeadingZeros(Conversions.binaryToOctal(code));</span>
+
+<span class="fc" id="L223">        list.add(new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_HEX, s, f, hex, e));</span>
+<span class="fc" id="L224">        list.add(new HexAttribute(AttributeType.AIRCRAFT_24_BIT_ADDRESS_OCTAL, s, f, oct, e));</span>
+
+<span class="fc" id="L226">        HexAttribute h = aircraftCallSign(binCode, s, f);</span>
+<span class="fc" id="L227">        String result = h.value();</span>
+<span class="fc bfc" id="L228" title="All 2 branches covered.">        if (result.length() &gt; 0) {</span>
+            // 13 May 2005
+            // Make the output align to the rest output
+<span class="fc" id="L231">            list.add(new HexAttribute(AttributeType.AIRCRAFT_CALL_SIGN, s, f, result, e));</span>
+        }
+
+<span class="fc" id="L234">        String countryReg = Conversions.getAircraftCountryOfReg(code);</span>
+<span class="pc bpc" id="L235" title="1 of 2 branches missed.">        if (countryReg.length() &gt; 0) {</span>
+<span class="nc" id="L236">            list.add(new HexAttribute(AttributeType.COUNTRY_OF_REGISTRATION, s, f, countryReg, e));</span>
+        }
+<span class="fc" id="L238">        return list;</span>
+    }
+
+    private static HexAttribute aircraftCallSign(String binCode, int s, int f) {
+<span class="fc" id="L242">        String e = &quot;&quot;;</span>
+<span class="fc" id="L243">        String v = &quot;&quot;;</span>
+<span class="fc" id="L244">        String country = binCode.substring(s, s + 6);</span>
+
+        // System.out.println(&quot;In BeaconProtocol.java, country=&quot; + country);
+
+        // if the first 6 bits are 011111 then it is an AUST reg beacon
+        // we can use an alg. to work out the callsign
+<span class="fc bfc" id="L250" title="All 2 branches covered.">        if (country.equals(&quot;011111&quot;)) {</span>
+            // 10 May 2005, based on the CASA algorithm passed by Scott
+            // Lillinton
+            // Discard the first 6 bits, only use the rest 18 bits
+<span class="fc" id="L254">            String code = binCode.substring(s + 6, f + 1);</span>
+
+            // String bin = binCode;
+            // String code = bin.substring(6, bin.length());
+
+<span class="fc" id="L259">            v = Conversions.binaryToAircraftCallsign(code);</span>
+        }
+
+        // System.out.println(&quot;In BeaconProtocol.java, callSign: &quot;+v);
+
+<span class="fc" id="L264">        return new HexAttribute(AttributeType.AIRCRAFT_CALL_SIGN, s, f, v, e);</span>
+    }
+
+    HexAttribute specificBeaconNumber(String binCode, int s, int f) {
+        // 11 May 2005
+<span class="fc" id="L269">        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),</span>
+<span class="fc" id="L270">                binCode.substring(s, f + 1), 6);</span>
+
+<span class="fc" id="L272">        String v = vE[0];</span>
+        // String e = &quot;&quot;;
+
+<span class="fc" id="L275">        String e = vE[1];</span>
+
+<span class="pc bpc" id="L277" title="2 of 4 branches missed.">        if (e != null &amp;&amp; e.length() &gt; 0) {</span>
+<span class="nc" id="L278">            e = &quot;\nWARNING - SUSPECT NON-SPEC IN SPECIFIC BEACON NUMBER\n&quot; + e;</span>
+        }
+
+<span class="fc" id="L281">        return new HexAttribute(AttributeType.SPECIFIC_BEACON_NUMBER, s, f, v, e);</span>
+    }
+
+    // sdc This needs to be converted using a 5 place BAUDOT conv.
+    HexAttribute aircraftOperator(String binCode, int s, int f) {
+        // 11 May 2005
+<span class="fc" id="L287">        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),</span>
+<span class="fc" id="L288">                binCode.substring(s, f + 1), 5);</span>
+<span class="fc" id="L289">        String v = vE[0];</span>
+
+<span class="fc" id="L291">        String e = vE[1];</span>
+
+<span class="pc bpc" id="L293" title="2 of 4 branches missed.">        if (e != null &amp;&amp; e.length() &gt; 0) {</span>
+<span class="nc" id="L294">            e = &quot;\nWARNING - SUSPECT NON-SPEC IN AIRCRAFT OPERATOR\n&quot; + e;</span>
+        }
+
+<span class="fc" id="L297">        return new HexAttribute(AttributeType.AIRCRAFT_OPERATOR, s, f, v, e);</span>
+    }
+
+    HexAttribute aircraftSerialNumber(String binCode, int s, int f) {
+<span class="fc" id="L301">        int v = Conversions.binaryToDecimal(binCode.substring(s, f + 1));</span>
+<span class="fc" id="L302">        String e = &quot;&quot;;</span>
+<span class="fc" id="L303">        return new HexAttribute(AttributeType.AIRCRAFT_SERIAL_NUMBER, s, f, v, e);</span>
+    }
+
+    HexAttribute fixedBits(String binCode, int s, int f) {
+<span class="fc" id="L307">        String v = &quot;&quot;;</span>
+<span class="fc" id="L308">        String e = &quot;&quot;;</span>
+<span class="fc" id="L309">        String code = binCode.substring(s, f + 1);</span>
+<span class="fc bfc" id="L310" title="All 2 branches covered.">        if (code.equals(this.defaultFixedBits)) {</span>
+<span class="fc" id="L311">            v = &quot;FIXED VALUE&quot;;</span>
+        } else {
+<span class="fc" id="L313">            v = code + &quot; (Non-Spec)&quot;;</span>
+            // String position = &quot;b&quot; + s + &quot;-&quot; + f;
+            // e = &quot;INVALID Spare. &quot; + position + &quot;: &quot; + code;
+        }
+
+<span class="fc" id="L318">        return new HexAttribute(AttributeType.SPARE, s, f, v, e);</span>
+    }
+
+    boolean positionalDataPresent(String binCode) {
+<span class="fc bfc" id="L322" title="All 2 branches covered.">        return binCode.charAt(110) == '1';</span>
+    }
+
+    HexAttribute additionalDataFlag(String binCode, int s) { // b110
+<span class="fc" id="L326">        String v = &quot;&quot;;</span>
+<span class="fc" id="L327">        String e = &quot;&quot;;</span>
+<span class="fc bfc" id="L328" title="All 2 branches covered.">        if (this.positionalDataPresent(binCode)) {</span>
+<span class="fc bfc" id="L329" title="All 2 branches covered.">            if (this.isLongMessage(binCode)) {</span>
+<span class="fc" id="L330">                v = &quot;POSITION DATA&quot;;</span>
+            } else {
+<span class="fc" id="L332">                v = &quot;FIXED VALUE&quot;;</span>
+            }
+        } else {
+<span class="fc bfc" id="L335" title="All 2 branches covered.">            if (this.isLongMessage(binCode)) {</span>
+<span class="fc" id="L336">                v = &quot;NATIONAL USE&quot;;</span>
+            } else {
+<span class="fc" id="L338">                v = binCode.charAt(s) + &quot; (Non-Spec)&quot;;</span>
+            }
+        }
+
+<span class="fc" id="L342">        return new HexAttribute(AttributeType.ADDITIONAL_DATA_FLAG, s, v, e);</span>
+    }
+
+    HexAttribute encodedPositionSource(String binCode, int s) {
+<span class="fc" id="L346">        String v = &quot;&quot;;</span>
+<span class="fc" id="L347">        String e = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L349" title="All 2 branches covered.">        if (binCode.charAt(s) == '1') {</span>
+<span class="fc" id="L350">            v = &quot;INTERNAL&quot;;</span>
+        } else {
+<span class="fc" id="L352">            v = &quot;EXTERNAL&quot;;</span>
+        }
+
+<span class="fc" id="L355">        return new HexAttribute(AttributeType.ENCODED_POSITION_SOURCE, s, v, e);</span>
+    }
+
+    // 121.5 MHz Homing b112 NO
+    HexAttribute homing(String binCode, int s) { // b112
+<span class="fc" id="L360">        String v = &quot;&quot;;</span>
+<span class="fc" id="L361">        String e = &quot;&quot;;</span>
+
+<span class="fc bfc" id="L363" title="All 2 branches covered.">        if (binCode.charAt(s) == '1') {</span>
+<span class="fc" id="L364">            v = &quot;YES&quot;;</span>
+        } else {
+<span class="fc" id="L366">            v = &quot;NO&quot;;</span>
+        }
+
+<span class="fc" id="L369">        return new HexAttribute(AttributeType._121_5_MHZ_HOMING, s, v, e);</span>
+    }
+
+    HexAttribute nationalUse(String binCode, int s, int f) {
+<span class="fc" id="L373">        String v = binCode.substring(s, f + 1);</span>
+<span class="fc" id="L374">        String e = &quot;&quot;;</span>
+
+<span class="fc" id="L376">        return new HexAttribute(AttributeType.NATIONAL_USE, s, f, v, e);</span>
+    }
+
+    // Latitude 36 00 20S
+    HexAttribute actualLatitude() {
+<span class="fc" id="L381">        String e = &quot;&quot;;</span>
+<span class="fc" id="L382">        return new HexAttribute(AttributeType.LATITUDE, latSeconds / 3600.0 + &quot;&quot;, e);</span>
+    }
+
+    // Longitude 115 07 36E
+    HexAttribute actualLongitude() {
+<span class="fc" id="L387">        String e = &quot;&quot;;</span>
+<span class="fc" id="L388">        return new HexAttribute(AttributeType.LONGITUDE, lonSeconds / 3600.0 + &quot;&quot;, e);</span>
+    }
+
+    HexAttribute bch1(String binCodeOrig, int s, int f) {
+        // System.out.println(&quot;Orig &quot; + binCodeOrig);
+<span class="fc" id="L393">        String binCode = binCodeOrig.substring(25, s);</span>
+<span class="fc" id="L394">        String binCode2 = binCodeOrig.substring(s, f + 1);</span>
+
+<span class="fc" id="L396">        String e = &quot;&quot;;</span>
+
+<span class="fc" id="L398">        binCode = addZerosOnRight(binCode, 61 - binCode.length());</span>
+
+<span class="fc" id="L400">        binCode = addZerosOnRight(binCode, 21);</span>
+
+<span class="fc" id="L402">        String bchCode = calcBCHCODE(binCode, GENERATOR_POLYNOMIAL);</span>
+
+<span class="fc bfc" id="L404" title="All 2 branches covered.">        if (!bchCode.equals(binCode2)) {</span>
+<span class="fc" id="L405">            e = &quot;WARNING - ERROR IN FIRST PROTECTED FIELD\n&quot;;</span>
+<span class="fc" id="L406">            e = e + &quot; BCH SHOULD BE &quot; + bchCode + &quot;\n&quot;;</span>
+<span class="fc" id="L407">            e = e + &quot; BCH IS ...... &quot; + binCode2;</span>
+
+            // 04/04/2005
+            // Add more words for BCH errors
+<span class="fc" id="L411">            e = &quot;\n&quot; + e + &quot;\n\nNotes on Miscoded Beacons and BCH Errors:\n&quot;;</span>
+<span class="fc" id="L412">            e += &quot;1. Section 4.2.5.3 of C/S T.002 - LUT Specifications\n&quot;;</span>
+<span class="fc" id="L413">            e += &quot;2. Section III/B.1.1.3 of C/S A.001 - Data Distribution Plan\n\n&quot;;</span>
+        }
+
+<span class="fc" id="L416">        return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE_1, s, f, binCode2, e);</span>
+    }
+
+    // 1/Nov/2005
+    // Overloaded method, called by StandardLocation's subclasses and
+    // NationalLocation's subclasses
+    List&lt;HexAttribute&gt; bch1(List&lt;HexAttribute&gt; result, String binCode, HexAttribute hexId) {
+<span class="fc" id="L423">        HexAttribute bch1 = bch1(binCode, 86, 106);</span>
+
+<span class="fc" id="L425">        String error = bch1.error();</span>
+<span class="pc bpc" id="L426" title="1 of 4 branches missed.">        if (error != null &amp;&amp; error.length() &gt; 0) {</span>
+            // To remove the hexId with the default value in b66-85 if not the
+            // same
+<span class="fc" id="L429">            String hexIdDefaultLoc = hexId.value();</span>
+<span class="fc" id="L430">            HexAttribute hexIdOrig = hexId(binCode, 26, 85);</span>
+<span class="fc" id="L431">            String hexIdOrigLoc = hexIdOrig.value();</span>
+
+<span class="pc bpc" id="L433" title="1 of 2 branches missed.">            if (!hexIdDefaultLoc.equalsIgnoreCase(hexIdOrigLoc)) {</span>
+<span class="fc" id="L434">                int hexIdInd = result.indexOf(hexId);</span>
+<span class="fc" id="L435">                result.remove(hexId);</span>
+<span class="fc" id="L436">                result.add(hexIdInd, hexIdOrig);</span>
+
+<span class="fc" id="L438">                int noteInd = error.indexOf(&quot;\n\nNotes on Miscoded Beacons and BCH Errors:&quot;);</span>
+<span class="fc" id="L439">                String errPart1 = error.substring(0, noteInd);</span>
+<span class="fc" id="L440">                String errPart2 = error.substring(noteInd);</span>
+
+<span class="fc" id="L442">                error = errPart1 + &quot;\n Hex Id with default location: &quot; + hexId.value() + &quot;\n&quot;</span>
+                        + errPart2;
+<span class="fc" id="L444">                bch1 = new HexAttribute(bch1.desc(), bch1.start(), bch1.finish() + &quot;&quot;, error);</span>
+            }
+        }
+
+<span class="fc" id="L448">        result.add(bch1);</span>
+<span class="fc" id="L449">        return result;</span>
+    }
+
+    HexAttribute bch2(String binCodeOrig, int s, int f) {
+<span class="fc" id="L453">        String binCode = binCodeOrig.substring(107, s);</span>
+<span class="fc" id="L454">        String binCode2 = binCodeOrig.substring(s, f + 1);</span>
+<span class="fc" id="L455">        String e = &quot;&quot;;</span>
+
+<span class="fc" id="L457">        binCode = addZerosOnRight(binCode, 26 - binCode.length());</span>
+<span class="fc" id="L458">        binCode = addZerosOnRight(binCode, 12);</span>
+
+<span class="fc" id="L460">        String bchCode = calcBCHCODE(binCode, &quot;1010100111001&quot;);</span>
+
+<span class="fc bfc" id="L462" title="All 2 branches covered.">        if (!bchCode.equals(binCode2)) {</span>
+<span class="fc" id="L463">            e = &quot;WARNING - ERROR IN SECOND PROTECTED FIELD\n&quot;;</span>
+<span class="fc" id="L464">            e = e + &quot; BCH SHOULD BE &quot; + bchCode + &quot;\n&quot;;</span>
+<span class="fc" id="L465">            e = e + &quot; BCH IS ...... &quot; + binCode2;</span>
+        }
+
+<span class="fc" id="L468">        return new HexAttribute(AttributeType.ERROR_CORRECTING_CODE_2, s, f, binCode2, e);</span>
+    }
+
+    private static String addZerosOnRight(String s, int n) {
+<span class="fc" id="L472">        StringBuilder b = new StringBuilder(s);</span>
+<span class="fc bfc" id="L473" title="All 2 branches covered.">        for (int i = 0; i &lt; n; i++) {</span>
+<span class="fc" id="L474">            b.append(&quot;0&quot;);</span>
+        }
+<span class="fc" id="L476">        return b.toString();</span>
+    }
+
+    private static String calcBCHCODE(String bitCode, String generatorPolynomial) {
+
+<span class="fc" id="L481">        int b = generatorPolynomial.length();</span>
+<span class="fc" id="L482">        String result = bitCode.substring(0, b);</span>
+<span class="fc" id="L483">        result = removeLeadingZeros(result);</span>
+
+        // Short protocols will have any leading 0 removed from the
+        // above call to removeLeadingZeros. So we should even up
+        // the ledger by removing the leading '0' from bitCode.
+<span class="fc bfc" id="L488" title="All 2 branches covered.">        if (bitCode.charAt(0) == '0') {</span>
+<span class="fc" id="L489">            bitCode = bitCode.substring(1, bitCode.length());</span>
+        }
+
+<span class="fc bfc" id="L492" title="All 2 branches covered.">        for (int i = b - 1; i &lt; bitCode.length(); i++) {</span>
+<span class="fc" id="L493">            char c = bitCode.charAt(i);</span>
+
+<span class="fc bfc" id="L495" title="All 2 branches covered.">            if (result.length() &lt; b) {</span>
+<span class="fc" id="L496">                result += c;</span>
+            }
+<span class="fc bfc" id="L498" title="All 2 branches covered.">            if (result.length() == b) {</span>
+<span class="fc" id="L499">                result = xor(result, generatorPolynomial);</span>
+            }
+        }
+
+<span class="fc bfc" id="L503" title="All 2 branches covered.">        while (result.length() &lt; b - 1) {</span>
+<span class="fc" id="L504">            result = &quot;0&quot; + result;</span>
+        }
+
+<span class="fc" id="L507">        return result;</span>
+    }
+
+    private static String removeLeadingZeros(String str) {
+<span class="fc" id="L511">        int i = 0;</span>
+<span class="pc bpc" id="L512" title="1 of 4 branches missed.">        while (i &lt; str.length() &amp;&amp; str.charAt(i) == '0') {</span>
+<span class="fc" id="L513">            i++;</span>
+        }
+<span class="fc" id="L515">        return str.substring(i);</span>
+    }
+
+    // do a bitwise XOR of G and R to form new R
+    private static String xor(String bitStrA, String bitStrB) {
+<span class="fc" id="L520">        StringBuilder result = new StringBuilder();</span>
+<span class="fc bfc" id="L521" title="All 2 branches covered.">        for (int i = 0; i &lt; bitStrA.length(); i++) {</span>
+<span class="fc bfc" id="L522" title="All 2 branches covered.">            boolean bA = bitStrA.charAt(i) == '1';</span>
+<span class="fc bfc" id="L523" title="All 2 branches covered.">            boolean bB = bitStrB.charAt(i) == '1';</span>
+<span class="fc bfc" id="L524" title="All 2 branches covered.">            if (bA == bB) {</span>
+<span class="fc" id="L525">                result.append(&quot;0&quot;);</span>
+            } else {
+<span class="fc" id="L527">                result.append(&quot;1&quot;);</span>
+            }
+        }
+<span class="fc" id="L530">        return removeLeadingZeros(result.toString());</span>
+    }
+
+    // don't make this a singleton because the protocol objects are not safe for
+    // reuse!
+    public static List&lt;BeaconProtocol&gt; createBeaconProtocols() {
+<span class="fc" id="L536">        List&lt;BeaconProtocol&gt; list = new ArrayList&lt;BeaconProtocol&gt;(35);</span>
+
+        // All National Protocols
+<span class="fc" id="L539">        list.add(new NationalLocationAviation());</span>
+<span class="fc" id="L540">        list.add(new NationalLocationMaritime());</span>
+<span class="fc" id="L541">        list.add(new NationalLocationPersonal());</span>
+<span class="fc" id="L542">        list.add(new NationalLocationSpare());</span>
+<span class="fc" id="L543">        list.add(new NationalLocationTest());</span>
+
+        // New Return Link Service Protocol
+<span class="fc" id="L546">        list.add(new ReturnLinkServiceLocation());</span>
+
+        // All Standard Protocols
+<span class="fc" id="L549">        list.add(new StandardLocationAircraftAddress());</span>
+<span class="fc" id="L550">        list.add(new StandardLocationAircraftOperator());</span>
+<span class="fc" id="L551">        list.add(new StandardLocationELT());</span>
+<span class="fc" id="L552">        list.add(new StandardLocationEpirb());</span>
+<span class="fc" id="L553">        list.add(new StandardLocationPLB());</span>
+<span class="fc" id="L554">        list.add(new StandardLocationShipMMSI());</span>
+<span class="fc" id="L555">        list.add(new StandardLocationShipSecurityAlertSystem());</span>
+<span class="fc" id="L556">        list.add(new LocationReserved());</span>
+<span class="fc" id="L557">        list.add(new LocationSpare());</span>
+<span class="fc" id="L558">        list.add(new StandardLocationTest());</span>
+
+        // All User Protocols
+<span class="fc" id="L561">        list.add(new UserAviation());</span>
+<span class="fc" id="L562">        list.add(new UserMaritime());</span>
+<span class="fc" id="L563">        list.add(new UserNational());</span>
+<span class="fc" id="L564">        list.add(new UserOrbitography());</span>
+<span class="fc" id="L565">        list.add(new UserRadioCallsign());</span>
+<span class="fc" id="L566">        list.add(new UserSerialAircraftAddress());</span>
+<span class="fc" id="L567">        list.add(new UserSerialAircraftOperator());</span>
+<span class="fc" id="L568">        list.add(new UserSerialAviation());</span>
+<span class="fc" id="L569">        list.add(new UserSerialMaritimeFloatFree());</span>
+<span class="fc" id="L570">        list.add(new UserSerialMaritimeNonFloatFree());</span>
+<span class="fc" id="L571">        list.add(new UserSerialPersonal());</span>
+<span class="fc" id="L572">        list.add(new UserSerialSpare());</span>
+<span class="fc" id="L573">        list.add(new UserSerialSpare2());</span>
+<span class="fc" id="L574">        list.add(new UserSpare());</span>
+<span class="fc" id="L575">        list.add(new UserTest());</span>
+
+        // This is the default it always returns true
+<span class="fc" id="L578">        list.add(new Unknown());</span>
+<span class="fc" id="L579">        return list;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

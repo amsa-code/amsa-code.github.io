@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserOrbitography.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">UserOrbitography.java</span></div><h1>UserOrbitography.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.ArrayList;
+import java.util.List;
+
+// 13 May 2005
+// Changed based on C/ST.006 and CDP
+class UserOrbitography extends User {
+
+    UserOrbitography() {
+<span class="fc" id="L11">        super(&quot;Orbitography&quot;, &quot;000&quot;);</span>
+<span class="fc" id="L12">    }</span>
+
+    @Override
+    List&lt;HexAttribute&gt; decode(String hexStr) {
+<span class="fc" id="L16">        String binCode = Conversions.hexToBinary(hexStr);</span>
+
+<span class="fc" id="L18">        List&lt;HexAttribute&gt; result = new ArrayList&lt;HexAttribute&gt;();</span>
+
+<span class="fc" id="L20">        userFragment(this, hexStr, binCode, result);</span>
+
+<span class="fc" id="L22">        result = this.orbitographyData(result, binCode, 40, 85);</span>
+
+        // The if condition is always true because it is prefixed to be 30 chars already
+<span class="pc bpc" id="L25" title="1 of 2 branches missed.">        if (hexStr.length() &gt; 15) {</span>
+<span class="fc" id="L26">            result.add(this.bch1(binCode, 86, 106));</span>
+
+<span class="pc bpc" id="L28" title="1 of 2 branches missed.">            if (this.isLongMessage(binCode)) {</span>
+<span class="nc" id="L29">                result.add(this.nationalUse(binCode, 107, 144));</span>
+<span class="pc bpc" id="L30" title="1 of 2 branches missed.">            } else if (binCode.charAt(107) == '0') {</span>
+<span class="fc" id="L31">                result.add(this.nationalUse(binCode, 107, 112));</span>
+            } else {
+<span class="nc" id="L33">                result.add(new HexAttribute(AttributeType.EMERGENCY_CODE_FLAG, 107,</span>
+<span class="nc" id="L34">                        &quot;Non-Spec (&quot; + binCode.charAt(107) + &quot;)&quot;, &quot;&quot;));</span>
+<span class="nc" id="L35">                result.add(this.nationalUse(binCode, 108, 112));</span>
+            }
+        }
+
+<span class="fc" id="L39">        return result;</span>
+    }
+
+    // This is where changes go
+    private List&lt;HexAttribute&gt; orbitographyData(List&lt;HexAttribute&gt; result, String binCode, int s,
+            int f) {
+<span class="fc" id="L45">        String v1 = binCode.substring(s, f + 1);</span>
+<span class="fc" id="L46">        String e1 = &quot;&quot;;</span>
+
+<span class="fc" id="L48">        result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_DATA, s, f, v1, e1));</span>
+
+        // bit 40-81
+<span class="fc" id="L51">        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),</span>
+<span class="fc" id="L52">                binCode.substring(s, f - 4 + 1), 6);</span>
+        // 24 June 2005, double quote is not used any more
+        // String v2 = &quot;\&quot;&quot; + vE[0] + &quot;\&quot;&quot;;
+<span class="fc" id="L55">        String v2 = vE[0];</span>
+<span class="fc" id="L56">        String e2 = vE[1];</span>
+
+<span class="pc bpc" id="L58" title="2 of 4 branches missed.">        if (e2 != null &amp;&amp; e2.length() &gt; 0) {</span>
+<span class="nc" id="L59">            e2 = &quot;\nWARNING - SUSPECT NON-SPEC IN ORBITOGRAPHY BEACON CLEAR TEXT IDENTIFIER\n&quot; + e2;</span>
+        }
+
+<span class="fc" id="L62">        result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_ID, s, f - 4, v2, e2));</span>
+
+        // Bit 82-85
+<span class="fc" id="L65">        String v3 = binCode.substring(f - 4 + 1, f + 1);</span>
+
+<span class="pc bpc" id="L67" title="1 of 2 branches missed.">        if (v3.equals(&quot;0000&quot;)) {</span>
+<span class="nc" id="L68">            result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f, v3, &quot;&quot;));</span>
+        } else {
+<span class="fc" id="L70">            result.add(new HexAttribute(AttributeType.ORBITOGRAPHY_4_BITS, f - 4 + 1, f,</span>
+                    v3 + &quot; (Non-Spec)&quot;, &quot;&quot;));
+        }
+
+<span class="fc" id="L74">        return result;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

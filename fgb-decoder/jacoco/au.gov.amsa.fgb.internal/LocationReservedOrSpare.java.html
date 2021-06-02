@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>LocationReservedOrSpare.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">LocationReservedOrSpare.java</span></div><h1>LocationReservedOrSpare.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.github.davidmoten.guavamini.Lists;
+
+abstract class LocationReservedOrSpare extends BeaconProtocol {
+
+    private final String stdProtocolCode;
+
+    LocationReservedOrSpare(String stdProtocolCode, String protocolName) {
+        // 16 May 2005
+        // ?0 is for 15-char Hex string where bit25 is unknown since it starts with
+        // bit26
+<span class="fc" id="L16">        super(Lists.newArrayList(&quot;00&quot;, &quot;10&quot;, &quot;?0&quot;), protocolName);</span>
+<span class="fc" id="L17">        this.stdProtocolCode = stdProtocolCode;</span>
+<span class="fc" id="L18">    }</span>
+
+    @Override
+    String getName() {
+<span class="fc" id="L22">        return protocolName();</span>
+    }
+
+    @Override
+    List&lt;HexAttribute&gt; decode(String hexStr) {
+<span class="fc" id="L27">        String binCode = Conversions.hexToBinary(hexStr);</span>
+
+<span class="fc" id="L29">        List&lt;HexAttribute&gt; result = new ArrayList&lt;HexAttribute&gt;();</span>
+
+<span class="fc" id="L31">        result.add(this.messageType(binCode, 25, 26));</span>
+<span class="fc" id="L32">        result.add(this.hexData(hexStr, 25, binCode.length() - 1));</span>
+<span class="fc" id="L33">        result.add(this.hexId(binCode, 26, 85));</span>
+<span class="fc" id="L34">        result.add(this.countryCode(binCode, 27, 36));</span>
+
+        // b40 doesn't matter for this reserved
+<span class="fc" id="L37">        result.add(this.protocolType(binCode, 37, 40));</span>
+
+        // 09 May 2005, based on CDP's guidance
+        // Providing the binary codes from bit41 to bit 85 inclusively
+<span class="fc" id="L41">        result.add(new HexAttribute(AttributeType.ID_POSN, 41, 85, binCode.substring(41, 86), &quot;&quot;));</span>
+
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if (hexStr.length() &gt; 15) {</span>
+            // Providing the BCH1 decoding
+<span class="fc" id="L45">            result.add(this.bch1(binCode, 86, 106));</span>
+            // Providing the binary codes from bit107 to bit 112
+            // result.add(new HexAttribute(&quot;Supplementary Data&quot;, 107, 112,
+            // binCode.substring(107,113), &quot;&quot;));
+
+            // 24 May 2005
+            // CDP's latest Guidance
+<span class="fc bfc" id="L52" title="All 2 branches covered.">            if (this.isLongMessage(binCode)) {</span>
+<span class="fc" id="L53">                result.add(new HexAttribute(AttributeType.PDF_2, 107, 132,</span>
+<span class="fc" id="L54">                        binCode.substring(113, 133), &quot;&quot;));</span>
+<span class="fc" id="L55">                result.add(new HexAttribute(AttributeType.BCH_2, 133, 144,</span>
+<span class="fc" id="L56">                        binCode.substring(133, 145), &quot;&quot;));</span>
+            } else {
+<span class="fc" id="L58">                result.add(new HexAttribute(AttributeType.SUPPLEMENTARY_DATA, 107, 112,</span>
+<span class="fc" id="L59">                        binCode.substring(107, 113), &quot;&quot;));</span>
+            }
+
+        }
+
+<span class="fc" id="L64">        return result;</span>
+    }
+
+    // Override the method of &quot;canCode&quot; (b37-39).
+    // b40 doesn't matter in this Reserved (orbitography) protocol
+    @Override
+    boolean canDecode(String binCode) {
+<span class="fc" id="L71">        String protocol = binCode.substring(25, 27);</span>
+
+        // System.out.println(&quot;Trying &quot; + name);
+<span class="fc bfc" id="L74" title="All 2 branches covered.">        int f = this instanceof LocationReserved ? 40 : 41;</span>
+<span class="fc bfc" id="L75" title="All 2 branches covered.">        if (beaconTypeCodes().contains(protocol)) {</span>
+<span class="fc" id="L76">            String protocolCode = binCode.substring(37, f);</span>
+<span class="fc" id="L77">            return protocolCode.equals(this.stdProtocolCode);</span>
+        }
+
+        // else
+<span class="fc" id="L81">        return false;</span>
+    }
+
+    // Overriden messageType
+    private HexAttribute messageType(String binCode, int s, int f) {
+<span class="fc" id="L86">        String v = &quot;Location&quot;; // this is where to oerride</span>
+<span class="fc" id="L87">        String e = &quot;&quot;;</span>
+
+        // 16 May 2005
+<span class="fc" id="L90">        v = this.getMsgTypeDesc(v, binCode);</span>
+
+<span class="fc" id="L92">        return new HexAttribute(AttributeType.MESSAGE_TYPE, s, f, v, e);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

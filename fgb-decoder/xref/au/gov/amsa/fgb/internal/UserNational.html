@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>UserNational xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../apidocs/au/gov/amsa/fgb/internal/UserNational.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> au.gov.amsa.fgb.internal;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <strong class="jxr_keyword">class</strong> <a name="UserNational" href="../../../../../au/gov/amsa/fgb/internal/UserNational.html#UserNational">UserNational</a> <strong class="jxr_keyword">extends</strong> <a name="UserBase" href="../../../../../au/gov/amsa/fgb/internal/UserBase.html#UserBase">UserBase</a> {
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>       <a name="UserNational" href="../../../../../au/gov/amsa/fgb/internal/UserNational.html#UserNational">UserNational</a>() {
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>           <strong class="jxr_keyword">super</strong>(<span class="jxr_string">"National User"</span>, <span class="jxr_string">"100"</span>, (u, binCode, result) -&gt; {
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>               <em class="jxr_comment">// 25 May 2005</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>               <em class="jxr_comment">// Based on CDP's latest guideline: PDF-2: bit107-132; BCH-2: bit133-144</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>               result.add(<strong class="jxr_keyword">new</strong> <a name="HexAttribute" href="../../../../../au/gov/amsa/fgb/internal/HexAttribute.html#HexAttribute">HexAttribute</a>(AttributeType.PDF_2, 107, 132, binCode.substring(113, 133),
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>                       <span class="jxr_string">""</span>));
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>              result.add(<strong class="jxr_keyword">new</strong> <a name="HexAttribute" href="../../../../../au/gov/amsa/fgb/internal/HexAttribute.html#HexAttribute">HexAttribute</a>(AttributeType.BCH_2, 133, 144, binCode.substring(133, 145),
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>                      <span class="jxr_string">""</span>));
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>          });
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>      }
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2021. All rights reserved.</div>
+</body>
+</html>

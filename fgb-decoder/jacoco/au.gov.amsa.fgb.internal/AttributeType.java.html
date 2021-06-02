@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AttributeType.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">AttributeType.java</span></div><h1>AttributeType.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+<span class="fc" id="L3">enum AttributeType {</span>
+<span class="fc" id="L4">    _121_5_MHZ_HOMING(&quot;121.5 MHz Homing&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L5">    ACTIVATION_TYPE(&quot;Activation Type&quot;), //</span>
+<span class="fc" id="L6">    ADDITIONAL_DATA_FLAG(&quot;Additional Data Flag&quot;), //</span>
+<span class="fc" id="L7">    ADDITIONAL_ELT_NUMBERS(&quot;Additional ELT numbers&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L8">    AIRCRAFT_24_BIT_ADDRESS_HEX(&quot;Aircraft 24 bit address (hex)&quot;), //</span>
+<span class="fc" id="L9">    AIRCRAFT_24_BIT_ADDRESS_OCTAL(&quot;Aircraft 24 bit address (octal)&quot;), //</span>
+<span class="fc" id="L10">    AIRCRAFT_CALL_SIGN(&quot;Aircraft Callsign&quot;), //</span>
+<span class="fc" id="L11">    AIRCRAFT_OPERATOR(&quot;Aircraft Operator&quot;), //</span>
+<span class="fc" id="L12">    AIRCRAFT_REG_MARKING(&quot;Aircraft Reg. Marking&quot;), //</span>
+<span class="fc" id="L13">    AIRCRAFT_SERIAL_NUMBER(&quot;Aircraft Serial Number&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L14">    AUX_RADIO_LOCATING(&quot;Aux. radio-locating&quot;), //</span>
+<span class="fc" id="L15">    BCH_2(&quot;BCH-2&quot;), //</span>
+<span class="fc" id="L16">    BEACON_SERIAL_NUMBER(&quot;Beacon Serial Number&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L17">    BEACON_TYPE(&quot;Beacon Type&quot;), //</span>
+<span class="fc" id="L18">    COARSE_POSITION_LATITUDE(&quot;Coarse Position Latitude&quot;, JsonType.NUMBER), //</span>
+<span class="fc" id="L19">    COARSE_POSITION_LONGITUDE(&quot;Coarse Position Longitude&quot;, JsonType.NUMBER), //</span>
+<span class="fc" id="L20">    COUNTRY_CODE(&quot;Country Code&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L21">    COUNTRY_OF_REGISTRATION(&quot;Country of Registration&quot;), //</span>
+<span class="fc" id="L22">    CS_CERT_NO_PRESENT(&quot;C/S cert. no. present&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L23">    CS_TYPE_APPROVAL(&quot;C/S Type approval&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L24">    CS_TYPE_APPROVAL_NUMBER(&quot;C/S Type approval number&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L25">    DISABLED(&quot;Disabled&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L26">    EMERGENCY_CODE_PRESENT(&quot;Emergency Code Present&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L27">    EMERGENCY_CODE_FLAG(&quot;Emergency Code Flag&quot;), //</span>
+<span class="fc" id="L28">    ENCODED_POSITION_SOURCE(&quot;Encoded Position Source&quot;), //</span>
+<span class="fc" id="L29">    ERROR(&quot;Error&quot;), //</span>
+<span class="fc" id="L30">    ERROR_CORRECTING_CODE_1(&quot;Error Correcting Code 1&quot;), //</span>
+<span class="fc" id="L31">    ERROR_CORRECTING_CODE_2(&quot;Error Correcting Code 2&quot;), //</span>
+<span class="fc" id="L32">    FIRE_FLAG(&quot;Fire Flag&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L33">    FIXED_BITS(&quot;Fixed bits&quot;), //</span>
+<span class="fc" id="L34">    HEX_DATA(&quot;Hex Data&quot;), //</span>
+<span class="fc" id="L35">    HEX_ID(&quot;Hex Id&quot;), //</span>
+<span class="fc" id="L36">    ID_POSN(&quot;ID+POSN&quot;), //</span>
+<span class="fc" id="L37">    IS_LONG_MESSAGE_DEFAULT(&quot;Is Long Message Default&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L38">    LATITUDE(&quot;Latitude&quot;, JsonType.NUMBER), //</span>
+<span class="fc" id="L39">    LONGITUDE(&quot;Longitude&quot;, JsonType.NUMBER), //</span>
+<span class="fc" id="L40">    MEDICAL_HELP_FLAG(&quot;Medical Help Flag&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L41">    MESSAGE_TYPE(&quot;Message Type&quot;), //</span>
+<span class="fc" id="L42">    NATIONAL_USE(&quot;National Use&quot;), //</span>
+<span class="fc" id="L43">    NATURE_OF_DISTRESS(&quot;Nature of Distress&quot;), //</span>
+<span class="fc" id="L44">    OFFSET_POSITION_LATITUDE_DIFF(&quot;Offset Position Latitude Diff&quot;, JsonType.NUMBER), //</span>
+<span class="fc" id="L45">    OFFSET_POSITION_LONGITUDE_DIFF(&quot;Offset Position Longitude Diff&quot;, JsonType.NUMBER), //</span>
+<span class="fc" id="L46">    ORBITOGRAPHY_4_BITS(&quot;Orbitography 4 bits&quot;), //</span>
+<span class="fc" id="L47">    ORBITOGRAPHY_DATA(&quot;Orbitography Data&quot;), //</span>
+<span class="fc" id="L48">    ORBITOGRAPHY_ID(&quot;Orbitography ID&quot;), //</span>
+<span class="fc" id="L49">    PDF_2(&quot;PDF-2&quot;), //</span>
+<span class="fc" id="L50">    PROTOCOL_TYPE(&quot;Protocol Type&quot;), //</span>
+<span class="fc" id="L51">    RADIO_CALLSIGN(&quot;Radio Callsign&quot;), //</span>
+<span class="fc" id="L52">    RLM_CAPABILITY_TYPE_1_AUTO(&quot;RLM Capability Type-1 (Auto)&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L53">    RLM_CAPABILITY_TYPE_2_MANUAL(&quot;RLM Capability Type-2 (Manual)&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L54">    RLM_CAPABILITY_TYPE(&quot;RLM Capability Type&quot;), //</span>
+<span class="fc" id="L55">    RLM_RECEIVED_TYPE_1_AUTO(&quot;RLM Received Type-1 (Auto)&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L56">    RLM_RECEIVED_TYPE_2_MANUAL(&quot;RLM Received Type-2 (Manual)&quot;, JsonType.BOOLEAN), //</span>
+<span class="fc" id="L57">    RLS_ID(&quot;RLS ID&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L58">    RLS_PROVIDER_ID(&quot;RLS Provider ID&quot;), //</span>
+<span class="fc" id="L59">    RLS_TAC_NUMBER(&quot;RLS TAC Number&quot;), //</span>
+<span class="fc" id="L60">    RLS_MMSI_LAST_6_DIGITS(&quot;RLS MMSI last 6 digits&quot;), //</span>
+<span class="fc" id="L61">    SERIAL_NUMBER(&quot;Serial Number&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L62">    SHIP_MMSI_LAST_6_DIGITS(&quot;Ship MMSI Last 6 Digits&quot;), //</span>
+<span class="fc" id="L63">    SHIP_MMSI(&quot;Ship MMSI&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L64">    SHIP_SECURITY_MMSI(&quot;Ship Security MMSI&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L65">    SPARE(&quot;Spare&quot;), //</span>
+<span class="fc" id="L66">    SPECIFIC_BEACON_NUMBER(&quot;Specific Beacon Number&quot;), //</span>
+<span class="fc" id="L67">    SPECIFIC_ELT_NUMBER(&quot;Specific ELT number&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L68">    SUPPLEMENTARY_DATA(&quot;Supplementary Data&quot;), //</span>
+<span class="fc" id="L69">    USER_PROTOCOL_TYPE(&quot;User Protocol Type&quot;), //</span>
+<span class="fc" id="L70">    US_MANUFACTURER_ID(&quot;US Manufacturer ID&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L71">    US_MODEL_ID(&quot;US Model ID&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L72">    US_NATIONAL_USE(&quot;US National Use&quot;), //</span>
+<span class="fc" id="L73">    US_RUN_NO(&quot;US Run No.&quot;, JsonType.INTEGER), //</span>
+<span class="fc" id="L74">    US_SEQUENCE_NO(&quot;US Sequence No.&quot;, JsonType.INTEGER);</span>
+
+    private final String name;
+    private final JsonType jsonType;
+
+    AttributeType(String name) {
+<span class="fc" id="L80">        this(name, JsonType.STRING);</span>
+<span class="fc" id="L81">    }</span>
+
+<span class="fc" id="L83">    AttributeType(String name, JsonType jsonType) {</span>
+<span class="fc" id="L84">        this.name = name;</span>
+<span class="fc" id="L85">        this.jsonType = jsonType;</span>
+<span class="fc" id="L86">    }</span>
+
+    @Override
+    public String toString() {
+<span class="fc" id="L90">        return name;</span>
+    }
+
+    JsonType jsonType() {
+<span class="fc" id="L94">        return jsonType;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

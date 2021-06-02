@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HexDecoder.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">HexDecoder.java</span></div><h1>HexDecoder.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.Collections;
+import java.util.List;
+import java.util.function.BiFunction;
+
+import com.github.davidmoten.guavamini.annotations.VisibleForTesting;
+
+/**
+ * Contains methods to decode hex strings.
+ *
+ * @author smw01
+ *
+ */
+public final class HexDecoder {
+
+    private HexDecoder() {
+        // prevent instantiation
+    }
+
+    @VisibleForTesting
+    static List&lt;HexAttribute&gt; getHexAttributesDecodeFull(String hexStr) {
+<span class="fc" id="L23">        return getHexAttributes(hexStr, (proto, hex) -&gt; proto.decode(hex));</span>
+    }
+
+    private static List&lt;HexAttribute&gt; getHexAttributes(String hexStr,
+            BiFunction&lt;BeaconProtocol, String, List&lt;HexAttribute&gt;&gt; attributesFunction) {
+<span class="fc" id="L28">        hexStr = hexStr.trim();</span>
+<span class="fc" id="L29">        int hexLen = hexStr.length();</span>
+<span class="fc bfc" id="L30" title="All 4 branches covered.">        if (!(hexLen == 15 || hexLen == 30)) {</span>
+<span class="fc" id="L31">            return Collections.singletonList(new HexAttribute(AttributeType.ERROR, &quot;&quot;,</span>
+                    &quot;HEX STRING MUST BE 15 OR 30 CHARACTERS IN LENGTH&quot;));
+        } else {
+            // Convert the Hex String into Binary Code
+<span class="fc" id="L35">            String binCode = au.gov.amsa.fgb.internal.Conversions.hexToBinary(hexStr);</span>
+<span class="fc" id="L36">            String h = hexStr;</span>
+            // Note that the last protocol UnknownProtocol will always match so a return is
+            // guaranteed
+<span class="fc" id="L39">            return BeaconProtocol.createBeaconProtocols() //</span>
+<span class="fc" id="L40">                    .stream() //</span>
+<span class="fc" id="L41">                    .filter(proto -&gt; proto.canDecode(binCode)) //</span>
+<span class="fc" id="L42">                    .map(proto -&gt; attributesFunction.apply(proto, h)) //</span>
+<span class="fc" id="L43">                    .findFirst() //</span>
+<span class="fc" id="L44">                    .get();</span>
+        }
+    }
+
+    // This is the method that is used to decode the entire Hex Str.
+    public static String decodeFullAsJson(String hexStr) {
+<span class="fc" id="L50">        List&lt;HexAttribute&gt; r = getHexAttributesDecodeFull(hexStr);</span>
+<span class="fc" id="L51">        return DecodeAsJson.INSTANCE.getData(r);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

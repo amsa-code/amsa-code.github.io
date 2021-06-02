@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DecodeAsJson.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">DecodeAsJson.java</span></div><h1>DecodeAsJson.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.List;
+
+import com.github.davidmoten.guavamini.Preconditions;
+
+public final class DecodeAsJson {
+
+<span class="fc" id="L9">    public static final DecodeAsJson INSTANCE = new DecodeAsJson();</span>
+    private static final String COLON = &quot;:&quot;;
+
+    private DecodeAsJson() {
+        // prevent instantiation externally
+    }
+
+    private static String quoted(String s) {
+<span class="fc" id="L17">        return &quot;\&quot;&quot; + escape(s) + &quot;\&quot;&quot;;</span>
+    }
+
+    public String getData(List&lt;HexAttribute&gt; v) {
+<span class="fc" id="L21">        StringBuilder b = new StringBuilder();</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        for (int i = 0; i &lt; v.size(); i++) {</span>
+<span class="fc" id="L23">            HexAttribute h = v.get(i);</span>
+
+<span class="pc bpc" id="L25" title="1 of 4 branches missed.">            if (h.error() != null &amp;&amp; !h.error().trim().isEmpty()) {</span>
+<span class="fc" id="L26">                throw new RuntimeException(&quot;Error occurred at position, start= &quot; + h.start()</span>
+<span class="fc" id="L27">                        + &quot;, finish=&quot; + h.finish() + &quot; with desc='&quot; + h.desc() + &quot;', value='&quot;</span>
+<span class="fc" id="L28">                        + h.value() + &quot;':&quot; + h.error());</span>
+<span class="pc bpc" id="L29" title="1 of 2 branches missed.">            } else if (!h.desc().toString().isEmpty()</span>
+<span class="fc bfc" id="L30" title="All 2 branches covered.">                    &amp;&amp; !h.desc().toString().equals(AttributeType.SPARE.toString())) {</span>
+<span class="fc" id="L31">                addKeyValue(b, h.jsonType(), h.desc().toString(), h.value());</span>
+            }
+        }
+<span class="fc" id="L34">        b.insert(0, &quot;{&quot;);</span>
+<span class="fc" id="L35">        b.append(&quot;}&quot;);</span>
+<span class="fc" id="L36">        return b.toString();</span>
+    }
+
+    private void addKeyValue(StringBuilder b, JsonType jsonType, String key, String value) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (b.length() &gt; 0) {</span>
+<span class="fc" id="L41">            b.append(&quot;,\n&quot;);</span>
+        }
+<span class="fc" id="L43">        b.append(quoted(key));</span>
+<span class="fc" id="L44">        b.append(COLON);</span>
+<span class="fc" id="L45">        b.append(getValue(jsonType, value));</span>
+<span class="fc" id="L46">    }</span>
+
+    private String getValue(JsonType jsonType, String value) {
+<span class="fc" id="L49">        Preconditions.checkNotNull(jsonType);</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        if (jsonType == JsonType.INTEGER) {</span>
+<span class="fc" id="L51">            return Integer.parseInt(value) + &quot;&quot;;</span>
+<span class="fc bfc" id="L52" title="All 2 branches covered.">        } else if (jsonType == JsonType.BOOLEAN) {</span>
+<span class="fc" id="L53">            return value.equalsIgnoreCase(&quot;YES&quot;) + &quot;&quot;;</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        } else if (jsonType == JsonType.NUMBER) {</span>
+<span class="fc" id="L55">            return Double.parseDouble(value) + &quot;&quot;;</span>
+        } else {
+<span class="fc" id="L57">            return quoted(value);</span>
+        }
+    }
+
+    private static String escape(String raw) {
+        // should in theory escape other non-printing characters using uXXXX notation
+        // but those characters not expected
+<span class="fc" id="L64">        return raw.replace(&quot;\\&quot;, &quot;\\\\&quot;) //</span>
+<span class="fc" id="L65">                .replace(&quot;\&quot;&quot;, &quot;\\\&quot;&quot;) //</span>
+<span class="fc" id="L66">                .replace(&quot;\b&quot;, &quot;\\b&quot;) //</span>
+<span class="fc" id="L67">                .replace(&quot;\f&quot;, &quot;\\f&quot;) //</span>
+<span class="fc" id="L68">                .replace(&quot;\n&quot;, &quot;\\n&quot;) //</span>
+<span class="fc" id="L69">                .replace(&quot;\r&quot;, &quot;\\r&quot;) //</span>
+<span class="fc" id="L70">                .replace(&quot;\t&quot;, &quot;\\t&quot;);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

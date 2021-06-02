@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserRadioCallsign.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">UserRadioCallsign.java</span></div><h1>UserRadioCallsign.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.ArrayList;
+
+final class UserRadioCallsign extends UserAviationOrMaritimeOrRadioCallsign {
+
+    UserRadioCallsign() {
+<span class="fc" id="L8">        super(&quot;Radio Call Sign&quot;, &quot;110&quot;, (u, binCode, result) -&gt; {</span>
+<span class="fc" id="L9">            result.add(((UserRadioCallsign) u).radioCallsign(binCode, 40, 75));</span>
+<span class="fc" id="L10">            result.add(u.specificBeaconNumber(binCode, 76, 81));</span>
+<span class="fc" id="L11">            result.add(u.spare(binCode, 82, 83));</span>
+<span class="fc" id="L12">        });</span>
+<span class="fc" id="L13">    }</span>
+
+    private HexAttribute radioCallsign(String binCode, int s, int f) {
+        // 11 May 2005
+        // Passed back the String[]
+<span class="fc" id="L18">        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),</span>
+<span class="fc" id="L19">                binCode.substring(s, s + 24), 6);</span>
+        // String v = Conversions.mBaudotBits2mBaudotStr(binCode.substring(s, s+24), 6);
+        // String h = Conversions.binaryToHex(binCode.substring(s+24, f+1));
+
+<span class="fc" id="L23">        String v = vE[0];</span>
+<span class="fc" id="L24">        String e = vE[1];</span>
+<span class="fc" id="L25">        int count = Integer.parseInt(vE[2]);</span>
+
+<span class="pc bpc" id="L27" title="2 of 4 branches missed.">        if (e != null &amp;&amp; e.length() &gt; 0) {</span>
+<span class="nc" id="L28">            e = &quot;\nWARNING - SUSPECT NON-SPEC IN RADIO CALL SIGN\n&quot; + e;</span>
+        }
+
+        // String h = Conversions.binaryToHex(binCode.substring(s+24, f+1));
+<span class="fc" id="L32">        int[] digits = new int[3];</span>
+<span class="fc" id="L33">        digits[0] = Conversions.binaryToDecimal(binCode.substring(s + 24, s + 28));</span>
+<span class="fc" id="L34">        digits[1] = Conversions.binaryToDecimal(binCode.substring(s + 28, s + 32));</span>
+<span class="fc" id="L35">        digits[2] = Conversions.binaryToDecimal(binCode.substring(s + 32, f + 1));</span>
+
+<span class="fc" id="L37">        String h = &quot;&quot;;</span>
+<span class="fc" id="L38">        ArrayList&lt;String&gt; e2 = new ArrayList&lt;String&gt;();</span>
+
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (int i = 0; i &lt; 3; i++) {</span>
+            // only 0-9 are allowed, SPACE (1010, ie, 10) is allowed only when it is
+            // trailing
+<span class="fc bfc" id="L43" title="All 2 branches covered.">            if (digits[i] &gt; 9) {</span>
+<span class="pc bpc" id="L44" title="1 of 2 branches missed.">                if (digits[i] == 10) {</span>
+<span class="fc" id="L45">                    h += &quot;*&quot;;</span>
+
+                    // e += &quot;?&quot; + ++count + &quot; = &quot; + Conversions.decimalToBinary(digits[i]) + &quot; =
+                    // Non-Spec\n&quot;;
+
+<span class="fc" id="L50">                    e2.add(Conversions.decimalToBinary(digits[i]) + &quot; = Non-Spec\n&quot;);</span>
+                } else {
+<span class="nc" id="L52">                    h += &quot;?&quot;;</span>
+                    // e += &quot;?&quot; + ++count + &quot; = &quot; + Conversions.decimalToBinary(digits[i]) + &quot; =
+                    // Non-Spec\n&quot;;
+
+<span class="nc" id="L56">                    e2.add(Conversions.decimalToBinary(digits[i]) + &quot; = Non-Spec\n&quot;);</span>
+
+                    // System.out.println(&quot;digits[&quot; + i + &quot;]=&quot; + digits[i]);
+                }
+            } else {
+<span class="fc" id="L61">                h += digits[i] + &quot;&quot;;</span>
+
+                // This is for syn only
+<span class="fc" id="L64">                e2.add(Conversions.decimalToBinary(digits[i]) + &quot; = Spec\n&quot;);</span>
+            }
+        }
+
+        // Replace &quot;*&quot; with &quot; &quot; at the end, eg, &quot;*9*&quot; to &quot;*9 &quot;
+<span class="fc" id="L69">        int index = h.length() - 1;</span>
+<span class="pc bpc" id="L70" title="1 of 2 branches missed.">        for (; index &gt;= 0; index--) {</span>
+<span class="fc bfc" id="L71" title="All 2 branches covered.">            if (h.charAt(index) == '*') {</span>
+                continue;
+            } else {
+                break;
+            }
+        }
+
+        // System.out.println(&quot;index=&quot; + index);
+
+<span class="pc bpc" id="L80" title="1 of 4 branches missed.">        for (int i = index + 1; i &gt;= 0 &amp;&amp; i &lt; h.length(); i++) {</span>
+<span class="pc bpc" id="L81" title="1 of 2 branches missed.">            if (h.charAt(i) == '*') {</span>
+<span class="fc" id="L82">                h = h.substring(0, i) + &quot; &quot; + h.substring(i + 1);</span>
+            }
+        }
+
+        // Replace all rest * to ?, eg &quot;*9 &quot; to &quot;?9 &quot;
+<span class="fc" id="L87">        h = h.replace('*', '?');</span>
+        // Append the relevant elements in e2 to e
+<span class="fc" id="L89">        StringBuilder b = new StringBuilder();</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        for (int i = 0; i &lt; h.length(); i++) {</span>
+<span class="pc bpc" id="L91" title="1 of 2 branches missed.">            if (h.charAt(i) == '?') {</span>
+<span class="nc" id="L92">                b.append(&quot;?&quot; + ++count + &quot; = &quot; + e2.get(i));</span>
+            }
+        }
+<span class="fc" id="L95">        e += b.toString();</span>
+        // 24 June 2005, double quote is not used any more
+        // String vH = &quot;\&quot;&quot; + v + h + &quot;\&quot;&quot;;
+<span class="fc" id="L98">        String vH = (v + h).trim();</span>
+
+<span class="fc" id="L100">        return new HexAttribute(AttributeType.RADIO_CALLSIGN, s, f, vH, e);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

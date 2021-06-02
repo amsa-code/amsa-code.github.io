@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserSerialAircraftOperator.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">UserSerialAircraftOperator.java</span></div><h1>UserSerialAircraftOperator.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+class UserSerialAircraftOperator extends UserSerialAircraftBase {
+
+    UserSerialAircraftOperator() {
+<span class="fc" id="L6">        super(&quot;Aircraft Operator&quot;, &quot;001&quot;, (u, binCode, result) -&gt; {</span>
+<span class="fc" id="L7">            result.add(((UserSerialAircraftOperator) u).aircraftOperator(binCode, 44, 61));</span>
+<span class="fc" id="L8">            result.add(((UserSerialAircraftOperator) u).aircraftSerialNumber(binCode, 62, 73));</span>
+<span class="fc" id="L9">        });</span>
+<span class="fc" id="L10">    }</span>
+
+    @Override
+    public HexAttribute aircraftOperator(String binCode, int s, int f) {
+        // 11 May 2005
+<span class="fc" id="L15">        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName() + &quot; &quot; + serialBeaconType(),</span>
+<span class="fc" id="L16">                binCode.substring(s, f + 1), 6);</span>
+<span class="fc" id="L17">        String v = vE[0];</span>
+<span class="fc" id="L18">        String e = vE[1];</span>
+
+<span class="fc" id="L20">        return new HexAttribute(AttributeType.AIRCRAFT_OPERATOR, s, f, v, e);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

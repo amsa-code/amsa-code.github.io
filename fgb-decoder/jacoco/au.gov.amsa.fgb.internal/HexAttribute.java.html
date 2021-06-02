@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>HexAttribute.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">HexAttribute.java</span></div><h1>HexAttribute.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+final class HexAttribute {
+
+    private final AttributeType desc;
+    private final int start;
+    private final int finish;
+    private final String value;
+    private final String error;
+
+<span class="fc" id="L11">    HexAttribute(AttributeType d, int s, int f, String v, String e) {</span>
+<span class="fc" id="L12">        this.desc = d;</span>
+<span class="fc" id="L13">        this.start = s;</span>
+<span class="fc" id="L14">        this.finish = f;</span>
+<span class="fc" id="L15">        this.value = v;</span>
+<span class="fc" id="L16">        this.error = e;</span>
+<span class="fc" id="L17">    }</span>
+
+<span class="fc" id="L19">    HexAttribute(AttributeType d, int s, int f, int v, String e) {</span>
+<span class="fc" id="L20">        this.desc = d;</span>
+<span class="fc" id="L21">        this.start = s;</span>
+<span class="fc" id="L22">        this.finish = f;</span>
+<span class="fc" id="L23">        this.value = v + &quot;&quot;;</span>
+<span class="fc" id="L24">        this.error = e;</span>
+<span class="fc" id="L25">    }</span>
+
+<span class="fc" id="L27">    HexAttribute(AttributeType d, int s, String v, String e) {</span>
+<span class="fc" id="L28">        this.desc = d;</span>
+<span class="fc" id="L29">        this.start = s;</span>
+<span class="fc" id="L30">        this.value = v;</span>
+<span class="fc" id="L31">        this.error = e;</span>
+<span class="fc" id="L32">        this.finish = 0;</span>
+<span class="fc" id="L33">    }</span>
+
+<span class="fc" id="L35">    HexAttribute(AttributeType d, String v, String e) {</span>
+<span class="fc" id="L36">        this.desc = d;</span>
+<span class="fc" id="L37">        this.value = v;</span>
+<span class="fc" id="L38">        this.error = e;</span>
+<span class="fc" id="L39">        this.start = 0;</span>
+<span class="fc" id="L40">        this.finish = 0;</span>
+<span class="fc" id="L41">    }</span>
+
+    AttributeType desc() {
+<span class="fc" id="L44">        return desc;</span>
+    }
+
+    int start() {
+<span class="fc" id="L48">        return start;</span>
+    }
+
+    int finish() {
+<span class="fc" id="L52">        return finish;</span>
+    }
+
+    String value() {
+<span class="fc" id="L56">        return this.value;</span>
+    }
+
+    String error() {
+<span class="fc" id="L60">        return this.error;</span>
+    }
+
+    public JsonType jsonType() {
+<span class="fc" id="L64">        return desc.jsonType();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

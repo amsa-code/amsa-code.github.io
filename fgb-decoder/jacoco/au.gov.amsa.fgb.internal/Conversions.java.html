@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Conversions.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">Conversions.java</span></div><h1>Conversions.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Map.Entry;
+
+import com.github.davidmoten.guavamini.Preconditions;
+
+final class Conversions {
+
+    private Conversions() {
+        // prevent instantiation
+    }
+
+    private static Map&lt;String, String&gt; hexMap;
+    private static Map&lt;String, String&gt; binMap;
+    private static Map&lt;String, String&gt; octMap;
+    private static Map&lt;String, String&gt; mbaudotToAsciiMap;
+    private static Map&lt;String, String&gt; asciiToMbaudotMap;
+    private static Map&lt;String, String&gt; aircraftMap;
+    private static Map&lt;String, String&gt; airRegMap;
+
+    static {
+<span class="fc" id="L28">        hexMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L29">        hexMap.put(&quot;0000&quot;, &quot;0&quot;);</span>
+<span class="fc" id="L30">        hexMap.put(&quot;0001&quot;, &quot;1&quot;);</span>
+<span class="fc" id="L31">        hexMap.put(&quot;0010&quot;, &quot;2&quot;);</span>
+<span class="fc" id="L32">        hexMap.put(&quot;0011&quot;, &quot;3&quot;);</span>
+<span class="fc" id="L33">        hexMap.put(&quot;0100&quot;, &quot;4&quot;);</span>
+<span class="fc" id="L34">        hexMap.put(&quot;0101&quot;, &quot;5&quot;);</span>
+<span class="fc" id="L35">        hexMap.put(&quot;0110&quot;, &quot;6&quot;);</span>
+<span class="fc" id="L36">        hexMap.put(&quot;0111&quot;, &quot;7&quot;);</span>
+<span class="fc" id="L37">        hexMap.put(&quot;1000&quot;, &quot;8&quot;);</span>
+<span class="fc" id="L38">        hexMap.put(&quot;1001&quot;, &quot;9&quot;);</span>
+<span class="fc" id="L39">        hexMap.put(&quot;1010&quot;, &quot;A&quot;);</span>
+<span class="fc" id="L40">        hexMap.put(&quot;1011&quot;, &quot;B&quot;);</span>
+<span class="fc" id="L41">        hexMap.put(&quot;1100&quot;, &quot;C&quot;);</span>
+<span class="fc" id="L42">        hexMap.put(&quot;1101&quot;, &quot;D&quot;);</span>
+<span class="fc" id="L43">        hexMap.put(&quot;1110&quot;, &quot;E&quot;);</span>
+<span class="fc" id="L44">        hexMap.put(&quot;1111&quot;, &quot;F&quot;);</span>
+
+        /* Make binMap from hexMap */
+<span class="fc" id="L47">        binMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L48">        Iterator&lt;Entry&lt;String, String&gt;&gt; iter1 = hexMap.entrySet().iterator();</span>
+<span class="fc bfc" id="L49" title="All 2 branches covered.">        while (iter1.hasNext()) {</span>
+<span class="fc" id="L50">            Map.Entry&lt;String, String&gt; e = iter1.next();</span>
+<span class="fc" id="L51">            binMap.put(e.getValue(), e.getKey());</span>
+<span class="fc" id="L52">        }</span>
+
+        // This is used to get the Country of Aircraft Registraion.
+        // Used in the 24-Bit Address
+<span class="fc" id="L56">        airRegMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L57">        airRegMap.put(&quot;00000000010000&quot;, &quot;ZIMBABWE&quot;);</span>
+<span class="fc" id="L58">        airRegMap.put(&quot;00000011000000&quot;, &quot;BOTSWANA&quot;);</span>
+<span class="fc" id="L59">        airRegMap.put(&quot;00000011010100&quot;, &quot;COMOROS&quot;);</span>
+<span class="fc" id="L60">        airRegMap.put(&quot;00000100100000&quot;, &quot;GUINEA-BISSAU&quot;);</span>
+<span class="fc" id="L61">        airRegMap.put(&quot;00000100101000&quot;, &quot;LESOTHO&quot;);</span>
+<span class="fc" id="L62">        airRegMap.put(&quot;00000101101000&quot;, &quot;MALDIVES&quot;);</span>
+<span class="fc" id="L63">        airRegMap.put(&quot;00000101111000&quot;, &quot;MAURITANIA&quot;);</span>
+<span class="fc" id="L64">        airRegMap.put(&quot;00000110000000&quot;, &quot;MAURITIUS&quot;);</span>
+<span class="fc" id="L65">        airRegMap.put(&quot;00000110101000&quot;, &quot;QATAR&quot;);</span>
+<span class="fc" id="L66">        airRegMap.put(&quot;00000111010000&quot;, &quot;SEYCHELLES&quot;);</span>
+<span class="fc" id="L67">        airRegMap.put(&quot;00000111101000&quot;, &quot;SWAZILAND&quot;);</span>
+<span class="fc" id="L68">        airRegMap.put(&quot;00001001010000&quot;, &quot;BENIN&quot;);</span>
+<span class="fc" id="L69">        airRegMap.put(&quot;00001001011000&quot;, &quot;CAPE VERDE&quot;);</span>
+<span class="fc" id="L70">        airRegMap.put(&quot;00001001100000&quot;, &quot;DJIBOUTI&quot;);</span>
+<span class="fc" id="L71">        airRegMap.put(&quot;00001001111000&quot;, &quot;SAO TOME AND PRINCIPE&quot;);</span>
+<span class="fc" id="L72">        airRegMap.put(&quot;00001010101000&quot;, &quot;BARBADOS&quot;);</span>
+<span class="fc" id="L73">        airRegMap.put(&quot;00001010101100&quot;, &quot;BELIZE&quot;);</span>
+<span class="fc" id="L74">        airRegMap.put(&quot;00001011110000&quot;, &quot;SAINT VINCENT AND THE GRENADINES&quot;);</span>
+<span class="fc" id="L75">        airRegMap.put(&quot;00001100101000&quot;, &quot;ANTIGUA AND BARBUDA&quot;);</span>
+<span class="fc" id="L76">        airRegMap.put(&quot;00001100110000&quot;, &quot;GRENADA&quot;);</span>
+<span class="fc" id="L77">        airRegMap.put(&quot;00100000000100&quot;, &quot;NAMIBIA&quot;);</span>
+<span class="fc" id="L78">        airRegMap.put(&quot;00100000001000&quot;, &quot;ERITREA&quot;);</span>
+<span class="fc" id="L79">        airRegMap.put(&quot;01001100100000&quot;, &quot;CYPRUS&quot;);</span>
+<span class="fc" id="L80">        airRegMap.put(&quot;01001101000000&quot;, &quot;LUXEMBOURG&quot;);</span>
+<span class="fc" id="L81">        airRegMap.put(&quot;01001101001000&quot;, &quot;MALTA&quot;);</span>
+<span class="fc" id="L82">        airRegMap.put(&quot;01001101010000&quot;, &quot;MONACO&quot;);</span>
+<span class="fc" id="L83">        airRegMap.put(&quot;01010000000000&quot;, &quot;SAN MARINO&quot;);</span>
+<span class="fc" id="L84">        airRegMap.put(&quot;01010000000100&quot;, &quot;ALBANIA&quot;);</span>
+<span class="fc" id="L85">        airRegMap.put(&quot;01010000000111&quot;, &quot;CROATIA&quot;);</span>
+<span class="fc" id="L86">        airRegMap.put(&quot;01010000001011&quot;, &quot;LATVIA&quot;);</span>
+<span class="fc" id="L87">        airRegMap.put(&quot;01010000001111&quot;, &quot;LITHUANIA&quot;);</span>
+<span class="fc" id="L88">        airRegMap.put(&quot;01010000010011&quot;, &quot;RE OF MOLDOVA&quot;);</span>
+<span class="fc" id="L89">        airRegMap.put(&quot;01010000010111&quot;, &quot;SLOVAKIA&quot;);</span>
+<span class="fc" id="L90">        airRegMap.put(&quot;01010000011011&quot;, &quot;SOLVENIA&quot;);</span>
+<span class="fc" id="L91">        airRegMap.put(&quot;01010000011111&quot;, &quot;URUGUAY&quot;);</span>
+<span class="fc" id="L92">        airRegMap.put(&quot;01010000011111&quot;, &quot;UZBEKISTAN&quot;);</span>
+<span class="fc" id="L93">        airRegMap.put(&quot;01010001000000&quot;, &quot;BELARUS&quot;);</span>
+<span class="fc" id="L94">        airRegMap.put(&quot;01010001000100&quot;, &quot;ESTONIA&quot;);</span>
+<span class="fc" id="L95">        airRegMap.put(&quot;01010001001000&quot;, &quot;RE OF MACEDONIA&quot;);</span>
+<span class="fc" id="L96">        airRegMap.put(&quot;01010001001100&quot;, &quot;BOSNIA AND HERZEGOVINA&quot;);</span>
+<span class="fc" id="L97">        airRegMap.put(&quot;01010001010000&quot;, &quot;GEORGIA&quot;);</span>
+<span class="fc" id="L98">        airRegMap.put(&quot;01010001010100&quot;, &quot;TAJIKISTAN&quot;);</span>
+<span class="fc" id="L99">        airRegMap.put(&quot;01100000000000&quot;, &quot;ARMENIA&quot;);</span>
+<span class="fc" id="L100">        airRegMap.put(&quot;01100000000010&quot;, &quot;AZERBAIJAN&quot;);</span>
+<span class="fc" id="L101">        airRegMap.put(&quot;01100000000100&quot;, &quot;KYRGYZSTAN&quot;);</span>
+<span class="fc" id="L102">        airRegMap.put(&quot;01100000000110&quot;, &quot;TURKMENISTAN&quot;);</span>
+<span class="fc" id="L103">        airRegMap.put(&quot;01101000000000&quot;, &quot;BHUTAN&quot;);</span>
+<span class="fc" id="L104">        airRegMap.put(&quot;01101000000100&quot;, &quot;MICRONESIA, FEDERATED STATES OF&quot;);</span>
+<span class="fc" id="L105">        airRegMap.put(&quot;01101000001000&quot;, &quot;MONGOLIA&quot;);</span>
+<span class="fc" id="L106">        airRegMap.put(&quot;01101000001100&quot;, &quot;KAZAKHSTAN&quot;);</span>
+<span class="fc" id="L107">        airRegMap.put(&quot;01101000010000&quot;, &quot;PALAU&quot;);</span>
+<span class="fc" id="L108">        airRegMap.put(&quot;01110000110000&quot;, &quot;OMAN&quot;);</span>
+<span class="fc" id="L109">        airRegMap.put(&quot;10001001010100&quot;, &quot;BRUNEI DARUSSALAM&quot;);</span>
+<span class="fc" id="L110">        airRegMap.put(&quot;10001001011100&quot;, &quot;SOLOMON ISLANDS&quot;);</span>
+<span class="fc" id="L111">        airRegMap.put(&quot;10010000000000&quot;, &quot;MARSHALL ISLANDS&quot;);</span>
+<span class="fc" id="L112">        airRegMap.put(&quot;10010000000100&quot;, &quot;COOK ISLANDS&quot;);</span>
+<span class="fc" id="L113">        airRegMap.put(&quot;10010000001000&quot;, &quot;SAMOA&quot;);</span>
+<span class="fc" id="L114">        airRegMap.put(&quot;11001000101000&quot;, &quot;NAURU&quot;);</span>
+<span class="fc" id="L115">        airRegMap.put(&quot;11001000110000&quot;, &quot;SAINT LUCIA&quot;);</span>
+<span class="fc" id="L116">        airRegMap.put(&quot;11001000110100&quot;, &quot;TONGA&quot;);</span>
+<span class="fc" id="L117">        airRegMap.put(&quot;11001000111000&quot;, &quot;KIRIBATI&quot;);</span>
+<span class="fc" id="L118">        airRegMap.put(&quot;11001001000000&quot;, &quot;VANUATU&quot;);</span>
+<span class="fc" id="L119">        airRegMap.put(&quot;000000000110&quot;, &quot;MOZAMBIQUE&quot;);</span>
+<span class="fc" id="L120">        airRegMap.put(&quot;000000110010&quot;, &quot;BURUNDI&quot;);</span>
+<span class="fc" id="L121">        airRegMap.put(&quot;000000110100&quot;, &quot;CAMEROON&quot;);</span>
+<span class="fc" id="L122">        airRegMap.put(&quot;000000110110&quot;, &quot;CONGO&quot;);</span>
+<span class="fc" id="L123">        airRegMap.put(&quot;000000111000&quot;, &quot;COTE D'IVOIRE&quot;);</span>
+<span class="fc" id="L124">        airRegMap.put(&quot;000000111110&quot;, &quot;GABON&quot;);</span>
+<span class="fc" id="L125">        airRegMap.put(&quot;000001000010&quot;, &quot;EQUATORIAL GUINEA&quot;);</span>
+<span class="fc" id="L126">        airRegMap.put(&quot;000001000100&quot;, &quot;GHANA&quot;);</span>
+<span class="fc" id="L127">        airRegMap.put(&quot;000001000110&quot;, &quot;GUINEA&quot;);</span>
+<span class="fc" id="L128">        airRegMap.put(&quot;000001001100&quot;, &quot;KENYA&quot;);</span>
+<span class="fc" id="L129">        airRegMap.put(&quot;000001010000&quot;, &quot;LIBERIA&quot;);</span>
+<span class="fc" id="L130">        airRegMap.put(&quot;000001010100&quot;, &quot;MADAGASCAR&quot;);</span>
+<span class="fc" id="L131">        airRegMap.put(&quot;000001011000&quot;, &quot;MALAWI&quot;);</span>
+<span class="fc" id="L132">        airRegMap.put(&quot;000001011010&quot;, &quot;ETHIOPIA&quot;);</span>
+<span class="fc" id="L133">        airRegMap.put(&quot;000001011100&quot;, &quot;MALI&quot;);</span>
+<span class="fc" id="L134">        airRegMap.put(&quot;000001100010&quot;, &quot;NIGER&quot;);</span>
+<span class="fc" id="L135">        airRegMap.put(&quot;000001100100&quot;, &quot;NIGERIA&quot;);</span>
+<span class="fc" id="L136">        airRegMap.put(&quot;000001101000&quot;, &quot;UGANDA&quot;);</span>
+<span class="fc" id="L137">        airRegMap.put(&quot;000001101100&quot;, &quot;CENTRAL AFRICAN RE&quot;);</span>
+<span class="fc" id="L138">        airRegMap.put(&quot;000001101110&quot;, &quot;RWANDA&quot;);</span>
+<span class="fc" id="L139">        airRegMap.put(&quot;000001110000&quot;, &quot;SENEGAL&quot;);</span>
+<span class="fc" id="L140">        airRegMap.put(&quot;000001111000&quot;, &quot;SOMALIA&quot;);</span>
+<span class="fc" id="L141">        airRegMap.put(&quot;000001111100&quot;, &quot;SUDAN&quot;);</span>
+<span class="fc" id="L142">        airRegMap.put(&quot;000010000000&quot;, &quot;UNITED RE OF TANZANIA&quot;);</span>
+<span class="fc" id="L143">        airRegMap.put(&quot;000010000100&quot;, &quot;CHAD&quot;);</span>
+<span class="fc" id="L144">        airRegMap.put(&quot;000010001000&quot;, &quot;TOGO&quot;);</span>
+<span class="fc" id="L145">        airRegMap.put(&quot;000010001010&quot;, &quot;ZAMBIA&quot;);</span>
+<span class="fc" id="L146">        airRegMap.put(&quot;000010001100&quot;, &quot;DEMOCRATIC PEOPLE'S RE OF CONGO&quot;);</span>
+<span class="fc" id="L147">        airRegMap.put(&quot;000010010000&quot;, &quot;ANGOLA&quot;);</span>
+<span class="fc" id="L148">        airRegMap.put(&quot;000010011010&quot;, &quot;GAMBIA&quot;);</span>
+<span class="fc" id="L149">        airRegMap.put(&quot;000010011100&quot;, &quot;BURKINA FASO&quot;);</span>
+<span class="fc" id="L150">        airRegMap.put(&quot;000010101000&quot;, &quot;BAHAMAS&quot;);</span>
+<span class="fc" id="L151">        airRegMap.put(&quot;000010101100&quot;, &quot;COLOMBIA&quot;);</span>
+<span class="fc" id="L152">        airRegMap.put(&quot;000010101110&quot;, &quot;COSTA RICA&quot;);</span>
+<span class="fc" id="L153">        airRegMap.put(&quot;000010110000&quot;, &quot;CUBA&quot;);</span>
+<span class="fc" id="L154">        airRegMap.put(&quot;000010110010&quot;, &quot;EL SALVADOR&quot;);</span>
+<span class="fc" id="L155">        airRegMap.put(&quot;000010110100&quot;, &quot;GUATEMALA&quot;);</span>
+<span class="fc" id="L156">        airRegMap.put(&quot;000010110110&quot;, &quot;GUYANA&quot;);</span>
+<span class="fc" id="L157">        airRegMap.put(&quot;000010111000&quot;, &quot;HAITI&quot;);</span>
+<span class="fc" id="L158">        airRegMap.put(&quot;000010111010&quot;, &quot;HONDURAS&quot;);</span>
+<span class="fc" id="L159">        airRegMap.put(&quot;000010111110&quot;, &quot;JAMAICA&quot;);</span>
+<span class="fc" id="L160">        airRegMap.put(&quot;000011000000&quot;, &quot;NICARAGUA&quot;);</span>
+<span class="fc" id="L161">        airRegMap.put(&quot;000011000010&quot;, &quot;PANAMA&quot;);</span>
+<span class="fc" id="L162">        airRegMap.put(&quot;000011000100&quot;, &quot;DOMINICAN RE&quot;);</span>
+<span class="fc" id="L163">        airRegMap.put(&quot;000011000110&quot;, &quot;TRINIDAD AND TOBAGO&quot;);</span>
+<span class="fc" id="L164">        airRegMap.put(&quot;000011001000&quot;, &quot;SURINAM&quot;);</span>
+<span class="fc" id="L165">        airRegMap.put(&quot;010011001010&quot;, &quot;IRELAND&quot;);</span>
+<span class="fc" id="L166">        airRegMap.put(&quot;010011001100&quot;, &quot;ICELAND&quot;);</span>
+<span class="fc" id="L167">        airRegMap.put(&quot;011100000000&quot;, &quot;AFGHANISTAN&quot;);</span>
+<span class="fc" id="L168">        airRegMap.put(&quot;011100000010&quot;, &quot;BANGLADESH&quot;);</span>
+<span class="fc" id="L169">        airRegMap.put(&quot;011100000100&quot;, &quot;MYANMAR&quot;);</span>
+<span class="fc" id="L170">        airRegMap.put(&quot;011100000110&quot;, &quot;KUWAIT&quot;);</span>
+<span class="fc" id="L171">        airRegMap.put(&quot;011100001000&quot;, &quot;LAO PEOPLE'S DEMOCRATIC RE&quot;);</span>
+<span class="fc" id="L172">        airRegMap.put(&quot;011100001010&quot;, &quot;NEPAL&quot;);</span>
+<span class="fc" id="L173">        airRegMap.put(&quot;011100001110&quot;, &quot;CAMBODIA&quot;);</span>
+<span class="fc" id="L174">        airRegMap.put(&quot;100010010000&quot;, &quot;YEMEN&quot;);</span>
+<span class="fc" id="L175">        airRegMap.put(&quot;100010010100&quot;, &quot;BAHRAIN&quot;);</span>
+<span class="fc" id="L176">        airRegMap.put(&quot;100010010110&quot;, &quot;UNITED ARAB EMIRATES&quot;);</span>
+<span class="fc" id="L177">        airRegMap.put(&quot;100010011000&quot;, &quot;PAPUA NEW GUINEA&quot;);</span>
+<span class="fc" id="L178">        airRegMap.put(&quot;110010001000&quot;, &quot;FIJI&quot;);</span>
+<span class="fc" id="L179">        airRegMap.put(&quot;111010000000&quot;, &quot;CHILE&quot;);</span>
+<span class="fc" id="L180">        airRegMap.put(&quot;111010000100&quot;, &quot;ECUADOR&quot;);</span>
+<span class="fc" id="L181">        airRegMap.put(&quot;111010001000&quot;, &quot;PARAGUAY&quot;);</span>
+<span class="fc" id="L182">        airRegMap.put(&quot;111010001100&quot;, &quot;PERU&quot;);</span>
+<span class="fc" id="L183">        airRegMap.put(&quot;111010010100&quot;, &quot;BOLIVIA&quot;);</span>
+<span class="fc" id="L184">        airRegMap.put(&quot;000000001&quot;, &quot;SOUTH AFRICA&quot;);</span>
+<span class="fc" id="L185">        airRegMap.put(&quot;000000010&quot;, &quot;EGYPT&quot;);</span>
+<span class="fc" id="L186">        airRegMap.put(&quot;000000011&quot;, &quot;LIBYAN ARAB JAMAHIRIYA&quot;);</span>
+<span class="fc" id="L187">        airRegMap.put(&quot;000000100&quot;, &quot;MOROCCO&quot;);</span>
+<span class="fc" id="L188">        airRegMap.put(&quot;000000101&quot;, &quot;TUNISIA&quot;);</span>
+<span class="fc" id="L189">        airRegMap.put(&quot;000001101&quot;, &quot;SIERRA LEONE&quot;);</span>
+<span class="fc" id="L190">        airRegMap.put(&quot;000010100&quot;, &quot;ALGERIA&quot;);</span>
+<span class="fc" id="L191">        airRegMap.put(&quot;000011010&quot;, &quot;MEXICO&quot;);</span>
+<span class="fc" id="L192">        airRegMap.put(&quot;000011011&quot;, &quot;VENEZUELA&quot;);</span>
+<span class="fc" id="L193">        airRegMap.put(&quot;010001000&quot;, &quot;AUSTRIA&quot;);</span>
+<span class="fc" id="L194">        airRegMap.put(&quot;010001001&quot;, &quot;BELGIUM&quot;);</span>
+<span class="fc" id="L195">        airRegMap.put(&quot;010001010&quot;, &quot;BULGARIA&quot;);</span>
+<span class="fc" id="L196">        airRegMap.put(&quot;010001011&quot;, &quot;DENMARK&quot;);</span>
+<span class="fc" id="L197">        airRegMap.put(&quot;010001100&quot;, &quot;FINLAND&quot;);</span>
+<span class="fc" id="L198">        airRegMap.put(&quot;010001101&quot;, &quot;GREECE&quot;);</span>
+<span class="fc" id="L199">        airRegMap.put(&quot;010001110&quot;, &quot;HUNGARY&quot;);</span>
+<span class="fc" id="L200">        airRegMap.put(&quot;010001111&quot;, &quot;NORWAY&quot;);</span>
+<span class="fc" id="L201">        airRegMap.put(&quot;010010000&quot;, &quot;NETHERLANDS, KINGDOM OF THE&quot;);</span>
+<span class="fc" id="L202">        airRegMap.put(&quot;010010001&quot;, &quot;POLAND&quot;);</span>
+<span class="fc" id="L203">        airRegMap.put(&quot;010010010&quot;, &quot;PORTUGAL&quot;);</span>
+<span class="fc" id="L204">        airRegMap.put(&quot;010010011&quot;, &quot;CZECH RE&quot;);</span>
+<span class="fc" id="L205">        airRegMap.put(&quot;010010100&quot;, &quot;ROMANIA&quot;);</span>
+<span class="fc" id="L206">        airRegMap.put(&quot;010010101&quot;, &quot;SWEDEN&quot;);</span>
+<span class="fc" id="L207">        airRegMap.put(&quot;010010110&quot;, &quot;SWITZERLAND&quot;);</span>
+<span class="fc" id="L208">        airRegMap.put(&quot;010010111&quot;, &quot;TURKEY&quot;);</span>
+<span class="fc" id="L209">        airRegMap.put(&quot;010100001&quot;, &quot;UKRAINE&quot;);</span>
+<span class="fc" id="L210">        airRegMap.put(&quot;011100010&quot;, &quot;SAUDI ARABIA&quot;);</span>
+<span class="fc" id="L211">        airRegMap.put(&quot;011100011&quot;, &quot;RE OF KOREA&quot;);</span>
+<span class="fc" id="L212">        airRegMap.put(&quot;011100100&quot;, &quot;DEMOCRATIC PEOPLE'S RE OF KOREA&quot;);</span>
+<span class="fc" id="L213">        airRegMap.put(&quot;011100101&quot;, &quot;IRAQ&quot;);</span>
+<span class="fc" id="L214">        airRegMap.put(&quot;011100110&quot;, &quot;IRAN&quot;);</span>
+<span class="fc" id="L215">        airRegMap.put(&quot;011100111&quot;, &quot;ISRAEL&quot;);</span>
+<span class="fc" id="L216">        airRegMap.put(&quot;011101000&quot;, &quot;JORDAN&quot;);</span>
+<span class="fc" id="L217">        airRegMap.put(&quot;011101001&quot;, &quot;LEBANON&quot;);</span>
+<span class="fc" id="L218">        airRegMap.put(&quot;011101010&quot;, &quot;MALAYSIA&quot;);</span>
+<span class="fc" id="L219">        airRegMap.put(&quot;011101011&quot;, &quot;PHILIPPINES&quot;);</span>
+<span class="fc" id="L220">        airRegMap.put(&quot;011101100&quot;, &quot;PAKISTAN&quot;);</span>
+<span class="fc" id="L221">        airRegMap.put(&quot;011101101&quot;, &quot;SINGAPORE&quot;);</span>
+<span class="fc" id="L222">        airRegMap.put(&quot;011101110&quot;, &quot;SRI LANKA&quot;);</span>
+<span class="fc" id="L223">        airRegMap.put(&quot;011101111&quot;, &quot;SYRIAN ARAB RE&quot;);</span>
+<span class="fc" id="L224">        airRegMap.put(&quot;100010000&quot;, &quot;THAILAND&quot;);</span>
+<span class="fc" id="L225">        airRegMap.put(&quot;100010001&quot;, &quot;VIETNAM&quot;);</span>
+<span class="fc" id="L226">        airRegMap.put(&quot;100010100&quot;, &quot;INDONESIA&quot;);</span>
+<span class="fc" id="L227">        airRegMap.put(&quot;110010000&quot;, &quot;NEW ZEALAND&quot;);</span>
+<span class="fc" id="L228">        airRegMap.put(&quot;001100&quot;, &quot;ITALY&quot;);</span>
+<span class="fc" id="L229">        airRegMap.put(&quot;001101&quot;, &quot;SPAIN&quot;);</span>
+<span class="fc" id="L230">        airRegMap.put(&quot;001110&quot;, &quot;FRANCE&quot;);</span>
+<span class="fc" id="L231">        airRegMap.put(&quot;001111&quot;, &quot;GERMANY&quot;);</span>
+<span class="fc" id="L232">        airRegMap.put(&quot;010000&quot;, &quot;UNITED KINGDOM&quot;);</span>
+<span class="fc" id="L233">        airRegMap.put(&quot;011110&quot;, &quot;CHINA&quot;);</span>
+<span class="fc" id="L234">        airRegMap.put(&quot;011111&quot;, &quot;AUSTRALIA&quot;);</span>
+<span class="fc" id="L235">        airRegMap.put(&quot;100000&quot;, &quot;INDIA&quot;);</span>
+<span class="fc" id="L236">        airRegMap.put(&quot;100001&quot;, &quot;JAPAN&quot;);</span>
+<span class="fc" id="L237">        airRegMap.put(&quot;110000&quot;, &quot;CANADA&quot;);</span>
+<span class="fc" id="L238">        airRegMap.put(&quot;111000&quot;, &quot;ARGENTINA&quot;);</span>
+<span class="fc" id="L239">        airRegMap.put(&quot;111001&quot;, &quot;BRAZIL&quot;);</span>
+<span class="fc" id="L240">        airRegMap.put(&quot;0001&quot;, &quot;RUSSIAN FEDERATION&quot;);</span>
+<span class="fc" id="L241">        airRegMap.put(&quot;1010&quot;, &quot;UNITED STATES&quot;);</span>
+
+<span class="fc" id="L243">        aircraftMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L244">        aircraftMap.put(&quot;0&quot;, &quot;A&quot;);</span>
+<span class="fc" id="L245">        aircraftMap.put(&quot;1&quot;, &quot;B&quot;);</span>
+<span class="fc" id="L246">        aircraftMap.put(&quot;2&quot;, &quot;C&quot;);</span>
+<span class="fc" id="L247">        aircraftMap.put(&quot;3&quot;, &quot;D&quot;);</span>
+<span class="fc" id="L248">        aircraftMap.put(&quot;4&quot;, &quot;E&quot;);</span>
+<span class="fc" id="L249">        aircraftMap.put(&quot;5&quot;, &quot;F&quot;);</span>
+<span class="fc" id="L250">        aircraftMap.put(&quot;6&quot;, &quot;G&quot;);</span>
+<span class="fc" id="L251">        aircraftMap.put(&quot;7&quot;, &quot;H&quot;);</span>
+<span class="fc" id="L252">        aircraftMap.put(&quot;8&quot;, &quot;I&quot;);</span>
+<span class="fc" id="L253">        aircraftMap.put(&quot;9&quot;, &quot;J&quot;);</span>
+<span class="fc" id="L254">        aircraftMap.put(&quot;10&quot;, &quot;K&quot;);</span>
+<span class="fc" id="L255">        aircraftMap.put(&quot;11&quot;, &quot;L&quot;);</span>
+<span class="fc" id="L256">        aircraftMap.put(&quot;12&quot;, &quot;M&quot;);</span>
+<span class="fc" id="L257">        aircraftMap.put(&quot;13&quot;, &quot;N&quot;);</span>
+<span class="fc" id="L258">        aircraftMap.put(&quot;14&quot;, &quot;O&quot;);</span>
+<span class="fc" id="L259">        aircraftMap.put(&quot;15&quot;, &quot;P&quot;);</span>
+<span class="fc" id="L260">        aircraftMap.put(&quot;16&quot;, &quot;Q&quot;);</span>
+<span class="fc" id="L261">        aircraftMap.put(&quot;17&quot;, &quot;R&quot;);</span>
+<span class="fc" id="L262">        aircraftMap.put(&quot;18&quot;, &quot;S&quot;);</span>
+<span class="fc" id="L263">        aircraftMap.put(&quot;19&quot;, &quot;T&quot;);</span>
+<span class="fc" id="L264">        aircraftMap.put(&quot;20&quot;, &quot;U&quot;);</span>
+<span class="fc" id="L265">        aircraftMap.put(&quot;21&quot;, &quot;V&quot;);</span>
+<span class="fc" id="L266">        aircraftMap.put(&quot;22&quot;, &quot;W&quot;);</span>
+<span class="fc" id="L267">        aircraftMap.put(&quot;23&quot;, &quot;X&quot;);</span>
+<span class="fc" id="L268">        aircraftMap.put(&quot;24&quot;, &quot;Y&quot;);</span>
+<span class="fc" id="L269">        aircraftMap.put(&quot;25&quot;, &quot;Z&quot;);</span>
+<span class="fc" id="L270">        aircraftMap.put(&quot;26&quot;, &quot;0&quot;);</span>
+<span class="fc" id="L271">        aircraftMap.put(&quot;27&quot;, &quot;1&quot;);</span>
+<span class="fc" id="L272">        aircraftMap.put(&quot;28&quot;, &quot;2&quot;);</span>
+<span class="fc" id="L273">        aircraftMap.put(&quot;29&quot;, &quot;3&quot;);</span>
+<span class="fc" id="L274">        aircraftMap.put(&quot;30&quot;, &quot;4&quot;);</span>
+<span class="fc" id="L275">        aircraftMap.put(&quot;31&quot;, &quot;5&quot;);</span>
+<span class="fc" id="L276">        aircraftMap.put(&quot;32&quot;, &quot;6&quot;);</span>
+<span class="fc" id="L277">        aircraftMap.put(&quot;33&quot;, &quot;7&quot;);</span>
+<span class="fc" id="L278">        aircraftMap.put(&quot;34&quot;, &quot;8&quot;);</span>
+<span class="fc" id="L279">        aircraftMap.put(&quot;35&quot;, &quot;9&quot;);</span>
+
+<span class="fc" id="L281">        mbaudotToAsciiMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L282">        mbaudotToAsciiMap.put(&quot;56&quot;, &quot;A&quot;);</span>
+<span class="fc" id="L283">        mbaudotToAsciiMap.put(&quot;51&quot;, &quot;B&quot;);</span>
+<span class="fc" id="L284">        mbaudotToAsciiMap.put(&quot;46&quot;, &quot;C&quot;);</span>
+<span class="fc" id="L285">        mbaudotToAsciiMap.put(&quot;50&quot;, &quot;D&quot;);</span>
+<span class="fc" id="L286">        mbaudotToAsciiMap.put(&quot;48&quot;, &quot;E&quot;);</span>
+<span class="fc" id="L287">        mbaudotToAsciiMap.put(&quot;54&quot;, &quot;F&quot;);</span>
+<span class="fc" id="L288">        mbaudotToAsciiMap.put(&quot;43&quot;, &quot;G&quot;);</span>
+<span class="fc" id="L289">        mbaudotToAsciiMap.put(&quot;37&quot;, &quot;H&quot;);</span>
+<span class="fc" id="L290">        mbaudotToAsciiMap.put(&quot;44&quot;, &quot;I&quot;);</span>
+<span class="fc" id="L291">        mbaudotToAsciiMap.put(&quot;58&quot;, &quot;J&quot;);</span>
+<span class="fc" id="L292">        mbaudotToAsciiMap.put(&quot;62&quot;, &quot;K&quot;);</span>
+<span class="fc" id="L293">        mbaudotToAsciiMap.put(&quot;41&quot;, &quot;L&quot;);</span>
+<span class="fc" id="L294">        mbaudotToAsciiMap.put(&quot;39&quot;, &quot;M&quot;);</span>
+<span class="fc" id="L295">        mbaudotToAsciiMap.put(&quot;38&quot;, &quot;N&quot;);</span>
+<span class="fc" id="L296">        mbaudotToAsciiMap.put(&quot;35&quot;, &quot;O&quot;);</span>
+<span class="fc" id="L297">        mbaudotToAsciiMap.put(&quot;45&quot;, &quot;P&quot;);</span>
+<span class="fc" id="L298">        mbaudotToAsciiMap.put(&quot;61&quot;, &quot;Q&quot;);</span>
+<span class="fc" id="L299">        mbaudotToAsciiMap.put(&quot;42&quot;, &quot;R&quot;);</span>
+<span class="fc" id="L300">        mbaudotToAsciiMap.put(&quot;52&quot;, &quot;S&quot;);</span>
+<span class="fc" id="L301">        mbaudotToAsciiMap.put(&quot;33&quot;, &quot;T&quot;);</span>
+<span class="fc" id="L302">        mbaudotToAsciiMap.put(&quot;60&quot;, &quot;U&quot;);</span>
+<span class="fc" id="L303">        mbaudotToAsciiMap.put(&quot;47&quot;, &quot;V&quot;);</span>
+<span class="fc" id="L304">        mbaudotToAsciiMap.put(&quot;57&quot;, &quot;W&quot;);</span>
+<span class="fc" id="L305">        mbaudotToAsciiMap.put(&quot;55&quot;, &quot;X&quot;);</span>
+<span class="fc" id="L306">        mbaudotToAsciiMap.put(&quot;53&quot;, &quot;Y&quot;);</span>
+<span class="fc" id="L307">        mbaudotToAsciiMap.put(&quot;49&quot;, &quot;Z&quot;);</span>
+<span class="fc" id="L308">        mbaudotToAsciiMap.put(&quot;36&quot;, &quot; &quot;);</span>
+<span class="fc" id="L309">        mbaudotToAsciiMap.put(&quot;24&quot;, &quot;-&quot;);</span>
+<span class="fc" id="L310">        mbaudotToAsciiMap.put(&quot;23&quot;, &quot;/&quot;);</span>
+<span class="fc" id="L311">        mbaudotToAsciiMap.put(&quot;13&quot;, &quot;0&quot;);</span>
+<span class="fc" id="L312">        mbaudotToAsciiMap.put(&quot;29&quot;, &quot;1&quot;);</span>
+<span class="fc" id="L313">        mbaudotToAsciiMap.put(&quot;25&quot;, &quot;2&quot;);</span>
+<span class="fc" id="L314">        mbaudotToAsciiMap.put(&quot;16&quot;, &quot;3&quot;);</span>
+<span class="fc" id="L315">        mbaudotToAsciiMap.put(&quot;10&quot;, &quot;4&quot;);</span>
+<span class="fc" id="L316">        mbaudotToAsciiMap.put(&quot;1&quot;, &quot;5&quot;);</span>
+<span class="fc" id="L317">        mbaudotToAsciiMap.put(&quot;21&quot;, &quot;6&quot;);</span>
+<span class="fc" id="L318">        mbaudotToAsciiMap.put(&quot;28&quot;, &quot;7&quot;);</span>
+<span class="fc" id="L319">        mbaudotToAsciiMap.put(&quot;12&quot;, &quot;8&quot;);</span>
+<span class="fc" id="L320">        mbaudotToAsciiMap.put(&quot;3&quot;, &quot;9&quot;);</span>
+
+        /* Make asciiToMbaudotMap from hexMap */
+<span class="fc" id="L323">        asciiToMbaudotMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L324">        Iterator&lt;Entry&lt;String, String&gt;&gt; iter2 = mbaudotToAsciiMap.entrySet().iterator();</span>
+<span class="fc bfc" id="L325" title="All 2 branches covered.">        while (iter2.hasNext()) {</span>
+<span class="fc" id="L326">            Map.Entry&lt;String, String&gt; e = iter2.next();</span>
+<span class="fc" id="L327">            asciiToMbaudotMap.put(e.getValue(), e.getKey());</span>
+<span class="fc" id="L328">        }</span>
+
+<span class="fc" id="L330">        octMap = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L331">        octMap.put(&quot;000&quot;, &quot;0&quot;);</span>
+<span class="fc" id="L332">        octMap.put(&quot;001&quot;, &quot;1&quot;);</span>
+<span class="fc" id="L333">        octMap.put(&quot;010&quot;, &quot;2&quot;);</span>
+<span class="fc" id="L334">        octMap.put(&quot;011&quot;, &quot;3&quot;);</span>
+<span class="fc" id="L335">        octMap.put(&quot;100&quot;, &quot;4&quot;);</span>
+<span class="fc" id="L336">        octMap.put(&quot;101&quot;, &quot;5&quot;);</span>
+<span class="fc" id="L337">        octMap.put(&quot;110&quot;, &quot;6&quot;);</span>
+<span class="fc" id="L338">        octMap.put(&quot;111&quot;, &quot;7&quot;);</span>
+
+<span class="fc" id="L340">    }</span>
+
+    /*
+     * ------------------------------------------------------------ * Let the code
+     * begin * ------------------------------------------------------------ *
+     */
+
+    static int binaryToDecimal(String binCode) {
+<span class="fc" id="L348">        int result = 0;</span>
+<span class="fc" id="L349">        int len = binCode.length();</span>
+<span class="fc" id="L350">        int value = 0;</span>
+<span class="fc bfc" id="L351" title="All 2 branches covered.">        for (int i = 0; i &lt; len; i++) {</span>
+<span class="fc" id="L352">            char bit = binCode.charAt(i);</span>
+<span class="fc bfc" id="L353" title="All 2 branches covered.">            if (bit == '1') {</span>
+<span class="fc" id="L354">                int exp = len - 1 - i;</span>
+<span class="fc" id="L355">                value = 1;</span>
+<span class="fc bfc" id="L356" title="All 2 branches covered.">                for (int y = 0; y &lt; exp; y++) {</span>
+<span class="fc" id="L357">                    value = value * 2;</span>
+                }
+<span class="fc" id="L359">                result += value;</span>
+            }
+        }
+<span class="fc" id="L362">        return result;</span>
+    }
+
+    static String decimalToBinary(int dec) {
+<span class="fc" id="L366">        StringBuilder result = new StringBuilder();</span>
+<span class="fc" id="L367">        StringBuilder temp = new StringBuilder();</span>
+
+<span class="fc bfc" id="L369" title="All 2 branches covered.">        while (dec &gt; 1) {</span>
+<span class="fc" id="L370">            temp.append(dec % 2);</span>
+<span class="fc" id="L371">            dec = dec / 2;</span>
+        }
+<span class="fc bfc" id="L373" title="All 2 branches covered.">        if (dec != 0) {</span>
+<span class="fc" id="L374">            temp.append(dec);</span>
+        }
+
+        // Reverse the string
+<span class="fc bfc" id="L378" title="All 2 branches covered.">        for (int i = temp.length() - 1; i &gt;= 0; i--) {</span>
+<span class="fc" id="L379">            result.append(temp.charAt(i));</span>
+        }
+
+<span class="fc" id="L382">        return result.toString();</span>
+    }
+
+    static String binaryToOctal(String binCode) {
+<span class="fc" id="L386">        StringBuilder octStr = new StringBuilder();</span>
+<span class="fc" id="L387">        int len = binCode.length();</span>
+<span class="fc bfc" id="L388" title="All 2 branches covered.">        for (int i = 0; i &lt; len; i = i + 3) {</span>
+<span class="fc" id="L389">            String bits = binCode.substring(i, i + 3);</span>
+<span class="fc" id="L390">            String t = octMap.get(bits);</span>
+<span class="pc bpc" id="L391" title="1 of 2 branches missed.">            if (t != null) {</span>
+<span class="fc" id="L392">                octStr.append(t);</span>
+            }
+        }
+<span class="fc" id="L395">        return octStr.toString();</span>
+    }
+
+    static String binaryToHex(String binCode) {
+<span class="fc" id="L399">        Preconditions.checkNotNull(binCode);</span>
+<span class="fc" id="L400">        StringBuilder hexStr = new StringBuilder();</span>
+
+        // obtain the length of the Binary Code
+<span class="fc" id="L403">        int len = binCode.length();</span>
+
+<span class="pc bpc" id="L405" title="1 of 2 branches missed.">        if (len &gt; 0) {</span>
+            // Start decoding
+<span class="fc bfc" id="L407" title="All 2 branches covered.">            for (int i = 0; i &lt; len; i = i + 4) {</span>
+<span class="fc" id="L408">                String bits = binCode.substring(i, i + 4);</span>
+<span class="fc" id="L409">                String t = hexMap.get(bits);</span>
+<span class="pc bpc" id="L410" title="1 of 2 branches missed.">                if (t != null) {</span>
+<span class="fc" id="L411">                    hexStr.append(t);</span>
+                }
+            }
+        }
+
+<span class="fc" id="L416">        return hexStr.toString();</span>
+    }
+
+    static String getAircraftCountryOfReg(String binCode) {
+        // The binCode in this case is the 24-bit Aircraft Address.
+        // In the above hashMap there are values of length 14,12,9,6,4
+        // We will take it in turn.
+<span class="fc bfc" id="L423" title="All 2 branches covered.">        for (int length : new int[] {14, 12, 9, 6, 4}) {</span>
+<span class="fc" id="L424">            String code = binCode.substring(0, length - 1);</span>
+<span class="fc" id="L425">            String r = airRegMap.get(code);</span>
+<span class="pc bpc" id="L426" title="1 of 2 branches missed.">            if (r != null) {</span>
+<span class="nc" id="L427">                return r;</span>
+            }
+        }
+<span class="fc" id="L430">        return &quot;&quot;;</span>
+    }
+
+    // NOTE: this will only work for Aust. reg'd aircraft.
+    static String binaryToAircraftCallsign(String binCode) {
+<span class="fc" id="L435">        int origDec = Conversions.binaryToDecimal(binCode);</span>
+
+        // 15 July 2005
+        // This should work properly!
+<span class="fc" id="L439">        int dec = origDec;</span>
+<span class="fc" id="L440">        int a1 = dec / 1296;</span>
+<span class="fc" id="L441">        int remainder = dec % 1296;</span>
+<span class="fc" id="L442">        int a2 = remainder / 36;</span>
+<span class="fc" id="L443">        int a3 = remainder % 36;</span>
+
+        // System.out.println(&quot;L1=&quot; + L1);
+        // System.out.println(&quot;L2=&quot; + L2);
+        // System.out.println(&quot;L3=&quot; + L3);
+
+        /*
+         * // 14 July 2005 // This doesn't work properly for boundary cases! double dec
+         * = origDec; int L1 = (int)(dec/1296);
+         *
+         * //System.out.println(&quot;L1=&quot; + L1);
+         *
+         * dec = dec/1296.0 - (int)(dec/1296); int L2 = (int)(dec*36.0+0.000005);
+         *
+         * //System.out.println(&quot;L2=&quot; + L2);
+         *
+         * dec = dec*36.0 - (int)(dec*36+0.000005); // Add 0.000005 is for adjusting the
+         * loss precision of double value int L3 = (int)(dec*36.0+0.000005);
+         *
+         * //System.out.println(&quot;L3=&quot; + L3);
+         */
+
+<span class="fc" id="L465">        String result = &quot;VH-&quot;;</span>
+<span class="fc" id="L466">        result += Conversions.getAircraftCallsign(a1);</span>
+<span class="fc" id="L467">        result += Conversions.getAircraftCallsign(a2);</span>
+<span class="fc" id="L468">        result += Conversions.getAircraftCallsign(a3);</span>
+
+<span class="fc" id="L470">        return result;</span>
+    }
+
+    private static String getAircraftCallsign(int value) {
+<span class="fc" id="L474">        String s = aircraftMap.get(value + &quot;&quot;);</span>
+<span class="fc bfc" id="L475" title="All 2 branches covered.">        if (s != null) {</span>
+<span class="fc" id="L476">            return s;</span>
+        } else {
+<span class="fc" id="L478">            return &quot;?&quot;;</span>
+        }
+    }
+
+    static String hexToBinary(String hexStr) {
+<span class="fc" id="L483">        int len = hexStr.length();</span>
+<span class="fc" id="L484">        hexStr = hexStr.toUpperCase(Locale.ENGLISH);</span>
+<span class="fc" id="L485">        StringBuilder r = new StringBuilder();</span>
+<span class="fc bfc" id="L486" title="All 2 branches covered.">        for (int i = 0; i &lt; len; i++) {</span>
+<span class="fc" id="L487">            String letter = hexStr.substring(i, i + 1);</span>
+<span class="fc" id="L488">            String t = binMap.get(letter);</span>
+
+<span class="pc bpc" id="L490" title="1 of 2 branches missed.">            if (t != null) {</span>
+<span class="fc" id="L491">                r.append(t);</span>
+            }
+        }
+
+        // 16 May 2005
+        // r = &quot;0000000000000000000000000&quot; + r;
+
+<span class="fc bfc" id="L498" title="All 2 branches covered.">        if (len == 15) {</span>
+            // right shift, assume short message
+            // return &quot;0&quot; + r;
+            // 16 May 2005, Can NOT assume short message! CDP's Guidance
+<span class="fc" id="L502">            return &quot;0000000000000000000000000&quot; + &quot;?&quot; + r;</span>
+        } else {
+<span class="fc" id="L504">            return &quot;0000000000000000000000000&quot; + r;</span>
+        }
+    }
+
+    // 11 May 2005, return String[] instead of String
+    static String[] mBaudotBits2mBaudotStr(String protocolName, String mbaudotBits, int bits) {
+<span class="fc" id="L510">        String[] vE = new String[3];</span>
+
+        // HashTable e = new HashTable();
+<span class="fc" id="L513">        List&lt;String&gt; e = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L515">        String mbaudotStr = &quot;&quot;;</span>
+<span class="fc" id="L516">        int n = mbaudotBits.length() / bits;</span>
+
+        // System.out.println (&quot;In Conversions.java, n=&quot;+n);
+
+<span class="fc" id="L520">        int spaceCount = 0;</span>
+
+<span class="fc bfc" id="L522" title="All 2 branches covered.">        for (int j = 0; j &lt; n; j++) {</span>
+<span class="fc" id="L523">            String mbaudotSubBits = mbaudotBits.substring(j * bits, j * bits + bits);</span>
+<span class="fc" id="L524">            int d = 0;</span>
+
+<span class="fc bfc" id="L526" title="All 2 branches covered.">            if (bits == 5) {</span>
+<span class="fc" id="L527">                mbaudotSubBits = &quot;1&quot; + mbaudotSubBits;</span>
+<span class="fc" id="L528">                d = binaryToDecimal(mbaudotSubBits);</span>
+            } else {
+<span class="fc" id="L530">                d = binaryToDecimal(mbaudotSubBits);</span>
+            }
+
+            String s;
+<span class="fc" id="L534">            Object obj = mbaudotToAsciiMap.get(d + &quot;&quot;);</span>
+
+<span class="pc bpc" id="L536" title="1 of 2 branches missed.">            if (obj != null) {</span>
+<span class="fc" id="L537">                s = (String) obj;</span>
+
+<span class="fc bfc" id="L539" title="All 2 branches covered.">                if (s.equals(&quot; &quot;)) {</span>
+<span class="pc bpc" id="L540" title="1 of 2 branches missed.">                    if (protocolName.equalsIgnoreCase(&quot;Radio Call Sign&quot;)) {</span>
+                        // 13 May 2005
+                        // mbaudotStr = mbaudotStr + &quot;?&quot;;
+<span class="nc" id="L543">                        mbaudotStr = mbaudotStr + &quot;?&quot;;</span>
+<span class="nc bnc" id="L544" title="All 4 branches missed.">                        if (spaceCount == j &amp;&amp; n != 1) { // n==1 &amp;&amp; UserMaritime (or User</span>
+                            // RadioCallsign) means it is for Specidic
+                            // Beacon Number (bit 76-81)
+<span class="nc" id="L547">                            e.add(mbaudotSubBits + &quot; = Space - Left Justified\n&quot;);</span>
+<span class="nc" id="L548">                            spaceCount++;</span>
+                        } else {
+<span class="nc" id="L550">                            e.add(mbaudotSubBits + &quot; = Space - Non-Spec\n&quot;);</span>
+                        }
+<span class="fc bfc" id="L552" title="All 2 branches covered.">                    } else if (protocolName.equalsIgnoreCase(&quot;Aviation&quot;)</span>
+<span class="pc bpc" id="L553" title="1 of 2 branches missed.">                            || protocolName.equalsIgnoreCase(&quot;Maritime&quot;)</span>
+<span class="nc bnc" id="L554" title="All 2 branches missed.">                            || protocolName.equalsIgnoreCase(&quot;Orbitography&quot;)) {</span>
+                        // n==1 &amp;&amp; UserMaritime (or User RadioCallsign) means it is for Specidic
+                        // Beacon Number (bit 76-81)
+<span class="pc bpc" id="L557" title="1 of 2 branches missed.">                        if (n == 1) {</span>
+<span class="nc" id="L558">                            mbaudotStr = mbaudotStr + &quot;?&quot;;</span>
+<span class="nc" id="L559">                            e.add(mbaudotSubBits + &quot; = Space - Non-Spec\n&quot;);</span>
+                        } else {
+<span class="fc" id="L561">                            mbaudotStr = mbaudotStr + &quot;*&quot;;</span>
+<span class="fc" id="L562">                            e.add(mbaudotSubBits + &quot; = Space - Right Justified\n&quot;);</span>
+                        }
+                    } else {
+<span class="nc" id="L565">                        mbaudotStr = mbaudotStr + s;</span>
+<span class="nc" id="L566">                        e.add(mbaudotSubBits + &quot; = Spec\n&quot;);</span>
+                    }
+<span class="fc bfc" id="L568" title="All 2 branches covered.">                } else if (s.equals(&quot;-&quot;)) {</span>
+                    // n==1 &amp;&amp; UserMaritime (or User RadioCallsign) means it is for Specific Beacon
+                    // Number (bit 76-81)
+<span class="pc bpc" id="L571" title="3 of 4 branches missed.">                    if (n == 1 &amp;&amp; (protocolName.equalsIgnoreCase(&quot;Maritime&quot;)</span>
+<span class="nc bnc" id="L572" title="All 2 branches missed.">                            || protocolName.equalsIgnoreCase(&quot;Radio Call Sign&quot;))) {</span>
+<span class="nc" id="L573">                        mbaudotStr = mbaudotStr + &quot;?&quot;;</span>
+<span class="nc" id="L574">                        e.add(mbaudotSubBits + &quot; = Hyphen(-) - Non-Spec\n&quot;);</span>
+                    } else {
+<span class="fc" id="L576">                        mbaudotStr = mbaudotStr + s;</span>
+<span class="fc" id="L577">                        e.add(mbaudotSubBits + &quot; = Spec\n&quot;);</span>
+                    }
+                } else {
+<span class="fc" id="L580">                    mbaudotStr = mbaudotStr + s;</span>
+<span class="fc" id="L581">                    e.add(mbaudotSubBits + &quot; = Spec\n&quot;);</span>
+                }
+            } else {
+<span class="nc" id="L584">                mbaudotStr = mbaudotStr + &quot;?&quot;;</span>
+<span class="nc" id="L585">                e.add(mbaudotSubBits + &quot; = Non-Spec\n&quot;);</span>
+            }
+
+        } // end of for loop
+
+        // Deal with SPACE if the protocol is not User Radio Call Sign, these protocols
+        // are: UserAviation, UserMaritime and UserSerialAircraftOperator
+<span class="fc" id="L592">        int len = mbaudotStr.length();</span>
+<span class="fc" id="L593">        StringBuilder temp = new StringBuilder();</span>
+<span class="fc bfc" id="L594" title="All 2 branches covered.">        for (int i = 0; i &lt; len; i++) {</span>
+<span class="fc" id="L595">            temp.append(&quot;*&quot;);</span>
+        }
+
+<span class="fc" id="L598">        StringBuilder errStr = new StringBuilder();</span>
+<span class="fc" id="L599">        int countNum = 1;</span>
+        // 02/Nov/2005
+        // If mbaudotStr is all &quot;*&quot;, then they are all spaces, which is allowed in the
+        // Orbitography User protocol
+<span class="pc bpc" id="L603" title="1 of 2 branches missed.">        if (!mbaudotStr.equalsIgnoreCase(temp.toString())) {</span>
+<span class="fc" id="L604">            int index = mbaudotStr.length() - 1;</span>
+<span class="pc bpc" id="L605" title="1 of 2 branches missed.">            for (; index &gt;= 0; index--) {</span>
+<span class="pc bpc" id="L606" title="1 of 2 branches missed.">                if (mbaudotStr.charAt(index) == '*') {</span>
+                    continue;
+                } else {
+                    break;
+                }
+            }
+<span class="fc bfc" id="L612" title="All 2 branches covered.">            for (int i = 0; i &lt; index; i++) {</span>
+<span class="fc bfc" id="L613" title="All 2 branches covered.">                if (mbaudotStr.charAt(i) == '*') {</span>
+<span class="fc" id="L614">                    mbaudotStr = mbaudotStr.substring(0, i) + &quot; &quot; + mbaudotStr.substring(i + 1);</span>
+                }
+            }
+
+<span class="fc bfc" id="L618" title="All 2 branches covered.">            for (int i = 0; i &lt; mbaudotStr.length(); i++) {</span>
+<span class="pc bpc" id="L619" title="1 of 2 branches missed.">                if (mbaudotStr.charAt(i) == '*') {</span>
+<span class="nc" id="L620">                    mbaudotStr = mbaudotStr.substring(0, i) + &quot;?&quot; + mbaudotStr.substring(i + 1);</span>
+                }
+            }
+
+<span class="fc" id="L624">            int num = 0;</span>
+<span class="fc bfc" id="L625" title="All 2 branches covered.">            while (num &lt; mbaudotStr.length()) {</span>
+                // if (mbaudotStr.charAt(num) == '*' || mbaudotStr.charAt(num) == '?')
+<span class="pc bpc" id="L627" title="1 of 2 branches missed.">                if (mbaudotStr.charAt(num) == '?') {</span>
+<span class="nc" id="L628">                    errStr.append(&quot;?&quot; + countNum++ + &quot; = &quot; + e.get(num));</span>
+                }
+
+<span class="fc" id="L631">                num++;</span>
+            }
+<span class="fc" id="L633">        } else {</span>
+<span class="nc bnc" id="L634" title="All 2 branches missed.">            for (int i = 0; i &lt; mbaudotStr.length(); i++) {</span>
+<span class="nc bnc" id="L635" title="All 2 branches missed.">                if (mbaudotStr.charAt(i) == '*') {</span>
+<span class="nc" id="L636">                    mbaudotStr = mbaudotStr.substring(0, i) + &quot; &quot; + mbaudotStr.substring(i + 1);</span>
+                }
+            }
+        }
+
+<span class="fc" id="L641">        vE[0] = mbaudotStr;</span>
+<span class="fc" id="L642">        vE[1] = errStr.toString();</span>
+<span class="fc" id="L643">        vE[2] = (countNum - 1) + &quot;&quot;;</span>
+
+<span class="fc" id="L645">        return vE;</span>
+    }
+
+    static boolean isNumeric(String str) {
+<span class="fc bfc" id="L649" title="All 2 branches covered.">        for (int i = 0; i &lt; str.length(); i++) {</span>
+<span class="fc" id="L650">            char c = str.charAt(i);</span>
+<span class="fc bfc" id="L651" title="All 4 branches covered.">            if (c &lt; '0' || c &gt; '9') {</span>
+<span class="fc" id="L652">                return false;</span>
+            }
+        }
+<span class="fc" id="L655">        return true;</span>
+    }
+
+    static String zeroPadFromLeft(String str, int amt) {
+<span class="fc" id="L659">        int lenStr = str.length();</span>
+<span class="fc bfc" id="L660" title="All 2 branches covered.">        for (int i = 0; i &lt; (amt - lenStr); i++) {</span>
+<span class="fc" id="L661">            str = &quot;0&quot; + str;</span>
+        }
+<span class="fc" id="L663">        return str;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

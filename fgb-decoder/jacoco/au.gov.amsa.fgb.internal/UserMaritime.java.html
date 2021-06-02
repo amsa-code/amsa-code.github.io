@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserMaritime.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">UserMaritime.java</span></div><h1>UserMaritime.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.Locale;
+
+final class UserMaritime extends UserAviationOrMaritimeOrRadioCallsign {
+
+    UserMaritime() {
+<span class="fc" id="L8">        super(&quot;Maritime&quot;, &quot;010&quot;, (u, binCode, result) -&gt; {</span>
+<span class="fc" id="L9">            result.add(((UserMaritime) u).mmsi(binCode, 40, 75));</span>
+<span class="fc" id="L10">            result.add(u.specificBeaconNumber(binCode, 76, 81));</span>
+<span class="fc" id="L11">            result.add(u.spare(binCode, 82, 83));</span>
+<span class="fc" id="L12">        });</span>
+<span class="fc" id="L13">    }</span>
+
+    private HexAttribute mmsi(String binCode, int s, int f) {
+        final AttributeType d;
+<span class="fc" id="L17">        String v = &quot;&quot;;</span>
+<span class="fc" id="L18">        String e = &quot;&quot;;</span>
+
+        // 11 May 2005
+<span class="fc" id="L21">        String[] vE = Conversions.mBaudotBits2mBaudotStr(this.getName(),</span>
+<span class="fc" id="L22">                binCode.substring(s, f + 1), 6);</span>
+
+<span class="fc" id="L24">        String code = vE[0];</span>
+<span class="fc" id="L25">        e = vE[1];</span>
+
+<span class="fc bfc" id="L27" title="All 2 branches covered.">        if (Conversions.isNumeric(code)) {</span>
+<span class="fc" id="L28">            d = AttributeType.SHIP_MMSI_LAST_6_DIGITS;</span>
+<span class="fc" id="L29">            v = code;</span>
+            // v = this.countryCode + code;
+        } else {
+<span class="fc" id="L32">            d = AttributeType.RADIO_CALLSIGN;</span>
+
+            // 24 June 2005, Double quote is not used any more
+            // v = &quot;\&quot;&quot; + code + &quot;\&quot;&quot; ;
+<span class="fc" id="L36">            v = code.trim();</span>
+        }
+
+<span class="pc bpc" id="L39" title="2 of 4 branches missed.">        if (e != null &amp;&amp; e.length() &gt; 0) {</span>
+<span class="nc" id="L40">            e = &quot;\nWARNING - SUSPECT NON-SPEC IN &quot; + d.toString().toUpperCase(Locale.ENGLISH) + &quot;\n&quot;</span>
+                    + e;
+        }
+
+<span class="fc" id="L44">        return new HexAttribute(d, s, f, v, e);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

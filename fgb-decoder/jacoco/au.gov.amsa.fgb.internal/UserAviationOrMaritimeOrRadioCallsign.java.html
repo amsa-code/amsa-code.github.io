@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserAviationOrMaritimeOrRadioCallsign.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">fgb-decoder</a> &gt; <a href="index.source.html" class="el_package">au.gov.amsa.fgb.internal</a> &gt; <span class="el_source">UserAviationOrMaritimeOrRadioCallsign.java</span></div><h1>UserAviationOrMaritimeOrRadioCallsign.java</h1><pre class="source lang-java linenums">package au.gov.amsa.fgb.internal;
+
+import java.util.ArrayList;
+import java.util.List;
+
+abstract class UserAviationOrMaritimeOrRadioCallsign extends User {
+
+    private final Consumer consumer;
+
+    UserAviationOrMaritimeOrRadioCallsign(String protocolName, String userProtocolCode,
+            Consumer consumer) {
+<span class="fc" id="L12">        super(protocolName, userProtocolCode);</span>
+<span class="fc" id="L13">        this.consumer = consumer;</span>
+<span class="fc" id="L14">    }</span>
+
+    interface Consumer {
+        void accept(UserAviationOrMaritimeOrRadioCallsign u, String binCode,
+                List&lt;HexAttribute&gt; result);
+    }
+
+    @Override
+    List&lt;HexAttribute&gt; decode(String hexStr) {
+
+<span class="fc" id="L24">        String binCode = Conversions.hexToBinary(hexStr);</span>
+<span class="fc" id="L25">        List&lt;HexAttribute&gt; result = new ArrayList&lt;&gt;();</span>
+
+<span class="fc" id="L27">        userFragment(this, hexStr, binCode, result);</span>
+
+<span class="fc" id="L29">        consumer.accept(this, binCode, result);</span>
+
+<span class="fc" id="L31">        result.add(this.auxRadioLocating(binCode, 84, 85));</span>
+
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        if (hexStr.length() &gt; 15) {</span>
+<span class="fc" id="L34">            result.add(this.bch1(binCode, 86, 106));</span>
+<span class="fc bfc" id="L35" title="All 2 branches covered.">            if (this.isLongMessage(binCode)) {</span>
+<span class="fc" id="L36">                result.add(this.encodedPositionSource(binCode, 111));</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">                if (this.defaultFFFFFFFF(hexStr)) {</span>
+<span class="fc" id="L38">                    result.add(this.longMessage(binCode, 113, 144));</span>
+                } else {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">                    if (this.default00000000(hexStr)) {</span>
+<span class="fc" id="L41">                        result.add(this.longMessage(binCode, 113, 144));</span>
+                    } else {
+<span class="fc" id="L43">                        List&lt;HexAttribute&gt; res = result;</span>
+<span class="fc" id="L44">                        this.latitude(binCode, 108, 119).ifPresent(x -&gt; res.add(x));</span>
+<span class="fc" id="L45">                        this.longitude(binCode, 120, 132).ifPresent(x -&gt; res.add(x));</span>
+<span class="fc" id="L46">                        result.add(this.bch2(binCode, 133, 144));</span>
+                    }
+<span class="fc" id="L48">                    result.add(this.nationalUse(binCode, 113, 144));</span>
+                }
+            } else {
+<span class="fc" id="L51">                result = this.nonNationalUse(result, binCode);</span>
+            }
+        }
+<span class="fc" id="L54">        return result;</span>
+    }
+
+    // This overidding method will be called by User.java
+    @Override
+    List&lt;HexAttribute&gt; allEmergencyCodes(List&lt;HexAttribute&gt; result, String binCode) {
+<span class="fc" id="L60">        result = Common.maritimeEmergencyCodes(result, binCode);</span>
+
+<span class="fc" id="L62">        return result;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
